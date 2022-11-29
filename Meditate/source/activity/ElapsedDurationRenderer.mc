@@ -1,7 +1,7 @@
 using Toybox.Graphics as Gfx;
 using Toybox.Lang;
 
-class ElapsedDuationRenderer {
+class ElapsedDurationRenderer {
 	function initialize(color, radius, width) {
 		me.mColor = color;
 		me.mRadius = radius;

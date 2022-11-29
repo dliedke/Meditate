@@ -45,7 +45,7 @@ class SummaryModel {
 		var momentStartMediatation = null;
 
 		//DEBUG
-		//elapsedTimeSeconds = 600;
+		//elapsedTimeSeconds = 60 * 30;
 
 		// Get stress history iterator object
 		var stressIterator = getStressHistoryIterator();

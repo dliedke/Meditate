@@ -6,13 +6,13 @@ using Toybox.Timer;
 
 class MeditateView extends Ui.View {
 	private var mMeditateModel;
-	private var mMainDuationRenderer;
+	private var mMainDurationRenderer;
 	private var mIntervalAlertsRenderer;
 	
     function initialize(meditateModel) {
         View.initialize();
         me.mMeditateModel = meditateModel;
-        me.mMainDuationRenderer = null;
+        me.mMainDurationRenderer = null;
         me.mIntervalAlertsRenderer = null;
         me.mElapsedTime = null; 
         me.mHrStatusText = null;
@@ -111,7 +111,7 @@ class MeditateView extends Ui.View {
     private function getYPosOffsetFromCenter(dc, lineOffset) {
     	return dc.getHeight() / 2 + lineOffset * dc.getFontHeight(TextFont);
     }
-        
+	
     function renderLayoutElapsedTime(dc) { 	
     	var xPosCenter = dc.getWidth() / 2;
     	var yPosCenter = getYPosOffsetFromCenter(dc, -1 + mRespirationRateYPosOffset);
@@ -122,10 +122,17 @@ class MeditateView extends Ui.View {
     function onLayout(dc) {   
         renderBackground(dc);   
         renderLayoutElapsedTime(dc);  
-		        
+
         var durationArcRadius = dc.getWidth() / 2;
         var mainDurationArcWidth = dc.getWidth() / 4;
-        me.mMainDuationRenderer = new ElapsedDuationRenderer(me.mMeditateModel.getColor(), durationArcRadius, mainDurationArcWidth);
+
+		// For rectangle screens we need to set this manually 
+		var mainDurationArcWidthConfig = App.getApp().getProperty("meditateActivityDurationArcWidth");
+		if (mainDurationArcWidthConfig != null) {
+			mainDurationArcWidth = mainDurationArcWidthConfig;
+		}
+
+        me.mMainDurationRenderer = new ElapsedDurationRenderer(me.mMeditateModel.getColor(), durationArcRadius, mainDurationArcWidth);
         
         if (me.mMeditateModel.hasIntervalAlerts()) {
 	        var intervalAlertsArcRadius = dc.getWidth() / 2;
@@ -203,7 +210,7 @@ class MeditateView extends Ui.View {
 			Attention.backlight(false);
 		}
 
-		me.mMainDuationRenderer.drawOverallElapsedTime(dc, elapsedTime, alarmTime);
+		me.mMainDurationRenderer.drawOverallElapsedTime(dc, elapsedTime, alarmTime);
 		if (me.mIntervalAlertsRenderer != null) {
 			me.mIntervalAlertsRenderer.drawRepeatIntervalAlerts(dc);
 			me.mIntervalAlertsRenderer.drawOneOffIntervalAlerts(dc);
