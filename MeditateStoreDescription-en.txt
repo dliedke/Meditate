@@ -2,7 +2,7 @@ Totally free application developed by vtrifonov and compiled/enhanced for newer 
 
 A meditation/yoga app that tracks as an activity the heart rate, stress, respiration rate, heart rate variability (HRV), provides vibration alerts and heart rate chart.
 
-Touch and hold the screen (Touch devices) or hold the left middle button (Button only devices) to edit the meditation sessions, properties and global settings.
+Touch and hold the screen (Touch devices) or hold the left middle button to edit the meditation sessions, properties and global settings.
 
 Touch screen or click Start button to start meditation session. Use lap/back button to pause/resume. Use start button to end the meditation session.
 

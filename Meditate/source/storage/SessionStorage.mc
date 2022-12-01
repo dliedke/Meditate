@@ -35,7 +35,8 @@ class SessionStorage {
 		var session = new SessionModel();
 		if (loadedSessionDictionary == null) {
 			me.mSessionsCount = 0;
-			session = me.addSession();
+			me.mSelectedSessionIndex = 0;
+			session = me.addSession(true);
 		}
 		else {
 			session.fromDictionary(loadedSessionDictionary);
@@ -61,18 +62,38 @@ class SessionStorage {
 		App.Storage.setValue("sessionsCount", me.mSessionsCount);
 	}
 			
-	function addSession() {
-		var session = new SessionModel();
-		session.reset();
-		me.mSessionsCount++;
-		me.mSelectedSessionIndex = me.mSessionsCount - 1;
-		if (me.mSelectedSessionIndex > 0) {
-			me.mSessionKeysStorage.addAfterInitialKey();
+	function addSession(initialization) {
+		var finalIndex = 0;
+		var firstSession;
+
+		// If initializing data first time, add the 6 initial mediation sessions
+		if (initialization) {
+			finalIndex = 5;
 		}
-		me.saveSelectedSession(session);
-		me.updateSessionStats();
+
+		for (var index=0; index<=finalIndex; index++) {
+
+			var session = new SessionModel();
+			session.reset(index, !initialization);
+			me.mSessionsCount++;
+			me.mSelectedSessionIndex = me.mSessionsCount - 1;
+			if (me.mSelectedSessionIndex > 0) {
+				me.mSessionKeysStorage.addAfterInitialKey();
+			}
+			me.saveSelectedSession(session);
+			me.updateSessionStats();
+			
+			if (index == 0) {
+				firstSession = session;
+			}
+		}
 		
-		return session;
+		if (initialization) {
+			me.mSelectedSessionIndex = 0;
+			me.updateSessionStats();
+		}
+
+		return firstSession;
 	}
 	
 	function deleteSelectedSession() {

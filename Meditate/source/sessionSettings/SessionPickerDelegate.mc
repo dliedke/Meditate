@@ -139,7 +139,8 @@ class SessionPickerDelegate extends ScreenPicker.ScreenPickerDelegate {
 	
 	private function setSelectedSessionDetails() {
 		me.mSessionStorage.selectSession(me.mSelectedPageIndex);
-		var session = me.mSessionStorage.loadSelectedSession();			
+		var session = me.mSessionStorage.loadSelectedSession();	
+		ScreenPickerDelegate.setPagesCount(me.mSessionStorage.getSessionsCount());		
 		me.updateSelectedSessionDetails(session);
 	}
 		

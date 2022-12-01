@@ -12,7 +12,7 @@ class SessionSettingsMenuDelegate extends Ui.MenuInputDelegate {
 		
     function onMenuItem(item) {
         if (item == :addNew) {
-        	var newSession = me.mSessionStorage.addSession();	
+        	var newSession = me.mSessionStorage.addSession(false);	
         	var addEditSessionMenuMenuDelegate = new AddEditSessionMenuDelegate(newSession.intervalAlerts ,method(:onChangeSession));        	
         	me.mSessionPickerDelegate.setPagesCount(me.mSessionStorage.getSessionsCount());
         	me.mSessionPickerDelegate.select(me.mSessionStorage.getSelectedSessionIndex());

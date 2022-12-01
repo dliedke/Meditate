@@ -80,10 +80,10 @@ class Alert {
 	}
 	
 	function reset() {
-		me.type = IntervalAlertType.OneOff;
+		me.type = IntervalAlertType.Repeat;
 		me.time = 60 * 5;
 		me.color = Gfx.COLOR_RED;
-		me.vibePattern = VibePattern.ShorterContinuous;
+		me.vibePattern = VibePattern.Blip;
 	}		
 	
 	function getAlertArcPercentageTimes(sessionTime) {

@@ -67,14 +67,56 @@ class SessionModel {
 		};
 	}
 		
-	function reset() {
-		me.time = 600;
-		me.color = Gfx.COLOR_BLUE;
+	function reset(index, addingNew) {
+		
+		// Set 5,10,15,20,25 and 30min default session
+
+		// 5min
+		if (index == 0) {
+			me.time = 5 * 60;
+			me.color = Gfx.COLOR_GREEN;
+		}
+
+		// 10min
+		if (index == 1) {
+			me.time = 10 * 60;
+			me.color = Gfx.COLOR_YELLOW;
+		}
+
+		// 15min
+		if (index == 2) {
+			me.time = 15 * 60;
+			me.color = Gfx.COLOR_BLUE;
+		}
+
+		// 20min
+		if (index == 3) {
+			me.time = 20 * 60;
+			me.color = Gfx.COLOR_GREEN;
+		}
+
+		// 25min
+		if (index == 4) {
+			me.time = 25 * 60;
+			me.color = Gfx.COLOR_YELLOW;
+		}
+
+		// 30min
+		if (index == 5) {
+			me.time = 30 * 60;
+			me.color = Gfx.COLOR_BLUE;
+		}
+
 		me.vibePattern = VibePattern.LongContinuous;		
 		me.activityType = GlobalSettings.loadActivityType();
 		me.hrvTracking = GlobalSettings.loadHrvTracking();
 		me.intervalAlerts = new IntervalAlerts();
 		me.intervalAlerts.reset();
+
+		// Only add each 5min blip for sessions longer than 5min
+		if (index>0 && !addingNew) {
+			me.intervalAlerts.addNew();
+		}
 	}
 	
 	function copyNonNullFieldsFromSession(otherSession) {
