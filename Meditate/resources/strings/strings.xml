@@ -81,21 +81,22 @@
     <string id="addEditIntervalAlertMenu_title">Alert</string>    
     <string id="addEditIntervalAlertMenu_time">Time</string>
     <string id="addEditIntervalAlertMenu_color">Color</string>
-    <string id="addEditIntervalAlertMenu_vibePattern">Vibe</string>
+    <string id="addEditIntervalAlertMenu_vibeSound">Vibe / Sound</string>
     <string id="addEditIntervalAlertMenu_delete">Delete</string>
     
     <string id="addEditSessionMenu_title">Session</string>
     <string id="addEditSessionMenu_time">Time</string>
     <string id="addEditSessionMenu_color">Color</string>
-    <string id="addEditSessionMenu_vibePattern">Vibe Pattern</string>
+    <string id="addEditSessionMenu_vibeSound">Vibe / Sound</string>
 	<string id="addEditSessionMenu_intervalAlerts">Interval Alerts</string>
 	<string id="addEditSessionMenu_activityType">Activity Type</string>
 	<string id="addEditSessionMenu_hrvTracking">HRV Tracking</string>
 	
 	<string id="intervalAlertTransparentColorText">Transparent</string>
 	
-	<string id="vibePatternMenu_title">Vibe Pattern</string>
+	<string id="vibePatternMenu_title">Vibe / Sound</string>
 	<string id="vibePatternMenu_longPulsating">Long pulsating</string>
+    <string id="vibePatternMenu_longSound">Long Sound</string>
 	<string id="vibePatternMenu_longContinuous">Long continuous</string>
 	<string id="vibePatternMenu_longAscending">Long ascending</string>
 	<string id="vibePatternMenu_mediumPulsating">Medium pulsating</string>
@@ -105,11 +106,12 @@
 	<string id="vibePatternMenu_shortContinuous">Short continuous</string>
 	<string id="vibePatternMenu_shortAscending">Short ascending</string>
 	
-	<string id="intervalVibePatternMenu_title">Vibe Pattern</string>
+	<string id="intervalVibePatternMenu_title">Vibe / Sound</string>
 	<string id="intervalVibePatternMenu_shorterContinuous">Shorter continuous</string>
 	<string id="intervalVibePatternMenu_shorterAscending">Shorter ascending</string>
 	<string id="intervalVibePatternMenu_blip">Blip</string>
-		
+    <string id="intervalVibePatternMenu_shortSound">Short Sound</string>
+    	
 	<string id="intervalTypeMenu_title">Interval Alert Type</string>
 	<string id="intervalTypeMenu_oneOff">One-off H:MM</string>
 	<string id="intervalTypeMenu_repeat">Every MM:SS</string>		

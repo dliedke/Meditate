@@ -40,11 +40,41 @@ class Vibe {
 			case VibePattern.Blip:
 				vibeProfile = getBlip();
 				break;
+			case VibePattern.ShortSound:
+				
+				// Play single fast note sound
+				if (Attention has :ToneProfile) {
+					var toneProfile =
+					[
+						new Attention.ToneProfile(650, 100)
+					];
+					Attention.playTone({:toneProfile=>toneProfile});
+				}
+
+				break;
+
+			case VibePattern.LongSound:
+
+				// Play three notes sound
+				if (Attention has :ToneProfile) {
+					var toneProfile =
+					[
+						new Attention.ToneProfile(523, 400),
+						new Attention.ToneProfile(698, 400),
+						new Attention.ToneProfile(932, 400),
+					];
+					Attention.playTone({:toneProfile=>toneProfile});
+				}
+				break;
+				
 			default:
 				vibeProfile = getLongPulsating();
 				break;
 		}
-		Attention.vibrate(vibeProfile);
+
+		if (vibeProfile!=null) {
+			Attention.vibrate(vibeProfile);
+		}
 	}
 	
 	static function getLongPulsating() {

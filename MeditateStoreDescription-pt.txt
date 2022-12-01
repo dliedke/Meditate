@@ -1,10 +1,12 @@
 Aplicativo totalmente gratuito desenvolvido por vtrifonov e compilado/aprimorado para modelos de relógios Garmin mais recentes por dliedke.
 
-Um aplicativo de meditação/Yoga que rastreia atividade com frequência cardíaca, estresse, frequência respiratória, variabilidade da frequência cardíaca (VFC), fornece alertas de vibração e gráfico da frequência cardíaca.
+Um aplicativo de meditação/Yoga que rastreia atividade com frequência cardíaca, estresse, frequência respiratória, variabilidade da frequência cardíaca (VFC), fornece alertas de vibração ou som e gráfico da frequência cardíaca.
 
 Toque e segure a tela (dispositivos com touch screen) ou segure o botão do meio esquerdo para editar as sessões de meditação, propriedades e configurações globais.
 
 Toque na tela ou clique no botão Iniciar para iniciar a sessão de meditação. Use o botão de lap/voltar para pausar/retomar. Use o botão Iniciar para encerrar a sessão de meditação.
+
+Se o seu dispositivo for compatível e usar notificações sonoras, certifique-se de ativar o som em Sistema - Som e vibração - Toques de alerta (Ligado).
 
 Defina o nome da atividade como "Local e nome da atividade do dispositivo" nas configurações do Garmin Connect (https://connect.garmin.com/modern/settings) para que o nome da atividade gerada seja salvo corretamente.
 

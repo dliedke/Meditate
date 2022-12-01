@@ -148,6 +148,8 @@ class SessionPickerDelegate extends ScreenPicker.ScreenPickerDelegate {
 		switch (vibePattern) {
 			case VibePattern.LongPulsating:
 				return Ui.loadResource(Rez.Strings.vibePatternMenu_longPulsating);
+			case VibePattern.LongSound:
+				return Ui.loadResource(Rez.Strings.vibePatternMenu_longSound);
 			case VibePattern.LongAscending:
 				return Ui.loadResource(Rez.Strings.vibePatternMenu_longAscending);
 			case VibePattern.LongContinuous:

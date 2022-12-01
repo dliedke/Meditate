@@ -81,21 +81,22 @@
     <string id="addEditIntervalAlertMenu_title">Alerta</string>    
     <string id="addEditIntervalAlertMenu_time">Tempo</string>
     <string id="addEditIntervalAlertMenu_color">Cor</string>
-    <string id="addEditIntervalAlertMenu_vibePattern">Vibração</string>
+    <string id="addEditIntervalAlertMenu_vibeSound">Vibração / Som</string>
     <string id="addEditIntervalAlertMenu_delete">Excluir</string>
     
     <string id="addEditSessionMenu_title">Sessão</string>
     <string id="addEditSessionMenu_time">Tempo</string>
     <string id="addEditSessionMenu_color">Cor</string>
-    <string id="addEditSessionMenu_vibePattern">Vibração</string>
+    <string id="addEditSessionMenu_vibeSound">Vibração / Som</string>
 	<string id="addEditSessionMenu_intervalAlerts">Intervalo Alerta</string>
 	<string id="addEditSessionMenu_activityType">Tipo Atividade</string>
 	<string id="addEditSessionMenu_hrvTracking">Monit. VFC</string>
 	
 	<string id="intervalAlertTransparentColorText">Transparente</string>
 	
-	<string id="vibePatternMenu_title">Vibração</string>
+	<string id="vibePatternMenu_title">Vibração / Som</string>
 	<string id="vibePatternMenu_longPulsating">Longo pulsante</string>
+    <string id="vibePatternMenu_longSound">Som Longo</string>
 	<string id="vibePatternMenu_longContinuous">Longo contínuo</string>
 	<string id="vibePatternMenu_longAscending">Longo ascendente</string>
 	<string id="vibePatternMenu_mediumPulsating">Médio pulsante</string>
@@ -105,11 +106,13 @@
 	<string id="vibePatternMenu_shortContinuous">Curto contínuo</string>
 	<string id="vibePatternMenu_shortAscending">Curto ascendente</string>
 	
-	<string id="intervalVibePatternMenu_title">Vibração</string>
+	<string id="intervalVibePatternMenu_title">Vibração / Som</string>
 	<string id="intervalVibePatternMenu_shorterContinuous">Curto contínuo</string>
 	<string id="intervalVibePatternMenu_shorterAscending">Curto ascendente</string>
 	<string id="intervalVibePatternMenu_blip">Bip</string>
-		
+	<string id="intervalVibePatternMenu_shortSound">Som Curto</string>
+    
+
 	<string id="intervalTypeMenu_title">Tipo Intervalo Alerta</string>
 	<string id="intervalTypeMenu_oneOff">Uma vez H:MM</string>
 	<string id="intervalTypeMenu_repeat">A cada MM:SS</string>		

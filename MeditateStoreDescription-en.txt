@@ -1,11 +1,13 @@
 Totally free application developed by vtrifonov and compiled/enhanced for newer Garmin watch models by dliedke.
 
-A meditation/yoga app that tracks as an activity the heart rate, stress, respiration rate, heart rate variability (HRV), provides vibration alerts and heart rate chart.
+A meditation/yoga app that tracks as an activity the heart rate, stress, respiration rate, heart rate variability (HRV), provides vibration or sound alerts and heart rate chart.
 
 Touch and hold the screen (Touch devices) or hold the left middle button to edit the meditation sessions, properties and global settings.
 
 Touch screen or click Start button to start meditation session. Use lap/back button to pause/resume. Use start button to end the meditation session.
 
+If your device supports it and using sound notifications, make sure to enable sound in System - Sound and Vibe - Alert Tones (On).
+ 
 Set Activity Name as "Location & Device Activity Name" in Garmin Connect Settings (https://connect.garmin.com/modern/settings) for activity name generated to be saved correctly.
 
 Set custom activity name using Garmin Connect or Garmin Express, refer to guide https://support.garmin.com/en-US/?faq=SPo0TFvhQO04O36Y5TYRh5 for help.

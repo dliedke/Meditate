@@ -12,6 +12,9 @@ class VibePatternMenuDelegate extends Ui.MenuInputDelegate {
     	if (item == :longContinuous) {
         	me.mOnVibePatternPicked.invoke(VibePattern.LongContinuous);
         }    
+        else if (item == :longSound) {
+        	me.mOnVibePatternPicked.invoke(VibePattern.LongSound);
+        }
         else if (item == :longPulsating) {
         	me.mOnVibePatternPicked.invoke(VibePattern.LongPulsating);
         }

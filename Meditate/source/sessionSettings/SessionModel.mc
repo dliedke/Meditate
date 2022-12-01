@@ -14,7 +14,9 @@ module VibePattern {
 		MediumAscending = 9,
 		ShorterAscending = 10,
 		ShorterContinuous = 11,
-		Blip = 12
+		Blip = 12,
+		ShortSound = 13,
+		LongSound = 14
 	}
 }
 
