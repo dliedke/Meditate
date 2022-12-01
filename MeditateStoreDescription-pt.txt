@@ -2,7 +2,7 @@ Aplicativo totalmente gratuito desenvolvido por vtrifonov e compilado/aprimorado
 
 Um aplicativo de meditação/Yoga que rastreia atividade com frequência cardíaca, estresse, frequência respiratória, variabilidade da frequência cardíaca (VFC), fornece alertas de vibração e gráfico da frequência cardíaca.
 
-Toque e segure a tela (dispositivos com touch screen) ou segure o botão do meio esquerdo (dispositivos apenas com botões) para editar as sessões de meditação, propriedades e configurações globais.
+Toque e segure a tela (dispositivos com touch screen) ou segure o botão do meio esquerdo para editar as sessões de meditação, propriedades e configurações globais.
 
 Toque na tela ou clique no botão Iniciar para iniciar a sessão de meditação. Use o botão de lap/voltar para pausar/retomar. Use o botão Iniciar para encerrar a sessão de meditação.
 
