@@ -6,6 +6,8 @@ Touch and hold the screen (Touch devices) or hold the left middle button to edit
 
 Touch screen or click Start button to start meditation session. Use lap/back button to pause/resume. Use start button to end the meditation session.
 
+Make sure to enable vibration in System - Sound and Vibe - Vibration (On).
+
 If your device supports it and using sound notifications, make sure to enable sound in System - Sound and Vibe - Alert Tones (On).
  
 Set Activity Name as "Location & Device Activity Name" in Garmin Connect Settings (https://connect.garmin.com/modern/settings) for activity name generated to be saved correctly.
