@@ -12,7 +12,7 @@ If your device supports it and using sound notifications, make sure to enable so
  
 Set Activity Name as "Location & Device Activity Name" in Garmin Connect Settings (https://connect.garmin.com/modern/settings) for activity name generated to be saved correctly.
 
-Set custom activity name using Garmin Connect or Garmin Express, refer to guide https://support.garmin.com/en-US/?faq=SPo0TFvhQO04O36Y5TYRh5 for help.
+Set custom activity name using watch connected to PC via USB with Garmin Express, refer to guide at https://support.garmin.com/en-US/?faq=6Vl7EbW3qA42l63ZIhJet5 for help.
 
 Use "Yoga" type activity to correctly capture Respiration rate metrics due to bug in Breath work activity.
 
