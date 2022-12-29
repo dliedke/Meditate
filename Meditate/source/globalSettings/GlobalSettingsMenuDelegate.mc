@@ -37,6 +37,10 @@ class GlobalSettingsMenuDelegate extends Ui.MenuInputDelegate {
 				Ui.pushView(new Rez.Menus.respirationRateOptionsDisabledMenu(), respirationRateDelegate, Ui.SLIDE_LEFT);
 			}
 		}
+		else if (item ==:prepareTime) {
+			var prepareTimeDelegate = new MenuOptionsDelegate(method(:onPrepareTimePicked));
+			Ui.pushView(new Rez.Menus.prepareTimeOptionsMenu(), prepareTimeDelegate, Ui.SLIDE_LEFT);
+		}
 	}
 	
 	function onConfirmSaveActivityPicked(item) {
@@ -68,6 +72,22 @@ class GlobalSettingsMenuDelegate extends Ui.MenuInputDelegate {
 		}
 		else if (item == :off) {
 			GlobalSettings.saveRespirationRate(RespirationRate.Off);
+		}
+		mOnGlobalSettingsChanged.invoke();
+	}
+
+	function onPrepareTimePicked(item) {
+		if (item == :time_0) {
+			GlobalSettings.savePrepareTime(0);
+		}
+		else if (item == :time_15) {
+			GlobalSettings.savePrepareTime(15);
+		}
+		else if (item == :time_30) {
+			GlobalSettings.savePrepareTime(30);
+		}
+		else if (item == :time_60) {
+			GlobalSettings.savePrepareTime(60);
 		}
 		mOnGlobalSettingsChanged.invoke();
 	}

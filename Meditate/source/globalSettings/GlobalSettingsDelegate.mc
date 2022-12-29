@@ -119,7 +119,8 @@ class GlobalSettingsDelegate extends ScreenPicker.ScreenPickerDelegate {
         }
         details.detailLines[3].value.text = multiSessionSetting;
         
-		// Activity type settings
+		// Activity type settings (not enough screen space for everything)
+		/*
         details.detailLines[4].icon = new ScreenPicker.Icon({        
 	        	:font => StatusIconFonts.fontMeditateIcons,
 	        	:symbol => StatusIconFonts.Rez.Strings.meditateFontYoga
@@ -131,6 +132,14 @@ class GlobalSettingsDelegate extends ScreenPicker.ScreenPickerDelegate {
         if (newActivityType == ActivityType.Yoga) {
         	details.detailLines[4].value.text = Ui.loadResource(Rez.Strings.menuNewActivityTypeOptions_yoga);
         }
+		*/
+
+		// Preparation time settings
+        details.detailLines[4].icon = new ScreenPicker.Icon({        
+	        	:font => StatusIconFonts.fontMeditateIcons,
+	        	:symbol => StatusIconFonts.Rez.Strings.meditateFontYoga
+	        });	
+		details.detailLines[4].value.text =  Ui.loadResource(Rez.Strings.menuPrepareTimeOptions_title) + ": " + GlobalSettings.loadPrepareTime().toString() + "s";
 
 		// Show Respiration rate settings if supported
 		if (HrvAlgorithms.RrActivity.isRespirationRateSupported()) {

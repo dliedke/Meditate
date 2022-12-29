@@ -146,7 +146,7 @@ module ScreenPicker {
 				
 		private var lineHeight;
 		private var iconHeight;
-		private const InitialPosY = 30;
+		private const InitialPosY = 20;
 	}
 	
 	class DetailsModel{

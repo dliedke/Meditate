@@ -32,6 +32,7 @@
     <string id="menuGlobalSettings_multiSession">Multi-Session</string>
     <string id="menuGlobalSettings_singleSession">Single session</string>
     <string id="menuGlobalSettings_respirationRate">Respiration Rate</string>
+    <string id="menuGlobalSettings_prepareTime">Prepare Time</string>
     <string id="menuGlobalSettings_respiration">Respiration: </string>
     <string id="menuGlobalSettings_save">Save: </string>
     
@@ -67,6 +68,12 @@
     <string id="menuRespirationRateOptions_title">Respiration Rate</string>    
     <string id="menuRespirationRateOptions_on">On (Default)</string>
     <string id="menuRespirationRateOptions_off">Off</string>
+
+    <string id="menuPrepareTimeOptions_title">Preparation</string>    
+    <string id="menuPrepareTimeOptions_0">0 secs</string>
+    <string id="menuPrepareTimeOptions_15">15 secs (Default)</string>
+    <string id="menuPrepareTimeOptions_30">30 secs</string>
+    <string id="menuPrepareTimeOptions_60">60 secs</string>
 
     <string id="menuIntervalAlertSettings_Title">Interval Alerts</string>
     <string id="menuIntervalAlertSettings_addNew">Add New</string>
@@ -119,6 +126,7 @@
 	<string id="editIntervalAlertsMenu_title">Edit Interval Alerts</string>		
 	<string id="activityDelayedFinishingText">Finishing...</string>
     <string id="meditateActivityPaused">[Paused]</string>
+    <string id="meditateActivityPrepare">Relax to start\nmeditate session\nin</string>
 
     <string id="meditateYogaActivityName">Meditating</string>
     <string id="meditateBreathActivityName">Meditating</string>

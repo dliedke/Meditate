@@ -32,6 +32,7 @@
     <string id="menuGlobalSettings_multiSession">Multi-Sessão</string>
     <string id="menuGlobalSettings_singleSession">Sessão Simples</string>
     <string id="menuGlobalSettings_respirationRate">Taxa respiração</string>
+    <string id="menuGlobalSettings_prepareTime">Tempo Preparação</string>
     <string id="menuGlobalSettings_respiration">Respiração: </string>
     <string id="menuGlobalSettings_save">Salvar: </string>
     
@@ -67,6 +68,12 @@
     <string id="menuRespirationRateOptions_title">Taxa de Respiração</string>    
     <string id="menuRespirationRateOptions_on">Lig. (Padrão)</string>
     <string id="menuRespirationRateOptions_off">Deslig.</string>
+
+    <string id="menuPrepareTimeOptions_title">Preparação</string>    
+    <string id="menuPrepareTimeOptions_0">0 segs</string>
+    <string id="menuPrepareTimeOptions_15">15 segs (Padrão)</string>
+    <string id="menuPrepareTimeOptions_30">30 segs</string>
+    <string id="menuPrepareTimeOptions_60">60 segs</string>
 
     <string id="menuIntervalAlertSettings_Title">Intervalo de Alerta</string>
     <string id="menuIntervalAlertSettings_addNew">Adicionar</string>
@@ -120,6 +127,7 @@
 	<string id="editIntervalAlertsMenu_title">Editar Intervalo Alerta</string>		
 	<string id="activityDelayedFinishingText">Finalizando...</string>
     <string id="meditateActivityPaused">[Pausado]</string>
+    <string id="meditateActivityPrepare">Relaxe para\niniciar meditação\nem</string>
 
     <string id="meditateYogaActivityName">Meditação</string>
     <string id="meditateBreathActivityName">Meditação</string>

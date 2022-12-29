@@ -79,6 +79,22 @@ class GlobalSettings {
 	static function saveRespirationRate(respirationRate) {
 		App.Storage.setValue(RespirationRateKey, respirationRate);
 	}
+
+	private static const PrepareTimeKey = "globalSettings_prapareTime";
+	
+	static function loadPrepareTime() {
+		var prepareTime = App.Storage.getValue(PrepareTimeKey);
+		if (prepareTime == null) {
+			return 15;
+		}
+		else {
+			return prepareTime;
+		}
+	}
+	
+	static function savePrepareTime(prepareTime) {
+		App.Storage.setValue(PrepareTimeKey, prepareTime);
+	}
 }
 
 module ConfirmSaveActivity {

@@ -105,15 +105,19 @@ class MeditateDelegate extends Ui.BehaviorDelegate {
 			
 			// Touch screen to disable/enable backlight during activity
 			// This will still respect the backligh timeout configured in the device
-			backlightOn = !backlightOn;
-			Attention.backlight(backlightOn);
+			if ((Attention has :backlight) ) {
+				backlightOn = !backlightOn;
+				Attention.backlight(backlightOn);
+			}
 
 		} catch(ex) { 
 			
-			// Just in case we get a BacklightOnTooLongException for OLED display devices,
+			// Just in case we get a BacklightOnTooLongException for OLED display devices (ex: Venu 2),
 			// disable backlight
-			backlightOn = false;
-			Attention.backlight(backlightOn);
+			if ((Attention has :backlight) ) {
+				backlightOn = false;
+				Attention.backlight(backlightOn);
+			}
 		}
 	}
 }
