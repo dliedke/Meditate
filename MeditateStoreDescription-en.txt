@@ -20,6 +20,8 @@ Avoid moving your wrist to better capture HRV and Respiration rate metrics.
 
 User Guide (explains HRV metrics details and how to use application):
 
-https://github.com/dliedke/Meditate/blob/round-watches-publish/UserGuide.md
+https://github.com/dliedke/Meditate/blob/main/UserGuide.md
 
 Shortlisted as best app by wareable: https://www.wareable.com/garmin/garmin-connect-iq-guide-best-apps-122
+
+Please report issues at https://github.com/dliedke/Meditate/issues. Reduce your stress, relax and Meditate!

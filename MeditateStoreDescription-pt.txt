@@ -20,6 +20,8 @@ Evite mover o pulso para capturar melhor as métricas de VFC e taxa de respiraç
 
 Guia do usuário (em inglês) (explica os detalhes das métricas de VFC/HRV e como usar o aplicativo):
 
-https://github.com/dliedke/Meditate/blob/round-watches-publish/UserGuide.md
+https://github.com/dliedke/Meditate/blob/main/UserGuide.md
 
 Selecionado como o melhor aplicativo pelo wareable.com: https://www.wareable.com/garmin/garmin-connect-iq-guide-best-apps-122
+
+Relate problemas em https://github.com/dliedke/Meditate/issues. Reduza o estresse, relaxe e faça Meditação!
