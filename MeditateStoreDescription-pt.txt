@@ -14,7 +14,7 @@ Defina o nome da atividade como "Local e nome da atividade do dispositivo" nas c
 
 Defina o nome da atividade personalizada usando o relógio conectado ao PC via USB com Garmin Express, consulte o guia em https://support.garmin.com/en-US/?faq=6Vl7EbW3qA42l63ZIhJet5 para obter ajuda.
 
-Use a atividade do tipo "Yoga" para capturar corretamente as métricas da taxa de respiração devido a um bug na atividade de respiração.
+Use a atividade do tipo "Yoga" para capturar corretamente as métricas da taxa de respiração devido a um bug na atividade de respiração em alguns dispositivos.
 
 Evite mover o pulso para capturar melhor as métricas de VFC e taxa de respiração.
 
