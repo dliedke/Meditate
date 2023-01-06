@@ -14,9 +14,11 @@ Set Activity Name as "Location & Device Activity Name" in Garmin Connect Setting
 
 Set custom activity name using watch connected to PC via USB with Garmin Express, refer to guide at https://support.garmin.com/en-US/?faq=6Vl7EbW3qA42l63ZIhJet5 for help.
 
-Use "Yoga" type activity to correctly capture Respiration rate metrics due to bug in Breath work activity.
+Use "Yoga" type activity to correctly capture Respiration rate metrics due to bug in Breath work activity in some devices.
 
-Avoid moving your wrist to better capture HRV and Respiration rate metrics. 
+Avoid moving your wrist during the session in order to better capture HRV and Respiration rate metrics. 
+
+Note: Connect IQ API used for application development only returns the 5min average for the stress metric. That's why the numbers don't match exactly with Garmin Connect, because in GC it shows the real time stress metric when activity started and stopped.
 
 User Guide (explains HRV metrics details and how to use application):
 
