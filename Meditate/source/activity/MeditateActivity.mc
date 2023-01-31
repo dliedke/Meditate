@@ -15,13 +15,7 @@ class MediteActivity extends HrvAlgorithms.HrvAndStressActivity {
 		var sessionTime = meditateModel.getSessionTime();
 
 		// Retrieve activity name property from Garmin Express/Connect IQ 
-		var activityNameProperty = Application.Properties.getValue("activityName");
-
-		// If it is empty, use default name and save the property
-		if (activityNameProperty == null || activityNameProperty.length() == 0) {
-			activityNameProperty = Ui.loadResource(Rez.Strings.mediateActivityName);
-			Application.Properties.setValue("activityName", activityNameProperty);
-		}
+		var activityNameProperty = readKeyString(Application.getApp(), "activityName");
 
 		if (meditateModel.getActivityType() == ActivityType.Yoga) {
 			fitSessionSpec = HrvAlgorithms.FitSessionSpec.createYoga(createSessionName(sessionTime, activityNameProperty)); // Due to bug in Connect IQ API for breath activity to get respiration rate, we will use Yoga as default meditate activity
@@ -31,6 +25,22 @@ class MediteActivity extends HrvAlgorithms.HrvAndStressActivity {
 		}
 		me.mMeditateModel = meditateModel;	
 		HrvAlgorithms.HrvAndStressActivity.initialize(fitSessionSpec, meditateModel.getHrvTracking(), heartbeatIntervalsSensor);			
+	}
+
+	function readKeyString(myApp, key) {
+
+		var value = myApp.getProperty(key);
+
+		if(value == null || !(value instanceof String) || value.length() == 0) {
+			
+			// If it is empty or invalid, use default name
+			value = Ui.loadResource(Rez.Strings.mediateActivityName);
+
+		} else {
+
+			value = value.toString();
+		}
+		return value;
 	}
 
 	protected function createSessionName(sessionTime, activityName) {
