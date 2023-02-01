@@ -9,7 +9,7 @@
     <string id="SummaryStress">Summary\n Stress</string>
     <string id="SummaryStressStart">Stress Start: $1$</string>
     <string id="SummaryStressEnd">Stress End: $1$</string>
-    <string id="SummaryRespiration">Summary\n Respiration</string>
+    <string id="SummaryRespiration">Respiration</string>
     <string id="SummaryRespirationMin">Min:</string>
     <string id="SummaryRespirationAvg">Avg:</string>
     <string id="SummaryRespirationMax">Max:</string>

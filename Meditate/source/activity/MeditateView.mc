@@ -177,6 +177,8 @@ class MeditateView extends Ui.View {
 		}
 	}
 	
+	var lastElapsedTime = -1;
+
     // Update the view
     function onUpdate(dc) {      
         View.onUpdate(dc);
@@ -226,12 +228,17 @@ class MeditateView extends Ui.View {
 	        me.mHrvText.draw(dc); 
         }
 
-		if (me.mMeditateModel.isRespirationRateOn()) {
-			var respirationRate = me.mMeditateModel.getRespirationRate();
-			me.mBreathIcon.draw(dc);
-			me.mBreathText.setText(me.formatHr(respirationRate));
-			me.mBreathText.draw(dc); 
+		// Only get respiration rate every second
+		if (elapsedTime!=lastElapsedTime) {
+			if (me.mMeditateModel.isRespirationRateOn()) {
+				var respirationRate = me.mMeditateModel.getRespirationRate();
+				me.mBreathIcon.draw(dc);
+				me.mBreathText.setText(me.formatHr(respirationRate));
+				me.mBreathText.draw(dc); 
+			}
 		}
+
+		lastElapsedTime = elapsedTime;
     }
 	
     // Called when this View is removed from the screen. Save the

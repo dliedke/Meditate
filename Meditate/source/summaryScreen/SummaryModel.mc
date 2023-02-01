@@ -17,6 +17,7 @@ class SummaryModel {
 			me.maxRr = me.initializeHeartRate(rrSummary.maxRr);
 			me.avgRr = me.initializeHeartRate(rrSummary.averageRr);
 			me.minRr = me.initializeHeartRate(rrSummary.minRr);
+			me.rrHistory = rrSummary.rrHistory;
 
 			if (me.minRr == 9999999) {
 				me.minRr = me.initializeHeartRate(0);
@@ -147,6 +148,7 @@ class SummaryModel {
 	var maxRr;
 	var avgRr;
 	var minRr;	
+    var rrHistory;
 
 	var stress;
 	var stressStart;

@@ -2,7 +2,7 @@ Totally free application developed by vtrifonov and compiled/enhanced for newer 
 
 *** Please read all guide below to avoid issues with the application in your device ***
 
-A meditation/yoga app that tracks as an activity the heart rate, stress, respiration rate, heart rate variability (HRV), provides vibration or sound alerts and heart rate chart.
+A meditation/yoga app that tracks as an activity the heart rate, stress, respiration rate, heart rate variability (HRV), provides vibration or sound alerts, heart rate chart and respiration rate chart.
 
 Touch and hold the screen (Touch devices) or hold the left middle button to edit the meditation sessions, properties and global settings.
 
@@ -18,7 +18,7 @@ Set custom activity name using watch connected to PC via USB with Garmin Express
 
 Use "Yoga" type activity to correctly capture Respiration rate metrics due to bug in Breath work activity in some devices.
 
-Avoid moving your wrist during the session in order to better capture HRV and Respiration rate metrics. 
+Avoid moving your wrist during the session in order to capture HRV and Respiration rate metrics. 
 
 Note: Connect IQ API used for application development only returns the 5min average for the stress metric. That's why the numbers don't match exactly with Garmin Connect, because in GC it shows the real time stress metric when activity started and stopped.
 

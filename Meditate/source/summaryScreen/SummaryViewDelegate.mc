@@ -55,12 +55,14 @@ class SummaryViewDelegate extends ScreenPicker.ScreenPickerDelegate {
 
 		}
 		else {
-			me.mStressPageIndex = 1;
+			
 			if (isRespirationRateOn) {
-				me.mRespirationPageIndex = 2;
+				me.mRespirationPageIndex = 1;
+				me.mStressPageIndex = 2;
 				me.mHrvRmssdPageIndex = 3;
 			} else {
 				me.mRespirationPageIndex = InvalidPageIndex;
+				me.mStressPageIndex = 1;
 				me.mHrvRmssdPageIndex = 2;
 			}
 				
@@ -99,11 +101,11 @@ class SummaryViewDelegate extends ScreenPicker.ScreenPickerDelegate {
 		if (me.mSelectedPageIndex == 0) {
 			return new HeartRateGraphView(me.mSummaryModel);
 		} 
+		else if (me.mSelectedPageIndex == me.mRespirationPageIndex) {
+			return new RespirationRateGraphView(me.mSummaryModel);
+		}
 		else if (me.mSelectedPageIndex == me.mStressPageIndex) {
 			details = me.createDetailsPageStress();
-		}
-		else if (me.mSelectedPageIndex == me.mRespirationPageIndex) {
-			details = me.createDetailsPageRespiration();
 		}
 		else if (me.mSelectedPageIndex == mHrvRmssdPageIndex){
 			details = me.createDetailsPageHrvRmssd();
@@ -162,36 +164,6 @@ class SummaryViewDelegate extends ScreenPicker.ScreenPickerDelegate {
         return details;
 	}
 	
-	private function createDetailsPageRespiration() {
-		var details = new ScreenPicker.DetailsModel();
-		details.color = Gfx.COLOR_BLACK;
-        details.backgroundColor = Gfx.COLOR_WHITE;
-        details.title = Ui.loadResource(Rez.Strings.SummaryRespiration);
-        details.titleColor = Gfx.COLOR_BLACK;
-
-        
-        var respirationIcon = new ScreenPicker.BreathIcon({});
-        details.detailLines[2].icon = respirationIcon;
-        details.detailLines[2].value.color = Gfx.COLOR_BLACK;
-        details.detailLines[2].value.text = Ui.loadResource(Rez.Strings.SummaryRespirationMin) + me.mSummaryModel.minRr.toString();
-
-		details.detailLines[3].icon = respirationIcon;
-        details.detailLines[3].value.color = Gfx.COLOR_BLACK;
-        details.detailLines[3].value.text = Ui.loadResource(Rez.Strings.SummaryRespirationAvg) + me.mSummaryModel.avgRr.toString();
-
-		details.detailLines[4].icon = respirationIcon;
-        details.detailLines[4].value.color = Gfx.COLOR_BLACK;
-        details.detailLines[4].value.text = Ui.loadResource(Rez.Strings.SummaryRespirationMax) + me.mSummaryModel.maxRr.toString();
-        		
-        var hrIconsXPos = App.getApp().getProperty("summaryHrIconsXPos");
-        var hrValueXPos = App.getApp().getProperty("summaryHrValueXPos");                
-        details.setAllIconsXPos(hrIconsXPos);
-        details.setAllValuesXPos(hrValueXPos);   
-        details.setAllLinesYOffset(me.mSummaryLinesYOffset + 10);
-        
-        return details;
-	}	
-
 	private function createDetailsPageHrvRmssd() {
 		var details = new ScreenPicker.DetailsModel();
 		details.color = Gfx.COLOR_BLACK;

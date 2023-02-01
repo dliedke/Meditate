@@ -26,7 +26,8 @@ module HrvAlgorithms {
 		private var totalRespirationSamples;
 		private var totalRespirationRateSum;
 		private var rrSummary;
-	
+	    private var mRRHistory = [];
+
 		// Method to be used without class instance
 		function isRespirationRateSupported(){
 			if (ActivityMonitor.getInfo() has :respirationRate) {
@@ -54,7 +55,13 @@ module HrvAlgorithms {
 					updateSummary(respirationRate);
 				}
 
+				// Update respiration rate history for chart
+				if (respirationRate!=null) {
+					mRRHistory.add(respirationRate);
+				}
+
 				return respirationRate;
+
 			} else {
 				return -1;
 			}
@@ -81,6 +88,8 @@ module HrvAlgorithms {
 		}
 
 		function getSummary() {
+
+			rrSummary.rrHistory = me.mRRHistory;
 			return rrSummary;
 		}
 	}	

@@ -3,5 +3,6 @@ module HrvAlgorithms {
 		var maxRr;
 		var averageRr;
 		var minRr;
+		var rrHistory;
 	}
 }
