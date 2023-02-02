@@ -1,6 +1,6 @@
-Totally free application developed by vtrifonov and compiled/enhanced for newer Garmin watch models by dliedke.
-
 *** Please read all guide below to avoid issues with the application in your device ***
+
+Totally free application developed by vtrifonov and compiled/enhanced for newer Garmin watch models by dliedke.
 
 A meditation/yoga app that tracks as an activity the heart rate, stress, respiration rate, heart rate variability (HRV), provides vibration or sound alerts, heart rate chart and respiration rate chart.
 

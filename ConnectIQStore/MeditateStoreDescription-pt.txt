@@ -1,6 +1,6 @@
-Aplicativo totalmente gratuito desenvolvido por vtrifonov e compilado/aprimorado para modelos de relógios Garmin mais recentes por dliedke.
-
 *** Leia todo o guia abaixo para evitar problemas com o aplicativo em seu dispositivo ***
+
+Aplicativo totalmente gratuito desenvolvido por vtrifonov e compilado/aprimorado para modelos de relógios Garmin mais recentes por dliedke.
 
 Um aplicativo de meditação/Yoga que rastreia atividade com frequência cardíaca, estresse, frequência respiratória, variabilidade da frequência cardíaca (VFC), fornece alertas de vibração ou som, gráfico da frequência cardíaca e gráfico da frequência respiratória.
 
