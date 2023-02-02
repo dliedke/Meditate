@@ -90,7 +90,7 @@ class RespirationRateGraphView extends ScreenPicker.ScreenPickerView  {
 		}
 		
 		//DEBUG
-		//me.summaryModel.minRr = 6;
+		//me.summaryModel.minRr = 7;
 		//me.summaryModel.maxRr = 14;
 
 		// Get min and max RR and check if they are valid
@@ -106,11 +106,30 @@ class RespirationRateGraphView extends ScreenPicker.ScreenPickerView  {
 		}
 
 		// Reduce a bit the min respiration rate so it will show in the chart
-		HistoryMin-=3;
+		HistoryMin-=1;
 
 		// Calculate different between min and max RR
 		var minMaxDiff = (HistoryMax - HistoryMin).toFloat();
-		
+
+		// Calculate number of horizontal lines that will be required for chart
+		var numberHorizontalLines = 4;
+
+		// If we only have 3 numbers to draw, draw 3 lines 
+		if (minMaxDiff <=3 ) {
+			numberHorizontalLines = 3;
+		}
+
+		// If we only have 2 numbers to draw, draw 2 lines 
+		if (minMaxDiff <=2 ) {
+			numberHorizontalLines = 2;
+		}
+
+		// If we only have 1 number to draw, draw 1 lines 
+		if (minMaxDiff <=1 ) {
+			numberHorizontalLines = 1;
+		}
+
+
 		// Chart as light blue
 		dc.setPenWidth(1);
 		dc.setColor(0x27a0c4, Graphics.COLOR_TRANSPARENT);
@@ -140,7 +159,7 @@ class RespirationRateGraphView extends ScreenPicker.ScreenPickerView  {
 			if (respirationRate!=null && respirationRate > 1) {
 
 				var lineHeight = (respirationRate-HistoryMin) * (graph_height.toFloat() / minMaxDiff.toFloat());
-
+				
 				dc.drawLine(position_x + xStep, 
 							position_y - lineHeight.toNumber(), 
 							position_x + xStep, 
@@ -161,11 +180,12 @@ class RespirationRateGraphView extends ScreenPicker.ScreenPickerView  {
 		dc.setPenWidth(1);
 		dc.setColor(Gfx.COLOR_BLACK, Graphics.COLOR_TRANSPARENT);
 
-		var lineSpacing = graph_height / 4;
 
-		for(var i = 0; i <= 4; i++){
+		var lineSpacing = graph_height / numberHorizontalLines;
 
-			// Draw lines over chart
+		for(var i = 0; i <= numberHorizontalLines; i++){
+
+			// Draw horizontal lines over chart
 			dc.drawLine(position_x + 3, 
 						position_y - (lineSpacing * i), 
 						position_x + graph_width, 
@@ -177,7 +197,7 @@ class RespirationRateGraphView extends ScreenPicker.ScreenPickerView  {
 				dc.drawText(position_x + App.getApp().getProperty("heartRateChartXPosLabel"), 
 							position_y - (lineSpacing * i), 
 							Gfx.FONT_SYSTEM_XTINY, 
-							Math.round(HistoryMin + (minMaxDiff / 4) * i).toNumber(), 
+							Math.ceil(HistoryMin + (minMaxDiff / numberHorizontalLines) * i).toNumber().toString(), 
 							Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 			}
 		}

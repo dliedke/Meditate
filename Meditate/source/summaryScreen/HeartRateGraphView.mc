@@ -184,7 +184,7 @@ class HeartRateGraphView extends ScreenPicker.ScreenPickerView  {
 				dc.drawText(position_x + App.getApp().getProperty("heartRateChartXPosLabel"), 
 							position_y - (lineSpacing * i), 
 							Gfx.FONT_SYSTEM_XTINY, 
-							Math.round(HistoryMin + (minMaxDiff / 4) * i).toNumber(), 
+							Math.round(HistoryMin + (minMaxDiff / 4) * i).toNumber().toString(), 
 							Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 			}
 		}
