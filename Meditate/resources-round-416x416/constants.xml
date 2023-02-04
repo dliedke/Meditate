@@ -1,7 +1,7 @@
 <properties>
 	<property id="progressBarWidth" type="number">260</property>
-	<property id="globalSettingsIconsXPos" type="number">60</property>
-	<property id="globalSettingsValueXPos" type="number">90</property>
+	<property id="globalSettingsIconsXPos" type="number">85</property>
+	<property id="globalSettingsValueXPos" type="number">115</property>
 	<property id="globalSettingsLinesYOffset" type="number">20</property>
 	<property id="sessionDetailsIconsXPos" type="number">60</property>
 	<property id="sessionDetailsValueXPos" type="number">90</property>

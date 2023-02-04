@@ -17,6 +17,11 @@ class VibeAlertsExecutor {
 			me.fireIfRequiredOneOffIntervalAlerts();
 			me.fireIfRequiredFinalAlert();
 		}
+
+		// Continue firing alert for repeated invervals even after regular session time is over
+		if (me.mMeditateModel.elapsedTime >= me.mMeditateModel.getSessionTime()+10) {	    	
+			me.fireIfRequiredRepeatIntervalAlerts();
+		}
 	}
 	
 	private function fireIfRequiredFinalAlert() {

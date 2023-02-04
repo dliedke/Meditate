@@ -36,6 +36,11 @@ class SessionSettingsMenuDelegate extends Ui.MenuInputDelegate {
         	var globalSettingsDelegate = new GlobalSettingsDelegate(me.mSessionPickerDelegate);
         	Ui.switchToView(globalSettingsDelegate.createScreenPickerView(), globalSettingsDelegate, Ui.SLIDE_LEFT);  
         }
+		else if (item == :about) {
+        	Ui.popView(Ui.SLIDE_IMMEDIATE);
+        	var aboutDelegate = new AboutDelegate(me.mSessionPickerDelegate);
+        	Ui.switchToView(aboutDelegate.createScreenPickerView(), aboutDelegate, Ui.SLIDE_LEFT);  
+        }
     }
     
     private function createAddEditSessionMenu(selectedSessionIndex) {

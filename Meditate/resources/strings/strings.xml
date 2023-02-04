@@ -24,6 +24,7 @@
     <string id="menuSessionSettings_edit">Edit</string>
     <string id="menuSessionSettings_delete">Delete</string>
     <string id="menuSessionSettings_globalSettings">Global Settings</string>
+    <string id="menuSessionSettings_about">About</string>
     
     <string id="menuGlobalSettings_title">Settings</string>    
     <string id="menuGlobalSettings_newHrvTracking">HRV Tracking</string>
@@ -138,4 +139,8 @@
     <string id="HRVready">HRV Ready</string>
     <string id="HRVoff">HRV off</string>
 
+    <string id="about_AppVersion">Meditate 5.2.0</string>
+    <string id="about_vtrifonov">   vtrifonov</string>
+    <string id="about_dliedke">     dliedke</string>
+    
 </strings>
