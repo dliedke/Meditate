@@ -2,12 +2,13 @@
 
 ## Features
 
-- ability to save the session as a Connect IQ activity
+- ability to save the meditation session as Garmin Connect activity
     - activity type **Meditating** or **Yoga**
 - ability to configure multiple meditation/yoga sessions
     - e.g. a 20 min session with 1 min recurring alerts, triggering a different alert on the 10th minute
     - each session supports interval vibration alerts
     - interval alerts can trigger from a few seconds up to few hours
+- pre-configured meditation sessions with 5/10/15/20/25/30min and also short vibration every 5min
 - [HRV](https://en.wikipedia.org/wiki/Heart_rate_variability) (Heart Rate Variability)
     - RMSSD - Root Mean Square of Successive Differences (beat-to-beat intervals)
     - pNN20 - % of successive beat-to-beat intervals that differ by more than 20 ms
@@ -27,13 +28,14 @@
       - HR calculated from beat-to-beat interval
 - respiration rate
     - Breathes per minute real time in watches that supports it (only works fine for Yoga activity due to bug in Connect IQ API for Breathing activity)
+- configurable preparation time before the meditation session
 - summary stats at the end of the session
-    - tracks the overall min, avg and max HR
+    - Heart rate chart including min, avg and max HR
+    - Respiration rate chart including min, avg and max respiration rate
     - Stress
-    - respiration rate min, avg and max
     - HRV
-- pause/resume session using the back button
-
+- pause/resume current session using the back button
+- ability to configure default custom activity name in Garmin Connect using Garmin Express in PC connected to the watch via USB cable
 
 ![Session picker demo](userGuideScreenshots/sessionPickerDemo.gif)
 ![Session demo detailed](userGuideScreenshots/sessionDetailedDemo.gif)
@@ -42,7 +44,7 @@
 ## How to Use
 ### 1. Starting a session
 
-1.1. From the session picker screen press the start button. 
+1.1. From the session picker screen press the start button or touch the screen (touch devices only). 
 
 ![Session Picker](userGuideScreenshots/sessionPicker.png)
 
@@ -60,11 +62,12 @@
   - difference between the current and previous beat-to-beat intervals measured in milliseconds
   - shows only when HRV tracking is on
   - **to get good HRV readings you need to minimise wrist movement**
-- current respiration rate calculated by the watch
+- current respiration rate estimation calculated by the watch
   - **to get good respiration readings you need to minimise wrist movement**
 
-The meditation session finishes once you press the stop button.
+The meditation session finishes once you press the start/stop button.
 The meditation session can be paused/resumed using the back button.
+Enable/disable screen light during the session using light button or touch the screen (touch devices only).
 
 ![Session in progress](userGuideScreenshots/sessionInProgressExplained.png)
 
@@ -74,7 +77,7 @@ The meditation session can be paused/resumed using the back button.
 
 ![Confirm save session](userGuideScreenshots/confirmSaveSession.png)
 
-1.4. If you are in single session mode (the default) at the end you see the Summary Screen (for Multi-Session mode see the next section **1.5**). Swipe up/down (Vivoactive 3/4/Venu) or press page up/down buttons to see the summary stats of HR, Stress and HRV. Go back from this view to exit the app.
+1.4. If you are in single session mode (the default) at the end you see the Summary Screen (for Multi-Session mode see the next section **1.5**). Swipe up/down (touch devices only) or press page up/down buttons to see the summary stats of HR, Stress and HRV. Go back from this view to exit the app.
 
 ![Session Summary Detailed Demo](userGuideScreenshots/sessionSummaryDetailedDemo.gif)
 
@@ -82,13 +85,13 @@ The meditation session can be paused/resumed using the back button.
 
 ![Summary Rollup](userGuideScreenshots/summaryRollup.png)
 
-1.6 From the Sessions Summary view you can drill-down into individual sessions or exit the app. Drilling-down shows summary stats of HR, Stress and HRV. If you go back from the Sessions Summary view you can continue doing more sessions.
+1.6 From the Sessions Summary view you can drill-down into individual sessions or exit the app. Drilling-down shows summary stats of HR, Respiration Rate, Stress and HRV. If you go back from the Sessions Summary view you can continue doing more sessions.
 
 ### 2. Configuring a session
 
-2.1 From the session picker screen hold the menu button until you see the Session settings menu.
-  - for Vivoactive 3 / Venu 2 series hold on the screen 
-  - for Vivoactive 4/Venu hold the back button
+2.1 From the session picker screen hold the menu button (middle left) until you see the Session settings menu.
+  - for touch screen supported devices, it is also possible to touch and hold on the screen 
+  
 
 ![Session Picker](userGuideScreenshots/sessionPicker.png) ![Session settings menu](userGuideScreenshots/sessionSettingsMenu.png)
 
@@ -107,13 +110,13 @@ The meditation session can be paused/resumed using the back button.
           2. last one-off alert
           3. last repetative alert
     - Color - the color of the current interval alert used in the graphical controls. Select different colors for each alert to differentiate them during meditation. Select transparent color if you don't want to see visual marks for the alert during meditation
-    - Vibe Pattern - shorter or longer patterns ranging from pulsating or continuous
+    - Vibe Pattern/Sound - shorter or longer patterns ranging from pulsating or continuous or sound
 - Activity Type - ability to save the session as **Breathing** or **Yoga**. You can configure default activity type for new sessions from the Global Settings ([see section 4](#4-global-settings)).
 - HRV Tracking - determines if HRV and stress are tracked
-  - ON (Default) - tracks stress and the following HRV metrics
+  - ON - tracks stress and the following HRV metrics
     - RMSSD
     - HRV Successive Differences
-  - On Detailed - tracks extra stress and HRV metrics in addition to the **On** option
+  - On Detailed (Default) - tracks extra stress and HRV metrics in addition to the **On** option
     - RMSSD
     - HRV Successive Differences
     - pNN20 
@@ -131,7 +134,7 @@ The meditation session can be paused/resumed using the back button.
 
 ### 3. Picking a session
 
-From the session picker screen press page up/down buttons (for Vivoactive 3/4/Venu - swipe up/down).
+From the session picker screen press page up/down buttons (for touch devices swipe up/down).
 On this screen you can see the applicable settings for the selected session
 - activity type - in the title
   - Meditate
@@ -142,7 +145,7 @@ On this screen you can see the applicable settings for the selected session
   - ![Off](userGuideScreenshots/hrvIndicatorOff.png) Off - indicates that stress and HRV are turned off
   - ![Waiting HRV](userGuideScreenshots/hrvIndicatorWaitingHrv.png) Waiting HRV 
     - the hardware sensor does not detect HRV
-    - you can start the session but you will have missing HRV data
+    - you can start the session but you will have missing HRV data, it is recommended to stay quiet until HRV is ready
   - ![HRV Ready](userGuideScreenshots/hrvIndicatorReady.png) HRV Ready 
     - the hardware sensor detects HRV
     - the session tracks default HRV and Stress metrics
@@ -156,7 +159,7 @@ On this screen you can see the applicable settings for the selected session
 
 ### 4. Global Settings
 
-From the session picker screen hold the menu button (for Vivoactive 3/ Venu 2 hold on the screen/Vivoactive 4 and Venu - hold the back button) until you see the Session settings menu. Select the Global Settings Menu. You see a view with the states of the global settings.
+From the session picker screen hold the menu button (or touch and hold the screen) until you see the Session settings menu. Select the Global Settings Menu. You see a view with the states of the global settings. Hold the menu button again (or touch and hold the screen) to edit global settings.
 
 ![Global settings](userGuideScreenshots/globalSettings.png)
 
@@ -195,7 +198,19 @@ This setting provides the default **HRV Tracking** for new sessions.
   - this allows you to record multiple sessions
 - No - the app exits after finishing session
 
-#### 4.4 New Activity Type
+#### 4.4 Preparation time
+
+- 0 seg - No preparation time
+- 15 seg (Default) - 15s for preparing before starting the meditation session
+- 30 seg - 30s for preparing before starting the meditation session
+- 60 seg - 1min for preparing before starting the meditation session
+
+#### 4.5 Respiration Rate (note: some devices don't support this feature)
+
+- On (Default) - Respiration rate metrics enabled during session
+- Off - Respiration rate metrics disabled during session
+
+#### 4.6 New Activity Type
 
 You can set the default activity type for new sessions.
 
