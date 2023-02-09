@@ -37,8 +37,8 @@
 - pause/resume current session using the back button
 - ability to configure default custom activity name in Garmin Connect using Garmin Express in PC connected to the watch via USB cable
 
-<img src="userGuideScreenshots/sessionPickerDemo.gif"  width="50%" height="50%">Session picker demo</img>
-<img src="userGuideScreenshots/sessionDetailedDemo.gif"  width="50%" height="50%">Session demo detailed</img>
+<img src="userGuideScreenshots/sessionPickerDemo.gif"  width="25%" height="25%"></img>
+<img src="userGuideScreenshots/sessionDetailedDemo.gif"  width="25%" height="25%"></img>
 
 ## How to Use
 ### 1. Starting a session
