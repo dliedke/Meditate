@@ -37,15 +37,15 @@
 - pause/resume current session using the back button
 - ability to configure default custom activity name in Garmin Connect using Garmin Express in PC connected to the watch via USB cable
 
-<img src="userGuideScreenshots/sessionPickerDemo.gif"  width="25%" height="25%"></img>
-<img src="userGuideScreenshots/sessionDetailedDemo.gif"  width="25%" height="25%"></img>
+<img src="userGuideScreenshots/sessionPickerDemo.gif"  width="25%" height="25%" alt="Session Picker Demo"></img>
+<img src="userGuideScreenshots/sessionDetailedDemo.gif"  width="25%" height="25%" alt="Session Detailed Demo"></img>
 
 ## How to Use
 ### 1. Starting a session
 
 1.1. From the session picker screen press the start button or touch the screen (touch devices only). 
 
-![Session Picker](userGuideScreenshots/sessionPicker.gif)
+<img src="userGuideScreenshots/sessionPicker.gif"  width="25%" height="25%" alt="Session Picker"></img>
 
 1.2. The session in-progress screen contains the following elements
 - time elapsed arc 
@@ -68,21 +68,21 @@ The meditation session finishes once you press the start/stop button.
 The meditation session can be paused/resumed using the back button.
 Enable/disable screen light during the session using light button or touch the screen (touch devices only).
 
-![Session in progress](userGuideScreenshots/sessionInProgressExplained.gif)
+<img src="userGuideScreenshots/sessionInProgressExplained.gif"  width="25%" height="25%" alt="Session in progress"></img>
 
 1.3. Once you stop the session you have the option to save it.
 
 1.3.1 You can configure to auto save or auto discard the session via [Global Settings](#4-global-settings) -> [Confirm Save](#42-confirm-save)
 
-![Confirm save session](userGuideScreenshots/confirmSaveSession.gif)
+<img src="userGuideScreenshots/confirmSaveSession.gif"  width="25%" height="25%" alt="Confirm save session"></img>
 
 1.4. If you are in single session mode (the default) at the end you see the Summary Screen (for Multi-Session mode see the next section **1.5**). Swipe up/down (touch devices only) or press page up/down buttons to see the summary stats of HR, Stress and HRV. Go back from this view to exit the app.
 
-![Session Summary Detailed Demo](userGuideScreenshots/sessionSummaryDetailedDemo.gif)
+<img src="userGuideScreenshots/sessionSummaryDetailedDemo.gif"  width="25%" height="25%" alt="Session Summary Detailed Demo"></img>
 
 1.5 If you are in multi-session mode (determined by [Global Settings](#4-global-settings) -> [Multi-Session](#43-multi-session)) then you go back to the session picker screen. From there you can start another session. Once you finish your session you can go back from the session picker screen to enter the Sessions Summary view.
 
-![Summary Rollup](userGuideScreenshots/summaryRollup.gif)
+<img src="userGuideScreenshots/summaryRollup.gif"  width="25%" height="25%" alt="Summary Rollup"></img>
 
 1.6 From the Sessions Summary view you can drill-down into individual sessions or exit the app. Drilling-down shows summary stats of HR, Respiration Rate, Stress and HRV. If you go back from the Sessions Summary view you can continue doing more sessions.
 
@@ -91,8 +91,8 @@ Enable/disable screen light during the session using light button or touch the s
 2.1 From the session picker screen hold the menu button (middle left) until you see the Session settings menu.
   - for touch screen supported devices, it is also possible to touch and hold on the screen 
   
-
-![Session Picker](userGuideScreenshots/sessionPicker.gif) ![Session settings menu](userGuideScreenshots/sessionSettingsMenu.gif)
+<img src="userGuideScreenshots/summaryRosessionPickerllup.gif"  width="25%" height="25%" alt="Session Picker"></img>
+<img src="userGuideScreenshots/sessionSettingsMenu.gif"  width="25%" height="25%" alt="Session settings menu"></img>
 
 2.2 In Add New/Edit you can configure:
 - Time - total duration of the session in H:MM
@@ -160,7 +160,7 @@ On this screen you can see the applicable settings for the selected session
 
 From the session picker screen hold the menu button (or touch and hold the screen) until you see the Session settings menu. Select the Global Settings Menu. You see a view with the states of the global settings. Hold the menu button again (or touch and hold the screen) to edit global settings.
 
-![Global settings](userGuideScreenshots/globalSettings.gif)
+<img src="userGuideScreenshots/globalSettings.gif"  width="25%" height="25%" alt="Global settings"></img>
 
 #### 4.1 HRV Tracking
 
@@ -215,4 +215,3 @@ You can set the default activity type for new sessions.
 
 - Yoga
 - Breathing
-
