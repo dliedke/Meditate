@@ -31,7 +31,7 @@
 - configurable preparation time before the meditation session
 - summary stats at the end of the session
     - Heart rate chart including min, avg and max HR
-    - Respiration rate chart including min, avg and max respiration rate
+    - Respiration rate chart including min, avg and max estimated respiration rate
     - Stress
     - HRV
 - pause/resume current session using the back button
@@ -46,7 +46,7 @@
 
 1.1. From the session picker screen press the start button or touch the screen (touch devices only). 
 
-![Session Picker](userGuideScreenshots/sessionPicker.png)
+![Session Picker](userGuideScreenshots/sessionPicker.gif)
 
 1.2. The session in-progress screen contains the following elements
 - time elapsed arc 
@@ -69,13 +69,13 @@ The meditation session finishes once you press the start/stop button.
 The meditation session can be paused/resumed using the back button.
 Enable/disable screen light during the session using light button or touch the screen (touch devices only).
 
-![Session in progress](userGuideScreenshots/sessionInProgressExplained.png)
+![Session in progress](userGuideScreenshots/sessionInProgressExplained.gif)
 
 1.3. Once you stop the session you have the option to save it.
 
 1.3.1 You can configure to auto save or auto discard the session via [Global Settings](#4-global-settings) -> [Confirm Save](#42-confirm-save)
 
-![Confirm save session](userGuideScreenshots/confirmSaveSession.png)
+![Confirm save session](userGuideScreenshots/confirmSaveSession.gif)
 
 1.4. If you are in single session mode (the default) at the end you see the Summary Screen (for Multi-Session mode see the next section **1.5**). Swipe up/down (touch devices only) or press page up/down buttons to see the summary stats of HR, Stress and HRV. Go back from this view to exit the app.
 
@@ -83,7 +83,7 @@ Enable/disable screen light during the session using light button or touch the s
 
 1.5 If you are in multi-session mode (determined by [Global Settings](#4-global-settings) -> [Multi-Session](#43-multi-session)) then you go back to the session picker screen. From there you can start another session. Once you finish your session you can go back from the session picker screen to enter the Sessions Summary view.
 
-![Summary Rollup](userGuideScreenshots/summaryRollup.png)
+![Summary Rollup](userGuideScreenshots/summaryRollup.gif)
 
 1.6 From the Sessions Summary view you can drill-down into individual sessions or exit the app. Drilling-down shows summary stats of HR, Respiration Rate, Stress and HRV. If you go back from the Sessions Summary view you can continue doing more sessions.
 
@@ -93,7 +93,7 @@ Enable/disable screen light during the session using light button or touch the s
   - for touch screen supported devices, it is also possible to touch and hold on the screen 
   
 
-![Session Picker](userGuideScreenshots/sessionPicker.png) ![Session settings menu](userGuideScreenshots/sessionSettingsMenu.png)
+![Session Picker](userGuideScreenshots/sessionPicker.gif) ![Session settings menu](userGuideScreenshots/sessionSettingsMenu.gif)
 
 2.2 In Add New/Edit you can configure:
 - Time - total duration of the session in H:MM
@@ -155,13 +155,13 @@ On this screen you can see the applicable settings for the selected session
     - the session tracks extended HRV and Stress metrics
     - **the session can be recored with reliable HRV data provided you minimize wrist movement**
 
-![Session picker yoga explained](userGuideScreenshots/sessionPickerYogaExplained.png)
+![Session picker yoga explained](userGuideScreenshots/sessionPickerYogaExplained.gif)
 
 ### 4. Global Settings
 
 From the session picker screen hold the menu button (or touch and hold the screen) until you see the Session settings menu. Select the Global Settings Menu. You see a view with the states of the global settings. Hold the menu button again (or touch and hold the screen) to edit global settings.
 
-![Global settings](userGuideScreenshots/globalSettings.png)
+![Global settings](userGuideScreenshots/globalSettings.gif)
 
 #### 4.1 HRV Tracking
 
