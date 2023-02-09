@@ -68,7 +68,7 @@ The meditation session finishes once you press the start/stop button.
 The meditation session can be paused/resumed using the back button.
 Enable/disable screen light during the session using light button or touch the screen (touch devices only).
 
-<img src="userGuideScreenshots/sessionInProgressExplained.gif"  width="25%" height="25%" alt="Session in progress"></img>
+<img src="userGuideScreenshots/sessionInProgressExplained.gif"  width="40%" height="40%" alt="Session in progress"></img>
 
 1.3. Once you stop the session you have the option to save it.
 
@@ -154,7 +154,7 @@ On this screen you can see the applicable settings for the selected session
     - the session tracks extended HRV and Stress metrics
     - **the session can be recored with reliable HRV data provided you minimize wrist movement**
 
-![Session picker yoga explained](userGuideScreenshots/sessionPickerYogaExplained.gif)
+<img src="userGuideScreenshots/sessionPickerExplained.gif"  width="40%" height="40%" alt="Session Picker Explained"></img>
 
 ### 4. Global Settings
 
