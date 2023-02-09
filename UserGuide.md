@@ -1,4 +1,4 @@
-# User Guide
+# Meditate Garmin App User Guide
 
 ## Features
 
@@ -8,7 +8,7 @@
     - e.g. a 20 min session with 1 min recurring alerts, triggering a different alert on the 10th minute
     - each session supports interval vibration alerts
     - interval alerts can trigger from a few seconds up to few hours
-- pre-configured meditation sessions with 5/10/15/20/25/30min and also short vibration every 5min
+- pre-configured default meditation sessions with 5/10/15/20/25/30min and also short vibration every 5min
 - [HRV](https://en.wikipedia.org/wiki/Heart_rate_variability) (Heart Rate Variability)
     - RMSSD - Root Mean Square of Successive Differences (beat-to-beat intervals)
     - pNN20 - % of successive beat-to-beat intervals that differ by more than 20 ms
@@ -68,7 +68,7 @@ The meditation session finishes once you press the start/stop button.
 The meditation session can be paused/resumed using the back button.
 Enable/disable screen light during the session using light button or touch the screen (touch devices only).
 
-<img src="userGuideScreenshots/sessionInProgressExplained.gif"  width="40%" height="40%" alt="Session in progress"></img>
+<img src="userGuideScreenshots/sessionInProgressExplained.gif"  width="55%" height="55%" alt="Session in progress"></img>
 
 1.3. Once you stop the session you have the option to save it.
 
@@ -154,7 +154,7 @@ On this screen you can see the applicable settings for the selected session
     - the session tracks extended HRV and Stress metrics
     - **the session can be recored with reliable HRV data provided you minimize wrist movement**
 
-<img src="userGuideScreenshots/sessionPickerExplained.gif"  width="40%" height="40%" alt="Session Picker Explained"></img>
+<img src="userGuideScreenshots/sessionPickerExplained.gif"  width="55%" height="55%" alt="Session Picker Explained"></img>
 
 ### 4. Global Settings
 
