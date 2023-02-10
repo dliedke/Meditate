@@ -33,17 +33,16 @@ A Garmin Connect IQ meditation app that tracks as an activity the heart rate, HR
     - Stress
     - HRV
 
-![Session picker demo](userGuideScreenshots/sessionPickerDemo.gif)
-![Session demo detailed](userGuideScreenshots/sessionDetailedDemo.gif)
+<img src="userGuideScreenshots/sessionPickerDemo.gif"  width="25%" height="25%" alt="Session Picker Demo"></img>
+<img src="userGuideScreenshots/sessionDetailedDemo.gif"  width="25%" height="25%" alt="Session Detailed Demo"></img>
 
 ## Supported Devices
 - Vivoactive 3, Vivoactive 3 Music 
   - [app store link](https://apps.garmin.com/en-US/apps/bed7ed4d-07ea-4600-b477-b8911670b64a)
   - from [vivoactive3-publish](https://github.com/vtrifonov-esfiddle/Meditate/tree/vivoactive3-publish) branch
 - Round Watches that support Connect IQ >= 3.0 
-  - [app store link](https://apps.garmin.com/en-US/apps/abd89b58-aaf9-4550-892b-9670cb5e6fd1#0)
-  - from [round-watches-publish](https://github.com/dliedke/Meditate/tree/round-watches-publish) branch
-  - Most round watches other than Vivoactive 3 are supported
+  - [app store link](https://apps.garmin.com/en-US/apps/c5fc5ea5-7d12-4fb9-be9c-701663a39db7)
+  - from [round-watches-publish](https://github.com/dliedke/Meditate/tree/main) branch
 
 ## [User Guide](UserGuide.md)
 
