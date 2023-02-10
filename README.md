@@ -1,37 +1,43 @@
 # Meditate
 
-A Garmin Connect IQ meditation app that tracks as an activity the heart rate, HRV, stress, respiration rate provides vibration alerts and heart rate chart.
+A Garmin Connect IQ meditation app that tracks as an activity the heart rate, HRV, stress, respiration rate provides vibration/sound alerts, heart rate chart and respiration rate chart.
 
 ## Features
 
-- ability to save the session as a Connect IQ activity
-    - activity type  **Yoga** or **Breathwork**
-- ability to configure multiple breathwork/yoga sessions
+- ability to save the meditation session as Garmin Connect activity
+    - activity type **Meditating** or **Yoga**
+- ability to configure multiple meditation/yoga sessions
     - e.g. a 20 min session with 1 min recurring alerts, triggering a different alert on the 10th minute
     - each session supports interval vibration alerts
     - interval alerts can trigger from a few seconds up to few hours
+- pre-configured default meditation sessions with 5/10/15/20/25/30min and also short vibration every 5min
 - [HRV](https://en.wikipedia.org/wiki/Heart_rate_variability) (Heart Rate Variability)
     - RMSSD - Root Mean Square of Successive Differences (beat-to-beat intervals)
     - pNN20 - % of successive beat-to-beat intervals that differ by more than 20 ms
     - pNN50 - % of successive beat-to-beat intervals that differ by more than 50 ms
     - beat-to-beat interval - reading coming directly from the watch sensor
-    - HRV Successive Differences - difference between current and previous beat-to-beat intervals
-    - SDRR - [Standard Deviation](https://en.wikipedia.org/wiki/Standard_deviation) of beat-to-beat intervals
+    - HRV Successive Differences - difference between the current and previous beat-to-beat intervals
+    - SDRR - [Standard Deviation](https://en.wikipedia.org/wiki/Standard_deviation) of beat-to-beat intervals 
       - calculated from the first and last 5 min of the session
     - HRV RMSSD 30 Sec Window - RMSSD calculated for consecutive 30 second intervals    
     - HR from heartbeat - beat-to-beat interval converted to HR
 - stress tracking
     - Stress - summary of the the average stress during the session 
-    - Average stress for the beginning and end of the session (calculated automatically by the watch for session of 5min or more) 
+    - Average stress for the beginning and end of the session (calculated automatically by the watch for session of 5min or more)
     - HR Peaks 10 Sec Window
       - internal metric for calculating stress 
       - tracks in overlapping 10 Sec Windows Max HR for each window 
-      - HR calculated from beat-to-beat interval.
+      - HR calculated from beat-to-beat interval
+- respiration rate
+    - Breathes per minute real time in watches that supports it (only works fine for Yoga activity due to bug in Connect IQ API for Breathing activity)
+- configurable preparation time before the meditation session
 - summary stats at the end of the session
-    - tracks the overall min, avg and max HR and show heart rate chart for the session
-    - Respiration rate if devices supports it
+    - Heart rate chart including min, avg and max HR
+    - Respiration rate chart including min, avg and max estimated respiration rate
     - Stress
     - HRV
+- pause/resume current session using the back button
+- ability to configure default custom activity name in Garmin Connect using Garmin Express in PC connected to the watch via USB cable
 
 <img src="userGuideScreenshots/sessionPickerDemo.gif"  width="25%" height="25%" alt="Session Picker Demo"></img>
 <img src="userGuideScreenshots/sessionDetailedDemo.gif"  width="25%" height="25%" alt="Session Detailed Demo"></img>
