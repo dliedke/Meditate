@@ -4,13 +4,16 @@ Aplicativo totalmente gratuito desenvolvido por vtrifonov e compilado/aprimorado
 
 Um aplicativo de meditação/Yoga que rastreia atividade com frequência cardíaca, estresse, frequência respiratória, variabilidade da frequência cardíaca (VFC), fornece alertas de vibração ou som, gráfico da frequência cardíaca e gráfico da frequência respiratória.
 
+Guia detalhado do usuário (em inglês) (explica os detalhes das métricas de VFC/HRV e como usar o aplicativo):
+https://github.com/dliedke/Meditate/blob/main/UserGuide.md
+
 Toque e segure a tela (dispositivos com touch screen) ou segure o botão do meio esquerdo para editar as sessões de meditação, propriedades e configurações globais.
 
 Toque na tela ou clique no botão Iniciar para iniciar a sessão de meditação. Use o botão de lap/voltar para pausar/retomar. Use o botão Iniciar para encerrar a sessão de meditação.
 
 Certifique-se de ativar vibração em Sistema - Som e vibração - Vibração (Ligado).
 
-Se o seu dispositivo for compatível e usar notificações sonoras, certifique-se de ativar o som em Sistema - Som e vibração - Toques de alerta (Ligado).
+Se o seu dispositivo for compatível e quiser usar notificações sonoras, certifique-se de ativar o som em Sistema - Som e vibração - Toques de alerta (Ligado).
 
 Defina o nome da atividade como "Local e nome da atividade do dispositivo" nas configurações do Garmin Connect (https://connect.garmin.com/modern/settings) para que o nome da atividade gerada seja salvo corretamente.
 
@@ -22,10 +25,10 @@ Evite mover o pulso durante a sessão para capturar as métricas de VFC e frequ�
 
 Observação: a API Connect IQ usada para desenvolvimento de aplicativos retorna apenas a média de 5 minutos para a métrica de estresse. É por isso que os números não correspondem exatamente ao Garmin Connect, porque no GC ele mostra a métrica de estresse em tempo real quando a atividade é iniciada e interrompida.
 
-Guia do usuário (em inglês) (explica os detalhes das métricas de VFC/HRV e como usar o aplicativo):
+Selecionado como o melhor aplicativo pelo Wareable.com: https://www.wareable.com/garmin/garmin-connect-iq-guide-best-apps-122
 
-https://github.com/dliedke/Meditate/blob/main/UserGuide.md
+Relate problemas no link "Entre em contato com o desenvolvedor" ou https://github.com/dliedke/Meditate/issues
 
-Selecionado como o melhor aplicativo pelo wareable.com: https://www.wareable.com/garmin/garmin-connect-iq-guide-best-apps-122
+Recomendo uma boa playlist para meditação https://open.spotify.com/playlist/37i9dQZF1DWZYo1v54bwkI?si=85adff2dd75e4e85
 
-Relate problemas em https://github.com/dliedke/Meditate/issues. Reduza o estresse, relaxe e pratique Meditação!
+Reduza o estresse, relaxe e pratique Meditação!

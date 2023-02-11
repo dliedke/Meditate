@@ -4,6 +4,9 @@ Totally free application developed by vtrifonov and compiled/enhanced for newer 
 
 A meditation/yoga app that tracks as an activity the heart rate, stress, respiration rate, heart rate variability (HRV), provides vibration or sound alerts, heart rate chart and respiration rate chart.
 
+Full user guide (explains HRV metrics and how to use application in detail):
+https://github.com/dliedke/Meditate/blob/main/UserGuide.md
+
 Touch and hold the screen (Touch devices) or hold the left middle button to edit the meditation sessions, properties and global settings.
 
 Touch screen or click Start button to start meditation session. Use lap/back button to pause/resume. Use start button to end the meditation session.
@@ -22,10 +25,10 @@ Avoid moving your wrist during the session in order to capture HRV and Respirati
 
 Note: Connect IQ API used for application development only returns the 5min average for the stress metric. That's why the numbers don't match exactly with Garmin Connect, because in GC it shows the real time stress metric when activity started and stopped.
 
-User Guide (explains HRV metrics details and how to use application):
+Shortlisted as best app by Wareable: https://www.wareable.com/garmin/garmin-connect-iq-guide-best-apps-122
 
-https://github.com/dliedke/Meditate/blob/main/UserGuide.md
+Please report issues in "Contact Developer" link at this page or https://github.com/dliedke/Meditate/issues
 
-Shortlisted as best app by wareable: https://www.wareable.com/garmin/garmin-connect-iq-guide-best-apps-122
+I would recommend a nice meditation playlist https://open.spotify.com/playlist/37i9dQZF1DWZYo1v54bwkI?si=85adff2dd75e4e85
 
-Please report issues at https://github.com/dliedke/Meditate/issues. Reduce your stress, relax and Meditate!
+Reduce your stress, relax and Meditate!
