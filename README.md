@@ -10,7 +10,7 @@ A Garmin Connect IQ meditation app that tracks as an activity the heart rate, HR
     - e.g. a 20 min session with 1 min recurring alerts, triggering a different alert on the 10th minute
     - each session supports interval vibration alerts
     - interval alerts can trigger from a few seconds up to few hours
-- pre-configured default meditation sessions with 5/10/15/20/25/30min and also short vibration every 5min
+- pre-configured with default meditation sessions for 5/10/15/20/25/30min and also short vibration every 5min
 - [HRV](https://en.wikipedia.org/wiki/Heart_rate_variability) (Heart Rate Variability)
     - RMSSD - Root Mean Square of Successive Differences (beat-to-beat intervals)
     - pNN20 - % of successive beat-to-beat intervals that differ by more than 20 ms
@@ -43,13 +43,14 @@ A Garmin Connect IQ meditation app that tracks as an activity the heart rate, HR
 <img src="userGuideScreenshots/sessionDetailedDemo.gif"  width="25%" height="25%" alt="Session Detailed Demo"></img>
 
 ## Supported Devices
-- Vivoactive 3, Vivoactive 3 Music 
-  - [app store link](https://apps.garmin.com/en-US/apps/bed7ed4d-07ea-4600-b477-b8911670b64a)
-  - from [vivoactive3-publish](https://github.com/vtrifonov-esfiddle/Meditate/tree/vivoactive3-publish) branch
-- Round Watches that support Connect IQ >= 3.0 
-  - [app store link](https://apps.garmin.com/en-US/apps/c5fc5ea5-7d12-4fb9-be9c-701663a39db7)
-  - from [round-watches-publish](https://github.com/dliedke/Meditate/tree/main) branch
 
+- Watches that support Connect IQ >= 3.0 
+  - [Garmin app store link](https://apps.garmin.com/en-US/apps/c5fc5ea5-7d12-4fb9-be9c-701663a39db7)
+  - from [dliedke/Meditate/tree/main](https://github.com/dliedke/Meditate/tree/main) branch
+- Vivoactive 3, Vivoactive 3 Music 
+  - [Garmin app store link](https://apps.garmin.com/en-US/apps/bed7ed4d-07ea-4600-b477-b8911670b64a)
+  - from [vtrifonov-esfiddle/Meditate/tree/vivoactive3-publish](https://github.com/vtrifonov-esfiddle/Meditate/tree/vivoactive3-publish) branch
+  
 ## [User Guide](UserGuide.md)
 
 ## Compilation
