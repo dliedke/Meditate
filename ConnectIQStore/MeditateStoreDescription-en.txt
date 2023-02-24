@@ -21,7 +21,7 @@ Set custom activity name using watch connected to PC via USB with Garmin Express
 
 Use "Yoga" type activity to correctly capture Respiration rate metrics due to bug in Breath work activity in some devices.
 
-Avoid moving your wrist during the session in order to capture HRV and Respiration rate metrics. 
+Avoid moving your wrist during the session in order to capture HRV and Respiration rate metrics. If HRV is not being detected, please reboot your watch pressing light button for 15s, turn it on and retry the application.
 
 Note: Connect IQ API used for application development only returns the 5min average for the stress metric. That's why the numbers don't match exactly with Garmin Connect, because in GC it shows the real time stress metric when activity started and stopped.
 

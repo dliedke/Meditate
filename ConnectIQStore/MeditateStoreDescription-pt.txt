@@ -21,7 +21,7 @@ Defina o nome da atividade personalizada usando o relógio conectado ao PC via U
 
 Use a atividade do tipo "Yoga" para capturar corretamente as métricas da taxa de respiração devido a um bug na atividade de respiração em alguns dispositivos.
 
-Evite mover o pulso durante a sessão para capturar as métricas de VFC e frequência respiratória.
+Evite mover o pulso durante a sessão para capturar as métricas de VFC e frequência respiratória. Se o VFC não estiver sendo detectado, reinicie o relógio pressionando o botão de iluminação por 15 segundos, ligue-o e tente novamente o aplicativo.
 
 Observação: a API Connect IQ usada para desenvolvimento de aplicativos retorna apenas a média de 5 minutos para a métrica de estresse. É por isso que os números não correspondem exatamente ao Garmin Connect, porque no GC ele mostra a métrica de estresse em tempo real quando a atividade é iniciada e interrompida.
 

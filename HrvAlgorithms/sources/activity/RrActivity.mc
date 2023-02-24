@@ -99,10 +99,13 @@ module HrvAlgorithms {
 
 		function getSummary() {
 
-			rrSummary.rrHistory = me.mRRHistory;
-			return rrSummary;
+			if (rrSummary==null) {
+				return null;
+			} else {
+				rrSummary.rrHistory = me.mRRHistory;
+				return rrSummary;
+			}
 		}
-
 		
 		//DEBUG - start - test the respiration rate chart instantaneously for X minutes
 		//                also change min/max HR fixed in class RespirationRateGraphView and
