@@ -1,4 +1,5 @@
 *** Please read all guide below to avoid issues with the application in your device ***
+*** If you face any issue, please check the troubleshooting guide below before reporting ***
 
 Totally free application developed by vtrifonov and compiled/enhanced for newer Garmin watch models by dliedke.
 
@@ -27,7 +28,22 @@ Note: Connect IQ API used for application development only returns the 5min aver
 
 Shortlisted as best app by Wareable: https://www.wareable.com/garmin/garmin-connect-iq-guide-best-apps-122
 
-Please report issues in "Contact Developer" link at this page or https://github.com/dliedke/Meditate/issues
+Troubleshooting guide:
+
+Connect IQ! message in the watch:
+-----------------------------------------------
+Please use Garmin Express in PC with watch connected to USB to change activity name. If the app is no longer opening, please reinstall it. Unfortunately due to a bug with Connect IQ mobile it is not possible to change the activity name using configuration button.  
+
+HRV not being detected:
+---------------------------------
+Sometimes HRV takes longer to be detected if you are moving before starting the application. Please stay quiet for sometime, not moving the wrist with the watch, then open the app and wait for HRV ready before starting your meditate session.
+
+No vibration or sound during sessions:
+---------------------------------------------------
+Make sure to enable vibration in System - Sound and Vibe - Vibration (On). Also make sure to enable sound in System - Sound and Vibe - Alert Tones (On). 
+
+
+Please report other issues in "Contact Developer" link at this page or https://github.com/dliedke/Meditate/issues and not in the app review.
 
 I would recommend a nice meditation playlist https://open.spotify.com/playlist/37i9dQZF1DWZYo1v54bwkI?si=85adff2dd75e4e85
 

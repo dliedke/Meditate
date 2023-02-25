@@ -1,4 +1,5 @@
 *** Leia todo o guia abaixo para evitar problemas com o aplicativo em seu dispositivo ***
+*** Se você enfrentar algum problema, consulte o guia de solução de problemas abaixo antes de relatar ***
 
 Aplicativo totalmente gratuito desenvolvido por vtrifonov e compilado/aprimorado para modelos de relógios Garmin mais recentes por dliedke.
 
@@ -27,8 +28,23 @@ Observação: a API Connect IQ usada para desenvolvimento de aplicativos retorna
 
 Selecionado como o melhor aplicativo pelo Wareable.com: https://www.wareable.com/garmin/garmin-connect-iq-guide-best-apps-122
 
+Guia de solução de problemas:
+-----------------------------
+
+Connect IQ! no relógio:
+
+Use o Garmin Express no PC com o relógio conectado ao USB para alterar o nome da atividade. Se o aplicativo não estiver mais abrindo, reinstale-o. Infelizmente, devido a um bug no Connect IQ mobile, não é possível alterar o nome da atividade usando o botão de configuração.
+
+VFC não sendo detectado:
+
+Às vezes, o VFC demora mais para ser detectado se você estiver se movendo antes de iniciar o aplicativo. Por favor, fique quieto por algum tempo, sem mover o pulso com o relógio, então abra o aplicativo e espere o VFC estar pronto antes de iniciar sua sessão de meditação.
+
+Nenhuma vibração ou som:
+
+Certifique-se de habilitar a vibração em Sistema - Som e Vibração - Vibração (Ligado). Certifique-se também de ativar o som em Sistema - Som e Vibração - Tons de Alerta 
+
 Relate problemas no link "Entre em contato com o desenvolvedor" ou https://github.com/dliedke/Meditate/issues
 
-Recomendo uma boa playlist para meditação https://open.spotify.com/playlist/37i9dQZF1DWZYo1v54bwkI?si=85adff2dd75e4e85
+Música https://open.spotify.com/playlist/37i9dQZF1DWZYo1v54bwkI?si=85adff2dd75e4e85
 
-Reduza o estresse, relaxe e pratique Meditação!
+Reduza o estresse, relaxe e faça Meditação!
