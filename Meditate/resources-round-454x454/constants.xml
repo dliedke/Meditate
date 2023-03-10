@@ -10,7 +10,7 @@
 	<property id="sessionDetailsAlertsLineYOffset" type="number">12</property>
 	<property id="meditateActivityIconsXPos" type="number">130</property>
 	<property id="meditateActivityIconsYOffset" type="number">12</property>
-	<property id="meditateActivityXHrTextOffset" type="number">-15</property>
+	<property id="meditateActivityXHrTextOffset" type="number">-20</property>
 	<property id="meditateActivityXHrvTextOffset" type="number">22</property>
 	<property id="meditateActivityXBreathTextOffset" type="number">42</property>
 	<property id="summaryHrIconsXPos" type="number">80</property>
@@ -24,7 +24,7 @@
 	<property id="detailsModelIconHeight" type="number">52</property>
 	<property id="hmmTimePickerOutputXOffset" type="number">140</property>
 	<property id="mmssTimePickerOutputXOffset" type="number">130</property>
-	<property id="heartRateChartTitleY" type="number">40</property>
+	<property id="heartRateChartTitleY" type="number">50</property>
 	<property id="heartRateChartWidth" type="number">320</property>
 	<property id="heartRateChartLineExtra" type="number">-15</property>
 	<property id="heartRateChartYPos" type="number">20</property>

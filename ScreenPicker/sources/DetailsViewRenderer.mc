@@ -5,13 +5,13 @@ using Toybox.Application as App;
 
 module ScreenPicker {
 	class DetailsViewRenderer {
-		private const TitlePosY = 15;
-		
+		private var mTitlePosY = 15;
 		private var mDetailsModel;
-		
+
 		function initialize(detailsModel) {
 			me.mDetailsModel = detailsModel;
 			me.progressBarWidth = App.getApp().getProperty("progressBarWidth");
+			me.mTitlePosY = App.getApp().getProperty("titlePosY");
 		}
 		
 		function renderBackgroundColor(dc) {				        
@@ -57,7 +57,13 @@ module ScreenPicker {
 	    
 	    private function displayTitle(dc, title, titleFont) {
 	        var textX = dc.getWidth() / 2;	
-	        dc.drawText(textX, TitlePosY, titleFont, title, Gfx.TEXT_JUSTIFY_CENTER);
+			
+			// Could not access the Meditate project strings from this barrel
+			if (title.equals("Settings") || title.equals("Globais")) {
+	        	dc.drawText(textX, mTitlePosY - 10, titleFont, title, Gfx.TEXT_JUSTIFY_CENTER);
+			} else {
+				dc.drawText(textX, mTitlePosY, titleFont, title, Gfx.TEXT_JUSTIFY_CENTER);
+			}
 	    }	      
 	        	
 		private function displayFontIcon(dc, icon, yPos) {

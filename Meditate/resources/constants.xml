@@ -3,6 +3,7 @@
 	<property id="globalSettingsIconsXPos" type="number">50</property>
 	<property id="globalSettingsValueXPos" type="number">71</property>
 	<property id="globalSettingsLinesYOffset" type="number">0</property>
+	<property id="titlePosY" type="number">15</property>
 	<property id="sessionDetailsIconsXPos" type="number">30</property>
 	<property id="sessionDetailsValueXPos" type="number">54</property>
 	<property id="sessionDetailsAlertsLineYOffset" type="number">6</property>
@@ -16,12 +17,14 @@
 	<property id="summaryLinesYOffset" type="number">0</property>
 	<property id="meditateActivityIconsXPos" type="number">70</property>
 	<property id="meditateActivityIconsYOffset" type="number">5</property>
+	<property id="meditateActivityXHrTextOffset" type="number">0</property>
 	<property id="meditateActivityXHrvTextOffset" type="number">20</property>
 	<property id="meditateActivityXBreathTextOffset" type="number">28</property>
 	<property id="detailsModelLineHeight" type="number">32</property>
 	<property id="detailsModelIconHeight" type="number">32</property>
 	<property id="hmmTimePickerOutputXOffset" type="number">85</property>
 	<property id="mmssTimePickerOutputXOffset" type="number">75</property>
+	<property id="heartRateChartTitleY" type="number">25</property>
 	<property id="heartRateChartWidth" type="number">180</property>
 	<property id="heartRateChartLineExtra" type="number">0</property>
 	<property id="heartRateChartYPos" type="number">10</property>

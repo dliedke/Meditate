@@ -5,17 +5,17 @@
     <string id="confirmDeleteAllIntervalAlertsHeader">Deletar todos alertas?</string>
     
     <string id="SummaryTitle">Sumário</string>
-    <string id="SummaryHR">Sumário FC</string>
-    <string id="SummaryStress">Sumário\n Stress</string>
+    <string id="SummaryHR">Freq. Card.</string>
+    <string id="SummaryStress">Stress</string>
     <string id="SummaryStressStart">Stress no Início: $1$</string>
     <string id="SummaryStressEnd">Stress no Fim: $1$</string>
     <string id="SummaryRespiration">Respiração</string>
     <string id="SummaryRespirationMin">Min: </string>
     <string id="SummaryRespirationAvg">Med: </string>
     <string id="SummaryRespirationMax">Max: </string>
-    <string id="SummaryHRVRMSSD">Sumário\n VFC RMSSD</string>
-    <string id="SummaryHRVpNNx">Sumário\n VFC pNNx</string>
-    <string id="SummaryHRVSDRR">Sumário\n VFC SDRR</string>
+    <string id="SummaryHRVRMSSD">VFC RMSSD</string>
+    <string id="SummaryHRVpNNx">VFC pNNx</string>
+    <string id="SummaryHRVSDRR">VFC SDRR</string>
     <string id="SummaryHRVRMSSDFirst5min">Primeiros 5 min</string>
     <string id="SummaryHRVRMSSDLast5min">Últimos 5 min</string>
                       
@@ -140,7 +140,7 @@
     <string id="HRVready">VFC Pronto</string>
     <string id="HRVoff">VFC Deslig.</string>
 
-    <string id="about_AppVersion">Meditate 5.3.0</string>
+    <string id="about_AppVersion">Meditate 5.4.0</string>
     <string id="about_vtrifonov">   vtrifonov</string>
     <string id="about_dliedke">     dliedke</string>
 

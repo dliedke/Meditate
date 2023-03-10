@@ -8,6 +8,8 @@
 	<property id="sessionDetailsYOffset" type="number">10</property>
 	<property id="sessionDetailsAlertsLineYOffset" type="number">12</property>
 	<property id="meditateActivityIconsXPos" type="number">90</property>
+	<property id="meditateActivityIconsYOffset" type="number">20</property>
+	<property id="meditateActivityXHrTextOffset" type="number">-20</property>
 	<property id="meditateActivityDurationArcWidth" type="number">45</property>
 	<property id="summaryHrIconsXPos" type="number">80</property>
 	<property id="summaryHrValueXPos" type="number">110</property>

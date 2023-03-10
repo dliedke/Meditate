@@ -55,7 +55,7 @@ class HeartRateGraphView extends ScreenPicker.ScreenPickerView  {
 
 		// Draw title text
 		dc.drawText(centerX, 
-					25, 
+					App.getApp().getProperty("heartRateChartTitleY"), 
 					App.getApp().getProperty("largeFont"), 
 					Ui.loadResource(Rez.Strings.SummaryHR), 
 					Graphics.TEXT_JUSTIFY_CENTER);

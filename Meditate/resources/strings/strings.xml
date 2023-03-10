@@ -5,17 +5,17 @@
     <string id="confirmDeleteAllIntervalAlertsHeader">Delete All Alerts?</string>
     
     <string id="SummaryTitle">Summary</string>
-    <string id="SummaryHR">Summary HR</string>
-    <string id="SummaryStress">Summary\n Stress</string>
+    <string id="SummaryHR">Heart Rate</string>
+    <string id="SummaryStress">Stress</string>
     <string id="SummaryStressStart">Stress Start: $1$</string>
     <string id="SummaryStressEnd">Stress End: $1$</string>
     <string id="SummaryRespiration">Respiration</string>
     <string id="SummaryRespirationMin">Min:</string>
     <string id="SummaryRespirationAvg">Avg:</string>
     <string id="SummaryRespirationMax">Max:</string>
-    <string id="SummaryHRVRMSSD">Summary\n HRV RMSSD</string>
-    <string id="SummaryHRVpNNx">Summary\n HRV pNNx</string>
-    <string id="SummaryHRVSDRR">Summary\n HRV SDRR</string>
+    <string id="SummaryHRVRMSSD">HRV RMSSD</string>
+    <string id="SummaryHRVpNNx">HRV pNNx</string>
+    <string id="SummaryHRVSDRR">HRV SDRR</string>
     <string id="SummaryHRVRMSSDFirst5min">First 5 min</string>
     <string id="SummaryHRVRMSSDLast5min">Last 5 min</string>
                       
@@ -139,7 +139,7 @@
     <string id="HRVready">HRV Ready</string>
     <string id="HRVoff">HRV off</string>
 
-    <string id="about_AppVersion">Meditate 5.3.0</string>
+    <string id="about_AppVersion">Meditate 5.4.0</string>
     <string id="about_vtrifonov">   vtrifonov</string>
     <string id="about_dliedke">     dliedke</string>
     

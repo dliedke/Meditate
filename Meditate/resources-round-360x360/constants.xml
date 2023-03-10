@@ -3,6 +3,7 @@
 	<property id="globalSettingsIconsXPos" type="number">70</property>
 	<property id="globalSettingsValueXPos" type="number">100</property>
 	<property id="globalSettingsLinesYOffset" type="number">20</property>
+	<property id="titlePosY" type="number">35</property>
 	<property id="sessionDetailsIconsXPos" type="number">60</property>
 	<property id="sessionDetailsValueXPos" type="number">90</property>
 	<property id="sessionDetailsYOffset" type="number">20</property>
@@ -22,6 +23,7 @@
 	<property id="detailsModelIconHeight" type="number">52</property>
 	<property id="hmmTimePickerOutputXOffset" type="number">140</property>
 	<property id="mmssTimePickerOutputXOffset" type="number">130</property>	
+	<property id="heartRateChartTitleY" type="number">30</property>
 	<property id="heartRateChartWidth" type="number">320</property>
 	<property id="heartRateChartLineExtra" type="number">-15</property>
 	<property id="heartRateChartYPos" type="number">22</property>

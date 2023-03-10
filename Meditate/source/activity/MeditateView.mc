@@ -48,6 +48,7 @@ class MeditateView extends Ui.View {
     }
     
     private static const TextFont = App.getApp().getProperty("largeFont");
+	private static const meditateActivityXHrTextOffset = App.getApp().getProperty("meditateActivityXHrTextOffset");
     
     private function renderBackground(dc) {				        
         dc.setColor(Gfx.COLOR_TRANSPARENT, Gfx.COLOR_BLACK);        
@@ -55,7 +56,7 @@ class MeditateView extends Ui.View {
     }
     
     private function renderHrStatusLayout(dc) {
-    	var xPosText = dc.getWidth() / 2;
+    	var xPosText = (dc.getWidth() / 2) + meditateActivityXHrTextOffset;
     	var yPosText = getYPosOffsetFromCenter(dc, 0 + mRespirationRateYPosOffset);
       	me.mHrStatusText = createMeditateText(Gfx.COLOR_WHITE, TextFont, xPosText, yPosText, Gfx.TEXT_JUSTIFY_CENTER); 
       	

@@ -85,6 +85,8 @@ class GlobalSettings {
 	static function loadPrepareTime() {
 		var prepareTime = App.Storage.getValue(PrepareTimeKey);
 		if (prepareTime == null) {
+			//DEBUG - no prepare time for debugging faster
+			//return 0;
 			return 15;
 		}
 		else {
