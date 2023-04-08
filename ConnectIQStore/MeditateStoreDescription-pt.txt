@@ -1,5 +1,6 @@
 *** Leia todo o guia abaixo para evitar problemas com o aplicativo em seu dispositivo ***
 *** Se você enfrentar algum problema, consulte o guia de solução de problemas abaixo antes de relatar ***
+Insira um e-mail válido ao clicar em "Contato com o desenvolvedor" nesta página para que eu possa responder a perguntas e solicitações.
 
 Aplicativo totalmente gratuito desenvolvido por vtrifonov e compilado/aprimorado para modelos de relógios Garmin mais recentes por dliedke.
 
@@ -20,13 +21,11 @@ Defina o nome da atividade como "Local e nome da atividade do dispositivo" nas c
 
 Defina o nome da atividade personalizada usando o relógio conectado ao PC via USB com Garmin Express, consulte o guia em https://support.garmin.com/en-US/?faq=6Vl7EbW3qA42l63ZIhJet5 para obter ajuda. Não use o Garmin Connect IQ mobile porque ele estragará o aplicativo devido a bugs na infraestrutura da Garmin.
 
-Use a atividade do tipo "Yoga" para capturar corretamente as métricas da taxa de respiração devido a um bug na atividade de respiração em alguns dispositivos.
+Use a atividade do tipo "Yoga" para capturar corretamente as métricas da taxa de respiração devido a um bug na atividade de respiração.
 
 Evite mover o pulso durante a sessão para capturar as métricas de VFC e frequência respiratória. Se o VFC não estiver sendo detectado, reinicie o relógio pressionando o botão de iluminação por 15 segundos, ligue-o e tente novamente o aplicativo.
 
 Observação: a API Connect IQ usada para desenvolvimento de aplicativos retorna apenas a média de 5 minutos para a métrica de estresse. É por isso que os números não correspondem exatamente ao Garmin Connect, porque no GC ele mostra a métrica de estresse em tempo real quando a atividade é iniciada e interrompida.
-
-Selecionado como o melhor aplicativo pelo Wareable.com: https://www.wareable.com/garmin/garmin-connect-iq-guide-best-apps-122
 
 Guia de solução de problemas:
 -----------------------------

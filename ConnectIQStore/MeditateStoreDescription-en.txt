@@ -1,5 +1,6 @@
 *** Please read all guide below to avoid issues with the application in your device ***
 *** If you face any issue, please check the troubleshooting guide below before reporting ***
+Please enter a valid email when clicking "Contact Developer" in this page so I can reply to questions and requests.
 
 Totally free application developed by vtrifonov and compiled/enhanced for newer Garmin watch models by dliedke.
 
@@ -36,7 +37,7 @@ Please use Garmin Express in PC with watch connected to USB to change activity n
 
 HRV not being detected:
 ---------------------------------
-Sometimes HRV takes longer to be detected if you are moving before starting the application. Please stay quiet for sometime, not moving the wrist with the watch, then open the app and wait for HRV ready before starting your meditate session.
+Sometimes HRV takes longer to be detected if you were moving before starting the application. Please stay quiet for sometime, not moving the wrist with the watch, then open the app and wait for HRV ready before starting your meditate session. If it doesn't work try holding light button for 15s then turn on watch again and retry the app to check if HRV is being detected. 
 
 No vibration or sound during sessions:
 ---------------------------------------------------
