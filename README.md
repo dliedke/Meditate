@@ -11,6 +11,7 @@ A Garmin Connect IQ meditation app that tracks as an activity the heart rate, HR
     - each session supports interval vibration alerts
     - interval alerts can trigger from a few seconds up to few hours
 - pre-configured with default meditation sessions for 5/10/15/20/25/30min and also short vibration every 5min
+- also advanced default meditation sessions for 45min and 1h with short vibration every 15min
 - [HRV](https://en.wikipedia.org/wiki/Heart_rate_variability) (Heart Rate Variability)
     - RMSSD - Root Mean Square of Successive Differences (beat-to-beat intervals)
     - pNN20 - % of successive beat-to-beat intervals that differ by more than 20 ms
