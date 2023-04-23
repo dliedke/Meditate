@@ -71,7 +71,7 @@ class SessionModel {
 		
 	function reset(index, addingNew) {
 		
-		// Set 5,10,15,20,25 and 30min default session
+		// Set 5,10,15,20,25,30min,45min and 1h default sessions
 
 		// 5min
 		if (index == 0) {
@@ -109,15 +109,33 @@ class SessionModel {
 			me.color = Gfx.COLOR_BLUE;
 		}
 
+		// 45min
+		if (index == 6) {
+			me.time = 45 * 60;
+			me.color = Gfx.COLOR_GREEN;
+		}
+
+		// 1h
+		if (index == 7) {
+			me.time = 60 * 60;
+			me.color = Gfx.COLOR_YELLOW;
+		}
+
 		me.vibePattern = VibePattern.LongContinuous;		
 		me.activityType = GlobalSettings.loadActivityType();
 		me.hrvTracking = GlobalSettings.loadHrvTracking();
 		me.intervalAlerts = new IntervalAlerts();
 		me.intervalAlerts.reset();
 
-		// Only add each 5min blip for sessions longer than 5min
-		if (index>0 && !addingNew) {
+		// Add 5min blips interval alerts for sessions with 10min to 30min
+		if (index>0 && index<=5 && !addingNew) {
 			me.intervalAlerts.addNew();
+		}
+
+		// Add 15min blips interval alerts for sessions with 45min or 1h
+		if ((index==6 || index==7) && !addingNew) {
+			me.intervalAlerts.addNew();
+			me.intervalAlerts.get(0).time = 60 * 15;
 		}
 	}
 	
