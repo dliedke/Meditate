@@ -8,8 +8,8 @@
 	<property id="sessionDetailsValueXPos" type="number">60</property>
 	<property id="sessionDetailsYOffset" type="number">25</property>
 	<property id="meditateActivityIconsXPos" type="number">90</property>
-	<property id="meditateActivityIconsYOffset" type="number">12</property>
-	<property id="meditateActivityXHrTextOffset" type="number">-10</property>
+	<property id="meditateActivityIconsYOffset" type="number">5</property>
+	<property id="meditateActivityXHrTextOffset" type="number">17</property>
 	<property id="meditateActivityXHrvTextOffset" type="number">22</property>
 	<property id="meditateActivityXBreathTextOffset" type="number">32</property>
 	<property id="summaryLinesYOffset" type="number">10</property>	
