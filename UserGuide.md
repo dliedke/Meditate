@@ -3,7 +3,7 @@
 ## Features
 
 - ability to save the meditation session as Garmin Connect activity
-    - activity type **Meditating** or **Yoga**
+    - activity type **Meditation** or **Yoga**
 - ability to configure multiple meditation/yoga sessions
     - e.g. a 20 min session with 1 min recurring alerts, triggering a different alert on the 10th minute
     - each session supports interval vibration alerts
@@ -111,7 +111,7 @@ Enable/disable screen light during the session using light button or touch the s
           3. last repetative alert
     - Color - the color of the current interval alert used in the graphical controls. Select different colors for each alert to differentiate them during meditation. Select transparent color if you don't want to see visual marks for the alert during meditation
     - Vibe Pattern/Sound - shorter or longer patterns ranging from pulsating or continuous or sound
-- Activity Type - ability to save the session as **Breathing** or **Yoga**. You can configure default activity type for new sessions from the Global Settings ([see section 4](#4-global-settings)).
+- Activity Type - ability to save the session as **Meditation** or **Yoga**. You can configure default activity type for new sessions from the Global Settings ([see section 4](#4-global-settings)).
 - HRV Tracking - determines if HRV and stress are tracked
   - ON - tracks stress and the following HRV metrics
     - RMSSD
@@ -215,4 +215,4 @@ This setting provides the default **HRV Tracking** for new sessions.
 You can set the default activity type for new sessions.
 
 - Yoga
-- Breathing
+- Meditation
