@@ -1,5 +1,6 @@
 *** Please read all guide below to avoid issues with the application in your device ***
 *** If you face any issue, please check the troubleshooting guide below before reporting ***
+
 Please enter a valid email when clicking "Contact Developer" in this page so I can reply to questions and requests.
 
 Totally free application developed by vtrifonov and compiled/enhanced for newer Garmin watch models by dliedke.
@@ -7,6 +8,7 @@ Totally free application developed by vtrifonov and compiled/enhanced for newer 
 A meditation/yoga app that tracks as an activity the heart rate, stress, respiration rate, heart rate variability (HRV), provides vibration or sound alerts, heart rate chart and respiration rate chart.
 
 Full user guide (explains HRV metrics and how to use application in detail):
+
 https://github.com/dliedke/Meditate/blob/main/UserGuide.md
 
 Touch and hold the screen (Touch devices) or hold the left middle button to edit the meditation sessions, properties and global settings.
@@ -16,12 +18,12 @@ Touch screen or click Start button to start meditation session. Use lap/back but
 Make sure to enable vibration in System - Sound and Vibe - Vibration (On).
 
 If your device supports it and using sound notifications, make sure to enable sound in System - Sound and Vibe - Alert Tones (On).
- 
+
 Set Activity Name as "Location & Device Activity Name" in Garmin Connect Settings (https://connect.garmin.com/modern/settings) for activity name generated to be saved correctly.
 
 Set custom activity name using watch connected to PC via USB with Garmin Express, refer to guide at https://support.garmin.com/en-US/?faq=6Vl7EbW3qA42l63ZIhJet5 for help. Do not use Garmin Connect IQ mobile because it will break application due to bugs in Garmin infrastructure.
 
-Use "Yoga" type activity to correctly capture Respiration rate metrics due to bug in Breath work activity in some devices.
+Use "Yoga" type activity to correctly capture Respiration rate metrics due to bug in Meditation activity in some devices.
 
 Avoid moving your wrist during the session in order to capture HRV and Respiration rate metrics. If HRV is not being detected, please reboot your watch pressing light button for 15s, turn it on and retry the application.
 
@@ -32,17 +34,22 @@ Shortlisted as best app by Wareable: https://www.wareable.com/garmin/garmin-conn
 Troubleshooting guide:
 
 Connect IQ! message in the watch:
+
 -----------------------------------------------
-Please use Garmin Express in PC with watch connected to USB to change activity name. If the app is no longer opening, please reinstall it. Unfortunately due to a bug with Connect IQ mobile it is not possible to change the activity name using configuration button.  
+
+Please use Garmin Express in PC with watch connected to USB to change activity name. If the app is no longer opening, please reinstall it. Unfortunately due to a bug with Connect IQ mobile it is not possible to change the activity name using configuration button.
 
 HRV not being detected:
+
 ---------------------------------
-Sometimes HRV takes longer to be detected if you were moving before starting the application. Please stay quiet for sometime, not moving the wrist with the watch, then open the app and wait for HRV ready before starting your meditate session. If it doesn't work try holding light button for 15s then turn on watch again and retry the app to check if HRV is being detected. 
+
+Sometimes HRV takes longer to be detected if you were moving before starting the application. Please stay quiet for sometime, not moving the wrist with the watch, then open the app and wait for HRV ready before starting your meditate session. If it doesn't work try holding light button for 15s then turn on watch again and retry the app to check if HRV is being detected.
 
 No vibration or sound during sessions:
----------------------------------------------------
-Make sure to enable vibration in System - Sound and Vibe - Vibration (On). Also make sure to enable sound in System - Sound and Vibe - Alert Tones (On). 
 
+---------------------------------------------------
+
+Make sure to enable vibration in System - Sound and Vibe - Vibration (On). Also make sure to enable sound in System - Sound and Vibe - Alert Tones (On).
 
 Please report other issues in "Contact Developer" link at this page or https://github.com/dliedke/Meditate/issues and not in the app review.
 
