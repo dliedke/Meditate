@@ -77,17 +77,29 @@ class GlobalSettingsMenuDelegate extends Ui.MenuInputDelegate {
 	}
 
 	function onPrepareTimePicked(item) {
-		if (item == :time_0) {
+		if (item == :time_0s) {
 			GlobalSettings.savePrepareTime(0);
 		}
-		else if (item == :time_15) {
+		else if (item == :time_15s) {
 			GlobalSettings.savePrepareTime(15);
 		}
-		else if (item == :time_30) {
+		else if (item == :time_30s) {
 			GlobalSettings.savePrepareTime(30);
 		}
-		else if (item == :time_60) {
+		else if (item == :time_1m) {
 			GlobalSettings.savePrepareTime(60);
+		}
+		else if (item == :time_2m) {
+			GlobalSettings.savePrepareTime(120);
+		}
+		else if (item == :time_3m) {
+			GlobalSettings.savePrepareTime(180);
+		}
+		else if (item == :time_4m) {
+			GlobalSettings.savePrepareTime(240);
+		}
+		else if (item == :time_5m) {
+			GlobalSettings.savePrepareTime(300);
 		}
 		mOnGlobalSettingsChanged.invoke();
 	}

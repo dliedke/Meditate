@@ -139,7 +139,15 @@ class GlobalSettingsDelegate extends ScreenPicker.ScreenPickerDelegate {
 	        	:font => StatusIconFonts.fontMeditateIcons,
 	        	:symbol => StatusIconFonts.Rez.Strings.meditateFontYoga
 	        });	
-		details.detailLines[4].value.text =  Ui.loadResource(Rez.Strings.menuPrepareTimeOptions_title) + ": " + GlobalSettings.loadPrepareTime().toString() + "s";
+
+		// Calculate minutes and seconds from the loaded prepare time
+		var prepareTimeSeconds = GlobalSettings.loadPrepareTime();
+		var minutes = prepareTimeSeconds / 60;
+		var seconds = prepareTimeSeconds % 60;
+
+		// Set the text with the remaining time in the format M:SS
+		details.detailLines[4].value.text = Ui.loadResource(Rez.Strings.menuPrepareTimeOptions_title) + ": " + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+
 
 		// Show Respiration rate settings if supported
 		if (HrvAlgorithms.RrActivity.isRespirationRateSupported()) {

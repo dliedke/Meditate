@@ -96,13 +96,19 @@ class MeditatePrepareView extends Ui.View {
 		var centerX = dc.getWidth()/2;
 		var centerY = dc.getHeight()/2;
 
-		// Render main text with number of seconds remaining to start the session
+		// Calculate minutes and seconds from the remaining seconds
+		var remainingSeconds = mTotalSeconds - mSeconds;
+		var minutes = remainingSeconds / 60;
+		var seconds = remainingSeconds % 60;
+
+		// Render main text with the remaining time in the format M:SS
 		dc.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
-					dc.drawText(centerX, 
+		dc.drawText(centerX, 
 					centerY-centerY/3, 
 					Gfx.FONT_SYSTEM_TINY, 
-					Ui.loadResource(Rez.Strings.meditateActivityPrepare) + " " + (mTotalSeconds-mSeconds).toString() + "s",
+					Ui.loadResource(Rez.Strings.meditateActivityPrepare) + " " + minutes + ":" + (seconds < 10 ? "0" : "") + seconds,
 					Graphics.TEXT_JUSTIFY_CENTER);
+
 	}
 	
 	function onHide() {

@@ -34,6 +34,7 @@
     <string id="menuGlobalSettings_singleSession">Single session</string>
     <string id="menuGlobalSettings_respirationRate">Respiration Rate</string>
     <string id="menuGlobalSettings_prepareTime">Prepare Time</string>
+    <string id="menuGlobalSettings_finalizeTime">Finalize Time</string>
     <string id="menuGlobalSettings_respiration">Respiration: </string>
     <string id="menuGlobalSettings_save">Save: </string>
     
@@ -71,11 +72,17 @@
     <string id="menuRespirationRateOptions_off">Off</string>
 
     <string id="menuPrepareTimeOptions_title">Preparation</string>    
-    <string id="menuPrepareTimeOptions_0">0 secs</string>
-    <string id="menuPrepareTimeOptions_15">15 secs (Default)</string>
-    <string id="menuPrepareTimeOptions_30">30 secs</string>
-    <string id="menuPrepareTimeOptions_60">60 secs</string>
-
+    <string id="menuFinalizeTimeOptions_title">Finalization</string>    
+    <string id="menuPrepareTimeOptions_0s">0 secs</string>
+    <string id="menuPrepareTimeOptions_15s">15 secs (Default)</string>
+    <string id="menuPrepareTimeOptions_30s">30 secs</string>
+    <string id="menuPrepareTimeOptions_45s">45 secs</string>
+    <string id="menuPrepareTimeOptions_1m">1 min</string>
+    <string id="menuPrepareTimeOptions_2m">2 min</string>
+    <string id="menuPrepareTimeOptions_3m">3 min</string>
+    <string id="menuPrepareTimeOptions_4m">4 min</string>
+    <string id="menuPrepareTimeOptions_5m">5 min</string>
+    
     <string id="menuIntervalAlertSettings_Title">Interval Alerts</string>
     <string id="menuIntervalAlertSettings_addNew">Add New</string>
     <string id="menuIntervalAlertSettings_edit">Edit</string>
@@ -139,7 +146,7 @@
     <string id="HRVready">HRV Ready</string>
     <string id="HRVoff">HRV off</string>
 
-    <string id="about_AppVersion">Meditate 6.0.0</string>
+    <string id="about_AppVersion">Meditate 6.1.0</string>
     <string id="about_vtrifonov">   vtrifonov</string>
     <string id="about_dliedke">     dliedke</string>
     
