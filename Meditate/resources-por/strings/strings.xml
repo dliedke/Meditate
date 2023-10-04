@@ -34,7 +34,7 @@
     <string id="menuGlobalSettings_singleSession">Sessão Simples</string>
     <string id="menuGlobalSettings_respirationRate">Taxa respiração</string>
     <string id="menuGlobalSettings_prepareTime">Tempo Preparação</string>
-    <string id="menuGlobalSettings_finalizeTime">Tempo Finaliz.</string>
+    <string id="menuGlobalSettings_finalizeTime">Tempo Finalização</string>
     <string id="menuGlobalSettings_respiration">Respiração: </string>
     <string id="menuGlobalSettings_save">Salvar: </string>
     
@@ -74,7 +74,7 @@
     <string id="menuPrepareTimeOptions_title">Preparação</string>    
     <string id="menuFinalizeTimeOptions_title">Finalização</string>    
     <string id="menuPrepareTimeOptions_0s">0 segs</string>
-    <string id="menuPrepareTimeOptions_15s">15 segs (Padrão)</string>
+    <string id="menuPrepareTimeOptions_15s">15 segs</string>
     <string id="menuPrepareTimeOptions_30s">30 segs</string>
     <string id="menuPrepareTimeOptions_45s">45 segs</string>
     <string id="menuPrepareTimeOptions_1m">1 min</string>
@@ -136,6 +136,7 @@
 	<string id="activityDelayedFinishingText">Finalizando...</string>
     <string id="meditateActivityPaused">[Pausado]</string>
     <string id="meditateActivityPrepare">Relaxe para\niniciar meditação\nem</string>
+    <string id="meditateActivityFinalize">Finalizando\nmeditação\nem</string>
 
     <string id="meditateYogaActivityName">Meditação</string>
     <string id="meditateBreathActivityName">Meditação</string>

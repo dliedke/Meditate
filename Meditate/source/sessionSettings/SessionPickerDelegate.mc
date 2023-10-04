@@ -123,8 +123,8 @@ class SessionPickerDelegate extends ScreenPicker.ScreenPickerDelegate {
 		}
 
 		// Show preparation time view and start meditation session once the time is over
-		var meditatePrepareView = new MeditatePrepareView(method(:startMeditationSession));
-		var meditatePrepareDelegate = new MeditatePrepareDelegate(me);
+		var meditatePrepareView = new MeditatePrepareView(method(:startMeditationSession), 1);
+		var meditatePrepareDelegate = new MeditatePrepareDelegate(me, meditatePrepareView);
 		Ui.switchToView(meditatePrepareView, meditatePrepareDelegate, Ui.SLIDE_IMMEDIATE);	
 	}
 

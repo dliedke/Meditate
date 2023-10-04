@@ -74,7 +74,7 @@
     <string id="menuPrepareTimeOptions_title">Preparation</string>    
     <string id="menuFinalizeTimeOptions_title">Finalization</string>    
     <string id="menuPrepareTimeOptions_0s">0 secs</string>
-    <string id="menuPrepareTimeOptions_15s">15 secs (Default)</string>
+    <string id="menuPrepareTimeOptions_15s">15 secs</string>
     <string id="menuPrepareTimeOptions_30s">30 secs</string>
     <string id="menuPrepareTimeOptions_45s">45 secs</string>
     <string id="menuPrepareTimeOptions_1m">1 min</string>
@@ -135,6 +135,7 @@
 	<string id="activityDelayedFinishingText">Finishing...</string>
     <string id="meditateActivityPaused">[Paused]</string>
     <string id="meditateActivityPrepare">Relax to start\nmeditate session\nin</string>
+    <string id="meditateActivityFinalize">Finishing\nmeditate session\nin</string>
 
     <string id="meditateYogaActivityName">Meditating</string>
     <string id="meditateBreathActivityName">Meditating</string>

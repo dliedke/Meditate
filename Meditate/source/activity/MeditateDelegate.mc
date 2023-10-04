@@ -19,7 +19,22 @@ class MeditateDelegate extends Ui.BehaviorDelegate {
     }
     				
 	private function stopActivity() {
-		me.mMeditateActivity.stop();				
+		me.mMeditateActivity.stop();
+
+		// If there is no finalize time, show delayed finished view
+		if (GlobalSettings.loadFinalizeTime()==0) {
+			onShowDelayedFinishedView();
+			return;
+		}
+
+		// Show finalize time view and delayed finished view session once the time is over
+		var meditatePrepareView = new MeditatePrepareView(method(:onShowDelayedFinishedView), 0);
+		var meditatePrepareDelegate = new MeditatePrepareDelegate(me, meditatePrepareView);
+		Ui.switchToView(meditatePrepareView, meditatePrepareDelegate, Ui.SLIDE_IMMEDIATE);	
+	}
+
+	function onShowDelayedFinishedView()
+	{
 		var calculatingResultsView = new DelayedFinishingView(method(:onFinishActivity));
 		Ui.switchToView(calculatingResultsView, me, Ui.SLIDE_IMMEDIATE);	
 	}

@@ -97,6 +97,22 @@ class GlobalSettings {
 	static function savePrepareTime(prepareTime) {
 		App.Storage.setValue(PrepareTimeKey, prepareTime);
 	}
+
+	private static const FinalizeTimeKey = "globalSettings_finalizeTime";
+	
+	static function loadFinalizeTime() {
+		var finalizeTime = App.Storage.getValue(FinalizeTimeKey);
+		if (finalizeTime == null) {
+			return 0;
+		}
+		else {
+			return finalizeTime;
+		}
+	}
+	
+	static function saveFinalizeTime(finalizeTime) {
+		App.Storage.setValue(FinalizeTimeKey, finalizeTime);
+	}
 }
 
 module ConfirmSaveActivity {

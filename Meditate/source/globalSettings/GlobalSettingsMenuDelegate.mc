@@ -41,6 +41,10 @@ class GlobalSettingsMenuDelegate extends Ui.MenuInputDelegate {
 			var prepareTimeDelegate = new MenuOptionsDelegate(method(:onPrepareTimePicked));
 			Ui.pushView(new Rez.Menus.prepareTimeOptionsMenu(), prepareTimeDelegate, Ui.SLIDE_LEFT);
 		}
+		else if (item ==:finalizeTime) {
+			var finalizeTimeDelegate = new MenuOptionsDelegate(method(:onFinalizeTimePicked));
+			Ui.pushView(new Rez.Menus.finalizeTimeOptionsMenu(), finalizeTimeDelegate, Ui.SLIDE_LEFT);
+		}
 	}
 	
 	function onConfirmSaveActivityPicked(item) {
@@ -100,6 +104,34 @@ class GlobalSettingsMenuDelegate extends Ui.MenuInputDelegate {
 		}
 		else if (item == :time_5m) {
 			GlobalSettings.savePrepareTime(300);
+		}
+		mOnGlobalSettingsChanged.invoke();
+	}
+
+	function onFinalizeTimePicked(item) {
+		if (item == :time_0s) {
+			GlobalSettings.saveFinalizeTime(0);
+		}
+		else if (item == :time_15s) {
+			GlobalSettings.saveFinalizeTime(15);
+		}
+		else if (item == :time_30s) {
+			GlobalSettings.saveFinalizeTime(30);
+		}
+		else if (item == :time_1m) {
+			GlobalSettings.saveFinalizeTime(60);
+		}
+		else if (item == :time_2m) {
+			GlobalSettings.saveFinalizeTime(120);
+		}
+		else if (item == :time_3m) {
+			GlobalSettings.saveFinalizeTime(180);
+		}
+		else if (item == :time_4m) {
+			GlobalSettings.saveFinalizeTime(240);
+		}
+		else if (item == :time_5m) {
+			GlobalSettings.saveFinalizeTime(300);
 		}
 		mOnGlobalSettingsChanged.invoke();
 	}

@@ -9,12 +9,20 @@ class MeditatePrepareView extends Ui.View {
 	private var mMainDurationRenderer;
 	private var mSeconds; 
     private var mTotalSeconds;
+	private var mPrepare;
+	private var mviewDrawnTimer;
 
-	function initialize(onShow) {
+	function initialize(onShow, prepare) {
 		View.initialize();
 		me.mOnShow = onShow;
+		me.mPrepare = prepare;
 		mSeconds = 0;
-		mTotalSeconds = GlobalSettings.loadPrepareTime();
+
+		if (prepare == 1) {
+			mTotalSeconds = GlobalSettings.loadPrepareTime();
+		} else {
+			mTotalSeconds = GlobalSettings.loadFinalizeTime();
+		}
 	}
 	
 	function onViewDrawn() {
@@ -32,8 +40,8 @@ class MeditatePrepareView extends Ui.View {
 			// Vibrate short to notify session starts
 			Vibe.vibrate(VibePattern.Blip);
 			
-			// Starts the meditation session
-			me.mOnShow.invoke();
+			// Starts the meditation session / saves the session
+		    continueToNextStep();
 
 			return;
 		}
@@ -70,8 +78,14 @@ class MeditatePrepareView extends Ui.View {
 			mainDurationArcWidth = mainDurationArcWidthConfig;
 		}
 
+		// Green color for preparation and red color for finalization
+		var color = Gfx.COLOR_GREEN;
+		if (mPrepare == 0) {
+			color = Gfx.COLOR_DK_RED;
+		}
+
 		// Configure the arc render for progress
-        me.mMainDurationRenderer = new ElapsedDurationRenderer(Gfx.COLOR_BLUE, durationArcRadius, mainDurationArcWidth);
+        me.mMainDurationRenderer = new ElapsedDurationRenderer(color, durationArcRadius, mainDurationArcWidth);
     }     
 	
 	private function renderBackground(dc) {				        
@@ -82,8 +96,8 @@ class MeditatePrepareView extends Ui.View {
     }
 
 	function onShow() {	
-		var viewDrawnTimer = new Timer.Timer();
-		viewDrawnTimer.start(method(:onViewDrawn), 1000, true);		
+		mviewDrawnTimer = new Timer.Timer();
+		mviewDrawnTimer.start(method(:onViewDrawn), 1000, true);		
 	}
 		
 	function onUpdate(dc) {     
@@ -100,17 +114,36 @@ class MeditatePrepareView extends Ui.View {
 		var remainingSeconds = mTotalSeconds - mSeconds;
 		var minutes = remainingSeconds / 60;
 		var seconds = remainingSeconds % 60;
+		var textString; 
+
+		// Prepare or finalize text to display
+		if (mPrepare == 1) {
+			textString = Ui.loadResource(Rez.Strings.meditateActivityPrepare);
+		} else {
+			textString = Ui.loadResource(Rez.Strings.meditateActivityFinalize);
+		}
 
 		// Render main text with the remaining time in the format M:SS
 		dc.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
 		dc.drawText(centerX, 
 					centerY-centerY/3, 
 					Gfx.FONT_SYSTEM_TINY, 
-					Ui.loadResource(Rez.Strings.meditateActivityPrepare) + " " + minutes + ":" + (seconds < 10 ? "0" : "") + seconds,
+					textString + " " + minutes + ":" + (seconds < 10 ? "0" : "") + seconds,
 					Graphics.TEXT_JUSTIFY_CENTER);
 
 	}
 	
 	function onHide() {
+		
+		// Abort the timer when view is closed
+		mviewDrawnTimer.stop();
+		mviewDrawnTimer = null;
+	}
+
+
+	function continueToNextStep() {
+
+		// Starts the meditation session / saves the session
+		me.mOnShow.invoke();
 	}
 }
