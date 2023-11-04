@@ -20,5 +20,13 @@ module HrvAlgorithms {
                  :sport => SPORT_MEDITATION
                 };
 		}
+
+		static function createBreathing(sessionName) {
+			return {
+                 :name => sessionName,                              
+                 :sport => ActivityRecording.SPORT_TRAINING,      
+                 :subSport => SUB_SPORT_BREATHWORKS
+                };
+		}
 	}
 }

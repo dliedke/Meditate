@@ -41,10 +41,12 @@
     <string id="menuNewActivityTypeOptions_title">Atividade</string>    
     <string id="menuNewActivityTypeOptions_yoga">Yoga</string>
     <string id="menuNewActivityTypeOptions_meditating">Meditação</string>
+    <string id="menuNewActivityTypeOptions_breathing">Respiração</string>
         
     <string id="activityTypeMenu_title">Atividade</string>    
     <string id="activityTypeMenu_yoga">Yoga</string>
     <string id="activityTypeMenu_meditating">Meditação</string>
+    <string id="activityTypeMenu_breathing">Respiração</string>
       
     <string id="menuNewHrvTrackingOptions_title">Monit. VFC</string>    
     <string id="menuNewHrvTrackingOptions_onDetailed">Detalhado (Padrão)</string>
@@ -148,7 +150,7 @@
     <string id="HRVready">VFC Pronto</string>
     <string id="HRVoff">VFC Deslig.</string>
 
-    <string id="about_AppVersion">Meditate 6.1.0</string>
+    <string id="about_AppVersion">Meditate 6.2.0</string>
     <string id="about_vtrifonov">   vtrifonov</string>
     <string id="about_dliedke">     dliedke</string>
 

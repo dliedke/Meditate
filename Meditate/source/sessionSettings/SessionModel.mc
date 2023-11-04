@@ -23,7 +23,8 @@ module VibePattern {
 module ActivityType {
 	enum {
 		Meditating = 0,
-		Yoga = 1
+		Yoga = 1,
+		Breathing = 2
 	}
 }
 

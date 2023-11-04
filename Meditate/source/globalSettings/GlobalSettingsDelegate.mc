@@ -119,25 +119,12 @@ class GlobalSettingsDelegate extends ScreenPicker.ScreenPickerDelegate {
         }
         details.detailLines[3].value.text = multiSessionSetting;
         
-		// Activity type settings (not enough screen space for everything)
-		/*
-        details.detailLines[4].icon = new ScreenPicker.Icon({        
-	        	:font => StatusIconFonts.fontMeditateIcons,
-	        	:symbol => StatusIconFonts.Rez.Strings.meditateFontYoga
-	        });	
-        var newActivityType = GlobalSettings.loadActivityType();
-        if (newActivityType == ActivityType.Meditating) {
-        	details.detailLines[4].value.text = Ui.loadResource(Rez.Strings.menuNewActivityTypeOptions_meditating);
-        }
-        if (newActivityType == ActivityType.Yoga) {
-        	details.detailLines[4].value.text = Ui.loadResource(Rez.Strings.menuNewActivityTypeOptions_yoga);
-        }
-		*/
+		
 
 		// Preparation time settings
         details.detailLines[4].icon = new ScreenPicker.Icon({        
-	        	:font => StatusIconFonts.fontMeditateIcons,
-	        	:symbol => StatusIconFonts.Rez.Strings.meditateFontYoga
+	        	:font => StatusIconFonts.fontAwesomeFreeRegular,
+        	    :symbol => StatusIconFonts.Rez.Strings.faClock
 	        });	
 
 		// Calculate minutes and seconds from the loaded prepare time
@@ -149,7 +136,25 @@ class GlobalSettingsDelegate extends ScreenPicker.ScreenPickerDelegate {
 		details.detailLines[4].value.text = Ui.loadResource(Rez.Strings.menuPrepareTimeOptions_title) + ": " + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
 
 
-		// Show Respiration rate settings if supported
+		// New Activity type settings
+        details.detailLines[5].icon = new ScreenPicker.Icon({        
+	        	:font => StatusIconFonts.fontMeditateIcons,
+	        	:symbol => StatusIconFonts.Rez.Strings.meditateFontYoga,
+				:color => Gfx.COLOR_GREEN
+	        });	
+        var newActivityType = GlobalSettings.loadActivityType();
+        if (newActivityType == ActivityType.Meditating) {
+        	details.detailLines[5].value.text = Ui.loadResource(Rez.Strings.menuNewActivityTypeOptions_meditating);
+        }
+        if (newActivityType == ActivityType.Yoga) {
+        	details.detailLines[5].value.text = Ui.loadResource(Rez.Strings.menuNewActivityTypeOptions_yoga);
+        }
+		if (newActivityType == ActivityType.Breathing) {
+        	details.detailLines[5].value.text = Ui.loadResource(Rez.Strings.menuNewActivityTypeOptions_breathing);
+        }
+
+		// Show Respiration rate settings if supported (not enough screen space for everything)
+		/*
 		if (HrvAlgorithms.RrActivity.isRespirationRateSupported()) {
 			
 			var respirationRateSetting = "";
@@ -163,6 +168,7 @@ class GlobalSettingsDelegate extends ScreenPicker.ScreenPickerDelegate {
 			}
 			details.detailLines[5].value.text = Ui.loadResource(Rez.Strings.menuGlobalSettings_respiration) + respirationRateSetting;
 		}
+		*/
 
         details.setAllLinesYOffset(me.mGlobalSettingsLinesYOffset);
         details.setAllIconsXPos(me.mGlobalSettingsIconsXPos);

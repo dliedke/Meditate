@@ -41,10 +41,12 @@
     <string id="menuNewActivityTypeOptions_title">Activity</string>    
     <string id="menuNewActivityTypeOptions_yoga">Yoga</string>
     <string id="menuNewActivityTypeOptions_meditating">Meditating</string>
+    <string id="menuNewActivityTypeOptions_breathing">Breathing</string>
         
     <string id="activityTypeMenu_title">Activity Type</string>    
     <string id="activityTypeMenu_yoga">Yoga</string>
     <string id="activityTypeMenu_meditating">Meditating</string>
+    <string id="activityTypeMenu_breathing">Breathing</string>
       
     <string id="menuNewHrvTrackingOptions_title">Hrv Tracking</string>    
     <string id="menuNewHrvTrackingOptions_onDetailed">On Detailed (Default)</string>
@@ -147,7 +149,7 @@
     <string id="HRVready">HRV Ready</string>
     <string id="HRVoff">HRV off</string>
 
-    <string id="about_AppVersion">Meditate 6.1.0</string>
+    <string id="about_AppVersion">Meditate 6.2.0</string>
     <string id="about_vtrifonov">   vtrifonov</string>
     <string id="about_dliedke">     dliedke</string>
     

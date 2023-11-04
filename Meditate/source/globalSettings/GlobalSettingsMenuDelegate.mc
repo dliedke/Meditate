@@ -147,6 +147,9 @@ class GlobalSettingsMenuDelegate extends Ui.MenuInputDelegate {
 		else if (item == :yoga) {
 			GlobalSettings.saveActivityType(ActivityType.Yoga);
 		}
+		else if (item == :breathing) {
+			GlobalSettings.saveActivityType(ActivityType.Breathing);
+		}
 		mOnGlobalSettingsChanged.invoke();
 	}
 			

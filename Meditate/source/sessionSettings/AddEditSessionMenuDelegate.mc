@@ -83,7 +83,10 @@ class AddEditSessionMenuDelegate extends Ui.MenuInputDelegate {
     	}
     	else if (item == :yoga) {
     		sessionModel.activityType = ActivityType.Yoga;
-    	}    	
+    	}
+		else if (item == :breathing) {
+    		sessionModel.activityType = ActivityType.Breathing;
+    	}        	
 		me.mOnChangeSession.invoke(sessionModel);	
     }
     
