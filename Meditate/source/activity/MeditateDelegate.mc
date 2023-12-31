@@ -13,12 +13,12 @@ class MeditateDelegate extends Ui.BehaviorDelegate {
         me.mMeditateModel = meditateModel;
         me.mSummaryModels = summaryModels;
         me.mHeartbeatIntervalsSensor = heartbeatIntervalsSensor;
-        me.mMeditateActivity = new MediteActivity(meditateModel, heartbeatIntervalsSensor);
+        me.mMeditateActivity = new MediteActivity(meditateModel, heartbeatIntervalsSensor, me);
         me.mSessionPickerDelegate = sessionPickerDelegate;
         me.mSummaryModel = null;
     }
     				
-	private function stopActivity() {
+	public function stopActivity() {
 		me.mMeditateActivity.stop();
 
 		// If there is no finalize time, show delayed finished view

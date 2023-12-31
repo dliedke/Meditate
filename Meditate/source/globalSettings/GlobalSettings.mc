@@ -80,6 +80,22 @@ class GlobalSettings {
 		App.Storage.setValue(RespirationRateKey, respirationRate);
 	}
 
+	private static const AutoStopKey = "globalSettings_autoStop";
+
+	static function loadAutoStop() {
+		var autoStop = App.Storage.getValue(AutoStopKey);
+		if (autoStop == null) {
+			return AutoStop.On; // Assuming 'On' is a valid default value for AutoStop
+		}
+		else {
+			return autoStop;
+		}
+	}
+
+	static function saveAutoStop(autoStop) {
+		App.Storage.setValue(AutoStopKey, autoStop);
+	}
+
 	private static const PrepareTimeKey = "globalSettings_prapareTime";
 	
 	static function loadPrepareTime() {
@@ -131,6 +147,13 @@ module MultiSession {
 }
 
 module RespirationRate {
+	enum {
+		Off = 0,
+		On = 1
+	}
+}
+
+module AutoStop {
 	enum {
 		Off = 0,
 		On = 1

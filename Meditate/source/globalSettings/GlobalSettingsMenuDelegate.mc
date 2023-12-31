@@ -45,6 +45,10 @@ class GlobalSettingsMenuDelegate extends Ui.MenuInputDelegate {
 			var finalizeTimeDelegate = new MenuOptionsDelegate(method(:onFinalizeTimePicked));
 			Ui.pushView(new Rez.Menus.finalizeTimeOptionsMenu(), finalizeTimeDelegate, Ui.SLIDE_LEFT);
 		}
+		else if (item ==:autoStop) {
+			var autoStopDelegate = new MenuOptionsDelegate(method(:onAutoStopPicked));
+			Ui.pushView(new Rez.Menus.autoStopOptionMenu(), autoStopDelegate, Ui.SLIDE_LEFT);
+		}
 	}
 	
 	function onConfirmSaveActivityPicked(item) {
@@ -76,6 +80,16 @@ class GlobalSettingsMenuDelegate extends Ui.MenuInputDelegate {
 		}
 		else if (item == :off) {
 			GlobalSettings.saveRespirationRate(RespirationRate.Off);
+		}
+		mOnGlobalSettingsChanged.invoke();
+	}
+
+	function onAutoStopPicked(item) {
+		if (item == :on) {
+			GlobalSettings.saveAutoStop(AutoStop.On);
+		}
+		else if (item == :off) {
+			GlobalSettings.saveAutoStop(AutoStop.Off);
 		}
 		mOnGlobalSettingsChanged.invoke();
 	}

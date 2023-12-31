@@ -4,6 +4,7 @@
     <menu-item id="multiSession" label="@Strings.menuGlobalSettings_multiSession" />
     <menu-item id="prepareTime" label="@Strings.menuGlobalSettings_prepareTime" />
     <menu-item id="finalizeTime" label="@Strings.menuGlobalSettings_finalizeTime" />
+    <menu-item id="autoStop" label="@Strings.menuGlobalSettings_autoStop" />
     <menu-item id="respirationRate" label="@Strings.menuGlobalSettings_respirationRate" />
     <menu-item id="newActivityType" label="@Strings.menuGlobalSettings_newActivityType" />
 </menu>

@@ -9,8 +9,9 @@ using HrvAlgorithms.HrvTracking;
 class MediteActivity extends HrvAlgorithms.HrvAndStressActivity {
 	private var mMeditateModel;
 	private var mVibeAlertsExecutor;	
+	private var mMeditateDelegate;
 		
-	function initialize(meditateModel, heartbeatIntervalsSensor) {
+	function initialize(meditateModel, heartbeatIntervalsSensor, meditateDelegate) {
 		var fitSessionSpec;
 		var sessionTime = meditateModel.getSessionTime();
 
@@ -28,6 +29,7 @@ class MediteActivity extends HrvAlgorithms.HrvAndStressActivity {
 		}
 
 		me.mMeditateModel = meditateModel;	
+		me.mMeditateDelegate = meditateDelegate;
 		HrvAlgorithms.HrvAndStressActivity.initialize(fitSessionSpec, meditateModel.getHrvTracking(), heartbeatIntervalsSensor);			
 	}
 
@@ -109,6 +111,13 @@ class MediteActivity extends HrvAlgorithms.HrvAndStressActivity {
 		me.mVibeAlertsExecutor.firePendingAlerts();	 
 		me.mMeditateModel.hrvSuccessive = hrvSuccessive;
     	
+		// Check if we need to stop activity automatically when time ended
+		var autoStopEnabled = GlobalSettings.loadAutoStop();
+		if (autoStopEnabled && (me.mMeditateModel.elapsedTime >= me.mMeditateModel.getSessionTime())) {	
+			mMeditateDelegate.stopActivity();
+			return;
+		}
+
 	    Ui.requestUpdate();	    
 	}	   	
 	

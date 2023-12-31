@@ -33,6 +33,7 @@
     <string id="menuGlobalSettings_multiSession">Mehr. Sitz.</string>
     <string id="menuGlobalSettings_singleSession">Einz. Sitz.</string>
     <string id="menuGlobalSettings_respirationRate">Atmung</string>
+    <string id="menuGlobalSettings_autoStop">Auto Stopp</string>
     <string id="menuGlobalSettings_prepareTime">Vorb.-Zeit</string>
     <string id="menuGlobalSettings_finalizeTime">Abschl.-Zeit</string>
     <string id="menuGlobalSettings_respiration">Atmung: </string>
@@ -72,6 +73,10 @@
     <string id="menuRespirationRateOptions_title">Atm.-Freq.</string>
     <string id="menuRespirationRateOptions_on">Ein (Standard)</string>
     <string id="menuRespirationRateOptions_off">Aus</string>
+
+    <string id="menuAutoStopOptions_title">Auto Stopp</string>
+    <string id="menuAutoStopOptions_on">Ein (Standard)</string>
+    <string id="menuAutoStopOptions_off">Aus</string>
 
     <string id="menuPrepareTimeOptions_title">Vorbereitung</string>    
     <string id="menuFinalizeTimeOptions_title">Abschluss</string>    
@@ -149,7 +154,7 @@
     <string id="HRVready">HRV Bereit</string>
     <string id="HRVoff">HRV aus</string>
 
-    <string id="about_AppVersion">Meditate 6.3.0</string>
+    <string id="about_AppVersion">Meditate 6.4.0</string>
     <string id="about_vtrifonov">   vtrifonov</string>
     <string id="about_dliedke">     dliedke</string>
 
