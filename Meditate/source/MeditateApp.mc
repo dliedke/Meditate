@@ -15,12 +15,19 @@ class MeditateApp extends App.AppBase {
 
     // onStop() is called when your application is exiting
     function onStop(state) {
+        // Disable and remove listeners for heatbeat sensor
+        if (heartbeatIntervalsSensor!=null) {
+            heartbeatIntervalsSensor.disableHrSensor();
+            heartbeatIntervalsSensor.stop();
+        }
     }
+
+    var heartbeatIntervalsSensor;
 
     // Return the initial view of your application here
     function getInitialView() {      
     	var sessionStorage = new SessionStorage();	          	
-    	var heartbeatIntervalsSensor = new HrvAlgorithms.HeartbeatIntervalsSensor();	
+    	heartbeatIntervalsSensor = new HrvAlgorithms.HeartbeatIntervalsSensor();	
     	var sessionPickerDelegate = new SessionPickerDelegate(sessionStorage, heartbeatIntervalsSensor);
     	
         return [ sessionPickerDelegate.createScreenPickerView(), sessionPickerDelegate ];
