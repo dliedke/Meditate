@@ -6,24 +6,24 @@ module ScreenPicker {
 			icon[:font] = StatusIconFonts.fontAwesomeFreeSolid;			
 			icon[:symbol] = StatusIconFonts.Rez.Strings.faHeartbeat;
 			if (icon[:color] == null) {
-				icon[:color] = HeartBeatPurpleColor;
+				icon[:color] = HeartBeatGreenColor;
 			}
 				
 			Icon.initialize(icon);
 		}
 		
-		const HeartBeatPurpleColor = 0xFF00FF;
+		const HeartBeatGreenColor = Gfx.COLOR_GREEN;
 		
 		function setStatusDefault() {
-			me.setColor(HeartBeatPurpleColor);
+			me.setColor(HeartBeatGreenColor);
 		}
 		
 		function setStatusOn() {
-			me.setColor(HeartBeatPurpleColor);
+			me.setColor(HeartBeatGreenColor);
 		}
 		
 		function setStatusOnDetailed() {
-			me.setColor(Gfx.COLOR_BLUE);
+			me.setColor(HeartBeatGreenColor);
 		}
 		
 		function setStatusOff() {
