@@ -6,17 +6,14 @@ module ScreenPicker {
 			icon[:font] = StatusIconFonts.fontAwesomeFreeSolid;			
 			icon[:symbol] = StatusIconFonts.Rez.Strings.faHeartbeat;
 			if (icon[:color] == null) {
-				icon[:color] = HeartBeatGreenColor;
+				icon[:color] = HeartBeatRedColor;
 			}
 				
 			Icon.initialize(icon);
 		}
 		
 		const HeartBeatGreenColor = Gfx.COLOR_GREEN;
-		
-		function setStatusDefault() {
-			me.setColor(HeartBeatGreenColor);
-		}
+		const HeartBeatRedColor = Gfx.COLOR_RED;
 		
 		function setStatusOn() {
 			me.setColor(HeartBeatGreenColor);

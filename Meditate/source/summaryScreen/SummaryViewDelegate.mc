@@ -129,30 +129,31 @@ class SummaryViewDelegate extends ScreenPicker.ScreenPickerDelegate {
 			
 	private function createDetailsPageStress() {
 		var details = new ScreenPicker.DetailsModel();
-		details.color = Gfx.COLOR_BLACK;
-        details.backgroundColor = Gfx.COLOR_WHITE;
-        details.title = Ui.loadResource(Rez.Strings.SummaryStress);
-        details.titleColor = Gfx.COLOR_BLACK;
+		details.title = Ui.loadResource(Rez.Strings.SummaryStress);
+
+		details.color = Gfx.COLOR_WHITE;
+        details.backgroundColor = Gfx.COLOR_BLACK;
+        details.titleColor = Gfx.COLOR_WHITE;
 
  		if (me.mSummaryModel.stressStart!=null && me.mSummaryModel.stressEnd!=null) {
 
 				var lowStressIcon = new ScreenPicker.StressIcon({});
     			lowStressIcon.setLowStress();	      
         		details.detailLines[3].icon = lowStressIcon;  
-				details.detailLines[3].value.color = Gfx.COLOR_BLACK;            
+				details.detailLines[3].value.color = Gfx.COLOR_WHITE;
 				details.detailLines[3].value.text = Lang.format(Ui.loadResource(Rez.Strings.SummaryStressStart), [me.mSummaryModel.stressStart.format("%d")]);
 
 				lowStressIcon = new ScreenPicker.StressIcon({});
     			lowStressIcon.setLowStress();	      
         		details.detailLines[4].icon = lowStressIcon;  
-				details.detailLines[4].value.color = Gfx.COLOR_BLACK;            
+				details.detailLines[4].value.color = Gfx.COLOR_WHITE;            
 				details.detailLines[4].value.text = Lang.format(Ui.loadResource(Rez.Strings.SummaryStressEnd), [me.mSummaryModel.stressEnd.format("%d")]);
 		}
 
     	var lowStressIcon = new ScreenPicker.StressIcon({});
     	lowStressIcon.setLowStress();	      
         details.detailLines[2].icon = lowStressIcon;  
-        details.detailLines[2].value.color = Gfx.COLOR_BLACK;            
+		details.detailLines[2].value.color = Gfx.COLOR_WHITE;   
         details.detailLines[2].value.text = Lang.format("$1$ %", [me.mSummaryModel.stress]);
                  
         var summaryStressIconsXPos = App.getApp().getProperty("summaryStressIconsXPos");
@@ -166,13 +167,14 @@ class SummaryViewDelegate extends ScreenPicker.ScreenPickerDelegate {
 	
 	private function createDetailsPageHrvRmssd() {
 		var details = new ScreenPicker.DetailsModel();
-		details.color = Gfx.COLOR_BLACK;
-        details.backgroundColor = Gfx.COLOR_WHITE;
-        details.title = Ui.loadResource(Rez.Strings.SummaryHRVRMSSD);
-        details.titleColor = Gfx.COLOR_BLACK;
-                             
+		details.title = Ui.loadResource(Rez.Strings.SummaryHRVRMSSD);
+
+		details.color = Gfx.COLOR_WHITE;
+        details.backgroundColor = Gfx.COLOR_BLACK;
+        details.titleColor = Gfx.COLOR_WHITE;
+
         details.detailLines[3].icon = new ScreenPicker.HrvIcon({});              
-        details.detailLines[3].value.color = Gfx.COLOR_BLACK;
+		details.detailLines[3].value.color = Gfx.COLOR_WHITE;
         details.detailLines[3].value.text = Lang.format("$1$ ms", [me.mSummaryModel.hrvRmssd]);
                  
         var hrvIconsXPos = App.getApp().getProperty("summaryHrvIconsXPos");
@@ -186,23 +188,24 @@ class SummaryViewDelegate extends ScreenPicker.ScreenPickerDelegate {
 	
 	private function createDetailsPageHrvPnnx() {
 		var details = new ScreenPicker.DetailsModel();
-		details.color = Gfx.COLOR_BLACK;
-        details.backgroundColor = Gfx.COLOR_WHITE;
-        details.title = Ui.loadResource(Rez.Strings.SummaryHRVpNNx);
-        details.titleColor = Gfx.COLOR_BLACK;
-                            
+		details.title = Ui.loadResource(Rez.Strings.SummaryHRVpNNx);
+
+		details.color = Gfx.COLOR_WHITE;
+        details.backgroundColor = Gfx.COLOR_BLACK;
+        details.titleColor = Gfx.COLOR_WHITE;
+
         var hrvIcon = new ScreenPicker.HrvIcon({});            
         details.detailLines[2].icon = hrvIcon;      
-        details.detailLines[2].value.color = Gfx.COLOR_BLACK;        
+        details.detailLines[2].value.color = Gfx.COLOR_WHITE;        
         details.detailLines[2].value.text = "pNN20";
         
-        details.detailLines[3].value.color = Gfx.COLOR_BLACK;
+		details.detailLines[3].value.color = Gfx.COLOR_WHITE;
         details.detailLines[3].value.text = Lang.format("$1$ %", [me.mSummaryModel.hrvPnn20]);
         
     	details.detailLines[4].icon = hrvIcon;
-    	details.detailLines[4].value.color = Gfx.COLOR_BLACK;
+		details.detailLines[4].value.color = Gfx.COLOR_WHITE;
         details.detailLines[4].value.text = "pNN50";
-        details.detailLines[5].value.color = Gfx.COLOR_BLACK;
+		details.detailLines[5].value.color = Gfx.COLOR_WHITE;
         details.detailLines[5].value.text = Lang.format("$1$ %", [me.mSummaryModel.hrvPnn50]);  
          
         var hrvIconsXPos = App.getApp().getProperty("summaryHrvIconsXPos");
@@ -216,23 +219,24 @@ class SummaryViewDelegate extends ScreenPicker.ScreenPickerDelegate {
 	
 	private function createDetailsPageHrvSdrr() {
 		var details = new ScreenPicker.DetailsModel();
-		details.color = Gfx.COLOR_BLACK;
-        details.backgroundColor = Gfx.COLOR_WHITE;
-        details.title = Ui.loadResource(Rez.Strings.SummaryHRVSDRR);
-        details.titleColor = Gfx.COLOR_BLACK;
+		details.title = Ui.loadResource(Rez.Strings.SummaryHRVSDRR);
+
+		details.color = Gfx.COLOR_WHITE;
+        details.backgroundColor = Gfx.COLOR_BLACK;
+        details.titleColor = Gfx.COLOR_WHITE;
                         
         var hrvIcon = new ScreenPicker.HrvIcon({});            
         details.detailLines[2].icon = hrvIcon;      
-        details.detailLines[2].value.color = Gfx.COLOR_BLACK;        
+		details.detailLines[2].value.color = Gfx.COLOR_WHITE;        
         details.detailLines[2].value.text = Ui.loadResource(Rez.Strings.SummaryHRVRMSSDFirst5min);
         
-        details.detailLines[3].value.color = Gfx.COLOR_BLACK;
+		details.detailLines[3].value.color = Gfx.COLOR_WHITE;
         details.detailLines[3].value.text = Lang.format("$1$ ms", [me.mSummaryModel.hrvFirst5Min]);
         
     	details.detailLines[4].icon = hrvIcon;
-    	details.detailLines[4].value.color = Gfx.COLOR_BLACK;
+		details.detailLines[4].value.color = Gfx.COLOR_WHITE;
         details.detailLines[4].value.text = Ui.loadResource(Rez.Strings.SummaryHRVRMSSDLast5min);
-        details.detailLines[5].value.color = Gfx.COLOR_BLACK;
+		details.detailLines[5].value.color = Gfx.COLOR_WHITE;
         details.detailLines[5].value.text = Lang.format("$1$ ms", [me.mSummaryModel.hrvLast5Min]);  
          
         var hrvIconsXPos = App.getApp().getProperty("summaryHrvIconsXPos");

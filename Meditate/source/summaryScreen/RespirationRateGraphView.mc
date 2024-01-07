@@ -24,7 +24,7 @@ class RespirationRateGraphView extends ScreenPicker.ScreenPickerView  {
     function onUpdate(dc) {    
 
 		// Clear the screen
-		dc.setColor(Gfx.COLOR_TRANSPARENT, Gfx.COLOR_WHITE);  
+		dc.setColor(Gfx.COLOR_TRANSPARENT, Gfx.COLOR_BLACK);
         dc.clear();
     	ScreenPickerView.onUpdate(dc);
 
@@ -51,7 +51,7 @@ class RespirationRateGraphView extends ScreenPicker.ScreenPickerView  {
 			me.summaryModel.avgRr = "--";
 		}
 		
-		dc.setColor(Gfx.COLOR_BLACK, Graphics.COLOR_TRANSPARENT);
+		dc.setColor(Gfx.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
 
 		// Draw title text
 		dc.drawText(centerX, 
@@ -178,8 +178,7 @@ class RespirationRateGraphView extends ScreenPicker.ScreenPickerView  {
 
 		// Draw lines and labels 
 		dc.setPenWidth(1);
-		dc.setColor(Gfx.COLOR_BLACK, Graphics.COLOR_TRANSPARENT);
-
+		dc.setColor(Gfx.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
 
 		var lineSpacing = graph_height / numberHorizontalLines;
 
