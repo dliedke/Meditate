@@ -70,13 +70,13 @@
     <string id="menuMultiSessionOptions_yes">Sim</string>
     <string id="menuMultiSessionOptions_no">Não (Padrão)</string>
     
-    <string id="menuRespirationRateOptions_title">Taxa de Respiração</string>    
+    <string id="menuRespirationRateOptions_title">Respiração</string>    
     <string id="menuRespirationRateOptions_on">Lig. (Padrão)</string>
     <string id="menuRespirationRateOptions_off">Deslig.</string>
 
     <string id="menuAutoStopOptions_title">Parada Auto</string>
     <string id="menuAutoStopOptions_on">Lig. (Padrão)</string>
-    <string id="menuAutoStopOptions_off">Deslig.</string>
+    <string id="menuAutoStopOptions_off">Desl.</string>
 
     <string id="menuPrepareTimeOptions_title">Preparação</string>    
     <string id="menuFinalizeTimeOptions_title">Finalização</string>    
@@ -155,7 +155,7 @@
     <string id="HRVready">VFC Pronto</string>
     <string id="HRVoff">VFC Deslig.</string>
 
-    <string id="about_AppVersion">Meditate 6.6.0</string>
+    <string id="about_AppVersion">Meditate 6.7.0</string>
     <string id="about_vtrifonov">   vtrifonov</string>
     <string id="about_dliedke">     dliedke</string>
 

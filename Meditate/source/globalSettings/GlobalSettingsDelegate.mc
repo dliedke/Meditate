@@ -60,8 +60,38 @@ class GlobalSettingsDelegate extends ScreenPicker.ScreenPickerDelegate {
         details.titleColor = Gfx.COLOR_WHITE;
         details.color = Gfx.COLOR_WHITE;
         details.backgroundColor = Gfx.COLOR_BLACK;
-        		
-		// HRV settings
+
+		// Auto stop settings
+        var autoStopSetting = "";
+        var autoStop = GlobalSettings.loadAutoStop();
+    	
+        if (autoStop == AutoStop.On) {
+
+			// In order to avoid the (default) text in string "menuAutoStopOptions_on"
+	        autoStopSetting = Ui.loadResource(Rez.Strings.menuHrvTrackingOptions_on); 
+
+			details.detailLines[1].icon = new ScreenPicker.Icon({        
+	        	:font => StatusIconFonts.fontAwesomeFreeSolid,
+	        	:symbol => StatusIconFonts.Rez.Strings.faRepeatSession,
+				:color => Gfx.COLOR_RED
+	        });	
+        }
+        if (autoStop == AutoStop.Off) {
+	        autoStopSetting = Ui.loadResource(Rez.Strings.menuAutoStopOptions_off);
+
+			details.detailLines[1].icon = new ScreenPicker.Icon({        
+	        	:font => StatusIconFonts.fontAwesomeFreeSolid,
+	        	:symbol => StatusIconFonts.Rez.Strings.faRepeatSession,
+				:color => Gfx.COLOR_GREEN
+	        });	
+        }
+
+		var autoStopTitle = Ui.loadResource(Rez.Strings.menuAutoStopOptions_title);
+        details.detailLines[1].value.text = autoStopTitle + ": " + autoStopSetting;
+		
+
+		// HRV settings (not enough screen space for everything)
+		/*
 	    details.detailLines[1].icon = new ScreenPicker.HrvIcon({});
 	    var hrvTrackingSetting;
 	    var hrvTracking = GlobalSettings.loadHrvTracking();
@@ -75,6 +105,7 @@ class GlobalSettingsDelegate extends ScreenPicker.ScreenPickerDelegate {
 			hrvTrackingSetting = Ui.loadResource(Rez.Strings.menuNewHrvTrackingOptions_off);
 		}
 		details.detailLines[1].value.text = "HRV: " +  hrvTrackingSetting; 	
+		*/
 		
 		// Confirm save activity settings
 		var confirmSaveSetting = "";		
@@ -104,7 +135,8 @@ class GlobalSettingsDelegate extends ScreenPicker.ScreenPickerDelegate {
         }
         details.detailLines[2].value.text = Ui.loadResource(Rez.Strings.menuGlobalSettings_save) + confirmSaveSetting;
         
-		// Multi-session settings
+		// Multi-session settings (not enough screen space for everything)
+		/*
         var multiSessionSetting = "";
         var multiSession = GlobalSettings.loadMultiSession();
     	details.detailLines[3].icon = new ScreenPicker.Icon({        
@@ -118,11 +150,10 @@ class GlobalSettingsDelegate extends ScreenPicker.ScreenPickerDelegate {
 	        multiSessionSetting = Ui.loadResource(Rez.Strings.menuGlobalSettings_singleSession);
         }
         details.detailLines[3].value.text = multiSessionSetting;
-        
-		
+		*/
 
 		// Preparation time settings
-        details.detailLines[4].icon = new ScreenPicker.Icon({        
+        details.detailLines[3].icon = new ScreenPicker.Icon({        
 	        	:font => StatusIconFonts.fontAwesomeFreeRegular,
         	    :symbol => StatusIconFonts.Rez.Strings.faClock
 	        });	
@@ -133,7 +164,22 @@ class GlobalSettingsDelegate extends ScreenPicker.ScreenPickerDelegate {
 		var seconds = prepareTimeSeconds % 60;
 
 		// Set the text with the remaining time in the format M:SS
-		details.detailLines[4].value.text = Ui.loadResource(Rez.Strings.menuPrepareTimeOptions_title) + ": " + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+		details.detailLines[3].value.text = Ui.loadResource(Rez.Strings.menuPrepareTimeOptions_title) + ": " + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+
+
+		// Finalize time settings
+        details.detailLines[4].icon = new ScreenPicker.Icon({        
+	        	:font => StatusIconFonts.fontAwesomeFreeRegular,
+        	    :symbol => StatusIconFonts.Rez.Strings.faClock
+	        });	
+
+		// Calculate minutes and seconds from the loaded prepare time
+		var finalizeTimeSeconds = GlobalSettings.loadFinalizeTime();
+		minutes = finalizeTimeSeconds / 60;
+		seconds = finalizeTimeSeconds % 60;
+
+		// Set the text with the remaining time in the format M:SS
+		details.detailLines[4].value.text = Ui.loadResource(Rez.Strings.menuFinalizeTimeOptions_title) + ": " + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
 
 
 		// New Activity type settings

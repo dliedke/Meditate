@@ -104,6 +104,9 @@ class GlobalSettingsMenuDelegate extends Ui.MenuInputDelegate {
 		else if (item == :time_30s) {
 			GlobalSettings.savePrepareTime(30);
 		}
+		else if (item == :time_45s) {
+			GlobalSettings.savePrepareTime(45);
+		}
 		else if (item == :time_1m) {
 			GlobalSettings.savePrepareTime(60);
 		}
@@ -131,6 +134,9 @@ class GlobalSettingsMenuDelegate extends Ui.MenuInputDelegate {
 		}
 		else if (item == :time_30s) {
 			GlobalSettings.saveFinalizeTime(30);
+		}
+		else if (item == :time_45s) {
+			GlobalSettings.saveFinalizeTime(45);
 		}
 		else if (item == :time_1m) {
 			GlobalSettings.saveFinalizeTime(60);

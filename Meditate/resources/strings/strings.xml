@@ -70,7 +70,7 @@
     <string id="menuMultiSessionOptions_yes">Yes</string>
     <string id="menuMultiSessionOptions_no">No (Default)</string>
     
-    <string id="menuRespirationRateOptions_title">Respiration Rate</string>    
+    <string id="menuRespirationRateOptions_title">Respiration</string>    
     <string id="menuRespirationRateOptions_on">On (Default)</string>
     <string id="menuRespirationRateOptions_off">Off</string>
 
@@ -154,7 +154,7 @@
     <string id="HRVready">HRV Ready</string>
     <string id="HRVoff">HRV off</string>
 
-    <string id="about_AppVersion">Meditate 6.6.0</string>
+    <string id="about_AppVersion">Meditate 6.7.0</string>
     <string id="about_vtrifonov">   vtrifonov</string>
     <string id="about_dliedke">     dliedke</string>
     

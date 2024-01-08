@@ -37,7 +37,7 @@
     <string id="menuGlobalSettings_prepareTime">Vorb.-Zeit</string>
     <string id="menuGlobalSettings_finalizeTime">Abschl.-Zeit</string>
     <string id="menuGlobalSettings_respiration">Atmung: </string>
-    <string id="menuGlobalSettings_save">Speichern: </string>
+    <string id="menuGlobalSettings_save">Speich.: </string>
     
     <string id="menuNewActivityTypeOptions_title">Aktivität</string>    
     <string id="menuNewActivityTypeOptions_yoga">Yoga</string>
@@ -62,8 +62,8 @@
     
     <string id="menuConfirmSaveActivityOptions_title">Speich. best.</string>
     <string id="menuConfirmSaveActivityOptions_ask">Fragen (Standard)</string>
-    <string id="menuConfirmSaveActivityOptions_autoYes">Automatisch Ja</string>
-    <string id="menuConfirmSaveActivityOptions_autoNo">Automatisch Nein</string>
+    <string id="menuConfirmSaveActivityOptions_autoYes">Auto Ja</string>
+    <string id="menuConfirmSaveActivityOptions_autoNo">Auto Nein</string>
     <string id="menuConfirmSaveActivityOptions_askSimple">Fragen</string>
     
     <string id="menuMultiSessionOptions_title">Mehr. Sitz.</string>
@@ -154,7 +154,7 @@
     <string id="HRVready">HRV Bereit</string>
     <string id="HRVoff">HRV aus</string>
 
-    <string id="about_AppVersion">Meditate 6.6.0</string>
+    <string id="about_AppVersion">Meditate 6.7.0</string>
     <string id="about_vtrifonov">   vtrifonov</string>
     <string id="about_dliedke">     dliedke</string>
 
