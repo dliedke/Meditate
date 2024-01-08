@@ -5,8 +5,8 @@ A Garmin Connect IQ meditation app that tracks as an activity the heart rate, HR
 ## Features
 
 - ability to save the meditation session as Garmin Connect activity
-    - activity type **Meditating** or **Yoga**
-- ability to configure multiple meditation/yoga sessions
+    - activity type **Meditating** **Yoga** or **Breathwork**
+- ability to configure multiple meditation/yoga/breathwork sessions
     - e.g. a 20 min session with 1 min recurring alerts, triggering a different alert on the 10th minute
     - each session supports interval vibration alerts
     - interval alerts can trigger from a few seconds up to few hours
@@ -32,6 +32,7 @@ A Garmin Connect IQ meditation app that tracks as an activity the heart rate, HR
 - respiration rate
     - Breathes per minute real time in watches that supports it (only works fine for Yoga activity due to bug in Connect IQ API for Breathing activity)
 - configurable preparation time before the meditation session
+- configurable finalization time after the meditation session
 - summary stats at the end of the session
     - Heart rate chart including min, avg and max HR
     - Respiration rate chart including min, avg and max estimated respiration rate
