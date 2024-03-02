@@ -1,4 +1,5 @@
 <menu id="globalSettingsMenu" title="@Strings.menuGlobalSettings_title">
+    <menu-item id="resultsTheme" label="@Strings.menuGlobalSettings_resultsTheme" />
     <menu-item id="autoStop" label="@Strings.menuGlobalSettings_autoStop" />
     <menu-item id="confirmSaveActivity" label="@Strings.menuGlobalSettings_confirmSaveActivity" />
     <menu-item id="prepareTime" label="@Strings.menuGlobalSettings_prepareTime" />

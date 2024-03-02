@@ -34,6 +34,7 @@
     <string id="menuGlobalSettings_singleSession">Single session</string>
     <string id="menuGlobalSettings_respirationRate">Respiration Rate</string>
     <string id="menuGlobalSettings_autoStop">Auto Stop</string>
+    <string id="menuGlobalSettings_resultsTheme">Results Theme</string>
     <string id="menuGlobalSettings_prepareTime">Prepare Time</string>
     <string id="menuGlobalSettings_finalizeTime">Finalize Time</string>
     <string id="menuGlobalSettings_respiration">Respiration: </string>
@@ -77,6 +78,10 @@
     <string id="menuAutoStopOptions_title">Auto Stop</string>    
     <string id="menuAutoStopOptions_on">On (Default)</string>
     <string id="menuAutoStopOptions_off">Off</string>
+
+    <string id="menuResultsThemeOptions_title">Results</string>    
+    <string id="menuResultsThemeOptions_light">Light (Default)</string>
+    <string id="menuResultsThemeOptions_dark">Dark</string>
 
     <string id="menuPrepareTimeOptions_title">Preparation</string>    
     <string id="menuFinalizeTimeOptions_title">Finalization</string>    
@@ -154,7 +159,7 @@
     <string id="HRVready">HRV Ready</string>
     <string id="HRVoff">HRV off</string>
 
-    <string id="about_AppVersion">Meditate 6.7.0</string>
+    <string id="about_AppVersion">Meditate 6.8.0</string>
     <string id="about_vtrifonov">   vtrifonov</string>
     <string id="about_dliedke">     dliedke</string>
     

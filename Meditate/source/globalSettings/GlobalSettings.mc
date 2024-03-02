@@ -85,7 +85,7 @@ class GlobalSettings {
 	static function loadAutoStop() {
 		var autoStop = App.Storage.getValue(AutoStopKey);
 		if (autoStop == null) {
-			return AutoStop.On; // Assuming 'On' is a valid default value for AutoStop
+			return AutoStop.On; // 'On' the default value for AutoStop
 		}
 		else {
 			return autoStop;
@@ -94,6 +94,22 @@ class GlobalSettings {
 
 	static function saveAutoStop(autoStop) {
 		App.Storage.setValue(AutoStopKey, autoStop);
+	}
+
+	private static const ResultsThemeKey = "globalSettings_resultsTheme";
+
+	static function loadResultsTheme() {
+		var resultsTheme = App.Storage.getValue(ResultsThemeKey);
+		if (resultsTheme == null) {
+			return ResultsTheme.Light; // 'Light' is the default value for Results Theme
+		}
+		else {
+			return resultsTheme;
+		}
+	}
+
+	static function saveResultsTheme(resultsTheme) {
+		App.Storage.setValue(ResultsThemeKey, resultsTheme);
 	}
 
 	private static const PrepareTimeKey = "globalSettings_prapareTime";
@@ -157,5 +173,12 @@ module AutoStop {
 	enum {
 		Off = 0,
 		On = 1
+	}
+}
+
+module ResultsTheme {
+	enum {
+		Light = 0,
+		Dark = 1
 	}
 }

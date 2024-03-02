@@ -49,6 +49,10 @@ class GlobalSettingsMenuDelegate extends Ui.MenuInputDelegate {
 			var autoStopDelegate = new MenuOptionsDelegate(method(:onAutoStopPicked));
 			Ui.pushView(new Rez.Menus.autoStopOptionMenu(), autoStopDelegate, Ui.SLIDE_LEFT);
 		}
+		else if (item ==:resultsTheme) {
+			var resultsDelegate = new MenuOptionsDelegate(method(:onResultsPicked));
+			Ui.pushView(new Rez.Menus.resultsThemeOptionsMenu(), resultsDelegate, Ui.SLIDE_LEFT);
+		}
 	}
 	
 	function onConfirmSaveActivityPicked(item) {
@@ -90,6 +94,16 @@ class GlobalSettingsMenuDelegate extends Ui.MenuInputDelegate {
 		}
 		else if (item == :off) {
 			GlobalSettings.saveAutoStop(AutoStop.Off);
+		}
+		mOnGlobalSettingsChanged.invoke();
+	}
+
+	function onResultsPicked(item) {
+		if (item == :Light) {
+			GlobalSettings.saveResultsTheme(ResultsTheme.Light);
+		}
+		else if (item == :Dark) {
+			GlobalSettings.saveResultsTheme(ResultsTheme.Dark);
 		}
 		mOnGlobalSettingsChanged.invoke();
 	}

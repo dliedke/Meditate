@@ -14,17 +14,29 @@ class HeartRateGraphView extends ScreenPicker.ScreenPickerView  {
 	var centerX;
 	var centerY;
 	var summaryModel;
+	var resultsTheme;
 
     function initialize(summaryModel) {
     	ScreenPickerView.initialize(Gfx.COLOR_BLACK);
 		me.summaryModel = summaryModel;
+		resultsTheme = GlobalSettings.loadResultsTheme();
     }
 	
     // Update the view
     function onUpdate(dc) {    
 
+		// Light results theme
+		var backgroundColor = Gfx.COLOR_WHITE;
+		var foregroundColor = Gfx.COLOR_BLACK;
+
+		// Dark results theme
+		if (resultsTheme == ResultsTheme.Dark) {
+			backgroundColor = Gfx.COLOR_BLACK;
+			foregroundColor = Gfx.COLOR_WHITE;
+		}
+
 		// Clear the screen
-		dc.setColor(Gfx.COLOR_TRANSPARENT, Gfx.COLOR_BLACK);  
+		dc.setColor(Gfx.COLOR_TRANSPARENT, backgroundColor);  
         dc.clear();
     	ScreenPickerView.onUpdate(dc);
 
@@ -51,7 +63,7 @@ class HeartRateGraphView extends ScreenPicker.ScreenPickerView  {
 			me.summaryModel.avgHr = "--";
 		}
 		
-		dc.setColor(Gfx.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+		dc.setColor(foregroundColor, Graphics.COLOR_TRANSPARENT);
 
 		// Draw title text
 		dc.drawText(centerX, 
@@ -166,7 +178,7 @@ class HeartRateGraphView extends ScreenPicker.ScreenPickerView  {
 
 		// Draw lines and labels 
 		dc.setPenWidth(1);
-		dc.setColor(Gfx.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+		dc.setColor(foregroundColor, Graphics.COLOR_TRANSPARENT);
 
 		var lineSpacing = graph_height / 4;
 

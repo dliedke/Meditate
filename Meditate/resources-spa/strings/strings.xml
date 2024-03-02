@@ -34,6 +34,7 @@
     <string id="menuGlobalSettings_singleSession">Sesión Única</string>
     <string id="menuGlobalSettings_respirationRate">Tasa Respiración</string>
     <string id="menuGlobalSettings_autoStop">Parada Auto</string>
+    <string id="menuGlobalSettings_resultsTheme">Tema de Resultados</string>
     <string id="menuGlobalSettings_prepareTime">Tiempo Preparación</string>
     <string id="menuGlobalSettings_finalizeTime">Tiempo Finalización</string>
     <string id="menuGlobalSettings_respiration">Respiración: </string>
@@ -77,6 +78,10 @@
     <string id="menuAutoStopOptions_title">Parada Auto</string>
     <string id="menuAutoStopOptions_on">Activ. (Predet.)</string>
     <string id="menuAutoStopOptions_off">Des.</string>
+
+    <string id="menuResultsThemeOptions_title">Resultados</string>    
+    <string id="menuResultsThemeOptions_light">Claro (Predeterminado)</string>
+    <string id="menuResultsThemeOptions_dark">Oscuro</string>
 
     <string id="menuPrepareTimeOptions_title">Preparación</string>
     <string id="menuFinalizeTimeOptions_title">Finalización</string>
@@ -154,7 +159,7 @@
     <string id="HRVready">HRV Listo</string>
     <string id="HRVoff">HRV apagado</string>
 
-    <string id="about_AppVersion">Meditate 6.7.0</string>
+    <string id="about_AppVersion">Meditate 6.8.0</string>
     <string id="about_vtrifonov">   vtrifonov</string>
     <string id="about_dliedke">     dliedke</string>
 
