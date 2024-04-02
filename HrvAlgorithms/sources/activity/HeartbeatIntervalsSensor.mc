@@ -8,7 +8,7 @@ module HrvAlgorithms {
 			me.enableHrSensor();
 		}
 		
-		private function enableHrSensor() {		
+		function enableHrSensor() {		
 			Sensor.setEnabledSensors([Sensor.SENSOR_HEARTRATE]);
 		}
 
