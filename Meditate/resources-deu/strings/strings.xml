@@ -41,8 +41,8 @@
     <string id="menuGlobalSettings_save">Speich.: </string>
     
     <string id="menuNewActivityTypeOptions_title">Aktivität</string>    
-    <string id="menuNewActivityTypeOptions_yoga">Yoga</string>
     <string id="menuNewActivityTypeOptions_meditating">Meditieren</string>
+    <string id="menuNewActivityTypeOptions_yoga">Yoga</string>
     <string id="menuNewActivityTypeOptions_breathing">Atmen</string>
         
     <string id="activityTypeMenu_title">Aktivitätstyp</string>    
@@ -159,7 +159,7 @@
     <string id="HRVready">HRV Bereit</string>
     <string id="HRVoff">HRV aus</string>
 
-    <string id="about_AppVersion">Meditate 7.1.0</string>
+    <string id="about_AppVersion">Meditate 7.2.0</string>
     <string id="about_vtrifonov">   vtrifonov</string>
     <string id="about_dliedke">     dliedke</string>
 

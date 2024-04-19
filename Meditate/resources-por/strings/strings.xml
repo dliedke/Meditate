@@ -41,8 +41,8 @@
     <string id="menuGlobalSettings_save">Salvar: </string>
     
     <string id="menuNewActivityTypeOptions_title">Atividade</string>    
-    <string id="menuNewActivityTypeOptions_yoga">Yoga</string>
     <string id="menuNewActivityTypeOptions_meditating">Meditação</string>
+    <string id="menuNewActivityTypeOptions_yoga">Yoga</string>
     <string id="menuNewActivityTypeOptions_breathing">Respiração</string>
         
     <string id="activityTypeMenu_title">Atividade</string>    
@@ -160,7 +160,7 @@
     <string id="HRVready">VFC Pronto</string>
     <string id="HRVoff">VFC Deslig.</string>
 
-    <string id="about_AppVersion">Meditate 7.1.0</string>
+    <string id="about_AppVersion">Meditate 7.2.0</string>
     <string id="about_vtrifonov">   vtrifonov</string>
     <string id="about_dliedke">     dliedke</string>
 

@@ -21,7 +21,7 @@ class GlobalSettings {
 	static function loadActivityType() {
 		var activityType = App.Storage.getValue(ActivityTypeKey);
 		if (activityType == null) {
-			return ActivityType.Yoga;
+			return ActivityType.Meditating;
 		}
 		else {
 			return activityType;
