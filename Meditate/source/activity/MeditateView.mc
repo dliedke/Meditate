@@ -205,10 +205,17 @@ class MeditateView extends Ui.View {
         var alarmTime = me.mMeditateModel.getSessionTime();
 		var elapsedTime = me.mMeditateModel.elapsedTime;
 
+		// Fix issues with OLED screens for prepare time 45 seconds
+		if (elapsedTime <= 1)
+		{
+			Attention.backlight(false);
+		}
+
 		// Enable backlight in the first 8 seconds then turn off to save battery
-		if (elapsedTime <= 8) {
+		if (elapsedTime > 1 && elapsedTime <= 8) {
 			Attention.backlight(true);
 		}
+
 		if (elapsedTime == 9) {
 			Attention.backlight(false);
 		}
