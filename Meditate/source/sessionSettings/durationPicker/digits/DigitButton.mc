@@ -8,7 +8,12 @@ class DigitButton extends Ui.Button {
 		me.mX = x;
 		me.mY = y;		
 		me.mFontDigits = fontDigits;				
-        me.mSize = 40;
+        
+		// Get the device's screen size
+    	var screenSize = System.getDeviceSettings().screenWidth;
+
+    	// Set mSize based on screen size
+    	me.mSize = (screenSize > 260) ? 80 : 40;
 			
         var options = {
             :stateDefault => Gfx.COLOR_TRANSPARENT,

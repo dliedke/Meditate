@@ -12,8 +12,13 @@ class DigitsLayout {
 		
 		me.digitsLayout = new[DigitsInputCount + digitsOutputLayout.size() + 1];				
 		me.mFontDigits = Ui.loadResource(Rez.Fonts.fontDigits);
-								
-		var digitSize = 40;
+
+		// Get the device's screen size
+    	var screenSize = System.getDeviceSettings().screenWidth;
+
+    	// Set digitSize based on screen size
+    	var digitSize = (screenSize > 260) ? 60 : 40;
+
 		var digitCirclePos = new DigitCirclePosition(dcWidth, dcHeight, digitSize);
 		
 		for (var digit = 0; digit < DigitsInputCount; digit++) {
