@@ -2,6 +2,13 @@ using Toybox.Attention;
 
 class Vibe {
 	static function vibrate(pattern) {
+
+		// Check if notifications are enabled, if not return
+		var notificationsEnabled = GlobalSettings.loadNotification();
+		if (notificationsEnabled == Notification.Off) {
+			return;
+		}
+
 		var vibeProfile;
 		switch (pattern) {
 			case VibePattern.LongContinuous:

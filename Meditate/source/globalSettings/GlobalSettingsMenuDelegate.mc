@@ -49,6 +49,10 @@ class GlobalSettingsMenuDelegate extends Ui.MenuInputDelegate {
 			var autoStopDelegate = new MenuOptionsDelegate(method(:onAutoStopPicked));
 			Ui.pushView(new Rez.Menus.autoStopOptionMenu(), autoStopDelegate, Ui.SLIDE_LEFT);
 		}
+		else if (item == :notification) {
+		    var notificationDelegate = new MenuOptionsDelegate(method(:onNotificationPicked));
+    		Ui.pushView(new Rez.Menus.notificationOptionMenu(), notificationDelegate, Ui.SLIDE_LEFT);
+		}
 		else if (item ==:resultsTheme) {
 			var resultsDelegate = new MenuOptionsDelegate(method(:onResultsPicked));
 			Ui.pushView(new Rez.Menus.resultsThemeOptionsMenu(), resultsDelegate, Ui.SLIDE_LEFT);
@@ -94,6 +98,16 @@ class GlobalSettingsMenuDelegate extends Ui.MenuInputDelegate {
 		}
 		else if (item == :off) {
 			GlobalSettings.saveAutoStop(AutoStop.Off);
+		}
+		mOnGlobalSettingsChanged.invoke();
+	}
+
+	function onNotificationPicked(item) {
+		if (item == :on) {
+			GlobalSettings.saveNotification(Notification.On);
+		}
+		else if (item == :off) {
+			GlobalSettings.saveNotification(Notification.Off);
 		}
 		mOnGlobalSettingsChanged.invoke();
 	}

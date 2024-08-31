@@ -94,7 +94,11 @@
     <string id="menuPrepareTimeOptions_3m">3 Min</string>
     <string id="menuPrepareTimeOptions_4m">4 Min</string>
     <string id="menuPrepareTimeOptions_5m">5 Min</string>
-    
+
+    <string id="menuNotificationOptions_title">Benachrichtigungen</string>
+    <string id="menuNotificationOptions_on">Ein (Standard)</string>
+    <string id="menuNotificationOptions_off">Aus</string>
+
     <string id="menuIntervalAlertSettings_Title">Intervall-Alerts</string>
     <string id="menuIntervalAlertSettings_addNew">Neu hinzufügen</string>
     <string id="menuIntervalAlertSettings_edit">Bearbeiten</string>
@@ -159,7 +163,7 @@
     <string id="HRVready">HRV Bereit</string>
     <string id="HRVoff">HRV aus</string>
 
-    <string id="about_AppVersion">Meditate 8.0.0</string>
+    <string id="about_AppVersion">Meditate 8.1.0</string>
     <string id="about_vtrifonov">   vtrifonov</string>
     <string id="about_dliedke">     dliedke</string>
 

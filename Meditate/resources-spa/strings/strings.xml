@@ -80,7 +80,7 @@
     <string id="menuAutoStopOptions_off">Des.</string>
 
     <string id="menuResultsThemeOptions_title">Resultados</string>    
-    <string id="menuResultsThemeOptions_light">Claro (Predeterminado)</string>
+    <string id="menuResultsThemeOptions_light">Claro (Predet.)</string>
     <string id="menuResultsThemeOptions_dark">Oscuro</string>
 
     <string id="menuPrepareTimeOptions_title">Preparación</string>
@@ -94,6 +94,10 @@
     <string id="menuPrepareTimeOptions_3m">3 min</string>
     <string id="menuPrepareTimeOptions_4m">4 min</string>
     <string id="menuPrepareTimeOptions_5m">5 min</string>
+
+    <string id="menuNotificationOptions_title">Notificaciones</string>
+    <string id="menuNotificationOptions_on">Activado (Predet.)</string>
+    <string id="menuNotificationOptions_off">Desactivado</string>
 
     <string id="menuIntervalAlertSettings_Title">Alertas Intervalo</string>
     <string id="menuIntervalAlertSettings_addNew">Agregar Nueva</string>
@@ -159,7 +163,7 @@
     <string id="HRVready">HRV Listo</string>
     <string id="HRVoff">HRV apagado</string>
 
-    <string id="about_AppVersion">Meditate 8.0.0</string>
+    <string id="about_AppVersion">Meditate 8.1.0</string>
     <string id="about_vtrifonov">   vtrifonov</string>
     <string id="about_dliedke">     dliedke</string>
 

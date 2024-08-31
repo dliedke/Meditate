@@ -96,6 +96,22 @@ class GlobalSettings {
 		App.Storage.setValue(AutoStopKey, autoStop);
 	}
 
+	private static const NotificationKey = "globalSettings_notification";
+
+	static function loadNotification() {
+		var notification = App.Storage.getValue(NotificationKey);
+		if (notification == null) {
+			return Notification.On; // 'On' is the default value for Notification
+		} else {
+			return notification;
+		}
+	}
+
+	static function saveNotification(notification) {
+		App.Storage.setValue(NotificationKey, notification);
+	}
+
+
 	private static const ResultsThemeKey = "globalSettings_resultsTheme";
 
 	static function loadResultsTheme() {
@@ -170,6 +186,13 @@ module RespirationRate {
 }
 
 module AutoStop {
+	enum {
+		Off = 0,
+		On = 1
+	}
+}
+
+module Notification {
 	enum {
 		Off = 0,
 		On = 1
