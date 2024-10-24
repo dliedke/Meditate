@@ -46,8 +46,9 @@ class AboutDelegate extends ScreenPicker.ScreenPickerDelegate {
 
 		// Application version and developers
 		details.detailLines[2].value.text = Ui.loadResource(Rez.Strings.about_AppVersion);
-		details.detailLines[4].value.text = Ui.loadResource(Rez.Strings.about_vtrifonov);
-		details.detailLines[5].value.text = Ui.loadResource(Rez.Strings.about_dliedke);
+		details.detailLines[3].value.text = Ui.loadResource(Rez.Strings.about_vtrifonov);
+		details.detailLines[4].value.text = Ui.loadResource(Rez.Strings.about_dliedke);
+		details.detailLines[5].value.text = Ui.loadResource(Rez.Strings.about_falsetru);
 		
         details.setAllLinesYOffset(me.mGlobalSettingsLinesYOffset);
         details.setAllIconsXPos(me.mGlobalSettingsIconsXPos);

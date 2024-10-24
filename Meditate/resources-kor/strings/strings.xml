@@ -34,7 +34,7 @@
 	<string id="menuGlobalSettings_singleSession">단일 세션</string>
 	<string id="menuGlobalSettings_respirationRate">호흡 수</string>
 	<string id="menuGlobalSettings_autoStop">자동 중단</string>
-	<string id="menuGlobalSettings_resultsTheme">Results Theme</string>
+	<string id="menuGlobalSettings_resultsTheme">결과 테마</string>
 	<string id="menuGlobalSettings_prepareTime">준비 시간</string>
 	<string id="menuGlobalSettings_finalizeTime">마무리 시간</string>
 	<string id="menuGlobalSettings_respiration">호흡: </string>
@@ -163,8 +163,10 @@
 	<string id="HRVready">HRV 준비됨</string>
 	<string id="HRVoff">HRV 꺼짐</string>
 
-	<string id="about_AppVersion">Meditate 8.3.0</string>
-	<string id="about_vtrifonov">	vtrifonov</string>
-	<string id="about_dliedke">		dliedke</string>
-	
+	<string id="about_AppVersion">Meditate 8.4.0</string>
+    <string id="about_vtrifonov">   vtrifonov</string>
+    <string id="about_dliedke">   dliedke</string>
+    <string id="about_falsetru">   falsetru</string>
+
+
 </strings>
