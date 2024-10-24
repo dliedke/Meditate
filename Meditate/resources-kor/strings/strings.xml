@@ -1,0 +1,170 @@
+<strings>
+	<string id="AppName">명상</string>
+	<string id="ConfirmSaveHeader">저장하시겠습니까?</string>
+	<string id="confirmDeleteSessionHeader">삭제하시겠습니까?</string>
+	<string id="confirmDeleteAllIntervalAlertsHeader">모든 알림을 제거합니까?</string>
+	
+	<string id="SummaryTitle">요약</string>
+	<string id="SummaryHR">심박</string>
+	<string id="SummaryStress">스트레스</string>
+	<string id="SummaryStressStart">시작 스트레스: $1$</string>
+	<string id="SummaryStressEnd">종료시 스트레스: $1$</string>
+	<string id="SummaryRespiration">호흡수</string>
+	<string id="SummaryRespirationMin">최소:</string>
+	<string id="SummaryRespirationAvg">평균:</string>
+	<string id="SummaryRespirationMax">최대:</string>
+	<string id="SummaryHRVRMSSD">HRV RMSSD</string>
+	<string id="SummaryHRVpNNx">HRV pNNx</string>
+	<string id="SummaryHRVSDRR">HRV SDRR</string>
+	<string id="SummaryHRVRMSSDFirst5min">첫 5분</string>
+	<string id="SummaryHRVRMSSDLast5min">마지막 5분</string>
+					  
+	<string id="menuSessionSettings_Title">설정</string>
+	<string id="menuSessionSettings_addNew">새로 추가</string>
+	<string id="menuSessionSettings_edit">변경</string>
+	<string id="menuSessionSettings_delete">삭제</string>
+	<string id="menuSessionSettings_globalSettings">전역 설정</string>
+	<string id="menuSessionSettings_about">이 앱에 관하여</string>
+	
+	<string id="menuGlobalSettings_title">설정</string>    
+	<string id="menuGlobalSettings_newHrvTracking">HRV 추적</string>
+	<string id="menuGlobalSettings_newActivityType">새로운 활동 유형</string>
+	<string id="menuGlobalSettings_confirmSaveActivity">저장 확인</string>
+	<string id="menuGlobalSettings_multiSession">다중 세션</string>
+	<string id="menuGlobalSettings_singleSession">단일 세션</string>
+	<string id="menuGlobalSettings_respirationRate">호흡 수</string>
+	<string id="menuGlobalSettings_autoStop">자동 중단</string>
+	<string id="menuGlobalSettings_resultsTheme">Results Theme</string>
+	<string id="menuGlobalSettings_prepareTime">준비 시간</string>
+	<string id="menuGlobalSettings_finalizeTime">마무리 시간</string>
+	<string id="menuGlobalSettings_respiration">호흡: </string>
+	<string id="menuGlobalSettings_save">저장: </string>
+	
+	<string id="menuNewActivityTypeOptions_title">활동</string>
+	<string id="menuNewActivityTypeOptions_meditating">명상</string>
+	<string id="menuNewActivityTypeOptions_yoga">요가</string>
+	<string id="menuNewActivityTypeOptions_breathing">호흡 운동</string>
+		
+	<string id="activityTypeMenu_title">활동 유형</string>	  
+	<string id="activityTypeMenu_yoga">명상</string>
+	<string id="activityTypeMenu_meditating">요가</string>
+	<string id="activityTypeMenu_breathing">호흡 운동</string>
+	  
+	<string id="menuNewHrvTrackingOptions_title">Hrv 추적</string>	  
+	<string id="menuNewHrvTrackingOptions_onDetailed">상세하게 (기본값)</string>
+	<string id="menuNewHrvTrackingOptions_on">켜기</string>
+	<string id="menuNewHrvTrackingOptions_off">끄기</string>
+	<string id="menuNewHrvTrackingOptions_onDetailedSimple">상세하게</string>
+		
+	<string id="menuHrvTrackingOptions_title">Hrv 추적</string>    
+	<string id="menuHrvTrackingOptions_onDetailed">상세하게 (기본값)</string>
+	<string id="menuHrvTrackingOptions_on">켜기</string>
+	<string id="menuHrvTrackingOptions_off">끄기</string>
+	
+	<string id="menuConfirmSaveActivityOptions_title">저장 확인</string>	
+	<string id="menuConfirmSaveActivityOptions_ask">물어보기 (기본값)</string>
+	<string id="menuConfirmSaveActivityOptions_autoYes">예 (자동 저장)</string>
+	<string id="menuConfirmSaveActivityOptions_autoNo">아니오 (저장 안함)</string>
+	<string id="menuConfirmSaveActivityOptions_askSimple">물어보기</string>
+	
+	<string id="menuMultiSessionOptions_title">다중 세션</string>	 
+	<string id="menuMultiSessionOptions_yes">예</string>
+	<string id="menuMultiSessionOptions_no">아니오 (기본값)</string>
+	
+	<string id="menuRespirationRateOptions_title">호흡수 추적</string>	  
+	<string id="menuRespirationRateOptions_on">켜기 (기본값)</string>
+	<string id="menuRespirationRateOptions_off">끄기</string>
+
+	<string id="menuAutoStopOptions_title">자동 중단</string>	 
+	<string id="menuAutoStopOptions_on">켜기 (기본값)</string>
+	<string id="menuAutoStopOptions_off">끄기</string>
+
+	<string id="menuResultsThemeOptions_title">결과 테마</string>	 
+	<string id="menuResultsThemeOptions_light">밝은 화면 (기본값)</string>
+	<string id="menuResultsThemeOptions_dark">어두운 화면</string>
+
+	<string id="menuPrepareTimeOptions_title">준비</string>    
+	<string id="menuFinalizeTimeOptions_title">마무리</string>	  
+	<string id="menuPrepareTimeOptions_0s">0 초</string>
+	<string id="menuPrepareTimeOptions_15s">15 초</string>
+	<string id="menuPrepareTimeOptions_30s">30 초</string>
+	<string id="menuPrepareTimeOptions_45s">45 초</string>
+	<string id="menuPrepareTimeOptions_1m">1 분</string>
+	<string id="menuPrepareTimeOptions_2m">2 분</string>
+	<string id="menuPrepareTimeOptions_3m">3 분</string>
+	<string id="menuPrepareTimeOptions_4m">4 분</string>
+	<string id="menuPrepareTimeOptions_5m">5 분</string>
+
+	<string id="menuNotificationOptions_title">알림</string>
+	<string id="menuNotificationOptions_on">켜기 (기본값)</string>
+	<string id="menuNotificationOptions_off">끄기</string>
+
+	<string id="menuIntervalAlertSettings_Title">구간 알림</string>
+	<string id="menuIntervalAlertSettings_addNew">새로 추가</string>
+	<string id="menuIntervalAlertSettings_edit">변경</string>
+	<string id="menuIntervalAlertSettings_deleteAll">모두 제거</string>
+	
+	<string id="summaryRollupMenu_title">세션 요약</string>
+	<string id="summaryRollupMenuOption_exit">나가기</string>
+	
+	<string id="confirmDeleteIntervalAlertHeader">알림을 제거합니까?</string>
+	
+	<string id="addEditIntervalAlertMenu_title">알림</string>	 
+	<string id="addEditIntervalAlertMenu_time">시간</string>
+	<string id="addEditIntervalAlertMenu_color">색상</string>
+	<string id="addEditIntervalAlertMenu_vibeSound">진동 / 소리</string>
+	<string id="addEditIntervalAlertMenu_delete">삭제</string>
+	
+	<string id="addEditSessionMenu_title">세션</string>
+	<string id="addEditSessionMenu_time">시간</string>
+	<string id="addEditSessionMenu_color">색상</string>
+	<string id="addEditSessionMenu_vibeSound">진동 / 소리</string>
+	<string id="addEditSessionMenu_intervalAlerts">구간 알림</string>
+	<string id="addEditSessionMenu_activityType">활동 유형</string>
+	<string id="addEditSessionMenu_hrvTracking">HRV 추적</string>
+	
+	<string id="intervalAlertTransparentColorText">투명</string>
+	
+	<string id="vibePatternMenu_title">진동 / 소리</string>
+	<string id="vibePatternMenu_longPulsating">긴 진동</string>
+	<string id="vibePatternMenu_longSound">긴 소리</string>
+	<string id="vibePatternMenu_longContinuous">길게 연속적</string>
+	<string id="vibePatternMenu_longAscending">길게 점점 커짐</string>
+	<string id="vibePatternMenu_mediumPulsating">중간 진동</string>
+	<string id="vibePatternMenu_mediumContinuous">중간 연속적</string>
+	<string id="vibePatternMenu_mediumAscending">중간 점점 커짐</string>
+	<string id="vibePatternMenu_shortPulsating">짧은 진동</string>
+	<string id="vibePatternMenu_shortContinuous">짧게 연속적</string>
+	<string id="vibePatternMenu_shortAscending">짧게 점점 커짐</string>
+	
+	<string id="intervalVibePatternMenu_title">진동 / 소리</string>
+	<string id="intervalVibePatternMenu_shorterContinuous">짧게 연속적</string>
+	<string id="intervalVibePatternMenu_shorterAscending">짧게 점점 커짐</string>
+	<string id="intervalVibePatternMenu_blip">삑</string>
+	<string id="intervalVibePatternMenu_shortSound">짧은 소리</string>
+		
+	<string id="intervalTypeMenu_title">간격 알림 유형</string>
+	<string id="intervalTypeMenu_oneOff">One-off H:MM</string>
+	<string id="intervalTypeMenu_repeat">MM:SS 마다</string>		
+	
+	<string id="editIntervalAlertsMenu_title">알림 유형 변경</string>		
+	<string id="activityDelayedFinishingText">마치는중...</string>
+	<string id="meditateActivityPaused">[잠시멈춤]</string>
+	<string id="meditateActivityPrepare">편안하게\n명상 시작합니다.\n남은시간:</string>
+	<string id="meditateActivityFinalize">명상을\n마칩니다.\n남은시간:</string>
+
+	<string id="meditateYogaActivityName">명상</string>
+	<string id="meditateBreathActivityName">명상</string>
+	<string id="activityName">활동 이름 (세션 시간으로 대체하려면 [time] 을 사용하시고, 이름을 짧게 유지하세요):</string>
+	<string id="mediateActivityName">명상 [time] 🙏</string>
+	<string id="pickMMSS">MM:SS (분:초) 지정</string>
+	<string id="pickHMM">H:MM (시간:분) 지정</string>
+	<string id="waitingHRV">HRV 대기중</string>
+	<string id="HRVready">HRV 준비됨</string>
+	<string id="HRVoff">HRV 꺼짐</string>
+
+	<string id="about_AppVersion">Meditate 8.3.0</string>
+	<string id="about_vtrifonov">	vtrifonov</string>
+	<string id="about_dliedke">		dliedke</string>
+	
+</strings>
