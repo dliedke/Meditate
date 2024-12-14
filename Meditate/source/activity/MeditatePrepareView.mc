@@ -37,8 +37,10 @@ class MeditatePrepareView extends Ui.View {
 		// Start the meditation session after XX seconds
 		if (mSeconds == mTotalSeconds+1) {
 
-			// Vibrate short to notify session starts
-			Vibe.vibrate(VibePattern.Blip);
+			// Vibrate short to notify only when session starts
+			if (mPrepare == 1) {
+				Vibe.vibrate(VibePattern.Blip);	
+			}
 			
 			// Starts the meditation session / saves the session
 		    continueToNextStep();

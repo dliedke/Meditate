@@ -9,6 +9,11 @@ class Vibe {
 			return;
 		}
 
+		// If no notification just return
+		if (pattern == VibePattern.NoNotification) {
+			return;
+		}
+
 		var vibeProfile;
 		switch (pattern) {
 			case VibePattern.LongContinuous:

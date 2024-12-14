@@ -9,6 +9,9 @@ class VibePatternMenuDelegate extends Ui.MenuInputDelegate {
     }
 		
     function onMenuItem(item) {
+        if (item == :noNotification) {
+        	me.mOnVibePatternPicked.invoke(VibePattern.NoNotification);
+        }
     	if (item == :longContinuous) {
         	me.mOnVibePatternPicked.invoke(VibePattern.LongContinuous);
         }    

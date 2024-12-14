@@ -126,6 +126,7 @@
     <string id="intervalAlertTransparentColorText">Transparente</string>
 
     <string id="vibePatternMenu_title">Vibración/Son.</string>
+    <string id="vibePatternMenu_noNotification">Sin Notif.</string>
     <string id="vibePatternMenu_longPulsating">Larga pulsante</string>
     <string id="vibePatternMenu_longSound">Sonido Largo</string>
     <string id="vibePatternMenu_longContinuous">Larga continua</string>
@@ -138,6 +139,7 @@
     <string id="vibePatternMenu_shortAscending">Corta ascendente</string>
 
     <string id="intervalVibePatternMenu_title">Vibración/Son.</string>
+    <string id="intervalVibePatternMenu_noNotification">Sin Notif.</string>
     <string id="intervalVibePatternMenu_shorterContinuous">Más corta continua</string>
     <string id="intervalVibePatternMenu_shorterAscending">Más corta ascendente</string>
     <string id="intervalVibePatternMenu_blip">Pitido</string>
@@ -163,7 +165,7 @@
     <string id="HRVready">HRV Listo</string>
     <string id="HRVoff">HRV apagado</string>
 
-    <string id="about_AppVersion">Meditate 8.5.0</string>
+    <string id="about_AppVersion">Meditate 8.6.0</string>
     <string id="about_vtrifonov">   vtrifonov</string>
     <string id="about_dliedke">   dliedke</string>
     <string id="about_falsetru">   falsetru</string>

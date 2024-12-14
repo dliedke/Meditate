@@ -3,6 +3,7 @@ using HrvAlgorithms.HrvTracking;
 
 module VibePattern {
 	enum {
+		NoNotification = 0,
 		LongPulsating = 1,
 		LongContinuous = 2,
 		LongAscending = 3,		

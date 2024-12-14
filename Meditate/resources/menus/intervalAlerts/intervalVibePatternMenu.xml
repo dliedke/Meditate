@@ -1,4 +1,5 @@
 <menu id="intervalVibePatternMenu" title="@Strings.intervalVibePatternMenu_title">
+    <menu-item id="noNotification" label="@Strings.intervalVibePatternMenu_noNotification" />
     <menu-item id="blip" label="@Strings.intervalVibePatternMenu_blip" />
     <menu-item id="shortSound" label="@Strings.intervalVibePatternMenu_shortSound" />
     <menu-item id="shorterContinuous" label="@Strings.intervalVibePatternMenu_shorterContinuous" />

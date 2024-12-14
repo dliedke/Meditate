@@ -38,6 +38,9 @@ class IntervalVibePatternMenuDelegate extends Ui.MenuInputDelegate {
         }
         else if (item == :shortSound) {
         	me.mOnVibePatternPicked.invoke(VibePattern.ShortSound);
-        }                   
+        }
+        else if (item == :noNotification) {
+        	me.mOnVibePatternPicked.invoke(VibePattern.NoNotification);
+        }
     }
 }

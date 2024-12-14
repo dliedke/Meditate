@@ -126,6 +126,7 @@
 	<string id="intervalAlertTransparentColorText">투명</string>
 	
 	<string id="vibePatternMenu_title">진동 / 소리</string>
+	<string id="vibePatternMenu_noNotification">알림 없음</string>
 	<string id="vibePatternMenu_longPulsating">긴 진동</string>
 	<string id="vibePatternMenu_longSound">긴 소리</string>
 	<string id="vibePatternMenu_longContinuous">길게 연속적</string>
@@ -138,6 +139,7 @@
 	<string id="vibePatternMenu_shortAscending">짧게 점점 커짐</string>
 	
 	<string id="intervalVibePatternMenu_title">진동 / 소리</string>
+	<string id="intervalVibePatternMenu_noNotification">알림 없음</string>
 	<string id="intervalVibePatternMenu_shorterContinuous">짧게 연속적</string>
 	<string id="intervalVibePatternMenu_shorterAscending">짧게 점점 커짐</string>
 	<string id="intervalVibePatternMenu_blip">삑</string>
@@ -163,7 +165,7 @@
 	<string id="HRVready">HRV 준비됨</string>
 	<string id="HRVoff">HRV 꺼짐</string>
 
-	<string id="about_AppVersion">Meditate 8.5.0</string>
+	<string id="about_AppVersion">Meditate 8.6.0</string>
     <string id="about_vtrifonov">   vtrifonov</string>
     <string id="about_dliedke">   dliedke</string>
     <string id="about_falsetru">   falsetru</string>

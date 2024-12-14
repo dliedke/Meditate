@@ -1,4 +1,5 @@
 <menu id="vibePatternMenu" title="@Strings.vibePatternMenu_title">
+    <menu-item id="noNotification" label="@Strings.vibePatternMenu_noNotification" />
     <menu-item id="longContinuous" label="@Strings.vibePatternMenu_longContinuous" />
     <menu-item id="longSound" label="@Strings.vibePatternMenu_longSound" />
     <menu-item id="longPulsating" label="@Strings.vibePatternMenu_longPulsating" />
