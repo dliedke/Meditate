@@ -167,7 +167,8 @@ module ConfirmSaveActivity {
 	enum {
 		Ask = 0,
 		AutoNo = 1,
-		AutoYes = 2
+		AutoYes = 2,
+		AutoYesExit = 3
 	}
 }
 

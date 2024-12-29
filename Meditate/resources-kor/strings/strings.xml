@@ -66,6 +66,7 @@
 	<string id="menuConfirmSaveActivityOptions_autoYes">예 (자동 저장)</string>
 	<string id="menuConfirmSaveActivityOptions_autoNo">아니오 (저장 안함)</string>
 	<string id="menuConfirmSaveActivityOptions_askSimple">물어보기</string>
+	<string id="menuConfirmSaveActivityOptions_autoYesExit">자동 예 &amp; 종료</string>
 	
 	<string id="menuMultiSessionOptions_title">다중 세션</string>	 
 	<string id="menuMultiSessionOptions_yes">예</string>
@@ -165,7 +166,7 @@
 	<string id="HRVready">HRV 준비됨</string>
 	<string id="HRVoff">HRV 꺼짐</string>
 
-	<string id="about_AppVersion">Meditate 8.6.0</string>
+	<string id="about_AppVersion">Meditate 8.7.0</string>
     <string id="about_vtrifonov">   vtrifonov</string>
     <string id="about_dliedke">   dliedke</string>
     <string id="about_falsetru">   falsetru</string>

@@ -118,6 +118,14 @@ class GlobalSettingsDelegate extends ScreenPicker.ScreenPickerDelegate {
 	        });	
 	        confirmSaveSetting = Ui.loadResource(Rez.Strings.menuConfirmSaveActivityOptions_autoYes);
         }
+ 	    if (saveActivityConfirmation == ConfirmSaveActivity.AutoYesExit) {
+			details.detailLines[2].icon = new ScreenPicker.Icon({        
+	        	:font => StatusIconFonts.fontAwesomeFreeSolid,
+	        	:symbol => StatusIconFonts.Rez.Strings.faSaveSession,
+	        	:color => Gfx.COLOR_GREEN
+	        });	
+	        confirmSaveSetting = Ui.loadResource(Rez.Strings.menuConfirmSaveActivityOptions_autoYesExit);
+        }
         if (saveActivityConfirmation == ConfirmSaveActivity.AutoNo) {
         	details.detailLines[2].icon = new ScreenPicker.Icon({        
 	        	:font => StatusIconFonts.fontAwesomeFreeSolid,

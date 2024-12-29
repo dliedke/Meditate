@@ -66,6 +66,9 @@ class GlobalSettingsMenuDelegate extends Ui.MenuInputDelegate {
 		else if (item == :autoYes) {
 			GlobalSettings.saveConfirmSaveActivity(ConfirmSaveActivity.AutoYes);
 		}
+		else if (item == :autoYesExit) {
+			GlobalSettings.saveConfirmSaveActivity(ConfirmSaveActivity.AutoYesExit);
+		}
 		else if (item == :autoNo) {
 			GlobalSettings.saveConfirmSaveActivity(ConfirmSaveActivity.AutoNo);
 		}

@@ -66,6 +66,7 @@
     <string id="menuConfirmSaveActivityOptions_autoYes">Sí Auto</string>
     <string id="menuConfirmSaveActivityOptions_autoNo">No Auto</string>
     <string id="menuConfirmSaveActivityOptions_askSimple">Preguntar</string>
+    <string id="menuConfirmSaveActivityOptions_autoYesExit">Auto Sí &amp; Salir</string>
  
     <string id="menuMultiSessionOptions_title">Multi-Sesión</string>
     <string id="menuMultiSessionOptions_yes">Sí</string>
@@ -165,7 +166,7 @@
     <string id="HRVready">HRV Listo</string>
     <string id="HRVoff">HRV apagado</string>
 
-    <string id="about_AppVersion">Meditate 8.6.0</string>
+    <string id="about_AppVersion">Meditate 8.7.0</string>
     <string id="about_vtrifonov">   vtrifonov</string>
     <string id="about_dliedke">   dliedke</string>
     <string id="about_falsetru">   falsetru</string>

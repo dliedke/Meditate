@@ -7,6 +7,7 @@ class MeditateDelegate extends Ui.BehaviorDelegate {
 	private var mSessionPickerDelegate;
 	private var mHeartbeatIntervalsSensor;
 	private var mSummaryModel;
+	private var mShouldAutoExit;
 	
     function initialize(meditateModel, summaryModels, heartbeatIntervalsSensor, sessionPickerDelegate) {
         BehaviorDelegate.initialize();
@@ -20,43 +21,49 @@ class MeditateDelegate extends Ui.BehaviorDelegate {
     				
 	public function stopActivity() {
 		me.mMeditateActivity.stop();
-
-		// If there is no finalize time, show delayed finished view
-		if (GlobalSettings.loadFinalizeTime()==0) {
+		
+		// Store auto-exit state as class member
+		var confirmSaveActivity = GlobalSettings.loadConfirmSaveActivity();
+		me.mShouldAutoExit = (confirmSaveActivity == ConfirmSaveActivity.AutoYesExit);
+		
+		// If there is no finalize time, proceed directly to finishing flow
+		if (GlobalSettings.loadFinalizeTime() == 0) {
 			onShowDelayedFinishedView();
 			return;
 		}
-
+		
 		// Show finalize time view and delayed finished view session once the time is over
 		var meditatePrepareView = new MeditatePrepareView(method(:onShowDelayedFinishedView), 0);
 		var meditatePrepareDelegate = new MeditatePrepareDelegate(me, meditatePrepareView);
 		Ui.switchToView(meditatePrepareView, meditatePrepareDelegate, Ui.SLIDE_IMMEDIATE);	
 	}
 
-	function onShowDelayedFinishedView()
-	{
-		var calculatingResultsView = new DelayedFinishingView(method(:onFinishActivity));
-		Ui.switchToView(calculatingResultsView, me, Ui.SLIDE_IMMEDIATE);	
+	function onShowDelayedFinishedView() {
+		var calculatingResultsView = new DelayedFinishingView(method(:onFinishActivity), me.mShouldAutoExit);
+		Ui.switchToView(calculatingResultsView, me, Ui.SLIDE_IMMEDIATE);    
 	}
 	    
     function onFinishActivity() {  
     	me.mSummaryModel = me.mMeditateActivity.calculateSummaryFields();
 		    	
     	var confirmSaveActivity = GlobalSettings.loadConfirmSaveActivity();
-    	if (confirmSaveActivity == ConfirmSaveActivity.AutoYes) { 
+		
+		if (confirmSaveActivity == ConfirmSaveActivity.AutoYes ||
+		    confirmSaveActivity == ConfirmSaveActivity.AutoYesExit) {
+		
 			//Made sure reading/writing session settings for the next session in multi-session mode happens before saving the FIT file.
 			//If both happen at the same time FIT file gets corrupted			
 			me.mMeditateActivity.finish();
-			var saveActivityView = new DelayedFinishingView(me.method(:onShowNextView));
+			var saveActivityView = new DelayedFinishingView(me.method(:onShowNextView), me.mShouldAutoExit);
 			Ui.switchToView(saveActivityView, me, Ui.SLIDE_IMMEDIATE);    		
         }
         else if (confirmSaveActivity == ConfirmSaveActivity.AutoNo) {
         	me.mMeditateActivity.discard(); 
-        	var nextView = new DelayedFinishingView(method(:onShowNextView));
+        	var nextView = new DelayedFinishingView(method(:onShowNextView), me.mShouldAutoExit);
 			Ui.switchToView(nextView, me, Ui.SLIDE_IMMEDIATE);	
         }   
         else { 	
-        	var nextView = new DelayedFinishingView(method(:onShowNextViewConfirmDialog));
+        	var nextView = new DelayedFinishingView(method(:onShowNextViewConfirmDialog), me.mShouldAutoExit);
 			Ui.switchToView(nextView, me, Ui.SLIDE_IMMEDIATE);
         }
     }   
