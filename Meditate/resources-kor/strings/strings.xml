@@ -46,8 +46,8 @@
 	<string id="menuNewActivityTypeOptions_breathing">호흡 운동</string>
 		
 	<string id="activityTypeMenu_title">활동 유형</string>	  
-	<string id="activityTypeMenu_yoga">명상</string>
-	<string id="activityTypeMenu_meditating">요가</string>
+	<string id="activityTypeMenu_yoga">요가</string>
+	<string id="activityTypeMenu_meditating">명상</string>
 	<string id="activityTypeMenu_breathing">호흡 운동</string>
 	  
 	<string id="menuNewHrvTrackingOptions_title">Hrv 추적</string>	  
