@@ -156,8 +156,8 @@
 	<string id="meditateActivityPrepare">편안하게\n명상 시작합니다.\n남은시간:</string>
 	<string id="meditateActivityFinalize">명상을\n마칩니다.\n남은시간:</string>
 
-	<string id="meditateYogaActivityName">명상</string>
-	<string id="meditateBreathActivityName">명상</string>
+	<string id="meditateYogaActivityName">요가</string>
+	<string id="meditateBreathActivityName">호흡 운동</string>
 	<string id="activityName">활동 이름 (세션 시간으로 대체하려면 [time] 을 사용하시고, 이름을 짧게 유지하세요):</string>
 	<string id="mediateActivityName">명상 [time] 🙏</string>
 	<string id="pickMMSS">MM:SS (분:초) 지정</string>
@@ -166,7 +166,7 @@
 	<string id="HRVready">HRV 준비됨</string>
 	<string id="HRVoff">HRV 꺼짐</string>
 
-	<string id="about_AppVersion">Meditate 8.7.0</string>
+	<string id="about_AppVersion">Meditate 8.7.1</string>
     <string id="about_vtrifonov">   vtrifonov</string>
     <string id="about_dliedke">   dliedke</string>
     <string id="about_falsetru">   falsetru</string>
