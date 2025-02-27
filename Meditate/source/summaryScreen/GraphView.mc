@@ -21,7 +21,7 @@ class GraphView extends ScreenPicker.ScreenPickerView  {
 	var title;
 	var resultsTheme;
 
-    function initialize(data, min, max, avg, elapsedTime, title) {
+	function initialize(data, min, max, avg, elapsedTime, title) {
 		me.data = data;
 		me.min = min;
 		me.max = max;
@@ -30,10 +30,10 @@ class GraphView extends ScreenPicker.ScreenPickerView  {
 		me.title = title;
 		ScreenPickerView.initialize(Gfx.COLOR_BLACK);
 		resultsTheme = GlobalSettings.loadResultsTheme();
-    }
+	}
 	
-    // Update the view
-    function onUpdate(dc) {    
+	// Update the view
+	function onUpdate(dc) {    
 
 		// Light results theme
 		var backgroundColor = Gfx.COLOR_WHITE;
