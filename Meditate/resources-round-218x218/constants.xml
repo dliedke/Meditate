@@ -11,10 +11,10 @@
 	<property id="meditateActivityXHrvTextOffset" type="number">22</property>
 	<property id="meditateActivityXBreathTextOffset" type="number">32</property>
 	<property id="summaryLinesYOffset" type="number">-7</property>	
-	<property id="heartRateChartWidth" type="number">180</property>
-	<property id="heartRateChartLineExtra" type="number">0</property>
-	<property id="heartRateChartYPos" type="number">10</property>
-	<property id="heartRateChartXPos" type="number">10</property>
-	<property id="heartRateChartXPosLabel" type="number">-8</property>
+	<property id="ChartWidth" type="number">180</property>
+	<property id="ChartLineExtra" type="number">0</property>
+	<property id="ChartYPos" type="number">10</property>
+	<property id="ChartXPos" type="number">10</property>
+	<property id="ChartXPosLabel" type="number">-8</property>
 	<property id="largeFont" type="number">2</property> <!--Gfx.FONT_SMALL-->
 </properties>

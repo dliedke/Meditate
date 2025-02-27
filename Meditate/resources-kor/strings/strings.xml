@@ -10,9 +10,9 @@
 	<string id="SummaryStressStart">시작 스트레스: $1$</string>
 	<string id="SummaryStressEnd">종료시 스트레스: $1$</string>
 	<string id="SummaryRespiration">호흡수</string>
-	<string id="SummaryRespirationMin">최소:</string>
-	<string id="SummaryRespirationAvg">평균:</string>
-	<string id="SummaryRespirationMax">최대:</string>
+	<string id="SummaryMin">최소:</string>
+	<string id="SummaryAvg">평균:</string>
+	<string id="SummaryMax">최대:</string>
 	<string id="SummaryHRVRMSSD">HRV RMSSD</string>
 	<string id="SummaryHRVpNNx">HRV pNNx</string>
 	<string id="SummaryHRVSDRR">HRV SDRR</string>
