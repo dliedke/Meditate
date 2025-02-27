@@ -9,8 +9,8 @@
 	<property id="sessionDetailsYOffset" type="number">30</property>
 	<property id="meditateActivityIconsXPos" type="number">90</property>
 	<property id="summaryLinesYOffset" type="number">15</property>
-	<property id="heartRateChartWidth" type="number">240</property>
-	<property id="heartRateChartYPos" type="number">18</property>
-	<property id="heartRateChartXPos" type="number">22</property>
-	<property id="heartRateChartXPosLabel" type="number">-8</property>
+	<property id="ChartWidth" type="number">240</property>
+	<property id="ChartYPos" type="number">18</property>
+	<property id="ChartXPos" type="number">22</property>
+	<property id="ChartXPosLabel" type="number">-8</property>
 </properties>

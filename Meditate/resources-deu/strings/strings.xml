@@ -10,9 +10,9 @@
     <string id="SummaryStressStart">Stress Beginn: $1$</string>
     <string id="SummaryStressEnd">Stress Ende: $1$</string>
     <string id="SummaryRespiration">Atmung</string>
-    <string id="SummaryRespirationMin">Min:</string>
-    <string id="SummaryRespirationAvg">Durchschn.:</string>
-    <string id="SummaryRespirationMax">Max:</string>
+    <string id="SummaryMin">Min:</string>
+    <string id="SummaryAvg">Durchschn.:</string>
+    <string id="SummaryMax">Max:</string>
     <string id="SummaryHRVRMSSD">HRV RMSSD</string>
     <string id="SummaryHRVpNNx">HRV pNNx</string>
     <string id="SummaryHRVSDRR">HRV SDRR</string>

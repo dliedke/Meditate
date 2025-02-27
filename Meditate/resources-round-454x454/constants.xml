@@ -24,10 +24,10 @@
 	<property id="detailsModelIconHeight" type="number">52</property>
 	<property id="hmmTimePickerOutputXOffset" type="number">140</property>
 	<property id="mmssTimePickerOutputXOffset" type="number">130</property>
-	<property id="heartRateChartTitleY" type="number">50</property>
-	<property id="heartRateChartWidth" type="number">320</property>
-	<property id="heartRateChartLineExtra" type="number">-15</property>
-	<property id="heartRateChartYPos" type="number">20</property>
-	<property id="heartRateChartXPos" type="number">10</property>
-	<property id="heartRateChartXPosLabel" type="number">-15</property>
+	<property id="ChartTitleY" type="number">50</property>
+	<property id="ChartWidth" type="number">320</property>
+	<property id="ChartLineExtra" type="number">-15</property>
+	<property id="ChartYPos" type="number">20</property>
+	<property id="ChartXPos" type="number">10</property>
+	<property id="ChartXPosLabel" type="number">-15</property>
 </properties>
