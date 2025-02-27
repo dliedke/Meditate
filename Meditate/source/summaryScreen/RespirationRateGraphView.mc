@@ -8,7 +8,7 @@ using Toybox.SensorHistory as SensorHistory;
 using Toybox.ActivityMonitor as ActivityMonitor;
 
 class RespirationRateGraphView extends GraphView  {
-    function initialize(summaryModel) {
-		GraphView.initialize(summaryModel.rrHistory, summaryModel.minRr, summaryModel.maxRr, summaryModel.avgRr, summaryModel.elapsedTime, Rez.Strings.SummaryRespiration);
-    }
+		function initialize(summaryModel) {
+			GraphView.initialize(summaryModel.rrHistory, summaryModel.minRr, summaryModel.maxRr, summaryModel.avgRr, summaryModel.elapsedTime, Rez.Strings.SummaryRespiration);
+		}
 }

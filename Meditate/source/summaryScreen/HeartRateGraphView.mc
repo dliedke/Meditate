@@ -8,7 +8,7 @@ using Toybox.SensorHistory as SensorHistory;
 using Toybox.ActivityMonitor as ActivityMonitor;
 
 class HeartRateGraphView extends GraphView  {
-    function initialize(summaryModel) {
-		GraphView.initialize(summaryModel.hrHistory, summaryModel.minHr, summaryModel.maxHr, summaryModel.avgHr, summaryModel.elapsedTime, Rez.Strings.SummaryHR);
-    }
+		function initialize(summaryModel) {
+			GraphView.initialize(summaryModel.hrHistory, summaryModel.minHr, summaryModel.maxHr, summaryModel.avgHr, summaryModel.elapsedTime, Rez.Strings.SummaryHR);
+		}
 }

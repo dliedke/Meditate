@@ -9,26 +9,26 @@ using Toybox.ActivityMonitor as ActivityMonitor;
 
 class GraphView extends ScreenPicker.ScreenPickerView  {
 
-    hidden var position_x, position_y;
-    hidden var graph_width, graph_height;
+	hidden var position_x, position_y;
+	hidden var graph_width, graph_height;
 	var centerX;
 	var centerY;
 	var data;
-    var min;
-    var max;
-    var avg;
-    var elapsedTime;
-    var title;
+	var min;
+	var max;
+	var avg;
+	var elapsedTime;
+	var title;
 	var resultsTheme;
 
     function initialize(data, min, max, avg, elapsedTime, title) {
 		me.data = data;
-        me.min = min;
-        me.max = max;
-        me.avg = avg;
-        me.elapsedTime = elapsedTime;
-        me.title = title;
-        ScreenPickerView.initialize(Gfx.COLOR_BLACK);
+		me.min = min;
+		me.max = max;
+		me.avg = avg;
+		me.elapsedTime = elapsedTime;
+		me.title = title;
+		ScreenPickerView.initialize(Gfx.COLOR_BLACK);
 		resultsTheme = GlobalSettings.loadResultsTheme();
     }
 	
@@ -47,8 +47,8 @@ class GraphView extends ScreenPicker.ScreenPickerView  {
 
 		// Clear the screen
 		dc.setColor(Gfx.COLOR_TRANSPARENT, backgroundColor);  
-        dc.clear();
-    	ScreenPickerView.onUpdate(dc);
+		dc.clear();
+		ScreenPickerView.onUpdate(dc);
 
 		// Calculate center of the screen
 		centerX = dc.getWidth()/2;
@@ -128,8 +128,8 @@ class GraphView extends ScreenPicker.ScreenPickerView  {
 		}
 
 		// Reduce a bit the min heart rate so it will show in the chart
-        var yMin = Math.floor(me.min * 0.99);
-        var yMax = Math.ceil(me.max * 1.01);
+		var yMin = Math.floor(me.min * 0.99);
+		var yMax = Math.ceil(me.max * 1.01);
 
 		// Calculate different between min and max HR
 		var minMaxDiff = (yMax - yMin).toFloat();
@@ -183,11 +183,11 @@ class GraphView extends ScreenPicker.ScreenPickerView  {
 		// Draw lines and labels 
 		dc.setPenWidth(1);
 		dc.setColor(foregroundColor, Graphics.COLOR_TRANSPARENT);
-        var numLines = minMaxDiff;
-        // max 4 lines
-        if (numLines > 4) {
-            numLines = 4;
-        }
+		var numLines = minMaxDiff;
+		// max 4 lines
+		if (numLines > 4) {
+			numLines = 4;
+		}
 		var lineSpacing = graph_height / numLines;
 
 		for(var i = 0; i <= numLines; i++){
