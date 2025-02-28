@@ -7,12 +7,13 @@ module HrvAlgorithms {
 			me.aggregatedValue += Math.pow(value - me.previousValue, 2);
 		}
 		
-		private function calculate() {
+		function calculate() {
 			if (me.secondsCount < me.rollingIntervalSeconds || me.count < 1) {
 				return null;
 			}
-			var result = Math.sqrt(me.aggregatedValue / me.count.toFloat());	
+			var result = Math.sqrt(me.aggregatedValue / me.count.toFloat());
 			me.reset();
+			me.data.add(result);
 			return result;
 		}
 	}

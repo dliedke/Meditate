@@ -5,5 +5,6 @@ module HrvAlgorithms {
 		var pnn20;
 		var first5MinSdrr;
 		var last5MinSdrr;
+		var rmssdHistory;
 	}
 }

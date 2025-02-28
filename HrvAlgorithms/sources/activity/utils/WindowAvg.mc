@@ -13,12 +13,13 @@ module HrvAlgorithms {
 		var first;
 		
 		function addData(data) {
-			if (me.count >= me.windowSize && me.first) {
+			if (me.first && me.count >= me.windowSize) {
 				return;
 			}
 			
 			if (data != null) {
-				me.data[me.count % me.windowSize] = data.toNumber();
+				me.count = me.count % me.windowSize;
+				me.data[me.count] = data.toNumber();
 				me.count++;
 			}
 		}
@@ -28,8 +29,12 @@ module HrvAlgorithms {
 				return null;
 			}			
 			var sum = 0;
+			var val = 0;
 			for (var i = 0; i < me.count; i++) {
-				sum += me.data[i];
+				val = me.data[i];
+				if (val != null){
+					sum += me.data[i];
+				}
 			}
 			return sum / me.count.toFloat();
 		}

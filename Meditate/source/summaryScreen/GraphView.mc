@@ -21,11 +21,31 @@ class GraphView extends ScreenPicker.ScreenPickerView  {
 	var title;
 	var resultsTheme;
 
-	function initialize(data, min, max, avg, elapsedTime, title) {
+	function initialize(data, elapsedTime, title) {
 		me.data = data;
-		me.min = min;
-		me.max = max;
-		me.avg = avg;
+		me.avg = null;
+		me.min = null;
+		me.max = null;
+		var val = null;
+		var total = 0;
+		var count = 0;
+		for (var i = 0; i < me.data.size(); i++){
+			val = me.data[i];
+			if (val != null) {
+				if (me.min == null || val < me.min) {
+					me.min = val;
+				}
+				if (me.max == null || val > me.max) {
+					me.max = val;
+				}
+				total+=val;
+				count++;
+			}
+		}
+		if (count > 0) {
+			me.avg = total / count;
+		}
+
 		me.elapsedTime = elapsedTime;
 		me.title = title;
 		ScreenPickerView.initialize(Gfx.COLOR_BLACK);
@@ -87,25 +107,25 @@ class GraphView extends ScreenPicker.ScreenPickerView  {
 					Ui.loadResource(me.title), 
 					Graphics.TEXT_JUSTIFY_CENTER);
 
-		// Draw MIN HR text
+		// Draw MIN text
 		dc.drawText(centerX - centerX / 2 + 10, 
 					centerY - centerY / 2 + 10, 
 					Gfx.FONT_SYSTEM_TINY, 
-					Ui.loadResource(Rez.Strings.SummaryMin) + Math.round(me.min).toString(), 
+					Ui.loadResource(Rez.Strings.SummaryMin) + Math.round(me.min).format("%3.0f"), 
 					Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 
-		// Draw AVG HR text
+		// Draw AVG text
 		dc.drawText(centerX, 
 					centerY + centerY / 2 + 3, 
 					Gfx.FONT_SYSTEM_TINY, 
-					Ui.loadResource(Rez.Strings.SummaryAvg) + Math.round(me.avg).toString(), 
+					Ui.loadResource(Rez.Strings.SummaryAvg) + Math.round(me.avg).format("%3.0f"), 
 					Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 
-		// Draw MAX HR text
+		// Draw MAX text
 		dc.drawText(centerX + centerX / 2 - 10, 
 					centerY - centerY / 2 + 10, 
 					Gfx.FONT_SYSTEM_TINY, 
-					Ui.loadResource(Rez.Strings.SummaryMax) + Math.round(me.max).toString(), 
+					Ui.loadResource(Rez.Strings.SummaryMax) + Math.round(me.max).format("%3.0f"), 
 					Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 
 		// Draw Time text
@@ -140,45 +160,48 @@ class GraphView extends ScreenPicker.ScreenPickerView  {
 		dc.setColor(0x27a0c4, Graphics.COLOR_TRANSPARENT);
 		
 		// Try adapting the chart for the graph width
+		var dataWidthRatio = 0.0;
 		var skipSize = 1;
+		var expandFact = 1;
 		var skipSizeFloatPart = 0;
 
-		// If chart would be larger than expected graph width
-		if (me.data.size() > graph_width) {
-
-			// Calculate with maximum precision the skip
-			skipSizeFloatPart = me.data.size().toFloat() / graph_width.toFloat();
-			skipSizeFloatPart = skipSizeFloatPart - Math.floor(skipSizeFloatPart);
+		dataWidthRatio = me.data.size().toFloat() / graph_width.toFloat();
+		
+		if (dataWidthRatio > 1) {
+			// Calculate the shrinking
+			skipSizeFloatPart = dataWidthRatio - Math.floor(skipSizeFloatPart);
 			skipSizeFloatPart = skipSizeFloatPart * 10000000;
-
-			// Calculate the basic skip for the for loop
-			skipSize = Math.floor(me.data.size().toFloat() / graph_width.toFloat()).toNumber();
-		} 
+			skipSize = Math.floor(dataWidthRatio).toNumber();
+		} else {
+			// Calculate the expanding
+			expandFact = 2;
+			while (expandFact * me.data.size() < graph_width) {
+				expandFact++;
+			}
+			expandFact--;
+		}
 		
 		// Draw chart
 		var xStep = 1;
 		for (var i = 0; i < me.data.size(); i+=skipSize){
-			
 			var val = me.data[i];
-			
 			if (val!=null && val > 1) {
-
-				var lineHeight = (val-yMin) * (graph_height.toFloat() / minMaxDiff.toFloat());
-
-				dc.drawLine(position_x + xStep, 
-							position_y - lineHeight.toNumber(), 
-							position_x + xStep, 
-							position_y);
-			}
-
-			// Skip to fit the chart in the screen
-			if (skipSizeFloatPart > 0) {
-				if ((xStep * 1000000) % (skipSizeFloatPart).toNumber() > 1000000) {
-					i++;			
+				for (var j = 0; j < expandFact; j++){		
+					var lineHeight = (val-yMin) * (graph_height.toFloat() / minMaxDiff.toFloat());
+					dc.drawLine(position_x + xStep, 
+								position_y - lineHeight.toNumber(), 
+								position_x + xStep, 
+								position_y);
+					xStep++;
+				}				
+				// Skip to fit the chart in the screen
+				if (skipSizeFloatPart > 0) {
+					if ((xStep * 1000000) % (skipSizeFloatPart).toNumber() > 1000000) {
+						i++;			
+					}
 				}
+				
 			}
-
-			xStep++;
 		}
 
 		// Draw lines and labels 

@@ -16,6 +16,7 @@ class SummaryViewDelegate extends ScreenPicker.ScreenPickerDelegate {
 	private static const pageHrvRmssd = "HrvRmssd";
 	private static const pageHrvPnnx = "HrvPnnx";
 	private static const pageHrvSdrr = "HrvSdrr";
+	private static const pageHrvRmssdGraph = "HrvRmssdGraph";
 
 	function initialize(summaryModel, isRespirationRateOn, discardDanglingActivity) {		
 		me.setPageIndexes(summaryModel.hrvTracking, isRespirationRateOn);
@@ -46,6 +47,7 @@ class SummaryViewDelegate extends ScreenPicker.ScreenPickerDelegate {
 			if (hrvTracking == HrvTracking.OnDetailed) {	
 				me.pages.add(me.pageHrvPnnx);
 				me.pages.add(me.pageHrvSdrr);
+				me.pages.add(me.pageHrvRmssdGraph);
 			}
 		}
 	}
@@ -91,6 +93,9 @@ class SummaryViewDelegate extends ScreenPicker.ScreenPickerDelegate {
 			}
 			else if (page.equals(me.pageHrvSdrr)) {
 				details = me.createDetailsPageHrvSdrr();
+			}
+			else if (page.equals(me.pageHrvRmssdGraph)) {
+				return new HrvRmssdGraphView(me.mSummaryModel);
 			}
 			else {
 				return new HeartRateGraphView(me.mSummaryModel);

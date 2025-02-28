@@ -188,15 +188,17 @@ class MeditateView extends Ui.View {
         }
 		
 		var timeText = TimeFormatter.format(me.mMeditateModel.elapsedTime);
+		timeText = timeText.substring(0, timeText.length()-3);
+		
 		var currentHr = me.mMeditateModel.currentHr;
-		var hrvSuccessive = me.mMeditateModel.hrvSuccessive;
+		var hrvValue = me.mMeditateModel.hrvValue;
 
 		// Check if activity is paused, render the [Paused] text
 		// and hide HR/HRV metrics
 		if (!me.mMeditateModel.isTimerRunning)  {
 			timeText = Ui.loadResource(Rez.Strings.meditateActivityPaused);
 			currentHr = null;
-			hrvSuccessive = null;
+			hrvValue = null;
 		}
 
 		me.mElapsedTime.setText(timeText);		
@@ -232,7 +234,7 @@ class MeditateView extends Ui.View {
      	
  	    if (me.mMeditateModel.isHrvOn() == true) {
 	        me.mHrvIcon.draw(dc);
-	        me.mHrvText.setText(me.formatHrv(hrvSuccessive));
+	        me.mHrvText.setText(me.formatHrv(hrvValue));
 	        me.mHrvText.draw(dc);
         }
 

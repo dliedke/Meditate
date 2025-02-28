@@ -15,12 +15,16 @@ module HrvAlgorithms {
 		private function isHrvOn() {
 			return me.mHrvTracking != HrvTracking.Off;
 		}
+
+		private function isHrvDetailOn() {
+			return me.mHrvTracking == HrvTracking.OnDetailed;
+		}
 		
 		protected function onBeforeStart(fitSession) {
 			if (me.isHrvOn()) {					
 				me.mHeartbeatIntervalsSensor.setOneSecBeatToBeatIntervalsSensorListener(method(:onOneSecBeatToBeatIntervals));
 				me.mStressMonitor = new StressMonitor(fitSession, me.mHrvTracking);
-				if (me.mHrvTracking == HrvTracking.OnDetailed) {
+				if (me.isHrvDetailOn()) {
 					me.mHrvMonitor = new HrvMonitorDetailed(fitSession, true);					
 				}
 				else {
@@ -32,7 +36,7 @@ module HrvAlgorithms {
 		function onOneSecBeatToBeatIntervals(heartBeatIntervals) {
 			if (me.isHrvOn()) {	
 				me.mHrvMonitor.addOneSecBeatToBeatIntervals(heartBeatIntervals);
-				me.mStressMonitor.addOneSecBeatToBeatIntervals(heartBeatIntervals);	
+				me.mStressMonitor.addOneSecBeatToBeatIntervals(heartBeatIntervals);
 			} 
 		}
 		
@@ -42,16 +46,21 @@ module HrvAlgorithms {
 	    	}
 		}
 		
-		private var mHrvSuccessive;
+		private var mHrvValue;
 		
 		protected function onRefreshHrActivityStats(activityInfo, minHr) {	
 			if (me.isHrvOn()) {
-	    		me.mHrvSuccessive = me.mHrvMonitor.calculateHrvSuccessive();	
+				if (me.isHrvDetailOn()) {
+					me.mHrvValue = me.mHrvMonitor.getRmssdRolling();	
+				}
+				else {
+	    			me.mHrvValue = me.mHrvMonitor.calculateHrvSuccessive();	
+				}
 	    	}	    	
-    		me.onRefreshHrvActivityStats(activityInfo, minHr, me.mHrvSuccessive);
+    		me.onRefreshHrvActivityStats(activityInfo, minHr, me.mHrvValue);
 		}
 		
-		protected function onRefreshHrvActivityStats(activityInfo, minHr, hrvSuccessive) {
+		protected function onRefreshHrvActivityStats(activityInfo, minHr, hrvValue) {
 		}
 		
 		function calculateSummaryFields() {	
@@ -60,7 +69,6 @@ module HrvAlgorithms {
 			activitySummary.hrSummary = hrSummary;
 			if (me.isHrvOn()) {
 				activitySummary.hrvSummary = me.mHrvMonitor.calculateHrvSummary();
-				activitySummary.stress = me.mStressMonitor.calculateStress(hrSummary.minHr);
 			}
 			return activitySummary;
 		}

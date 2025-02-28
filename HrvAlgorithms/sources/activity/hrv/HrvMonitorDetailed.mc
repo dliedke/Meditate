@@ -141,7 +141,11 @@ module HrvAlgorithms {
 			
 			me.mHrvPnn50.addBeatToBeatInterval(beatToBeatInterval);
 			me.mHrvPnn20.addBeatToBeatInterval(beatToBeatInterval);				
-		}			
+		}
+
+		public function getRmssdRolling() {
+			return mHrvRmssd30Sec.getLastCalcValue();
+		}
 					
 		public function calculateHrvSummary() {		
 			var hrvSummary = HrvMonitorDefault.calculateHrvSummary();	
@@ -162,6 +166,7 @@ module HrvAlgorithms {
 			if (hrvSummary.last5MinSdrr != null) {
 				me.mHrvSdrrLast5MinDataField.setData(hrvSummary.last5MinSdrr);
 			}
+			hrvSummary.rmssdHistory = me.mHrvRmssd30Sec.getHistory();
 			return hrvSummary;
 		}
 	}	

@@ -100,14 +100,14 @@ class MediteActivity extends HrvAlgorithms.HrvAndStressActivity {
 		me.mVibeAlertsExecutor = new VibeAlertsExecutor(me.mMeditateModel);	
 	}	
 				
-	protected function onRefreshHrvActivityStats(activityInfo, minHr, hrvSuccessive) {	
+	protected function onRefreshHrvActivityStats(activityInfo, minHr, hrvValue) {	
 		if (activityInfo.elapsedTime != null) {
 			me.mMeditateModel.elapsedTime = activityInfo.timerTime / 1000;
 		}
 		me.mMeditateModel.currentHr = activityInfo.currentHeartRate;
 		me.mMeditateModel.minHr = minHr;
 		me.mVibeAlertsExecutor.firePendingAlerts();	 
-		me.mMeditateModel.hrvSuccessive = hrvSuccessive;
+		me.mMeditateModel.hrvValue = hrvValue;
     	
 		// Check if we need to stop activity automatically when time ended
 		var autoStopEnabled = GlobalSettings.loadAutoStop();

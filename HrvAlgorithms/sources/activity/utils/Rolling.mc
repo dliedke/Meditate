@@ -3,6 +3,8 @@ module HrvAlgorithms {
 		function initialize(rollingIntervalSeconds) {	
 			me.rollingIntervalSeconds = rollingIntervalSeconds;		
 			me.reset();
+			me.data = [];
+			me.previousValue = null;
 		}
 			
 		var rollingIntervalSeconds;
@@ -10,11 +12,11 @@ module HrvAlgorithms {
 		var previousValue;
 		var count;
 		var aggregatedValue;
+		var data;
 		
 		function reset() {
 			me.secondsCount = 0;	
 			me.count = 0;
-			me.previousValue = null;
 			me.aggregatedValue = 0.0;
 		}
 		
@@ -27,15 +29,26 @@ module HrvAlgorithms {
 		}
 		
 		function addValue(value) {
-			if (me.previousValue != null) {
+			if (me.previousValue != null && value != null) {
 				me.count++;
 				me.aggregate(value);
 			}
-			me.previousValue = value;
+			if ( value != null) {
+				me.previousValue = value;
+			}
 		}
 
 		function aggregate(value) {
 			me.aggregatedValue += value;
+		}
+
+		function getLastCalcValue() {
+			if (me.data.size() > 0)
+			{
+				return me.data[me.data.size()-1];
+			} else {
+				return null;
+			}
 		}
 	
 		function calculate() {
@@ -45,7 +58,12 @@ module HrvAlgorithms {
 			
 			var result = me.aggregatedValue / me.count.toFloat();
 			me.reset();
+			me.data.add(result);
 			return result;
+		}
+
+		function getHistory() {
+			return me.data;
 		}
 	}
 }
