@@ -131,13 +131,19 @@ class GraphView extends ScreenPicker.ScreenPickerView  {
 		var yMin = null;
 		var yMax = null;
 		if (me.data.size() > 1 && me.min != null && me.max != null) {
-			// Reduce a bit the min heart rate so it will show in the chart
-			yMin = Math.floor(me.min * 0.99);
-			yMax = Math.ceil(me.max * 1.01);
+			// Calculate different between min and max
+			minMaxDiff = (me.max - me.min).toFloat();
+			if (minMaxDiff == 0) {
+				minMaxDiff = 1;
+			}
 
-			// Calculate different between min and max HR
+			// Reduce a bit the min heart rate so it will show in the chart
+			var yOffset = Math.ceil(minMaxDiff * 0.1);
+			yMin = Math.floor(me.min.toFloat() - yOffset);
+			yMax = Math.ceil(me.max.toFloat() + yOffset);
+			// update min max diff
 			minMaxDiff = (yMax - yMin).toFloat();
-			
+
 			// Chart as light blue
 			dc.setPenWidth(1);
 			dc.setColor(0x27a0c4, Graphics.COLOR_TRANSPARENT);
@@ -171,7 +177,7 @@ class GraphView extends ScreenPicker.ScreenPickerView  {
 				for (var j = 0; j < expandFact; j++){		
 					var lineHeight = 0;
 					if (val!=null) {
-						lineHeight = (val-yMin) * (graph_height.toFloat() / minMaxDiff.toFloat());
+						lineHeight = (val-yMin) * (graph_height.toFloat() / minMaxDiff);
 					}
 					dc.drawLine(position_x + xStep, 
 								position_y - lineHeight.toNumber(), 
