@@ -14,7 +14,7 @@ class Vibe {
 			return;
 		}
 
-		var vibeProfile;
+		var vibeProfile = getLongContinuous();
 		switch (pattern) {
 			case VibePattern.LongContinuous:
 				vibeProfile = getLongContinuous();

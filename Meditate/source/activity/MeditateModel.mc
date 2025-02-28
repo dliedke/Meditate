@@ -74,7 +74,7 @@ class MeditateModel {
 		return isRespirationRateOnStatic(me.rrActivity);
 	}
 
-	function isRespirationRateOnStatic(rrActivity) {
+	static function isRespirationRateOnStatic(rrActivity) {
 
 		// Check if watch supports respiration rate
 		if (rrActivity.isSupported()) {

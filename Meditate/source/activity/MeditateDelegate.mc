@@ -141,5 +141,6 @@ class MeditateDelegate extends Ui.BehaviorDelegate {
 				Attention.backlight(backlightOn);
 			}
 		}
+		return true;
 	}
 }

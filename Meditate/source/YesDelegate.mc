@@ -10,7 +10,9 @@ class YesDelegate extends Ui.ConfirmationDelegate {
 
     function onResponse(value) {
         if (value == Ui.CONFIRM_YES) {  
-        	me.mOnYes.invoke();      	    
-        }        
+        	me.mOnYes.invoke();
+            return true;
+        }
+        return false;
     }
 }

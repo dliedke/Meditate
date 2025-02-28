@@ -17,7 +17,6 @@ class DelayedFinishingView extends Ui.View {
 		// Exit app if required
 		if (me.mShouldAutoExit) {
 			System.exit();
-			return;
 		}
 
 		me.mOnShow.invoke();

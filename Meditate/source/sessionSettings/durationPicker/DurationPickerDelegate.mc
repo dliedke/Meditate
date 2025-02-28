@@ -19,6 +19,7 @@ class DurationPickerDelegate extends Ui.BehaviorDelegate {
 			me.mModel.startPickingDigits();
 			Ui.requestUpdate();
 		}
+		return true;
 	}
 	
 	function finishPickingDigits() {

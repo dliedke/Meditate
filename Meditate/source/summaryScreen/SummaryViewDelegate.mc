@@ -49,7 +49,6 @@ class SummaryViewDelegate extends ScreenPicker.ScreenPickerDelegate {
 			}
 		}
 	}
-	private var mPagesCount;
 	// Light results theme
 	var backgroundColor = Gfx.COLOR_WHITE;
 	var foregroundColor = Gfx.COLOR_BLACK;
