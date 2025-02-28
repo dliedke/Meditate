@@ -39,10 +39,14 @@ class SummaryModel {
 		me.hrvTracking = hrvTracking;
 	}
 
-	function initializeStressHistory (elapsedTimeSeconds) {
+	function initializeStressHistory(elapsedTimeSeconds) {
 
-		stressEnd = null;
-		stressStart = null;
+		me.stressEnd = null;
+		me.stressStart = null;
+		me.stressHistory = [];
+		me.stressMin = null;
+		me.stressMax = null;
+		me.stressAvg = null;
 		var momentStartMediatation = null;
 
 		//DEBUG
@@ -73,6 +77,10 @@ class SummaryModel {
 					return;
 				}
 				me.stressEnd = sample.data;
+				me.stressHistory.add(sample.data);
+				me.stressMin = sample.data;
+				me.stressMax = sample.data;
+
 				//System.println("stressEnd.data:" + sample.data);
 			}
 
@@ -87,6 +95,13 @@ class SummaryModel {
 					// If the stress sample is within the meditation timeframe use it for the stress start metric
 					if (sample.when.greaterThan(momentStartMediatation)) {
 						me.stressStart = sample.data;
+						me.stressHistory.add(sample.data);
+						if(me.stressMax < sample.data){
+							me.stressMax = sample.data;
+						}
+						if(me.stressMin > sample.data){
+							me.stressMin = sample.data;
+						}
 
 						//var sampleDate = Gregorian.info(sample.when, Time.FORMAT_MEDIUM);
 						//System.println("sample.date:" + sampleDate.hour + ":" + sampleDate.min + ":" + sampleDate.sec);
@@ -94,6 +109,10 @@ class SummaryModel {
 					}
 				}
 			}
+			me.stressHistory = stressHistory.reverse();
+			me.stressAvg = Math.round(Math.mean(me.stressHistory));
+			me.stressMin = Math.round(stressMin);
+			me.stressMax = Math.round(stressMax);
 		}
 	}
 
@@ -153,6 +172,10 @@ class SummaryModel {
 	var stress;
 	var stressStart;
 	var stressEnd;
+	var stressMin;
+	var stressMax;
+	var stressAvg;
+	var stressHistory;
 
 	var hrvRmssd;
 	var hrvFirst5Min;

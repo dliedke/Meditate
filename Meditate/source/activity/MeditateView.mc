@@ -233,7 +233,7 @@ class MeditateView extends Ui.View {
  	    if (me.mMeditateModel.isHrvOn() == true) {
 	        me.mHrvIcon.draw(dc);
 	        me.mHrvText.setText(me.formatHrv(hrvSuccessive));
-	        me.mHrvText.draw(dc); 
+	        me.mHrvText.draw(dc);
         }
 
 		// Only get respiration rate every second

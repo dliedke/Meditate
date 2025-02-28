@@ -8,10 +8,18 @@ using HrvAlgorithms.HrvTracking;
 class SummaryViewDelegate extends ScreenPicker.ScreenPickerDelegate {
 	private var mSummaryModel;
 	private var mDiscardDanglingActivity;
+	private var pages;
+	private static const pageHeartRateGraph = "HeartRateGraph";
+	private static const pageRespirationRateGraph = "RespirationRateGraph";
+	private static const pageStressGraph = "StressGraph";
+	private static const pageStress = "Stress";
+	private static const pageHrvRmssd = "HrvRmssd";
+	private static const pageHrvPnnx = "HrvPnnx";
+	private static const pageHrvSdrr = "HrvSdrr";
 
 	function initialize(summaryModel, isRespirationRateOn, discardDanglingActivity) {		
-		me.mPagesCount = SummaryViewDelegate.getPagesCount(summaryModel.hrvTracking, isRespirationRateOn);
-		setPageIndexes(summaryModel.hrvTracking, isRespirationRateOn);
+		me.setPageIndexes(summaryModel.hrvTracking, isRespirationRateOn);
+		me.mPagesCount = me.pages.size();
 		
         ScreenPickerDelegate.initialize(0, me.mPagesCount);
         me.mSummaryModel = summaryModel;
@@ -21,72 +29,27 @@ class SummaryViewDelegate extends ScreenPicker.ScreenPickerDelegate {
 		
 	private var mSummaryLinesYOffset;
 			
-	private static function getPagesCount(hrvTracking, isRespirationRateOn) {		
-		
-		var pagesCount = 6;
-
-		if (hrvTracking == HrvTracking.Off) {
-			pagesCount -= 4;
-		}
-		else if (hrvTracking == HrvTracking.On) {
-			pagesCount -= 2;
-		}
-
-		if (!isRespirationRateOn) {
-			pagesCount -= 1;
-		}
-
-		return pagesCount;
+	private function getPagesCount(hrvTracking, isRespirationRateOn) {		
+		return me.mPagesCount;
 	}
 	
-	private function setPageIndexes(hrvTracking, isRespirationRateOn) {	
-		
-		if (hrvTracking == HrvTracking.Off) {
-			me.mStressPageIndex = InvalidPageIndex;
-			me.mHrvRmssdPageIndex = InvalidPageIndex;
-			me.mHrvSdrrPageIndex = InvalidPageIndex;
-			me.mHrvPnnxPageIndex = InvalidPageIndex;
-
-			if (isRespirationRateOn) {
-				me.mRespirationPageIndex = 1;
-			} else {
-				me.mRespirationPageIndex = InvalidPageIndex;
-			}
-
+	private function setPageIndexes(hrvTracking, isRespirationRateOn) {
+		me.pages = new [0];
+		me.pages.add(me.pageHeartRateGraph);
+		if (isRespirationRateOn) {
+			me.pages.add(me.pageRespirationRateGraph);
 		}
-		else {
-			
-			if (isRespirationRateOn) {
-				me.mRespirationPageIndex = 1;
-				me.mStressPageIndex = 2;
-				me.mHrvRmssdPageIndex = 3;
-			} else {
-				me.mRespirationPageIndex = InvalidPageIndex;
-				me.mStressPageIndex = 1;
-				me.mHrvRmssdPageIndex = 2;
-			}
-				
+		if (hrvTracking == HrvTracking.On or hrvTracking == HrvTracking.OnDetailed){
+			me.pages.add(me.pageStressGraph);
+			me.pages.add(me.pageStress);
+			me.pages.add(me.pageHrvRmssd);
 			if (hrvTracking == HrvTracking.OnDetailed) {	
-				me.mHrvPnnxPageIndex = me.mHrvRmssdPageIndex + 1;	
-				me.mHrvSdrrPageIndex = me.mHrvRmssdPageIndex + 2;
-			}
-			else {
-				me.mHrvPnnxPageIndex = InvalidPageIndex;
-				me.mHrvSdrrPageIndex = InvalidPageIndex;
+				me.pages.add(me.pageHrvPnnx);
+				me.pages.add(me.pageHrvSdrr);
 			}
 		}
 	}
-	
 	private var mPagesCount;
-	
-	private var mHrvRmssdPageIndex;
-	private var mHrvSdrrPageIndex;
-	private var mHrvPnnxPageIndex;
-	private var mStressPageIndex;
-	private var mRespirationPageIndex;
-	
-	private const InvalidPageIndex = -1;
-
 	// Light results theme
 	var backgroundColor = Gfx.COLOR_WHITE;
 	var foregroundColor = Gfx.COLOR_BLACK;
@@ -107,24 +70,32 @@ class SummaryViewDelegate extends ScreenPicker.ScreenPickerDelegate {
 			backgroundColor = Gfx.COLOR_BLACK;
 			foregroundColor = Gfx.COLOR_WHITE;
 		}
-
-		if (me.mSelectedPageIndex == 0) {
-			return new HeartRateGraphView(me.mSummaryModel);
-		} 
-		else if (me.mSelectedPageIndex == me.mRespirationPageIndex) {
-			return new RespirationRateGraphView(me.mSummaryModel);
-		}
-		else if (me.mSelectedPageIndex == me.mStressPageIndex) {
-			details = me.createDetailsPageStress();
-		}
-		else if (me.mSelectedPageIndex == mHrvRmssdPageIndex){
-			details = me.createDetailsPageHrvRmssd();
-		}
-		else if (me.mSelectedPageIndex == mHrvPnnxPageIndex){
-			details = me.createDetailsPageHrvPnnx();
-		} 
-		else if (me.mSelectedPageIndex == mHrvSdrrPageIndex){
-			details = me.createDetailsPageHrvSdrr();
+		if (me.mSelectedPageIndex < me.mPagesCount) {
+			var page = me.pages[me.mSelectedPageIndex];
+			if (page.equals(me.pageHeartRateGraph)) {
+				return new HeartRateGraphView(me.mSummaryModel);
+			}
+			else if (page.equals(me.pageRespirationRateGraph)) {
+				return new RespirationRateGraphView(me.mSummaryModel);
+			}
+			else if (page.equals(me.pageStressGraph)) {
+				return new StressGraphView(me.mSummaryModel);
+			}
+			else if (page.equals(me.pageStress)) {
+				details = me.createDetailsPageStress();
+			}
+			else if (page.equals(me.pageHrvRmssd)) {
+				details = me.createDetailsPageHrvRmssd();
+			}
+			else if (page.equals(me.pageHrvPnnx)) {
+				details = me.createDetailsPageHrvPnnx();
+			}
+			else if (page.equals(me.pageHrvSdrr)) {
+				details = me.createDetailsPageHrvSdrr();
+			}
+			else {
+				return new HeartRateGraphView(me.mSummaryModel);
+			}	
 		} 
 		else {
 			return new HeartRateGraphView(me.mSummaryModel);

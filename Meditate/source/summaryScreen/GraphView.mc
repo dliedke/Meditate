@@ -61,6 +61,11 @@ class GraphView extends ScreenPicker.ScreenPickerView  {
 		graph_height = dc.getHeight() / 3;
 		graph_width =  App.getApp().getProperty("ChartWidth");
 
+		// Validate if we have data history
+		if (me.data == null || me.data.size() <=0) {
+			return;
+		}
+
 		if (me.min instanceof String) {
 			me.min = "--";
 		}
@@ -110,10 +115,6 @@ class GraphView extends ScreenPicker.ScreenPickerView  {
 					TimeFormatter.format(me.elapsedTime), 
 					Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 		
-		// Validate if we have data history
-		if (me.data == null || me.data.size() <=0) {
-			return;
-		}
 		
 		//DEBUG
 		//me.min = 55;
