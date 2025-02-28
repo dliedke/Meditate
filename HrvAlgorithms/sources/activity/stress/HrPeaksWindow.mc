@@ -57,21 +57,21 @@ module HrvAlgorithms {
 			if (me.mStoredSamplesCount < me.mSamples.size()) {
 				return null;
 			}
-			var maxHr = null;
+			var maxHr = -1;
 			for (var i = 0; i < me.mSamples.size(); i++) {
 				if (me.mSamples[i].size() > 0) {
 					for (var s = 0; s < me.mSamples[i].size(); s++) { 
 						var beatToBeatSample = me.mSamples[i][s];
 						var bpmSample =  Math.round(60000 / beatToBeatSample.toFloat()).toNumber();
 						
-						if (maxHr == null || bpmSample > maxHr) {
+						if (maxHr == -1 || bpmSample > maxHr) {
 							maxHr = bpmSample;
 						}
 					}
 				}
 			}
 			
-			if (maxHr == null) {
+			if (maxHr == -1) {
 				return null;
 			}
 			return maxHr;

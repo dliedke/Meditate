@@ -24,12 +24,12 @@ class SummaryModel {
 			}
 		}
 
-		me.stress = me.initializePercentageValue(activitySummary.stress);
-		
 		initializeStressHistory(me.elapsedTime);
+		me.stress = me.initializePercentageValue(me.stress);
 
 		if (activitySummary.hrvSummary != null) {
 			me.hrvRmssd = me.initializeHeartRateVariability(activitySummary.hrvSummary.rmssd);
+			me.hrvRmssdHistory = activitySummary.hrvSummary.rmssdHistory;
 			me.hrvFirst5Min = me.initializeHeartRateVariability(activitySummary.hrvSummary.first5MinSdrr);
 			me.hrvLast5Min = me.initializeHeartRateVariability(activitySummary.hrvSummary.last5MinSdrr);
 			me.hrvPnn50 = me.initializePercentageValue(activitySummary.hrvSummary.pnn50);
@@ -39,10 +39,11 @@ class SummaryModel {
 		me.hrvTracking = hrvTracking;
 	}
 
-	function initializeStressHistory (elapsedTimeSeconds) {
+	function initializeStressHistory(elapsedTimeSeconds) {
 
-		stressEnd = null;
-		stressStart = null;
+		me.stressEnd = null;
+		me.stressStart = null;
+		me.stressHistory = [];
 		var momentStartMediatation = null;
 
 		//DEBUG
@@ -61,18 +62,14 @@ class SummaryModel {
 				// Calculate the moment of the start of meditation session
 				momentStartMediatation = Time.now().subtract(new Time.Duration(elapsedTimeSeconds));
 
-				//var momentStartStressDate = Gregorian.info(momentStartMediatation, Time.FORMAT_MEDIUM);
-				//System.println("momentStartStress:" + momentStartStressDate.hour + ":" + momentStartStressDate.min + ":" + momentStartStressDate.sec);
-
-				//var sampleDate = Gregorian.info(sample.when, Time.FORMAT_MEDIUM);
-				//System.println("sample date:" + sampleDate.hour + ":" + sampleDate.min + ":" + sampleDate.sec);
-
 				if (momentStartMediatation.greaterThan(sample.when))
 				{
 					//System.println("No stress history data found for the meditation timeframe, exiting.");
 					return;
 				}
 				me.stressEnd = sample.data;
+				me.stressHistory.add(sample.data);
+
 				//System.println("stressEnd.data:" + sample.data);
 			}
 
@@ -87,13 +84,15 @@ class SummaryModel {
 					// If the stress sample is within the meditation timeframe use it for the stress start metric
 					if (sample.when.greaterThan(momentStartMediatation)) {
 						me.stressStart = sample.data;
-
+						me.stressHistory.add(sample.data);
 						//var sampleDate = Gregorian.info(sample.when, Time.FORMAT_MEDIUM);
 						//System.println("sample.date:" + sampleDate.hour + ":" + sampleDate.min + ":" + sampleDate.sec);
 						//System.println("sample.data:" + sample.data);
 					}
 				}
 			}
+			me.stressHistory = stressHistory.reverse();
+			me.stress = Math.mean(me.stressHistory);
 		}
 	}
 
@@ -124,7 +123,7 @@ class SummaryModel {
 			return me.InvalidHeartRate;
 		}
 		else {
-			return stressScore.format("%3.2f");
+			return Math.round(stressScore).format("%3.0f");
 		}
 	}
 	
@@ -133,7 +132,7 @@ class SummaryModel {
 			return me.InvalidHeartRate;
 		}
 		else {
-			return hrv.format("%3.2f");
+			return Math.round(hrv).format("%3.0f");
 		}
 	}
 		
@@ -153,8 +152,10 @@ class SummaryModel {
 	var stress;
 	var stressStart;
 	var stressEnd;
+	var stressHistory;
 
 	var hrvRmssd;
+	var hrvRmssdHistory;
 	var hrvFirst5Min;
 	var hrvLast5Min;
 	var hrvPnn50;

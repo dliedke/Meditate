@@ -2,14 +2,13 @@ using Toybox.System;
 
 class SummaryRollupModel {
 	function initialize() {		
-		me.mSummaryModels = {};
+		me.mSummaryModels = [];
 	}
 	
 	private var mSummaryModels;
 	
 	public function addSummary(summaryModel) {
-		var newSummaryIndex = me.mSummaryModels.size();
-		mSummaryModels[newSummaryIndex] = summaryModel;
+		me.mSummaryModels.add(summaryModel);
 	}
 	
 	public function getSummary(index) {

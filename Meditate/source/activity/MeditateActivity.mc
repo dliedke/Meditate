@@ -20,12 +20,10 @@ class MediteActivity extends HrvAlgorithms.HrvAndStressActivity {
 
 		if (meditateModel.getActivityType() == ActivityType.Yoga) {
 			fitSessionSpec = HrvAlgorithms.FitSessionSpec.createYoga(createSessionName(sessionTime, activityNameProperty)); // Due to bug in Connect IQ API for breath activity to get respiration rate, we will use Yoga as default meditate activity
-		}
-		if (meditateModel.getActivityType() == ActivityType.Meditating) {
-			fitSessionSpec = HrvAlgorithms.FitSessionSpec.createMeditation(createSessionName(sessionTime, activityNameProperty));
-		}
-		if (meditateModel.getActivityType() == ActivityType.Breathing) {
+		} else if (meditateModel.getActivityType() == ActivityType.Breathing) {
 			fitSessionSpec = HrvAlgorithms.FitSessionSpec.createBreathing(createSessionName(sessionTime, activityNameProperty));
+		} else {
+			fitSessionSpec = HrvAlgorithms.FitSessionSpec.createMeditation(createSessionName(sessionTime, activityNameProperty));
 		}
 
 		me.mMeditateModel = meditateModel;	
@@ -102,14 +100,14 @@ class MediteActivity extends HrvAlgorithms.HrvAndStressActivity {
 		me.mVibeAlertsExecutor = new VibeAlertsExecutor(me.mMeditateModel);	
 	}	
 				
-	protected function onRefreshHrvActivityStats(activityInfo, minHr, hrvSuccessive) {	
+	protected function onRefreshHrvActivityStats(activityInfo, minHr, hrvValue) {	
 		if (activityInfo.elapsedTime != null) {
 			me.mMeditateModel.elapsedTime = activityInfo.timerTime / 1000;
 		}
 		me.mMeditateModel.currentHr = activityInfo.currentHeartRate;
 		me.mMeditateModel.minHr = minHr;
 		me.mVibeAlertsExecutor.firePendingAlerts();	 
-		me.mMeditateModel.hrvSuccessive = hrvSuccessive;
+		me.mMeditateModel.hrvValue = hrvValue;
     	
 		// Check if we need to stop activity automatically when time ended
 		var autoStopEnabled = GlobalSettings.loadAutoStop();

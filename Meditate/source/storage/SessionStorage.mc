@@ -64,7 +64,7 @@ class SessionStorage {
 			
 	function addSession(initialization) {
 		var finalIndex = 0;
-		var firstSession;
+		var firstSession = null;
 
 		// If initializing data first time, add the 6 initial mediation sessions
 		if (initialization) {

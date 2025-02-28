@@ -32,7 +32,7 @@ module HrvAlgorithms {
 		private var firstBadMesure = true;
 
 		// Method to be used without class instance
-		function isRespirationRateSupported(){
+		static function isRespirationRateSupported(){
 			if (ActivityMonitor.getInfo() has :respirationRate) {
 				return true;
 			} else {

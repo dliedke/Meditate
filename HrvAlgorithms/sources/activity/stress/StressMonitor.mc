@@ -7,7 +7,7 @@ module HrvAlgorithms {
 			me.mHrvTracking = hrvTracking;
 			if (me.mHrvTracking == HrvTracking.OnDetailed) {		
 				me.mHrPeaksWindow10DataField = StressMonitor.createHrPeaksWindow10DataField(activitySession);			
-			}
+			} 
 			if (me.mHrvTracking != HrvTracking.Off) {		
 				me.mHrPeaksAverageDataField = StressMonitor.createHrPeaksAverageDataField(activitySession);			
 				me.mHrPeaksWindow10 = new HrPeaksWindow(10);	
@@ -16,7 +16,7 @@ module HrvAlgorithms {
 								
 		private var mHrvTracking;
 		
-		private var mHrPeaksWindow10;	
+		private var mHrPeaksWindow10;
 		
 		private var mHrPeaksWindow10DataField;
 		private var mHrPeaksAverageDataField;

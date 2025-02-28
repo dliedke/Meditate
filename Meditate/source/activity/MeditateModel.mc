@@ -7,7 +7,7 @@ class MeditateModel {
 		me.elapsedTime = 0;
 		me.minHr = null;
 		me.currentHr = null;
-		me.hrvSuccessive = null;
+		me.hrvValue = null;
 		me.respirationRate = null;
 		me.isTimerRunning = false;
 		me.rrActivity = new HrvAlgorithms.RrActivity();
@@ -19,7 +19,7 @@ class MeditateModel {
 	var currentHr;
 	var minHr;
 	var elapsedTime;
-	var hrvSuccessive;
+	var hrvValue;
 	var respirationRate;
 	var isTimerRunning;
 
@@ -74,7 +74,7 @@ class MeditateModel {
 		return isRespirationRateOnStatic(me.rrActivity);
 	}
 
-	function isRespirationRateOnStatic(rrActivity) {
+	static function isRespirationRateOnStatic(rrActivity) {
 
 		// Check if watch supports respiration rate
 		if (rrActivity.isSupported()) {

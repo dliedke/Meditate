@@ -122,7 +122,7 @@ module HrvAlgorithms {
 		function addOneSecBeatToBeatIntervals(beatToBeatIntervals) {
 			HrvMonitorDefault.addOneSecBeatToBeatIntervals(beatToBeatIntervals);
 
-	    	var rmssd30Sec = me.mHrvRmssd30Sec.addOneSecBeatToBeatIntervals(beatToBeatIntervals); 	
+	    	var rmssd30Sec = me.mHrvRmssd30Sec.addOneSec(beatToBeatIntervals); 	
 	    	if (rmssd30Sec != null) {
 	    		me.mHrvRmssd30SecDataField.setData(rmssd30Sec);
 	    	}	
@@ -136,12 +136,16 @@ module HrvAlgorithms {
 			var hrFromHeartbeat = Math.round(60000 / beatToBeatInterval.toFloat()).toNumber();
 			me.mHrFromHeartbeatDataField.setData(hrFromHeartbeat);
 			
-			me.mHrvSdrrFirst5Min.addBeatToBeatInterval(beatToBeatInterval);
-			me.mHrvSdrrLast5Min.addBeatToBeatInterval(beatToBeatInterval);
+			me.mHrvSdrrFirst5Min.addData(beatToBeatInterval);
+			me.mHrvSdrrLast5Min.addData(beatToBeatInterval);
 			
 			me.mHrvPnn50.addBeatToBeatInterval(beatToBeatInterval);
 			me.mHrvPnn20.addBeatToBeatInterval(beatToBeatInterval);				
-		}			
+		}
+
+		public function getRmssdRolling() {
+			return mHrvRmssd30Sec.getLastCalcValue();
+		}
 					
 		public function calculateHrvSummary() {		
 			var hrvSummary = HrvMonitorDefault.calculateHrvSummary();	
@@ -162,6 +166,7 @@ module HrvAlgorithms {
 			if (hrvSummary.last5MinSdrr != null) {
 				me.mHrvSdrrLast5MinDataField.setData(hrvSummary.last5MinSdrr);
 			}
+			hrvSummary.rmssdHistory = me.mHrvRmssd30Sec.getHistory();
 			return hrvSummary;
 		}
 	}	

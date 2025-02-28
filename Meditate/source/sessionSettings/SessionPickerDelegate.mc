@@ -73,16 +73,15 @@ class SessionPickerDelegate extends ScreenPicker.ScreenPickerDelegate {
     
     private const RollupExitOption = :exitApp;
     
-    function onBack() {         	
-    	if (me.mSummaryRollupModel.getSummaries().size() > 0) {
-    		var summaries = me.mSummaryRollupModel.getSummaries();
-    		
+    function onBack() {
+		var summaries = me.mSummaryRollupModel.getSummaries(); 	
+    	if (summaries.size() > 0) {   		
     		var summaryRollupMenu = new Ui.Menu();
 			summaryRollupMenu.setTitle(Ui.loadResource(Rez.Strings.summaryRollupMenu_title));
 			summaryRollupMenu.addItem(Ui.loadResource(Rez.Strings.summaryRollupMenuOption_exit), RollupExitOption);
 			for (var i = 0; i < summaries.size(); i++) {
     			summaryRollupMenu.addItem(TimeFormatter.format(summaries[i].elapsedTime), i);
-    		}			
+    		}
 			var summaryRollupMenuDelegate = new MenuOptionsDelegate(method(:onSummaryRollupMenuOption));
 			Ui.pushView(summaryRollupMenu, summaryRollupMenuDelegate, Ui.SLIDE_LEFT);	
 			return true;
@@ -161,8 +160,6 @@ class SessionPickerDelegate extends ScreenPicker.ScreenPickerDelegate {
 		
 	private static function getVibePatternText(vibePattern) {
 		switch (vibePattern) {
-			case VibePattern.NoNotification:
-				return Ui.loadResource(Rez.Strings.vibePatternMenu_noNotification);
 			case VibePattern.LongPulsating:
 				return Ui.loadResource(Rez.Strings.vibePatternMenu_longPulsating);
 			case VibePattern.LongSound:
@@ -183,6 +180,8 @@ class SessionPickerDelegate extends ScreenPicker.ScreenPickerDelegate {
 				return Ui.loadResource(Rez.Strings.vibePatternMenu_shortContinuous);
 			case VibePattern.ShortPulsating:
 				return Ui.loadResource(Rez.Strings.vibePatternMenu_shortPulsating);
+			default:
+				return Ui.loadResource(Rez.Strings.vibePatternMenu_noNotification);
 		}
 	}
 	
