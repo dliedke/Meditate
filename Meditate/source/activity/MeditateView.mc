@@ -17,7 +17,6 @@ class MeditateView extends Ui.View {
         me.mElapsedTime = null; 
         me.mHrStatusText = null;
         me.mMeditateIcon = null;
-		me.timeXPos = null;
 
 		// If we have respiration rate and HRV on , we should push all text and icons one line below
 		if (mMeditateModel.isRespirationRateOn() && me.mMeditateModel.isHrvOn()) {
