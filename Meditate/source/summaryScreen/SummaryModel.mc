@@ -143,7 +143,7 @@ class SummaryModel {
 			return me.InvalidHeartRate;
 		}
 		else {
-			return stressScore.format("%3.2f");
+			return Math.round(stressScore).format("%3.f");
 		}
 	}
 	
@@ -152,7 +152,7 @@ class SummaryModel {
 			return me.InvalidHeartRate;
 		}
 		else {
-			return hrv.format("%3.2f");
+			return Math.round(hrv).format("%3.f");
 		}
 	}
 		

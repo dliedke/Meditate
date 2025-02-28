@@ -91,21 +91,21 @@ class GraphView extends ScreenPicker.ScreenPickerView  {
 		dc.drawText(centerX - centerX / 2 + 10, 
 					centerY - centerY / 2 + 10, 
 					Gfx.FONT_SYSTEM_TINY, 
-					Ui.loadResource(Rez.Strings.SummaryMin) + me.min.toString(), 
+					Ui.loadResource(Rez.Strings.SummaryMin) + Math.round(me.min).toString(), 
 					Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 
 		// Draw AVG HR text
 		dc.drawText(centerX, 
 					centerY + centerY / 2 + 3, 
 					Gfx.FONT_SYSTEM_TINY, 
-					Ui.loadResource(Rez.Strings.SummaryAvg) + me.avg.toString(), 
+					Ui.loadResource(Rez.Strings.SummaryAvg) + Math.round(me.avg).toString(), 
 					Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 
 		// Draw MAX HR text
 		dc.drawText(centerX + centerX / 2 - 10, 
 					centerY - centerY / 2 + 10, 
 					Gfx.FONT_SYSTEM_TINY, 
-					Ui.loadResource(Rez.Strings.SummaryMax) + me.max.toString(), 
+					Ui.loadResource(Rez.Strings.SummaryMax) + Math.round(me.max).toString(), 
 					Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 
 		// Draw Time text

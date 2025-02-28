@@ -122,7 +122,7 @@ module HrvAlgorithms {
 		function addOneSecBeatToBeatIntervals(beatToBeatIntervals) {
 			HrvMonitorDefault.addOneSecBeatToBeatIntervals(beatToBeatIntervals);
 
-	    	var rmssd30Sec = me.mHrvRmssd30Sec.addOneSecBeatToBeatIntervals(beatToBeatIntervals); 	
+	    	var rmssd30Sec = me.mHrvRmssd30Sec.addOneSec(beatToBeatIntervals); 	
 	    	if (rmssd30Sec != null) {
 	    		me.mHrvRmssd30SecDataField.setData(rmssd30Sec);
 	    	}	
@@ -136,8 +136,8 @@ module HrvAlgorithms {
 			var hrFromHeartbeat = Math.round(60000 / beatToBeatInterval.toFloat()).toNumber();
 			me.mHrFromHeartbeatDataField.setData(hrFromHeartbeat);
 			
-			me.mHrvSdrrFirst5Min.addBeatToBeatInterval(beatToBeatInterval);
-			me.mHrvSdrrLast5Min.addBeatToBeatInterval(beatToBeatInterval);
+			me.mHrvSdrrFirst5Min.addData(beatToBeatInterval);
+			me.mHrvSdrrLast5Min.addData(beatToBeatInterval);
 			
 			me.mHrvPnn50.addBeatToBeatInterval(beatToBeatInterval);
 			me.mHrvPnn20.addBeatToBeatInterval(beatToBeatInterval);				
