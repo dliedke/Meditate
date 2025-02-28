@@ -168,22 +168,22 @@ class GraphView extends ScreenPicker.ScreenPickerView  {
 			var xStep = 1;
 			for (var i = 0; i < me.data.size(); i+=skipSize){
 				var val = me.data[i];
-				if (val!=null && val > 1) {
-					for (var j = 0; j < expandFact; j++){		
-						var lineHeight = (val-yMin) * (graph_height.toFloat() / minMaxDiff.toFloat());
-						dc.drawLine(position_x + xStep, 
-									position_y - lineHeight.toNumber(), 
-									position_x + xStep, 
-									position_y);
-						xStep++;
-					}				
-					// Skip to fit the chart in the screen
-					if (skipSizeFloatPart > 0) {
-						if ((xStep * 1000000) % (skipSizeFloatPart).toNumber() > 1000000) {
-							i++;			
-						}
+				for (var j = 0; j < expandFact; j++){		
+					var lineHeight = 0;
+					if (val!=null) {
+						lineHeight = (val-yMin) * (graph_height.toFloat() / minMaxDiff.toFloat());
 					}
-					
+					dc.drawLine(position_x + xStep, 
+								position_y - lineHeight.toNumber(), 
+								position_x + xStep, 
+								position_y);
+					xStep++;
+				}				
+				// Skip to fit the chart in the screen
+				if (skipSizeFloatPart > 0) {
+					if ((xStep * 1000000) % (skipSizeFloatPart).toNumber() > 1000000) {
+						i++;			
+					}
 				}
 			}
 		}
