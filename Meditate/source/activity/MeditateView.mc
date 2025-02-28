@@ -17,6 +17,7 @@ class MeditateView extends Ui.View {
         me.mElapsedTime = null; 
         me.mHrStatusText = null;
         me.mMeditateIcon = null;
+		me.timeXPos = null;
 
 		// If we have respiration rate and HRV on , we should push all text and icons one line below
 		if (mMeditateModel.isRespirationRateOn() && me.mMeditateModel.isHrvOn()) {
@@ -113,8 +114,8 @@ class MeditateView extends Ui.View {
     	return dc.getHeight() / 2 + lineOffset * dc.getFontHeight(TextFont);
     }
 	
-    function renderLayoutElapsedTime(dc) { 	
-    	var xPosCenter = dc.getWidth() / 2;
+    function renderLayoutElapsedTime(dc) { 
+		var xPosCenter = dc.getWidth() / 2; 
     	var yPosCenter = getYPosOffsetFromCenter(dc, -1 + mRespirationRateYPosOffset);
     	me.mElapsedTime = createMeditateText(me.mMeditateModel.getColor(), TextFont, xPosCenter, yPosCenter, Gfx.TEXT_JUSTIFY_CENTER);
     }
@@ -187,7 +188,9 @@ class MeditateView extends Ui.View {
         	mMeditateIcon.draw(dc);
         }
 		
-		var timeText = TimeFormatter.format(me.mMeditateModel.elapsedTime);
+		var elapsedTime = me.mMeditateModel.elapsedTime;
+		var timeText = TimeFormatter.format(elapsedTime);
+		
 		timeText = timeText.substring(0, timeText.length()-3);
 		
 		var currentHr = me.mMeditateModel.currentHr;
@@ -205,7 +208,6 @@ class MeditateView extends Ui.View {
 		me.mElapsedTime.draw(dc);
                     
         var alarmTime = me.mMeditateModel.getSessionTime();
-		var elapsedTime = me.mMeditateModel.elapsedTime;
 
 		// Fix issues with OLED screens for prepare time 45 seconds
 		if (elapsedTime <= 1)
