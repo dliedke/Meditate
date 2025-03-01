@@ -80,23 +80,24 @@ module HrvAlgorithms {
 		function calculateCurrentStress(minHr) {
 			// Check if we have valid data and minimum heart rate
 			if (minHr == null || minHr == 0) {
-				return 0.0;
+				return 10.0;  // Return minimum stress instead of 0
 			}
 			
 			// Get the current HR peak
 			var hrPeak = me.calculateHrPeak();
 			if (hrPeak == null) {
-				return 0.0;
+				return 10.0;  // Return minimum stress instead of 0
 			}
 			
 			// Calculate stress based on the difference between current peak HR and minimum HR
 			var hrPeakDiff = hrPeak - minHr;
 			if (hrPeakDiff < 0.0) {
-				return 0.0;
+				return 10.0;  // Return minimum stress instead of 0
 			}
 			
 			// Stress is the percentage increase above minimum heart rate
-			var currentStress = (hrPeakDiff * 100.0) / minHr.toFloat();
+			// Scale from 10-100 instead of 0-100
+			var currentStress = 10.0 + ((hrPeakDiff * 90.0) / minHr.toFloat());
 			
 			// Cap the stress value at 100%
 			if (currentStress > 100.0) {
