@@ -37,7 +37,7 @@ module HrvAlgorithms {
 						}
 					}
 				}
-				System.println("api5v:" + me.apiV5Plus);
+				// Debug System.println("api5v:" + me.apiV5Plus);
 			}
 			return val;
 		}
