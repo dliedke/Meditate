@@ -126,7 +126,7 @@ class MediteActivity extends HrvAlgorithms.HrvAndStressActivity {
 		
 	function calculateSummaryFields() {	
 		var activitySummary = HrvAlgorithms.HrvAndStressActivity.calculateSummaryFields();	
-		var summaryModel = new SummaryModel(activitySummary, me.mMeditateModel.getRespirationActivity(), me.mMeditateModel.getHrvTracking());
+		var summaryModel = new SummaryModel(activitySummary, me.mMeditateModel.getRespirationActivity(), me.mMeditateModel.getStressActivity(), me.mMeditateModel.getHrvTracking());
 		return summaryModel;
 	}
 }

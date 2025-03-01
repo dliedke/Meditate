@@ -11,10 +11,12 @@ class MeditateModel {
 		me.respirationRate = null;
 		me.isTimerRunning = false;
 		me.rrActivity = new HrvAlgorithms.RrActivity();
+		me.stressActivity = new HrvAlgorithms.StressActivity();
 	}
 	
 	private var mSession;
 	private var rrActivity;
+	private var stressActivity;
 
 	var currentHr;
 	var minHr;
@@ -100,7 +102,18 @@ class MeditateModel {
 		}
 	}
 
+	function getStress() {
+		if (isTimerRunning) {
+			return stressActivity.getCurrentValue();
+		} else {
+			return " --";
+		}
+	}
+
 	function getRespirationActivity() {
 		return rrActivity;
+	}
+	function getStressActivity() {
+		return stressActivity;
 	}
 }

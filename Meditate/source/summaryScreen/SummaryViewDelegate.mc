@@ -120,26 +120,26 @@ class SummaryViewDelegate extends ScreenPicker.ScreenPickerDelegate {
         details.backgroundColor = backgroundColor;
         details.titleColor = foregroundColor;
 
- 		if (me.mSummaryModel.stressStart!=null && me.mSummaryModel.stressEnd!=null) {
+ 		if (me.mSummaryModel.firstSt!=null && me.mSummaryModel.lastSt!=null) {
 
 				var lowStressIcon = new ScreenPicker.StressIcon({});
     			lowStressIcon.setLowStress();	      
         		details.detailLines[3].icon = lowStressIcon;  
 				details.detailLines[3].value.color = foregroundColor;
-				details.detailLines[3].value.text = Lang.format(Ui.loadResource(Rez.Strings.SummaryStressStart), [me.mSummaryModel.stressStart.format("%d")]);
+				details.detailLines[3].value.text = Lang.format(Ui.loadResource(Rez.Strings.SummaryStressStart), [me.mSummaryModel.firstSt.format("%d")]);
 
 				lowStressIcon = new ScreenPicker.StressIcon({});
     			lowStressIcon.setLowStress();	      
         		details.detailLines[4].icon = lowStressIcon;  
 				details.detailLines[4].value.color = foregroundColor;            
-				details.detailLines[4].value.text = Lang.format(Ui.loadResource(Rez.Strings.SummaryStressEnd), [me.mSummaryModel.stressEnd.format("%d")]);
+				details.detailLines[4].value.text = Lang.format(Ui.loadResource(Rez.Strings.SummaryStressEnd), [me.mSummaryModel.lastSt.format("%d")]);
 		}
 
     	var lowStressIcon = new ScreenPicker.StressIcon({});
     	lowStressIcon.setLowStress();	      
         details.detailLines[2].icon = lowStressIcon;  
 		details.detailLines[2].value.color = foregroundColor;   
-        details.detailLines[2].value.text = Lang.format("$1$ %", [me.mSummaryModel.stress]);
+        details.detailLines[2].value.text = Lang.format("$1$ %", [me.mSummaryModel.avgSt]);
                  
         var summaryStressIconsXPos = App.getApp().getProperty("summaryStressIconsXPos");
         var summaryStressValueXPos = App.getApp().getProperty("summaryStressValueXPos");

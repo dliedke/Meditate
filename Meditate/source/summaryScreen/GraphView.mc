@@ -190,7 +190,7 @@ class GraphView extends ScreenPicker.ScreenPickerView  {
 			
 			if (dataWidthRatio > 1) {
 				// Calculate bucket size
-				bucketSize = Math.round(dataWidthRatio).toNumber();
+				bucketSize = Math.ceil(dataWidthRatio).toNumber();
 			} else {
 				bucketSize = 1;
 				// Calculate the expanding
@@ -214,8 +214,8 @@ class GraphView extends ScreenPicker.ScreenPickerView  {
 					bucketVal+=val;
 					bucketCount++;
 				}
-				// skip first, draw last, else every full bucket
-				if(i > 0 && (i==me.data.size() -1 || i % bucketSize == 0)) {
+				// draw buckets: skip first, draw last, else every full bucket
+				if(i > 0 && (i == me.data.size() -1 || i % bucketSize == 0)) {
 					// draw bucket
 					if (bucketCount > 0) {
 						// calc average of bucket

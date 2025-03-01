@@ -30,7 +30,9 @@ class MeditateView extends Ui.View {
     private var mHrStatusText;    
 	private var mHrStatus;
 	private var mHrvIcon;
-	private var mHrvText;	
+	private var mHrvText;
+	private var mStressIcon;
+	private var mStressText;
 	private var mBreathIcon;
 	private var mBreathText;	
     private var mMeditateIcon;
@@ -108,6 +110,27 @@ class MeditateView extends Ui.View {
         var breathTextXPos = breathIconXPos + xbreathTextOffset;
         me.mBreathText = createMeditateText(Gfx.COLOR_WHITE, TextFont, breathTextXPos, breathTextYPos, Gfx.TEXT_JUSTIFY_LEFT); 
     }
+
+	private function renderStresstatusLayout(dc) {
+		// Put HR and Respiration rate together when HRV is off
+		var indexRespirationRateHrvOff = 0;
+		if (!me.mMeditateModel.isHrvOn()) {
+			indexRespirationRateHrvOff = -1;
+		}
+    	var stressIconXPos = App.getApp().getProperty("meditateActivityIconsXPos");
+    	var stressTextYPos =  getYPosOffsetFromCenter(dc, 2 + indexRespirationRateHrvOff);
+        var iconsYOffset = App.getApp().getProperty("meditateActivityIconsYOffset");
+        var stressIconYPos = stressTextYPos + iconsYOffset;
+        me.mStressIcon =  new ScreenPicker.StressIcon({
+        	:xPos => stressIconXPos,
+        	:yPos => stressIconYPos
+        });
+		me.mStressIcon.setLowStress();
+        
+        var xstressTextOffset = App.getApp().getProperty("meditateActivityXBreathTextOffset");
+        var stressTextXPos = stressIconXPos + xstressTextOffset;
+        me.mStressText = createMeditateText(Gfx.COLOR_WHITE, TextFont, stressTextXPos, stressTextYPos, Gfx.TEXT_JUSTIFY_LEFT); 
+    }
     
     private function getYPosOffsetFromCenter(dc, lineOffset) {
     	return dc.getHeight() / 2 + lineOffset * dc.getFontHeight(TextFont);
@@ -150,6 +173,7 @@ class MeditateView extends Ui.View {
 		if (me.mMeditateModel.isRespirationRateOn()) {
 			renderBreathStatusLayout(dc);
 		}
+		renderStresstatusLayout(dc);
     }
     
     // Called when this View is brought to the foreground. Restore
@@ -206,7 +230,7 @@ class MeditateView extends Ui.View {
 		}
 
 		// Enable backlight in the first 8 seconds then turn off to save battery
-		if (elapsedTime > 1 && elapsedTime <= 8) {
+		if (elapsedTime > 0 && elapsedTime <= 8) {
 			Attention.backlight(true);
 		}
 
@@ -238,6 +262,10 @@ class MeditateView extends Ui.View {
 				me.mBreathText.setText(me.formatValue(respirationRate));
 				me.mBreathText.draw(dc); 
 			}
+			var stress = me.mMeditateModel.getStress();
+			me.mStressIcon.draw(dc);
+			me.mStressText.setText(me.formatValue(stress));
+			me.mStressText.draw(dc); 
 		}
 
 		lastElapsedTime = elapsedTime;

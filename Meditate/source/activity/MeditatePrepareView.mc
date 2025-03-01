@@ -72,7 +72,7 @@ class MeditatePrepareView extends Ui.View {
         renderBackground(dc);   
 
 		var durationArcRadius = dc.getWidth() / 2;
-        var mainDurationArcWidth = dc.getWidth() / 4;
+        var mainDurationArcWidth = dc.getWidth() / 8;
 
 		// For rectangle screens we need to set this manually 
 		var mainDurationArcWidthConfig = App.getApp().getProperty("meditateActivityDurationArcWidth");
