@@ -7,8 +7,8 @@
     <string id="SummaryTitle">Zusf.</string>
     <string id="SummaryHR">Herzrate</string>
     <string id="SummaryStress">Stress</string>
-    <string id="SummaryStressStart">Stress Beginn: $1$</string>
-    <string id="SummaryStressEnd">Stress Ende: $1$</string>
+    <string id="SummaryStressStart">Stress Beginn: </string>
+    <string id="SummaryStressEnd">Stress Ende: </string>
     <string id="SummaryRespiration">Atmung</string>
     <string id="SummaryMin">Min:</string>
     <string id="SummaryAvg">Durchschn.:</string>

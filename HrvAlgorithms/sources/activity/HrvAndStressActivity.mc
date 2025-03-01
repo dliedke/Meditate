@@ -36,7 +36,7 @@ module HrvAlgorithms {
 		function onOneSecBeatToBeatIntervals(heartBeatIntervals) {
 			if (me.isHrvOn()) {	
 				me.mHrvMonitor.addOneSecBeatToBeatIntervals(heartBeatIntervals);
-				me.mStressMonitor.addOneSecBeatToBeatIntervals(heartBeatIntervals);
+				me.mStressMonitor.calculateStress();
 			} 
 		}
 		

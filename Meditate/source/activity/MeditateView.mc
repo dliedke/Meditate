@@ -148,7 +148,7 @@ class MeditateView extends Ui.View {
         renderLayoutElapsedTime(dc);  
 
         var durationArcRadius = dc.getWidth() / 2;
-        var mainDurationArcWidth = dc.getWidth() / 4;
+        var mainDurationArcWidth = dc.getWidth() / 8;
 
 		// For rectangle screens we need to set this manually 
 		var mainDurationArcWidthConfig = App.getApp().getProperty("meditateActivityDurationArcWidth");
@@ -254,8 +254,8 @@ class MeditateView extends Ui.View {
 	        me.mHrvText.draw(dc);
         }
 
-		// Only get respiration rate every second
-		if (elapsedTime!=lastElapsedTime) {
+		// Only get sensor data every second
+		if (elapsedTime!=lastElapsedTime && me.mMeditateModel.isTimerRunning) {
 			if (me.mMeditateModel.isRespirationRateOn()) {
 				var respirationRate = me.mMeditateModel.getRespirationRate();
 				me.mBreathIcon.draw(dc);

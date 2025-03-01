@@ -7,8 +7,8 @@
 	<string id="SummaryTitle">요약</string>
 	<string id="SummaryHR">심박</string>
 	<string id="SummaryStress">스트레스</string>
-	<string id="SummaryStressStart">시작 스트레스: $1$</string>
-	<string id="SummaryStressEnd">종료시 스트레스: $1$</string>
+	<string id="SummaryStressStart">시작 스트레스: </string>
+	<string id="SummaryStressEnd">종료시 스트레스: </string>
 	<string id="SummaryRespiration">호흡수</string>
 	<string id="SummaryMin">최소:</string>
 	<string id="SummaryAvg">평균:</string>

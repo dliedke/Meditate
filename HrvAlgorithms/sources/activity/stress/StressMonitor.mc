@@ -1,74 +1,63 @@
+using Toybox;
 using Toybox.FitContributor;
-using Toybox.Math;
-using Toybox.Application as App;
+using Toybox.ActivityMonitor;
+using Toybox.System;
+using Toybox.SensorHistory;
+using Toybox.Time;
+
 module HrvAlgorithms {
 	class StressMonitor {
 		function initialize(activitySession, hrvTracking) {	
 			me.mHrvTracking = hrvTracking;
-			if (me.mHrvTracking == HrvTracking.OnDetailed) {		
-				me.mHrPeaksWindow10DataField = StressMonitor.createHrPeaksWindow10DataField(activitySession);			
-			} 
-			if (me.mHrvTracking != HrvTracking.Off) {		
-				me.mHrPeaksAverageDataField = StressMonitor.createHrPeaksAverageDataField(activitySession);			
-				me.mHrPeaksWindow10 = new HrPeaksWindow(10);	
-			}						
+			me.mStressDataField = null;
+			if (me.mHrvTracking != HrvTracking.Off && StressMonitor.isSensorSupported()) {		
+				me.mStressDataField = StressMonitor.createStressDataField(activitySession);
+			}		
 		}
 								
-		private var mHrvTracking;
+		private var mHrvTracking;		
+		private var mStressDataField;		
+		private static const StressDataFieldId = 17;
+		private var lastValue = null;
+
+		static function isSensorSupported(){
+			if ((Toybox has :SensorHistory) && (Toybox.SensorHistory has :getStressHistory)) {
+				return true;
+			} else {
+				return false;
+			}
+		}
 		
-		private var mHrPeaksWindow10;
-		
-		private var mHrPeaksWindow10DataField;
-		private var mHrPeaksAverageDataField;
-		
-		private static const HrPeaksWindow10DataFieldId = 15;
-		private static const HrPeaksAverageDataFieldId = 17;
-		
-		private static function createHrPeaksAverageDataField(activitySession) {
+		private static function createStressDataField(activitySession) {
 			return activitySession.createField(
 	            "stress_hrpa",
-	            HrPeaksAverageDataFieldId,
+	            StressDataFieldId,
 	            FitContributor.DATA_TYPE_FLOAT,
 	            {:mesgType=>FitContributor.MESG_TYPE_SESSION, :units=>"%"}
 	        );
 		}
-	
-		private static function createHrPeaksWindow10DataField(activitySession) {
-			return activitySession.createField(
-	            "stress_hrp",
-	            HrPeaksWindow10DataFieldId,
-	            FitContributor.DATA_TYPE_FLOAT,
-	            {:mesgType=>FitContributor.MESG_TYPE_RECORD, :units=>"bpm"}
-	        );
-		}
-		
-		function addOneSecBeatToBeatIntervals(beatToBeatIntervals) {
-			if (me.mHrvTracking != HrvTracking.Off) {
-				me.mHrPeaksWindow10.addOneSecBeatToBeatIntervals(beatToBeatIntervals);
-				me.calculateHrPeaksWindow10();
-			}
-		}
-		
-		private function calculateHrPeaksWindow10() {
-			if (me.mHrvTracking == HrvTracking.Off) {
-				return;
-			}
-		
-			var result = me.mHrPeaksWindow10.calculateCurrentPeak();
-			if (result != null) {
-				if (me.mHrPeaksWindow10DataField != null) {
-					me.mHrPeaksWindow10DataField.setData(result);
+
+		public function calculateStress() {
+			if (me.mStressDataField != null) {
+				var iter = Toybox.SensorHistory.getStressHistory({:period=>null, :order=>Toybox.SensorHistory.ORDER_NEWEST_FIRST});
+				var sample = iter.next();
+				var val = null;
+				while (sample != null) {
+					val = sample.data;
+					if (val != null && val >=0 && val <= 100) {
+						if (me.lastValue == 0 || me.lastValue != val){
+							me.mStressDataField.setData(val);
+							me.lastValue = val;
+						}
+						return val;
+					} else {
+						return null;
+					}
 				}
-			}
-		}
-				
-		public function calculateStress(minHr) {
-			if (me.mHrvTracking == HrvTracking.Off) {
+			} else {
 				return null;
 			}
-			var averageStress = me.mHrPeaksWindow10.calculateAverageStress(minHr);
-			me.mHrPeaksAverageDataField.setData(averageStress);
-			return averageStress;
+
 		}
 	}
 }

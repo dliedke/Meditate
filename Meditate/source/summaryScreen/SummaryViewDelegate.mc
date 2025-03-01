@@ -121,18 +121,18 @@ class SummaryViewDelegate extends ScreenPicker.ScreenPickerDelegate {
         details.titleColor = foregroundColor;
 
  		if (me.mSummaryModel.firstSt!=null && me.mSummaryModel.lastSt!=null) {
-
-				var lowStressIcon = new ScreenPicker.StressIcon({});
-    			lowStressIcon.setLowStress();	      
-        		details.detailLines[3].icon = lowStressIcon;  
 				details.detailLines[3].value.color = foregroundColor;
-				details.detailLines[3].value.text = Lang.format(Ui.loadResource(Rez.Strings.SummaryStressStart), [me.mSummaryModel.firstSt.format("%d")]);
-
-				lowStressIcon = new ScreenPicker.StressIcon({});
-    			lowStressIcon.setLowStress();	      
-        		details.detailLines[4].icon = lowStressIcon;  
-				details.detailLines[4].value.color = foregroundColor;            
-				details.detailLines[4].value.text = Lang.format(Ui.loadResource(Rez.Strings.SummaryStressEnd), [me.mSummaryModel.lastSt.format("%d")]);
+				details.detailLines[3].value.text = Lang.format("$1$ $2$", [Ui.loadResource(Rez.Strings.SummaryStressStart), me.mSummaryModel.firstSt]);
+				details.detailLines[4].value.color = foregroundColor;
+				details.detailLines[4].value.text = Lang.format("$1$ $2$", [Ui.loadResource(Rez.Strings.SummaryStressEnd), me.mSummaryModel.lastSt]);
+		}
+		
+		if (me.mSummaryModel.minSt!=null && me.mSummaryModel.maxSt!=null) {
+				details.detailLines[5].value.color = foregroundColor;
+				System.println("stress minmax" + me.mSummaryModel.minSt + me.mSummaryModel.maxSt);
+				details.detailLines[5].value.text = Lang.format("$1$ $2$", [Ui.loadResource(Rez.Strings.SummaryMin), me.mSummaryModel.minSt]);
+				details.detailLines[6].value.color = foregroundColor;            
+				details.detailLines[6].value.text = Lang.format("$1$ $2$", [Ui.loadResource(Rez.Strings.SummaryMax), me.mSummaryModel.maxSt]);
 		}
 
     	var lowStressIcon = new ScreenPicker.StressIcon({});

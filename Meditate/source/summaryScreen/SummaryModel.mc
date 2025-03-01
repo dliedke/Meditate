@@ -25,6 +25,8 @@ class SummaryModel {
 			me.maxSt = me.formatValue(stressSummary.max);
 			me.avgSt = me.formatValue(stressSummary.avg);
 			me.minSt = me.formatValue(stressSummary.min);
+			me.firstSt = me.formatValue(stressSummary.first);
+			me.lastSt = me.formatValue(stressSummary.last);
 			me.stHistory = stressSummary.data;
 		}
 

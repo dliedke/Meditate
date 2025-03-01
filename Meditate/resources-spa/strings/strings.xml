@@ -7,8 +7,8 @@
     <string id="SummaryTitle">Resumen</string>
     <string id="SummaryHR">Frec. Cardíaca</string>
     <string id="SummaryStress">Estrés</string>
-    <string id="SummaryStressStart">Inicio del Estrés: $1$</string>
-    <string id="SummaryStressEnd">Fin del Estrés: $1$</string>
+    <string id="SummaryStressStart">Inicio del Estrés: </string>
+    <string id="SummaryStressEnd">Fin del Estrés: </string>
     <string id="SummaryRespiration">Respiración</string>
     <string id="SummaryMin">Mín:</string>
     <string id="SummaryAvg">Prom:</string>
