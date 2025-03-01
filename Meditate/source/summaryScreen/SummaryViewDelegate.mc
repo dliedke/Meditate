@@ -129,7 +129,6 @@ class SummaryViewDelegate extends ScreenPicker.ScreenPickerDelegate {
 		
 		if (me.mSummaryModel.minSt!=null && me.mSummaryModel.maxSt!=null) {
 				details.detailLines[5].value.color = foregroundColor;
-				System.println("stress minmax" + me.mSummaryModel.minSt + me.mSummaryModel.maxSt);
 				details.detailLines[5].value.text = Lang.format("$1$ $2$", [Ui.loadResource(Rez.Strings.SummaryMin), me.mSummaryModel.minSt]);
 				details.detailLines[6].value.color = foregroundColor;            
 				details.detailLines[6].value.text = Lang.format("$1$ $2$", [Ui.loadResource(Rez.Strings.SummaryMax), me.mSummaryModel.maxSt]);
