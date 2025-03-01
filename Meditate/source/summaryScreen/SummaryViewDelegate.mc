@@ -138,11 +138,13 @@ class SummaryViewDelegate extends ScreenPicker.ScreenPickerDelegate {
         line.value.text = Lang.format("$1$ %", [me.mSummaryModel.hrvPnn20]);
 
 		line = detailsModel.getLine(2);
-        
     	line.icon = hrvIcon;
         line.value.text = "pNN50";
+
+		line = detailsModel.getLine(3);
         line.value.text = Lang.format("$1$ %", [me.mSummaryModel.hrvPnn50]);          
-        return detailsModel;
+        
+		return detailsModel;
 	}	
 	
 	private function createDetailsPageHrvSdrr() {

@@ -4,13 +4,13 @@ using Toybox.Graphics as Gfx;
 using Toybox.Application as App;
 using Toybox.Timer;
 
-class MeditateView extends Ui.View {
+class MeditateView extends ScreenPicker.ScreenPickerViewDetails {
 	private var mMeditateModel;
 	private var mMainDurationRenderer;
 	private var mIntervalAlertsRenderer;
 	
     function initialize(meditateModel) {
-        View.initialize();
+        ScreenPicker.ScreenPickerViewDetails.initialize(meditateModel, false);
         me.mMeditateModel = meditateModel;
         me.mMainDurationRenderer = null;
         me.mIntervalAlertsRenderer = null;

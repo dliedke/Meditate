@@ -64,7 +64,9 @@ module ScreenPicker {
 	}
 	
 	class Icon {
+		var color;
 		function initialize(icon) {
+			me.color = icon[:color];
 			var iconDrawableParams = {};
 			if (icon[:symbol] != null) {
 				iconDrawableParams[:text] = Ui.loadResource(icon[:symbol]);
@@ -95,6 +97,10 @@ module ScreenPicker {
 	
 		function setXPos(xPos) {
 			me.mIconDrawable.locX = xPos;
+		}
+
+		function setSize(size) {
+			
 		}
 		
 		function setYPos(yPos) {

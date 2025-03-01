@@ -1,8 +1,9 @@
 using Toybox.Application as App;
 using HrvAlgorithms.HrvTracking;
 
-class MeditateModel {
+class MeditateModel extends ScreenPicker.DetailsModel{
 	function initialize(sessionModel) {
+		ScreenPicker.DetailsModel.initialize();
 		me.mSession = sessionModel;
 		me.elapsedTime = 0;
 		me.minHr = null;

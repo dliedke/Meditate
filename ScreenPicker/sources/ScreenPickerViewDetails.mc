@@ -8,8 +8,6 @@ module ScreenPicker {
 		var titleColor;
 		private var mUpArrow;
 		private var mDownArrow;
-		private var progressBarWidth;
-	    private var progressBarHeight;
 
 		function initialize(detailsModel, multi) {
 			ScreenPickerViewBase.initialize();
@@ -42,12 +40,10 @@ module ScreenPicker {
 			ScreenPickerViewBase.drawTitle(dc, mDetailsModel.title);
 			var lineHeight = dc.getHeight() * 0.11;
 			var yOffset = dc.getHeight() * 0.25;
-			var xIconOffset = dc.getWidth() * 0.2;
-			var xTextOffset = xIconOffset + dc.getWidth() * 0.05; 
+			var xIconOffset = Math.ceil(dc.getWidth() * 0.2);
+			var xTextOffset = Math.ceil(xIconOffset + dc.getWidth() * 0.07); 
 			var line = null;
 			var yPos = null;
-			me.progressBarWidth = dc.getWidth() * 0.7;
-			me.progressBarHeight = lineHeight * 0.8;
 			for (var lineNumber = 0; lineNumber < me.mDetailsModel.detailLines.size(); lineNumber++) {
 				dc.setColor(foregroundColor, Graphics.COLOR_TRANSPARENT);
 				line = me.mDetailsModel.detailLines[lineNumber];
@@ -71,6 +67,9 @@ module ScreenPicker {
 
 		private function displayFontIcon(dc, icon, xPos, yPos) {
 			dc.setColor(foregroundColor, Graphics.COLOR_TRANSPARENT);
+			if (icon.color == null) {
+				icon.setColor(foregroundColor);
+			}
 			icon.setYPos(yPos);
 			icon.setXPos(xPos);
 			icon.draw(dc);
@@ -85,11 +84,13 @@ module ScreenPicker {
 	        dc.drawText(xPos, yPos, value.font, value.text, Gfx.TEXT_JUSTIFY_LEFT);
 	    }
 		
-		private function drawPercentageHighlightLine(dc, highlights, backgroundColor, startPosX, posY) {		
+		private function drawPercentageHighlightLine(dc, highlights, backgroundColor, startPosX, posY) {
+			var progressBarWidth = Math.ceil(dc.getWidth() * 0.6);
+			var progressBarHeight = Math.ceil(dc.getHeight() * 0.11 * 0.8); // line height * 0.8
 			dc.setColor(backgroundColor, Gfx.COLOR_TRANSPARENT);
 			dc.fillRectangle(startPosX, posY, progressBarWidth, progressBarHeight);   
 			
-			var highlightWidth = 0.03 * progressBarWidth;		
+			var highlightWidth = Math.ceil(0.03 * progressBarWidth);		
 	    	for (var i = 0; i < highlights.size(); i++) {
 	    		var highlight = highlights[i];
 	    		var valuePosX = startPosX + highlight.progressPercentage * progressBarWidth;
