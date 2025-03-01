@@ -93,9 +93,8 @@ class MeditateModel {
 	}
 
 	function getRespirationRate() {
-
 		if (isTimerRunning) {
-			return rrActivity.getRespirationRate();
+			return rrActivity.getCurrentValue();
 		} else {
 			return " --";
 		}

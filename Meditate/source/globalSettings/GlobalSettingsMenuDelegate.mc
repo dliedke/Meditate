@@ -29,7 +29,7 @@ class GlobalSettingsMenuDelegate extends Ui.MenuInputDelegate {
 		else if (item ==:respirationRate) {
 
 			// Respiration rate settings if supported
-			if (HrvAlgorithms.RrActivity.isRespirationRateSupported()) {
+			if (HrvAlgorithms.RrActivity.isSensorSupported()) {
 				var respirationRateDelegate = new MenuOptionsDelegate(method(:onRespirationRatePicked));
 				Ui.pushView(new Rez.Menus.respirationRateOptionsMenu(), respirationRateDelegate, Ui.SLIDE_LEFT);
 			} else {

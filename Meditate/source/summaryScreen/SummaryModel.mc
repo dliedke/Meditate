@@ -7,33 +7,29 @@ using Toybox.Time.Gregorian;
 class SummaryModel {
 	function initialize(activitySummary, rrActivity, hrvTracking) {
 		me.elapsedTime = activitySummary.hrSummary.elapsedTimeSeconds; 
-		me.maxHr = me.initializeHeartRate(activitySummary.hrSummary.maxHr);
-		me.avgHr = me.initializeHeartRate(activitySummary.hrSummary.averageHr);
-		me.minHr = me.initializeHeartRate(activitySummary.hrSummary.minHr);
+		me.maxHr = me.formatValue(activitySummary.hrSummary.maxHr);
+		me.avgHr = me.formatValue(activitySummary.hrSummary.averageHr);
+		me.minHr = me.formatValue(activitySummary.hrSummary.minHr);
 		me.hrHistory = activitySummary.hrSummary.hrHistory;
 
 		var rrSummary = rrActivity.getSummary();
 		if (rrSummary!=null) {
-			me.maxRr = me.initializeHeartRate(rrSummary.maxRr);
-			me.avgRr = me.initializeHeartRate(rrSummary.averageRr);
-			me.minRr = me.initializeHeartRate(rrSummary.minRr);
-			me.rrHistory = rrSummary.rrHistory;
-
-			if (me.minRr == 9999999) {
-				me.minRr = me.initializeHeartRate(0);
-			}
+			me.maxRr = me.formatValue(rrSummary.max);
+			me.avgRr = me.formatValue(rrSummary.avg);
+			me.minRr = me.formatValue(rrSummary.min);
+			me.rrHistory = rrSummary.data;
 		}
 
 		initializeStressHistory(me.elapsedTime);
-		me.stress = me.initializePercentageValue(me.stress);
+		me.stress = me.formatValue(me.stress);
 
 		if (activitySummary.hrvSummary != null) {
-			me.hrvRmssd = me.initializeHeartRateVariability(activitySummary.hrvSummary.rmssd);
+			me.hrvRmssd = me.formatValue(activitySummary.hrvSummary.rmssd);
 			me.hrvRmssdHistory = activitySummary.hrvSummary.rmssdHistory;
-			me.hrvFirst5Min = me.initializeHeartRateVariability(activitySummary.hrvSummary.first5MinSdrr);
-			me.hrvLast5Min = me.initializeHeartRateVariability(activitySummary.hrvSummary.last5MinSdrr);
-			me.hrvPnn50 = me.initializePercentageValue(activitySummary.hrvSummary.pnn50);
-			me.hrvPnn20 = me.initializePercentageValue(activitySummary.hrvSummary.pnn20);
+			me.hrvFirst5Min = me.formatValue(activitySummary.hrvSummary.first5MinSdrr);
+			me.hrvLast5Min = me.formatValue(activitySummary.hrvSummary.last5MinSdrr);
+			me.hrvPnn50 = me.formatValue(activitySummary.hrvSummary.pnn50);
+			me.hrvPnn20 = me.formatValue(activitySummary.hrvSummary.pnn20);
 		}
 		
 		me.hrvTracking = hrvTracking;
@@ -109,34 +105,16 @@ class SummaryModel {
 		return null;
  	 }
 
-	private function initializeHeartRate(heartRate) {
-		if (heartRate == null || heartRate == 0) {
-			return me.InvalidHeartRate;
+	private function formatValue(value) {
+		if (value == null || value == 0) {
+			return me.InvalidValueString;
 		}
 		else {
-			return heartRate;
+			return Math.round(value).format("%3.0f");
 		}
 	}
-		
-	private function initializePercentageValue(stressScore) {
-		if (stressScore == null) {
-			return me.InvalidHeartRate;
-		}
-		else {
-			return Math.round(stressScore).format("%3.0f");
-		}
-	}
-	
-	private function initializeHeartRateVariability(hrv) {
-		if (hrv == null) {
-			return me.InvalidHeartRate;
-		}
-		else {
-			return Math.round(hrv).format("%3.0f");
-		}
-	}
-		
-	private const InvalidHeartRate = "   --";
+
+	private const InvalidValueString = "   --";
 	
 	var elapsedTime;
 	

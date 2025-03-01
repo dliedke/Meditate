@@ -30,17 +30,19 @@ class GraphView extends ScreenPicker.ScreenPickerView  {
 		var val = null;
 		var total = 0;
 		var count = 0;
-		for (var i = 0; i < me.data.size(); i++){
-			val = me.data[i];
-			if (val != null) {
-				if (me.min == null || val < me.min) {
-					me.min = val;
+		if(me.data != null) {
+			for (var i = 0; i < me.data.size(); i++){
+				val = me.data[i];
+				if (val != null) {
+					if (me.min == null || val < me.min) {
+						me.min = val;
+					}
+					if (me.max == null || val > me.max) {
+						me.max = val;
+					}
+					total+=val;
+					count++;
 				}
-				if (me.max == null || val > me.max) {
-					me.max = val;
-				}
-				total+=val;
-				count++;
 			}
 		}
 		if (count > 0) {
@@ -132,7 +134,7 @@ class GraphView extends ScreenPicker.ScreenPickerView  {
 		var minMaxDiff = null;
 		var yMin = null;
 		var yMax = null;
-		if (me.data.size() > 1 && me.min != null && me.max != null) {
+		if (me.data != null && me.data.size() > 1 && me.min != null && me.max != null) {
 			// Calculate different between min and max
 			minMaxDiff = me.max - me.min;
 
@@ -213,7 +215,7 @@ class GraphView extends ScreenPicker.ScreenPickerView  {
 					bucketCount++;
 				}
 				// skip first, draw last, else every full bucket
-				if(i != 0 && (i==me.data.size() -1 || i % bucketSize == 0)) {
+				if(i > 0 && (i==me.data.size() -1 || i % bucketSize == 0)) {
 					// draw bucket
 					if (bucketCount > 0) {
 						// calc average of bucket

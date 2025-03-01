@@ -158,25 +158,16 @@ class MeditateView extends Ui.View {
     function onShow() {
     }
 	
-	private function formatHr(hr) {
-		if (hr == null || hr == 0) {
-			return "--";
+	private function formatValue(val) {
+		if (val == null || val < 1) {
+			return InvalidValueString;
 		}
 		else {
-			return hr.toString();
+			return Math.round(val).format("%3.0f");
 		}
 	}
 		
-	private const InvalidHeartRate = "  --";
-	
-	private function formatHrv(hrv) {
-		if (hrv == null) {
-			return InvalidHeartRate;
-		}
-		else {
-			return hrv.format("%3.0f");
-		}
-	}
+	private const InvalidValueString = "  --";
 	
 	var lastElapsedTime = -1;
 
@@ -229,13 +220,13 @@ class MeditateView extends Ui.View {
 			me.mIntervalAlertsRenderer.drawOneOffIntervalAlerts(dc);
 		}
 		
-		me.mHrStatusText.setText(me.formatHr(currentHr));
+		me.mHrStatusText.setText(me.formatValue(currentHr));
 		me.mHrStatusText.draw(dc);        
      	me.mHrStatus.draw(dc);	       	
      	
  	    if (me.mMeditateModel.isHrvOn() == true) {
 	        me.mHrvIcon.draw(dc);
-	        me.mHrvText.setText(me.formatHrv(hrvValue));
+	        me.mHrvText.setText(me.formatValue(hrvValue));
 	        me.mHrvText.draw(dc);
         }
 
@@ -244,7 +235,7 @@ class MeditateView extends Ui.View {
 			if (me.mMeditateModel.isRespirationRateOn()) {
 				var respirationRate = me.mMeditateModel.getRespirationRate();
 				me.mBreathIcon.draw(dc);
-				me.mBreathText.setText(me.formatHr(respirationRate));
+				me.mBreathText.setText(me.formatValue(respirationRate));
 				me.mBreathText.draw(dc); 
 			}
 		}
