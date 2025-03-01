@@ -189,9 +189,7 @@ class MeditateView extends Ui.View {
 		
 		var elapsedTime = me.mMeditateModel.elapsedTime;
 		var timeText = TimeFormatter.format(elapsedTime);
-		
-		timeText = timeText.substring(0, timeText.length()-3);
-		
+				
 		var currentHr = me.mMeditateModel.currentHr;
 		var hrvValue = me.mMeditateModel.hrvValue;
 
