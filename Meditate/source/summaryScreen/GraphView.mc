@@ -188,7 +188,7 @@ class GraphView extends ScreenPicker.ScreenPickerView  {
 			
 			if (dataWidthRatio > 1) {
 				// Calculate bucket size
-				bucketSize = Math.round(dataWidthRatio);
+				bucketSize = Math.round(dataWidthRatio).toNumber();
 			} else {
 				bucketSize = 1;
 				// Calculate the expanding

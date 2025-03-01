@@ -59,7 +59,7 @@ module ScreenPicker {
 	        var textX = dc.getWidth() / 2;	
 			
 			// Could not access the Meditate project strings from this barrel
-			if (title.equals("Settings") || title.equals("Globais")) {
+			if (title.equals("Settings") || title.equals("Globals")) {
 	        	dc.drawText(textX, mTitlePosY - 10, titleFont, title, Gfx.TEXT_JUSTIFY_CENTER);
 			} else {
 				dc.drawText(textX, mTitlePosY, titleFont, title, Gfx.TEXT_JUSTIFY_CENTER);
