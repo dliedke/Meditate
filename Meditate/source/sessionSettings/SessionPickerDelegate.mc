@@ -187,7 +187,7 @@ class SessionPickerDelegate extends ScreenPicker.ScreenPickerDelegate {
 	}
 	
 	private function setHrvReadyStatus() {
-		var hrvStatusLine = me.mSelectedSessionDetails.detailLines[4];
+		var hrvStatusLine = me.mSelectedSessionDetails.getLine(3);
 		if (me.mNoHrvSeconds >= MinSecondsNoHrvDetected) {
 			hrvStatusLine.icon.setStatusWarning();
 			hrvStatusLine.value.text = Ui.loadResource(Rez.Strings.waitingHRV);
