@@ -98,10 +98,6 @@ module ScreenPicker {
 		function setXPos(xPos) {
 			me.mIconDrawable.locX = xPos;
 		}
-
-		function setSize(size) {
-			
-		}
 		
 		function setYPos(yPos) {
 			me.mIconDrawable.locY = yPos;
