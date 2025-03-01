@@ -50,7 +50,7 @@ class GraphView extends ScreenPicker.ScreenPickerViewBase  {
 
 		me.elapsedTime = elapsedTime;
 		me.title = title;
-		ScreenPickerViewBase.initialize();
+		ScreenPickerViewBase.initialize(true);
 		resultsTheme = GlobalSettings.loadResultsTheme();
 	}
 

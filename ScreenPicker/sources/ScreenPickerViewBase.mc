@@ -4,18 +4,30 @@ using Toybox.Application as App;
 
 module ScreenPicker {
 	class ScreenPickerViewBase extends Ui.View {
-		var multi;
+		var multiPage;
 		var mUpArrow, mDownArrow;
 		var centerXPos;
 		var colorTheme;
 		var backgroundColor, foregroundColor;
 		private static const colorThemeKey = "globalSettings_resultsTheme";
-		function initialize() {
+		function initialize(multiPage) {
 			View.initialize();
-			if(multi != null && multi ) {
-				me.multi = true;
+			if(multiPage != null && multiPage ) {
+				me.multiPage = true;
+				me.mUpArrow = new Icon({        
+	        	:font => StatusIconFonts.fontAwesomeFreeSolid,
+	        	:symbol => StatusIconFonts.Rez.Strings.faSortUp,
+	        	:color=>foregroundColor,
+	        	:justify => Gfx.TEXT_JUSTIFY_CENTER
+				});
+				me.mDownArrow = new Icon({        
+					:font => StatusIconFonts.fontAwesomeFreeSolid,
+					:symbol => StatusIconFonts.Rez.Strings.faSortDown,
+					:color=>foregroundColor,
+					:justify => Gfx.TEXT_JUSTIFY_CENTER
+				});
 			} else {
-				me.multi = false;
+				me.multiPage = false;
 			}
 			colorTheme = App.Storage.getValue(colorThemeKey);
 			// Light results theme
@@ -30,7 +42,7 @@ module ScreenPicker {
 		}
 
 		protected function setArrowsColor(color) {
-			if (me.multi) {
+			if (me.multiPage) {
 				me.mUpArrow.setColor(color);
 				me.mDownArrow.setColor(color);
 			}
@@ -50,7 +62,7 @@ module ScreenPicker {
 			dc.clear();
 			dc.setColor(foregroundColor, Graphics.COLOR_TRANSPARENT);
 			centerXPos = dc.getWidth() / 2;
-			if(me.multi) {
+			if(me.multiPage) {
 				me.mUpArrow.setXPos(centerXPos);
 				me.mUpArrow.setYPos(0);
 				me.mUpArrow.draw(dc);

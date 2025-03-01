@@ -9,29 +9,15 @@ module ScreenPicker {
 		private var mUpArrow;
 		private var mDownArrow;
 
-		function initialize(detailsModel, multi) {
-			ScreenPickerViewBase.initialize();
+		function initialize(detailsModel, multiPage) {
+			ScreenPickerViewBase.initialize(multiPage);
 			me.mDetailsModel = detailsModel;
+			me.multiPage = multiPage;
 			if(me.mDetailsModel.color != null) {
 				me.foregroundColor = me.mDetailsModel.color;
 			}
 			if(me.mDetailsModel.titleColor != null) {
 				me.titleColor = me.mDetailsModel.titleColor;
-			}
-
-			if (me.multi) {
-				me.mUpArrow = new Icon({        
-	        	:font => StatusIconFonts.fontAwesomeFreeSolid,
-	        	:symbol => StatusIconFonts.Rez.Strings.faSortUp,
-	        	:color=>detailsModel.color,
-	        	:justify => Gfx.TEXT_JUSTIFY_CENTER
-	        });
-			me.mDownArrow = new Icon({        
-	        	:font => StatusIconFonts.fontAwesomeFreeSolid,
-	        	:symbol => StatusIconFonts.Rez.Strings.faSortDown,
-	        	:color=>detailsModel.color,
-	        	:justify => Gfx.TEXT_JUSTIFY_CENTER
-	        });
 			}
 		}
 
@@ -57,7 +43,7 @@ module ScreenPicker {
 	   			else if	(line.value instanceof PercentageHighlightLine) {
 	   				me.drawPercentageHighlightLine(dc, line.value.getHighlights(), line.value.backgroundColor, xTextOffset, yPos);
 	   			}
-	   		} 
+	   		}
 	    }
 
 		function drawTitle(dc, title){
