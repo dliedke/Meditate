@@ -9,19 +9,20 @@ using Toybox.ActivityMonitor as ActivityMonitor;
 
 class GraphView extends ScreenPicker.ScreenPickerView  {
 
-	hidden var position_x, position_y;
-	hidden var graph_width, graph_height;
-	var centerX;
-	var centerY;
+	var positionX, positionY;
+	var chartToLabelOffset;
+	var graphWidth, graphHeight;
+	var centerX, centerY;
 	var data;
-	var min;
-	var max;
-	var avg;
+	var min, max, avg;
 	var elapsedTime;
 	var title;
 	var resultsTheme;
+	var minCut, maxCut;
 
-	function initialize(data, elapsedTime, title) {
+	function initialize(data, elapsedTime, title, minCut, maxCut) {
+		me.minCut = minCut;
+		me.maxCut = maxCut;
 		me.data = data;
 		me.avg = null;
 		me.min = null;
@@ -83,11 +84,12 @@ class GraphView extends ScreenPicker.ScreenPickerView  {
 		centerY = dc.getHeight()/2;
 
 		// Calculate position of the chart
-		position_x = centerX - (centerX / 1.5) - App.getApp().getProperty("ChartXPos");
-		position_y = centerY + (centerY / 2) - App.getApp().getProperty("ChartYPos");
+		me.positionX = centerX - (centerX / 1.5) - App.getApp().getProperty("ChartXPos");
+		me.positionY = centerY + (centerY / 2) - App.getApp().getProperty("ChartYPos");
 	
-		graph_height = dc.getHeight() / 3;
-		graph_width =  App.getApp().getProperty("ChartWidth");
+		me.graphHeight = dc.getHeight() / 3;
+		me.graphWidth = App.getApp().getProperty("ChartWidth");
+		me.chartToLabelOffset = Math.ceil(me.graphWidth * 0.01);
 	
 		dc.setColor(foregroundColor, Graphics.COLOR_TRANSPARENT);
 
@@ -132,17 +134,46 @@ class GraphView extends ScreenPicker.ScreenPickerView  {
 		var yMax = null;
 		if (me.data.size() > 1 && me.min != null && me.max != null) {
 			// Calculate different between min and max
-			minMaxDiff = (me.max - me.min).toFloat();
-			if (minMaxDiff == 0) {
-				minMaxDiff = 1;
+			minMaxDiff = me.max - me.min;
+
+			// allow for some space between data and chart min/max
+			var minCutSet = me.minCut != null;
+			var maxCutSet = me.maxCut != null;
+			var yOffset = Math.ceil(minMaxDiff * 0.1);			
+			yMin = Math.floor(me.min - yOffset);
+			yMax = Math.ceil(me.max + yOffset);
+
+			// if y-cuts set, make sure graph stays within set range
+			if (minCutSet && yMin < me.minCut) {
+				yMin = me.minCut;
+			}
+			if (maxCutSet && yMin > me.maxCut){
+				yMin = me.maxCut;
 			}
 
-			// Reduce a bit the min heart rate so it will show in the chart
-			var yOffset = Math.ceil(minMaxDiff * 0.1);
-			yMin = Math.floor(me.min.toFloat() - yOffset);
-			yMax = Math.ceil(me.max.toFloat() + yOffset);
-			// update min max diff
-			minMaxDiff = (yMax - yMin).toFloat();
+			if (maxCutSet && yMax > me.maxCut) {
+				yMax = me.maxCut;
+			}
+			if (minCutSet && yMax < me.minCut) {
+				yMax = me.minCut;
+			}
+
+			// update min max diff and make sure > 0
+			minMaxDiff = yMax - yMin;
+			if (minMaxDiff < 1) {
+				var tmpOffset = Math.ceil(yMax * 0.1);
+				if(maxCutSet && yMax + tmpOffset < me.maxCut){
+					yMax+=tmpOffset;
+				} 
+				if(minCutSet && yMin - tmpOffset > me.minCut){
+					yMin-=tmpOffset;
+				} 
+				if (yMax - yMin < 1){
+					yMin-=tmpOffset;
+					yMax+=tmpOffset;
+				}
+				minMaxDiff = yMax - yMin;
+			}
 
 			// Chart as light blue
 			dc.setPenWidth(1);
@@ -150,45 +181,67 @@ class GraphView extends ScreenPicker.ScreenPickerView  {
 			
 			// Try adapting the chart for the graph width
 			var dataWidthRatio = 0.0;
-			var skipSize = 1;
 			var expandFact = 1;
-			var skipSizeFloatPart = 0;
+			var bucketSize = 1;
 
-			dataWidthRatio = me.data.size().toFloat() / graph_width.toFloat();
+			dataWidthRatio = me.data.size() / me.graphWidth.toFloat();
 			
 			if (dataWidthRatio > 1) {
-				// Calculate the shrinking
-				skipSizeFloatPart = dataWidthRatio - Math.floor(skipSizeFloatPart);
-				skipSizeFloatPart = skipSizeFloatPart * 10000000;
-				skipSize = Math.floor(dataWidthRatio).toNumber();
+				// Calculate bucket size
+				bucketSize = Math.round(dataWidthRatio);
 			} else {
+				bucketSize = 1;
 				// Calculate the expanding
 				expandFact = 2;
-				while (expandFact * me.data.size() < graph_width) {
+				while (expandFact * me.data.size() < me.graphWidth) {
 					expandFact++;
 				}
 				expandFact--;
 			}
 			
 			// Draw chart
-			var xStep = 1;
-			for (var i = 0; i < me.data.size(); i+=skipSize){
-				var val = me.data[i];
-				for (var j = 0; j < expandFact; j++){		
-					var lineHeight = 0;
-					if (val!=null) {
-						lineHeight = (val-yMin) * (graph_height.toFloat() / minMaxDiff);
-					}
-					dc.drawLine(position_x + xStep, 
-								position_y - lineHeight.toNumber(), 
-								position_x + xStep, 
-								position_y);
-					xStep++;
-				}				
-				// Skip to fit the chart in the screen
-				if (skipSizeFloatPart > 0) {
-					if ((xStep * 1000000) % (skipSizeFloatPart).toNumber() > 1000000) {
-						i++;			
+			var lineHeight = null;
+			var val = null;
+			var heightFact = me.graphHeight.toFloat() / minMaxDiff;
+			var xPos = me.positionX + 1 + chartToLabelOffset; // leave some space to labels
+			var bucketVal = 0;
+			var bucketCount = 0;
+			for (var i = 0; i < me.data.size(); i++){
+				val = me.data[i];
+				if (val!=null) {
+					bucketVal+=val;
+					bucketCount++;
+				}
+				// skip first, draw last, else every full bucket
+				if(i != 0 && (i==me.data.size() -1 || i % bucketSize == 0)) {
+					// draw bucket
+					if (bucketCount > 0) {
+						// calc average of bucket
+						val = bucketVal / bucketCount;
+						
+						// cut data if exceeds limits
+						if (minCutSet && me.minCut > val) {
+							val = me.minCut;
+						}
+						if (maxCutSet && me.maxCut < val) {
+							val = me.maxCut;
+						}
+
+						// draw line
+						lineHeight = Math.round((val-yMin) * heightFact).toNumber();
+						for (var j = 0; j < expandFact; j++){
+							dc.drawLine(xPos, 
+										me.positionY - lineHeight, 
+										xPos, 
+										me.positionY);
+							xPos++;
+						}
+						// reset bucket
+						bucketVal = 0;
+						bucketCount = 0;
+					} else {
+						// jump over null values
+						xPos+=expandFact;
 					}
 				}
 			}
@@ -205,22 +258,21 @@ class GraphView extends ScreenPicker.ScreenPickerView  {
 		if (numLines > 4) {
 			numLines = 4;
 		}
-		var lineSpacing = graph_height / numLines;
+		var lineSpacing = Math.floor(me.graphHeight / numLines.toFloat());
 
 		for(var i = 0; i <= numLines; i++){
 			// Draw lines over chart
-			dc.drawLine(position_x + 3, 
-						position_y - (lineSpacing * i), 
-						position_x + graph_width, 
-						position_y - (lineSpacing * i));
+			dc.drawLine(me.positionX + me.chartToLabelOffset, 
+						me.positionY - (lineSpacing * i), 
+						me.positionX + me.graphWidth, 
+						me.positionY - (lineSpacing * i));
 
 			// Draw labels for the lines except last one
-			dc.drawText(position_x + App.getApp().getProperty("ChartXPosLabel"), 
-						position_y - (lineSpacing * i), 
+			dc.drawText(me.positionX, 
+						me.positionY - (lineSpacing * i), 
 						Gfx.FONT_SYSTEM_XTINY, 
 						Math.round(yMin + (minMaxDiff / numLines) * i).toNumber().toString(), 
-						Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+						Graphics.TEXT_JUSTIFY_RIGHT|Graphics.TEXT_JUSTIFY_VCENTER);
 		}
-		
     }
 }

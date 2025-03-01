@@ -29,6 +29,5 @@
 	<property id="ChartLineExtra" type="number">0</property>
 	<property id="ChartYPos" type="number">10</property>
 	<property id="ChartXPos" type="number">10</property>
-	<property id="ChartXPosLabel" type="number">-11</property>
 	<property id="largeFont" type="number">3</property> <!--Gfx.FONT_MEDIUM-->
 </properties>

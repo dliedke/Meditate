@@ -29,5 +29,4 @@
 	<property id="ChartLineExtra" type="number">-15</property>
 	<property id="ChartYPos" type="number">20</property>
 	<property id="ChartXPos" type="number">10</property>
-	<property id="ChartXPosLabel" type="number">-15</property>
 </properties>

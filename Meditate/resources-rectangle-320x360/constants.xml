@@ -21,5 +21,4 @@
 	<property id="ChartWidth" type="number">240</property>
 	<property id="ChartYPos" type="number">22</property>
 	<property id="ChartXPos" type="number">0</property>
-	<property id="ChartXPosLabel" type="number">-20</property>
 </properties>

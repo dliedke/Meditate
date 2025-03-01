@@ -9,6 +9,6 @@ using Toybox.ActivityMonitor as ActivityMonitor;
 
 class HrvRmssdGraphView extends GraphView  {
 		function initialize(summaryModel) {
-			GraphView.initialize(summaryModel.hrvRmssdHistory, summaryModel.elapsedTime, Rez.Strings.SummaryHRVRMSSD);
+			GraphView.initialize(summaryModel.hrvRmssdHistory, summaryModel.elapsedTime, Rez.Strings.SummaryHRVRMSSD, 10, 250);
 		}
 }
