@@ -125,7 +125,7 @@ module ScreenPicker {
 	}
 	
 	class DetailsLineBase {
-		function initialize(lineNumber) {	
+		function initialize(lineNumber) {
 			me.mLineNumber = lineNumber;
 			me.yLineOffset = 0;
 			me.lineHeight = App.getApp().getProperty("detailsModelLineHeight");
@@ -161,11 +161,12 @@ module ScreenPicker {
 				2 => new DetailsLine(2),
 				3 => new DetailsLine(3),
 				4 => new DetailsLine(4),
-				5 => new DetailsLine(5)
+				5 => new DetailsLine(5),
+				6 => new DetailsLine(6)
 			};
 		}
 		
-		const LinesCount = 5;
+		const LinesCount = 6;
 		
 		function setAllIconsXPos(xPos) {
 			for (var i = 1; i <= LinesCount; i++) {

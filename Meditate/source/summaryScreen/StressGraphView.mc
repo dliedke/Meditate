@@ -9,6 +9,6 @@ using Toybox.ActivityMonitor as ActivityMonitor;
 
 class StressGraphView extends GraphView  {
 		function initialize(summaryModel) {
-			GraphView.initialize(summaryModel.stressHistory, summaryModel.elapsedTime, Rez.Strings.SummaryStress);
+			GraphView.initialize(summaryModel.stressHistory, summaryModel.elapsedTime, Rez.Strings.SummaryStress, 0, 100);
 		}
 }

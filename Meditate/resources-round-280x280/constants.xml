@@ -12,5 +12,4 @@
 	<property id="ChartWidth" type="number">240</property>
 	<property id="ChartYPos" type="number">18</property>
 	<property id="ChartXPos" type="number">22</property>
-	<property id="ChartXPosLabel" type="number">-8</property>
 </properties>
