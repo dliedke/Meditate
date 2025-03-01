@@ -53,7 +53,7 @@ module ScreenPicker {
 		function initialize() {
 			me.text = "";
 			me.font = Gfx.FONT_SYSTEM_TINY;
-			me.color = Gfx.COLOR_WHITE;
+			me.color = null;
 			me.xPos = 0;
 		}
 	
@@ -74,9 +74,6 @@ module ScreenPicker {
 			}
 			if (icon[:color] != null) {
 				iconDrawableParams[:color] = icon[:color];
-			}
-			else {
-				iconDrawableParams[:color] = Gfx.COLOR_WHITE;
 			}
 			if (icon[:font] != null) {
 				iconDrawableParams[:font] = icon[:font];
@@ -113,9 +110,8 @@ module ScreenPicker {
 		}	
 	}
 		
-	class DetailsLine extends DetailsLineBase {
-		function initialize(lineNumber) {
-			DetailsLineBase.initialize(lineNumber);	
+	class DetailsLine {
+		function initialize() {
 			me.icon = null;		
 			me.value = new TextValue();
 		}
@@ -124,79 +120,34 @@ module ScreenPicker {
 		var value;	
 	}
 	
-	class DetailsLineBase {
-		function initialize(lineNumber) {
-			me.mLineNumber = lineNumber;
-			me.yLineOffset = 0;
-			me.lineHeight = App.getApp().getProperty("detailsModelLineHeight");
-			me.iconHeight = App.getApp().getProperty("detailsModelIconHeight");
-		}
-	
-		var yLineOffset;
-		
-		private var mLineNumber;
-			
-		function getYPos() {
-			return InitialPosY + me.mLineNumber * me.lineHeight + me.yLineOffset;
-		}
-		
-		function getIconYPos() {
-			return InitialPosY + me.mLineNumber * me.iconHeight + me.yLineOffset;
-		}
-				
-		private var lineHeight;
-		private var iconHeight;
-		private const InitialPosY = 20;
-	}
-	
 	class DetailsModel{
-		function initialize() {
-			me.title = "";
-			me.titleFont = App.getApp().getProperty("largeFont");
-			me.color = null;
-			me.titleColor = null;
-			me.backgroundColor = null;
-			me.detailLines = {
-				1 => new DetailsLine(1),
-				2 => new DetailsLine(2),
-				3 => new DetailsLine(3),
-				4 => new DetailsLine(4),
-				5 => new DetailsLine(5),
-				6 => new DetailsLine(6)
-			};
-		}
-		
-		const LinesCount = 6;
-		
-		function setAllIconsXPos(xPos) {
-			for (var i = 1; i <= LinesCount; i++) {
-				if (me.detailLines[i] instanceof DetailsLine && detailLines[i].icon instanceof Icon) {
-					me.detailLines[i].icon.setXPos(xPos);
-				}
-			}
-		}
-				
-		function setAllValuesXPos(xPos) {
-			for (var i = 1; i <= LinesCount; i++) {
-				if (me.detailLines[i] instanceof DetailsLine && me.detailLines[i].value instanceof TextValue) {
-					me.detailLines[i].value.xPos = xPos;
-				}
-			}
-		}
-				
-		function setAllLinesYOffset(yOffset) {
-			for (var i = 1; i <= LinesCount; i++) {
-				if (me.detailLines[i]) {
-					me.detailLines[i].yLineOffset = yOffset;
-				}
-			}
-		}
-			
+		var linesCount;
 		var title;
-		var titleFont;
 		var titleColor;
 		var detailLines;
 		var color;
-		var backgroundColor;
+
+		function initialize() {
+			me.title = "";
+			me.titleColor = null;
+			me.detailLines = [];
+			me.color = null;
+			me.linesCount = 0;
+		}
+
+		function newLine() {
+			linesCount++;
+			var line = new DetailsLine();
+			me.detailLines.add(line);
+			return line;
+		}
+
+		function getLine(lineNum) {
+			while(lineNum >= linesCount){
+				me.detailLines.add(new DetailsLine());
+				linesCount++;
+			}
+			return detailLines[lineNum];
+		}
 	}
 }

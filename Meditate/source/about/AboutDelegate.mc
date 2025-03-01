@@ -9,10 +9,6 @@ class AboutDelegate extends ScreenPicker.ScreenPickerDelegate {
 	
 	function initialize(sessionPickerDelegate) {
 		ScreenPickerDelegate.initialize(0, 1);	
-		
-		me.mGlobalSettingsIconsXPos = App.getApp().getProperty("globalSettingsIconsXPos");
-		me.mGlobalSettingsValueXPos = App.getApp().getProperty("globalSettingsValueXPos");
-		me.mGlobalSettingsLinesYOffset = App.getApp().getProperty("globalSettingsLinesYOffset");
 		me.mGlobalSettingsTitle = Ui.loadResource(Rez.Strings.menuSessionSettings_about);
 		me.mGlobalSettingsDetailsModel = new ScreenPicker.DetailsModel();
 		me.mSessionPickerDelegate = sessionPickerDelegate;
@@ -20,40 +16,32 @@ class AboutDelegate extends ScreenPicker.ScreenPickerDelegate {
 	}
 	
 	private var mGlobalSettingsTitle;
-	private var mGlobalSettingsIconsXPos;
-	private var mGlobalSettingsValueXPos;
 	private var mGlobalSettingsDetailsModel;
-	private var mGlobalSettingsLinesYOffset;
 	
 	function createScreenPickerView() {
-		return new ScreenPicker.ScreenPickerDetailsSinglePageView(me.mGlobalSettingsDetailsModel);
+		return new ScreenPicker.ScreenPickerViewDetails(me.mGlobalSettingsDetailsModel, false);
 	}
     
     private function updateAboutDetails() {
 		var details = me.mGlobalSettingsDetailsModel;
 		details.title = me.mGlobalSettingsTitle;
-		details.titleFont = Gfx.FONT_SMALL;
-        details.titleColor = Gfx.COLOR_WHITE;
-        details.color = Gfx.COLOR_WHITE;
-        details.backgroundColor = Gfx.COLOR_BLACK;
-        		
-		// Meditate text with green icon
-        details.detailLines[2].icon = new ScreenPicker.Icon({        
+
+		// Application version and developers
+		var line = details.getLine(0);
+		line.value.text = Ui.loadResource(Rez.Strings.about_AppVersion);
+		line.icon = new ScreenPicker.Icon({        
 	        	:font => StatusIconFonts.fontMeditateIcons,
 	        	:symbol => StatusIconFonts.Rez.Strings.meditateFontYoga,
 				:color => Gfx.COLOR_GREEN
 	        });	
-
-		// Application version and developers
-		details.detailLines[2].value.text = Ui.loadResource(Rez.Strings.about_AppVersion);
-		details.detailLines[3].value.text = Ui.loadResource(Rez.Strings.about_vtrifonov);
-		details.detailLines[4].value.text = Ui.loadResource(Rez.Strings.about_dliedke);
-		details.detailLines[5].value.text = Ui.loadResource(Rez.Strings.about_floriangeigl);
-		details.detailLines[6].value.text = Ui.loadResource(Rez.Strings.about_falsetru);
-		
-        details.setAllLinesYOffset(me.mGlobalSettingsLinesYOffset);
-        details.setAllIconsXPos(me.mGlobalSettingsIconsXPos);
-        details.setAllValuesXPos(me.mGlobalSettingsValueXPos);  
+		line = details.getLine(1);
+		line.value.text = Ui.loadResource(Rez.Strings.about_vtrifonov);
+		line = details.getLine(2);
+		line.value.text = Ui.loadResource(Rez.Strings.about_dliedke);
+		line = details.getLine(3);
+		line.value.text = Ui.loadResource(Rez.Strings.about_floriangeigl);
+		line = details.getLine(4);
+		line.value.text = Ui.loadResource(Rez.Strings.about_falsetru);
 	}
 
 	function onBack() {    

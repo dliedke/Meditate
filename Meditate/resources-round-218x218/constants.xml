@@ -1,19 +1,8 @@
 <properties>
-	<property id="progressBarWidth" type="number">150</property>
-	<property id="globalSettingsIconsXPos" type="number">26</property>
-	<property id="globalSettingsValueXPos" type="number">46</property>
-	<property id="globalSettingsLinesYOffset" type="number">-10</property>
-	<property id="sessionDetailsIconsXPos" type="number">30</property>
-	<property id="sessionDetailsValueXPos" type="number">55</property>
 	<property id="meditateActivityIconsXPos" type="number">60</property>
 	<property id="meditateActivityIconsYOffset" type="number">0</property>
 	<property id="meditateActivityXHrTextOffset" type="number">-10</property>
 	<property id="meditateActivityXHrvTextOffset" type="number">22</property>
 	<property id="meditateActivityXBreathTextOffset" type="number">32</property>
-	<property id="summaryLinesYOffset" type="number">-7</property>	
-	<property id="ChartWidth" type="number">180</property>
-	<property id="ChartLineExtra" type="number">0</property>
-	<property id="ChartYPos" type="number">10</property>
-	<property id="ChartXPos" type="number">10</property>
 	<property id="largeFont" type="number">2</property> <!--Gfx.FONT_SMALL-->
 </properties>

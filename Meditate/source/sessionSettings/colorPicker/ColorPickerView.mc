@@ -1,11 +1,11 @@
 using Toybox.WatchUi as Ui;
 using Toybox.Graphics as Gfx;
 
-class ColorPickerView extends ScreenPicker.ScreenPickerView {
+class ColorPickerView extends ScreenPicker.ScreenPickerViewBase {
 	private var mColor;
 	
 	function initialize(color) {
-		ScreenPickerView.initialize(Gfx.COLOR_WHITE);
+		ScreenPickerViewBase.initialize();
 		me.mColor = color;
 	}
 	
@@ -20,7 +20,7 @@ class ColorPickerView extends ScreenPicker.ScreenPickerView {
         if (me.mColor == Gfx.COLOR_WHITE) {
         	me.setArrowsColor(Gfx.COLOR_BLACK);
         }   
-       	ScreenPickerView.onUpdate(dc);      
+       	ScreenPickerViewBase.onUpdate(dc);
         if (me.mColor == Gfx.COLOR_TRANSPARENT) {
         	dc.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
         	var transparentText = Ui.loadResource(Rez.Strings.intervalAlertTransparentColorText);

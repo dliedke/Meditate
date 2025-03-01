@@ -25,10 +25,7 @@ class SummaryViewDelegate extends ScreenPicker.ScreenPickerDelegate {
         ScreenPickerDelegate.initialize(0, me.mPagesCount);
         me.mSummaryModel = summaryModel;
         me.mDiscardDanglingActivity = discardDanglingActivity;
-        me.mSummaryLinesYOffset = App.getApp().getProperty("summaryLinesYOffset");
 	}
-		
-	private var mSummaryLinesYOffset;
 			
 	private function getPagesCount(hrvTracking, isRespirationRateOn) {		
 		return me.mPagesCount;
@@ -51,26 +48,10 @@ class SummaryViewDelegate extends ScreenPicker.ScreenPickerDelegate {
 			}
 		}
 	}
-	// Light results theme
-	var backgroundColor = Gfx.COLOR_WHITE;
-	var foregroundColor = Gfx.COLOR_BLACK;
-
-	function onBack() {
-		if (me.mDiscardDanglingActivity != null) {
-			me.mDiscardDanglingActivity.invoke();
-		}
-		
-		return false;
-	}
 	
 	function createScreenPickerView() {
-		var details;
-	
-		// Dark results theme
-		if (GlobalSettings.loadResultsTheme() == ResultsTheme.Dark) {
-			backgroundColor = Gfx.COLOR_BLACK;
-			foregroundColor = Gfx.COLOR_WHITE;
-		}
+		var detailsModel;
+
 		if (me.mSelectedPageIndex < me.mPagesCount) {
 			var page = me.pages[me.mSelectedPageIndex];
 			if (page.equals(me.pageHeartRateGraph)) {
@@ -83,16 +64,16 @@ class SummaryViewDelegate extends ScreenPicker.ScreenPickerDelegate {
 				return new StressGraphView(me.mSummaryModel);
 			}
 			else if (page.equals(me.pageStress)) {
-				details = me.createDetailsPageStress();
+				detailsModel = me.createDetailsPageStress();
 			}
 			else if (page.equals(me.pageHrvRmssd)) {
-				details = me.createDetailsPageHrvRmssd();
+				detailsModel = me.createDetailsPageHrvRmssd();
 			}
 			else if (page.equals(me.pageHrvPnnx)) {
-				details = me.createDetailsPageHrvPnnx();
+				detailsModel = me.createDetailsPageHrvPnnx();
 			}
 			else if (page.equals(me.pageHrvSdrr)) {
-				details = me.createDetailsPageHrvSdrr();
+				detailsModel = me.createDetailsPageHrvSdrr();
 			}
 			else if (page.equals(me.pageHrvRmssdGraph)) {
 				return new HrvRmssdGraphView(me.mSummaryModel);
@@ -104,131 +85,83 @@ class SummaryViewDelegate extends ScreenPicker.ScreenPickerDelegate {
 		else {
 			return new HeartRateGraphView(me.mSummaryModel);
 		}
-		if (me.mPagesCount > 1) {
-			return new ScreenPicker.ScreenPickerDetailsView(details);
-		}
-		else {
-			return new ScreenPicker.ScreenPickerDetailsSinglePageView(details);
-		}
+		return new ScreenPicker.ScreenPickerViewDetails(detailsModel, me.mPagesCount > 1);
 	}	
 			
 	private function createDetailsPageStress() {
-		var details = new ScreenPicker.DetailsModel();
-		details.title = Ui.loadResource(Rez.Strings.SummaryStress);
+		var detailsModel = new ScreenPicker.DetailsModel();
+		detailsModel.title = Ui.loadResource(Rez.Strings.SummaryStress);
 
-		details.color = foregroundColor;
-        details.backgroundColor = backgroundColor;
-        details.titleColor = foregroundColor;
-
+		var line = null;
+		var lowStressIcon = new ScreenPicker.StressIcon({});
+    	lowStressIcon.setLowStress();
+		line = detailsModel.getLine(0);
+        line.icon = lowStressIcon;  
+        line.value.text = Lang.format("$1$ %", [me.mSummaryModel.avgSt]);
+		var offset = 0;
  		if (me.mSummaryModel.firstSt!=null && me.mSummaryModel.lastSt!=null) {
-				details.detailLines[3].value.color = foregroundColor;
-				details.detailLines[3].value.text = Lang.format("$1$ $2$", [Ui.loadResource(Rez.Strings.SummaryStressStart), me.mSummaryModel.firstSt]);
-				details.detailLines[4].value.color = foregroundColor;
-				details.detailLines[4].value.text = Lang.format("$1$ $2$", [Ui.loadResource(Rez.Strings.SummaryStressEnd), me.mSummaryModel.lastSt]);
+			line = detailsModel.getLine(1);
+			line.value.text = Lang.format("$1$ $2$", [Ui.loadResource(Rez.Strings.SummaryStressStart), me.mSummaryModel.firstSt]);
+			line = detailsModel.getLine(2);
+			line.value.text = Lang.format("$1$ $2$", [Ui.loadResource(Rez.Strings.SummaryStressEnd), me.mSummaryModel.lastSt]);
+			offset = 2;
 		}
 		
 		if (me.mSummaryModel.minSt!=null && me.mSummaryModel.maxSt!=null) {
-				details.detailLines[5].value.color = foregroundColor;
-				details.detailLines[5].value.text = Lang.format("$1$ $2$", [Ui.loadResource(Rez.Strings.SummaryMin), me.mSummaryModel.minSt]);
-				details.detailLines[6].value.color = foregroundColor;            
-				details.detailLines[6].value.text = Lang.format("$1$ $2$", [Ui.loadResource(Rez.Strings.SummaryMax), me.mSummaryModel.maxSt]);
+			line = detailsModel.getLine(1 + offset);
+			line.value.text = Lang.format("$1$ $2$", [Ui.loadResource(Rez.Strings.SummaryMin), me.mSummaryModel.minSt]);           
+			line = detailsModel.getLine(2 + offset);
+			line.value.text = Lang.format("$1$ $2$", [Ui.loadResource(Rez.Strings.SummaryMax), me.mSummaryModel.maxSt]);
 		}
-
-    	var lowStressIcon = new ScreenPicker.StressIcon({});
-    	lowStressIcon.setLowStress();	      
-        details.detailLines[2].icon = lowStressIcon;  
-		details.detailLines[2].value.color = foregroundColor;   
-        details.detailLines[2].value.text = Lang.format("$1$ %", [me.mSummaryModel.avgSt]);
-                 
-        var summaryStressIconsXPos = App.getApp().getProperty("summaryStressIconsXPos");
-        var summaryStressValueXPos = App.getApp().getProperty("summaryStressValueXPos");
-        details.setAllIconsXPos(summaryStressIconsXPos);
-        details.setAllValuesXPos(summaryStressValueXPos);   
-        details.setAllLinesYOffset(me.mSummaryLinesYOffset);
-        
-        return details;
+        return detailsModel;
 	}
 	
 	private function createDetailsPageHrvRmssd() {
-		var details = new ScreenPicker.DetailsModel();
-		details.title = Ui.loadResource(Rez.Strings.SummaryHRVRMSSD);
-
-		details.color = foregroundColor;
-        details.backgroundColor = backgroundColor;
-        details.titleColor = foregroundColor;
-
-        details.detailLines[3].icon = new ScreenPicker.HrvIcon({});              
-		details.detailLines[3].value.color = foregroundColor;
-        details.detailLines[3].value.text = Lang.format("$1$ ms", [me.mSummaryModel.hrvRmssd]);
-                 
-        var hrvIconsXPos = App.getApp().getProperty("summaryHrvIconsXPos");
-        var hrvValueXPos = App.getApp().getProperty("summaryHrvValueXPos");
-        details.setAllIconsXPos(hrvIconsXPos);
-        details.setAllValuesXPos(hrvValueXPos); 
-        details.setAllLinesYOffset(me.mSummaryLinesYOffset);
-        
-        return details;
+		var detailsModel = new ScreenPicker.DetailsModel();
+		detailsModel.title = Ui.loadResource(Rez.Strings.SummaryHRVRMSSD);
+		var line = detailsModel.getLine(0);
+        line.icon = new ScreenPicker.HrvIcon({});
+        line.value.text = Lang.format("$1$ ms", [me.mSummaryModel.hrvRmssd]);        
+        return detailsModel;
 	}	
 	
 	private function createDetailsPageHrvPnnx() {
-		var details = new ScreenPicker.DetailsModel();
-		details.title = Ui.loadResource(Rez.Strings.SummaryHRVpNNx);
+		var detailsModel = new ScreenPicker.DetailsModel();
+		detailsModel.title = Ui.loadResource(Rez.Strings.SummaryHRVpNNx);
 
-		details.color = foregroundColor;
-        details.backgroundColor = backgroundColor;
-        details.titleColor = foregroundColor;
+		var line = detailsModel.getLine(0);
+        var hrvIcon = new ScreenPicker.HrvIcon({});    
+        line.icon = hrvIcon;      
+        line.value.text = "pNN20";
+        
+		line = detailsModel.getLine(1);
+        line.value.text = Lang.format("$1$ %", [me.mSummaryModel.hrvPnn20]);
 
-        var hrvIcon = new ScreenPicker.HrvIcon({});            
-        details.detailLines[2].icon = hrvIcon;      
-        details.detailLines[2].value.color = foregroundColor;        
-        details.detailLines[2].value.text = "pNN20";
+		line = detailsModel.getLine(2);
         
-		details.detailLines[3].value.color = foregroundColor;
-        details.detailLines[3].value.text = Lang.format("$1$ %", [me.mSummaryModel.hrvPnn20]);
-        
-    	details.detailLines[4].icon = hrvIcon;
-		details.detailLines[4].value.color = foregroundColor;
-        details.detailLines[4].value.text = "pNN50";
-		details.detailLines[5].value.color = foregroundColor;
-        details.detailLines[5].value.text = Lang.format("$1$ %", [me.mSummaryModel.hrvPnn50]);  
-         
-        var hrvIconsXPos = App.getApp().getProperty("summaryHrvIconsXPos");
-        var hrvValueXPos = App.getApp().getProperty("summaryHrvValueXPos");
-        details.setAllIconsXPos(hrvIconsXPos);
-        details.setAllValuesXPos(hrvValueXPos); 
-        details.setAllLinesYOffset(me.mSummaryLinesYOffset);
-        
-        return details;
+    	line.icon = hrvIcon;
+        line.value.text = "pNN50";
+        line.value.text = Lang.format("$1$ %", [me.mSummaryModel.hrvPnn50]);          
+        return detailsModel;
 	}	
 	
 	private function createDetailsPageHrvSdrr() {
-		var details = new ScreenPicker.DetailsModel();
-		details.title = Ui.loadResource(Rez.Strings.SummaryHRVSDRR);
-
-		details.color = foregroundColor;
-        details.backgroundColor = backgroundColor;
-        details.titleColor = foregroundColor;
-                        
+		var detailsModel = new ScreenPicker.DetailsModel();
+		detailsModel.title = Ui.loadResource(Rez.Strings.SummaryHRVSDRR);
+        
+		var line = detailsModel.getLine(0);
         var hrvIcon = new ScreenPicker.HrvIcon({});            
-        details.detailLines[2].icon = hrvIcon;      
-		details.detailLines[2].value.color = foregroundColor;        
-        details.detailLines[2].value.text = Ui.loadResource(Rez.Strings.SummaryHRVRMSSDFirst5min);
+        line.icon = hrvIcon;           
+        line.value.text = Ui.loadResource(Rez.Strings.SummaryHRVRMSSDFirst5min);
+
+		line = detailsModel.getLine(1);
+        line.value.text = Lang.format("$1$ ms", [me.mSummaryModel.hrvFirst5Min]);
         
-		details.detailLines[3].value.color = foregroundColor;
-        details.detailLines[3].value.text = Lang.format("$1$ ms", [me.mSummaryModel.hrvFirst5Min]);
-        
-    	details.detailLines[4].icon = hrvIcon;
-		details.detailLines[4].value.color = foregroundColor;
-        details.detailLines[4].value.text = Ui.loadResource(Rez.Strings.SummaryHRVRMSSDLast5min);
-		details.detailLines[5].value.color = foregroundColor;
-        details.detailLines[5].value.text = Lang.format("$1$ ms", [me.mSummaryModel.hrvLast5Min]);  
-         
-        var hrvIconsXPos = App.getApp().getProperty("summaryHrvIconsXPos");
-        var hrvValueXPos = App.getApp().getProperty("summaryHrvValueXPos");
-        details.setAllIconsXPos(hrvIconsXPos);
-        details.setAllValuesXPos(hrvValueXPos); 
-        details.setAllLinesYOffset(me.mSummaryLinesYOffset);
-        
-        return details;
+		line = detailsModel.getLine(2);
+    	line.icon = hrvIcon;
+        line.value.text = Ui.loadResource(Rez.Strings.SummaryHRVRMSSDLast5min);
+		line = detailsModel.getLine(3);
+        line.value.text = Lang.format("$1$ ms", [me.mSummaryModel.hrvLast5Min]);          
+        return detailsModel;
 	}	
 }

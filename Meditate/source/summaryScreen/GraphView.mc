@@ -7,8 +7,7 @@ using Toybox.Activity as Activity;
 using Toybox.SensorHistory as SensorHistory;
 using Toybox.ActivityMonitor as ActivityMonitor;
 
-class GraphView extends ScreenPicker.ScreenPickerView  {
-
+class GraphView extends ScreenPicker.ScreenPickerViewBase  {
 	var positionX, positionY;
 	var chartToLabelOffset;
 	var graphWidth, graphHeight;
@@ -51,7 +50,7 @@ class GraphView extends ScreenPicker.ScreenPickerView  {
 
 		me.elapsedTime = elapsedTime;
 		me.title = title;
-		ScreenPickerView.initialize(Gfx.COLOR_BLACK);
+		ScreenPickerViewBase.initialize();
 		resultsTheme = GlobalSettings.loadResultsTheme();
 	}
 
@@ -64,64 +63,47 @@ class GraphView extends ScreenPicker.ScreenPickerView  {
 	}
 	
 	// Update the view
-	function onUpdate(dc) {    
-
-		// Light results theme
-		var backgroundColor = Gfx.COLOR_WHITE;
-		var foregroundColor = Gfx.COLOR_BLACK;
-
-		// Dark results theme
-		if (resultsTheme == ResultsTheme.Dark) {
-			backgroundColor = Gfx.COLOR_BLACK;
-			foregroundColor = Gfx.COLOR_WHITE;
-		}
-
-		// Clear the screen
-		dc.setColor(Gfx.COLOR_TRANSPARENT, backgroundColor);  
-		dc.clear();
-		ScreenPickerView.onUpdate(dc);
+	function onUpdate(dc) {
+		ScreenPickerViewBase.onUpdate(dc);
 
 		// Calculate center of the screen
 		centerX = dc.getWidth()/2;
 		centerY = dc.getHeight()/2;
+		var smallXSpace = dc.getWidth() * 0.05;
+		var smallYSpace = dc.getWidth() * 0.05;
 
 		// Calculate position of the chart
-		me.positionX = centerX - (centerX / 1.5) - App.getApp().getProperty("ChartXPos");
-		me.positionY = centerY + (centerY / 2) - App.getApp().getProperty("ChartYPos");
-	
-		me.graphHeight = dc.getHeight() / 3;
-		me.graphWidth = App.getApp().getProperty("ChartWidth");
+		me.graphHeight = Math.round(dc.getHeight() * 0.33);
+		me.graphWidth = Math.round(dc.getWidth() * 0.75);
+		var shiftRight = graphWidth * 0.05;
+		me.positionX = centerX - (graphWidth / 2) + shiftRight;
+		me.positionY = centerY + (graphHeight / 2);
+		
 		me.chartToLabelOffset = Math.ceil(me.graphWidth * 0.01);
-	
-		dc.setColor(foregroundColor, Graphics.COLOR_TRANSPARENT);
 
 		// Draw title text
-		dc.drawText(centerX, 
-					App.getApp().getProperty("ChartTitleY"), 
-					App.getApp().getProperty("largeFont"), 
-					Ui.loadResource(me.title), 
-					Graphics.TEXT_JUSTIFY_CENTER);
+		me.drawTitle(dc, Ui.loadResource(me.title));
 		
 		// Draw MIN text
-		dc.drawText(centerX - centerX / 2 + 10, 
-					centerY - centerY / 2 + 10, 
+		dc.drawText(me.positionX + smallXSpace, 
+					centerY - graphHeight / 2 - smallYSpace,
 					Gfx.FONT_SYSTEM_TINY, 
 					Ui.loadResource(Rez.Strings.SummaryMin) + me.formatNumber(me.min), 
-					Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+					Graphics.TEXT_JUSTIFY_LEFT|Graphics.TEXT_JUSTIFY_VCENTER);
 
 		// Draw AVG text
 		dc.drawText(centerX, 
-					centerY + centerY / 2 + 3, 
-					Gfx.FONT_SYSTEM_TINY, 
+					me.positionY + smallYSpace,
+					Gfx.FONT_SYSTEM_TINY,
 					Ui.loadResource(Rez.Strings.SummaryAvg) + me.formatNumber(me.avg), 
 					Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 
 		// Draw MAX text
-		dc.drawText(centerX + centerX / 2 - 10, 
-					centerY - centerY / 2 + 10, 
+		dc.drawText(me.positionX + graphWidth / 2 + smallXSpace, 
+					centerY - graphHeight / 2 - smallYSpace, 
 					Gfx.FONT_SYSTEM_TINY, 
 					Ui.loadResource(Rez.Strings.SummaryMax) + me.formatNumber(me.max), 
-					Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+					Graphics.TEXT_JUSTIFY_LEFT|Graphics.TEXT_JUSTIFY_VCENTER);
 
 		// Draw Time text
 		dc.drawText(centerX, 
