@@ -20,7 +20,7 @@ class GlobalSettingsDelegate extends ScreenPicker.ScreenPickerDelegate {
 	private var mGlobalSettingsDetailsModel;
 	
 	function createScreenPickerView() {
-		return new ScreenPicker.ScreenPickerViewDetails(me.mGlobalSettingsDetailsModel, false);
+		return new ScreenPicker.ScreenPickerDetailsView(me.mGlobalSettingsDetailsModel, false);
 	}
 	
 	function onMenu() {        

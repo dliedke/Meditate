@@ -4,277 +4,171 @@ using Toybox.Graphics as Gfx;
 using Toybox.Application as App;
 using Toybox.Timer;
 
-class MeditateView extends ScreenPicker.ScreenPickerViewDetails {
+class MeditateView extends ScreenPicker.ScreenPickerDetailsView {
 	private var mMeditateModel;
 	private var mMainDurationRenderer;
 	private var mIntervalAlertsRenderer;
-	
-    function initialize(meditateModel) {
-        ScreenPicker.ScreenPickerViewDetails.initialize(meditateModel, false);
-        me.mMeditateModel = meditateModel;
-        me.mMainDurationRenderer = null;
-        me.mIntervalAlertsRenderer = null;
-        me.mElapsedTime = null; 
-        me.mHrStatusText = null;
-        me.mMeditateIcon = null;
-
-		// If we have respiration rate and HRV on , we should push all text and icons one line below
-		if (mMeditateModel.isRespirationRateOn() && me.mMeditateModel.isHrvOn()) {
-			mRespirationRateYPosOffset = -1;
-		} else {
-			mRespirationRateYPosOffset = 0;
-		}
-    }
-    
-    private var mElapsedTime;
-    private var mHrStatusText;    
-	private var mHrStatus;
+	private var mElapsedTimeLine;
+	private var mHrStatusLine;
+	private var mHrvStatusLine;
+	private var mRrStatusLine;
+	private var mStressStatusLine;
 	private var mHrvIcon;
 	private var mHrvText;
 	private var mStressIcon;
 	private var mStressText;
 	private var mBreathIcon;
-	private var mBreathText;	
-    private var mMeditateIcon;
-    private var mRespirationRateYPosOffset;
+	private var mBreathText;
+	private var mMeditateIcon;
+	private var mRespirationRateYPosOffset;
 
-    private function createMeditateText(color, font, xPos, yPos, justification) {
-    	return new Ui.Text({
-        	:text => "",
-        	:font => font,
-        	:color => color,
-        	:justification =>justification,
-        	:locX => xPos,
-        	:locY => yPos
-    	});
-    }
-    
-    private static const TextFont = App.getApp().getProperty("largeFont");
-	private static const meditateActivityXHrTextOffset = App.getApp().getProperty("meditateActivityXHrTextOffset");
-    
-    private function renderBackground(dc) {				        
-        dc.setColor(Gfx.COLOR_TRANSPARENT, Gfx.COLOR_BLACK);        
-        dc.clear();        
-    }
-    
-    private function renderHrStatusLayout(dc) {
-    	var xPosText = (dc.getWidth() / 2) + meditateActivityXHrTextOffset;
-    	var yPosText = getYPosOffsetFromCenter(dc, 0 + mRespirationRateYPosOffset);
-      	me.mHrStatusText = createMeditateText(Gfx.COLOR_WHITE, TextFont, xPosText, yPosText, Gfx.TEXT_JUSTIFY_CENTER); 
-      	
-  	    var hrStatusX = App.getApp().getProperty("meditateActivityIconsXPos");
-		var iconsYOffset = App.getApp().getProperty("meditateActivityIconsYOffset");  
-        var hrStatusY = getYPosOffsetFromCenter(dc, 0 + mRespirationRateYPosOffset) + iconsYOffset; 
-  	    me.mHrStatus = new ScreenPicker.Icon({        
-        	:font => StatusIconFonts.fontAwesomeFreeSolid,
-        	:symbol => StatusIconFonts.Rez.Strings.faHeart,
-        	:color=>Graphics.COLOR_RED,
-        	:xPos => hrStatusX,
-        	:yPos => hrStatusY
-        });
-    }
-    
-    private function renderHrvStatusLayout(dc) {
-    	var hrvIconXPos = App.getApp().getProperty("meditateActivityIconsXPos");
-    	var hrvTextYPos =  getYPosOffsetFromCenter(dc, 1 + mRespirationRateYPosOffset);
-        var iconsYOffset = App.getApp().getProperty("meditateActivityIconsYOffset");
-        var hrvIconYPos = hrvTextYPos + iconsYOffset;
-        me.mHrvIcon =  new ScreenPicker.HrvIcon({
-        	:xPos => hrvIconXPos,
-        	:yPos => hrvIconYPos
-        });
-        
-        var xHrvTextOffset = App.getApp().getProperty("meditateActivityXHrvTextOffset");
-        var hrvTextXPos = hrvIconXPos + xHrvTextOffset;
-        me.mHrvText = createMeditateText(Gfx.COLOR_WHITE, TextFont, hrvTextXPos, hrvTextYPos, Gfx.TEXT_JUSTIFY_LEFT); 
-    }
+	function initialize(meditateModel) {
+		ScreenPicker.ScreenPickerDetailsView.initialize(meditateModel, false);
+		me.mMeditateModel = meditateModel;
+		me.mMainDurationRenderer = null;
+		me.mIntervalAlertsRenderer = null;
+		me.mElapsedTimeLine = null;
+		me.mHrStatusLine = null;
+		me.mHrvStatusLine = null;
+		me.mStressStatusLine = null;
+		me.mRrStatusLine = null;
+		me.mMeditateIcon = null;
+	}
 
-	private function renderBreathStatusLayout(dc) {
+	private static const TextFont = App.getApp().getProperty("largeFont");
 
-		// Put HR and Respiration rate together when HRV is off
-		var indexRespirationRateHrvOff = 0;
-		if (!me.mMeditateModel.isHrvOn()) {
-			indexRespirationRateHrvOff = -1;
+	// Load your resources here
+	function onLayout(dc) {
+		ScreenPicker.ScreenPickerDetailsView.onLayout(dc);
+
+		var lineNum = 0;
+		me.mHrStatusLine = me.mMeditateModel.getLine(lineNum);
+		lineNum++;
+
+		if (me.mMeditateModel.isHrvOn()) {
+			me.mHrvStatusLine = me.mMeditateModel.getLine(lineNum);
+			lineNum++;
 		}
+		me.mRrStatusLine = me.mMeditateModel.getLine(lineNum);
+		lineNum++;
 
-    	var breathIconXPos = App.getApp().getProperty("meditateActivityIconsXPos");
-    	var breathTextYPos =  getYPosOffsetFromCenter(dc, 2 + mRespirationRateYPosOffset + indexRespirationRateHrvOff);
-        var iconsYOffset = App.getApp().getProperty("meditateActivityIconsYOffset");
-        var breathIconYPos = breathTextYPos + iconsYOffset;
-        me.mBreathIcon =  new ScreenPicker.BreathIcon({
-        	:xPos => breathIconXPos,
-        	:yPos => breathIconYPos
-        });
-        
-        var xbreathTextOffset = App.getApp().getProperty("meditateActivityXBreathTextOffset");
-        var breathTextXPos = breathIconXPos + xbreathTextOffset;
-        me.mBreathText = createMeditateText(Gfx.COLOR_WHITE, TextFont, breathTextXPos, breathTextYPos, Gfx.TEXT_JUSTIFY_LEFT); 
-    }
+		me.mStressStatusLine = me.mMeditateModel.getLine(lineNum);
+		var durationArcRadius = dc.getWidth() / 2;
+		var mainDurationArcWidth = dc.getWidth() / 8;
 
-	private function renderStresstatusLayout(dc) {
-		// Put HR and Respiration rate together when HRV is off
-		var indexRespirationRateHrvOff = 0;
-		if (!me.mMeditateModel.isHrvOn()) {
-			indexRespirationRateHrvOff = -1;
-		}
-    	var stressIconXPos = App.getApp().getProperty("meditateActivityIconsXPos");
-    	var stressTextYPos =  getYPosOffsetFromCenter(dc, 2 + indexRespirationRateHrvOff);
-        var iconsYOffset = App.getApp().getProperty("meditateActivityIconsYOffset");
-        var stressIconYPos = stressTextYPos + iconsYOffset;
-        me.mStressIcon =  new ScreenPicker.StressIcon({
-        	:xPos => stressIconXPos,
-        	:yPos => stressIconYPos
-        });
-		me.mStressIcon.setLowStress();
-        
-        var xstressTextOffset = App.getApp().getProperty("meditateActivityXBreathTextOffset");
-        var stressTextXPos = stressIconXPos + xstressTextOffset;
-        me.mStressText = createMeditateText(Gfx.COLOR_WHITE, TextFont, stressTextXPos, stressTextYPos, Gfx.TEXT_JUSTIFY_LEFT); 
-    }
-    
-    private function getYPosOffsetFromCenter(dc, lineOffset) {
-    	return dc.getHeight() / 2 + lineOffset * dc.getFontHeight(TextFont);
-    }
-	
-    function renderLayoutElapsedTime(dc) { 
-		var xPosCenter = dc.getWidth() / 2; 
-    	var yPosCenter = getYPosOffsetFromCenter(dc, -1 + mRespirationRateYPosOffset);
-    	me.mElapsedTime = createMeditateText(me.mMeditateModel.getColor(), TextFont, xPosCenter, yPosCenter, Gfx.TEXT_JUSTIFY_CENTER);
-    }
-                
-    // Load your resources here
-    function onLayout(dc) {   
-        renderBackground(dc);   
-        renderLayoutElapsedTime(dc);  
-
-        var durationArcRadius = dc.getWidth() / 2;
-        var mainDurationArcWidth = dc.getWidth() / 8;
-
-		// For rectangle screens we need to set this manually 
+		// For rectangle screens we need to set this manually
 		var mainDurationArcWidthConfig = App.getApp().getProperty("meditateActivityDurationArcWidth");
 		if (mainDurationArcWidthConfig != null) {
 			mainDurationArcWidth = mainDurationArcWidthConfig;
 		}
 
-        me.mMainDurationRenderer = new ElapsedDurationRenderer(me.mMeditateModel.getColor(), durationArcRadius, mainDurationArcWidth);
-        
-        if (me.mMeditateModel.hasIntervalAlerts()) {
-	        var intervalAlertsArcRadius = dc.getWidth() / 2;
-	        var intervalAlertsArcWidth = dc.getWidth() / 16;
-	        me.mIntervalAlertsRenderer = new IntervalAlertsRenderer(me.mMeditateModel.getSessionTime(), me.mMeditateModel.getOneOffIntervalAlerts(), 
-	        	me.mMeditateModel.getRepeatIntervalAlerts(), intervalAlertsArcRadius, intervalAlertsArcWidth);    
-    	}
+		me.mMainDurationRenderer = new ElapsedDurationRenderer(
+			me.mMeditateModel.getColor(),
+			durationArcRadius,
+			mainDurationArcWidth
+		);
 
-        renderHrStatusLayout(dc);
-        if (me.mMeditateModel.isHrvOn() == true) {
-	        renderHrvStatusLayout(dc);
-        }
-
-		if (me.mMeditateModel.isRespirationRateOn()) {
-			renderBreathStatusLayout(dc);
-		}
-		renderStresstatusLayout(dc);
-    }
-    
-    // Called when this View is brought to the foreground. Restore
-    // the state of this View and prepare it to be shown. This includes
-    // loading resources into memory.
-    function onShow() {
-    }
-	
-	private function formatValue(val) {
-		if (val == null || val < 1) {
-			return InvalidValueString;
-		}
-		else {
-			return Math.round(val).format("%3.0f");
+		if (me.mMeditateModel.hasIntervalAlerts()) {
+			var intervalAlertsArcRadius = dc.getWidth() / 2;
+			var intervalAlertsArcWidth = dc.getWidth() / 16;
+			me.mIntervalAlertsRenderer = new IntervalAlertsRenderer(
+				me.mMeditateModel.getSessionTime(),
+				me.mMeditateModel.getOneOffIntervalAlerts(),
+				me.mMeditateModel.getRepeatIntervalAlerts(),
+				intervalAlertsArcRadius,
+				intervalAlertsArcWidth
+			);
 		}
 	}
-		
-	private const InvalidValueString = "  --";
-	
+
 	var lastElapsedTime = -1;
 
-    // Update the view
-    function onUpdate(dc) {      
-        View.onUpdate(dc);
-        if (me.mMeditateIcon != null) {
-        	mMeditateIcon.draw(dc);
-        }
-		
+	// Update the view
+	function onUpdate(dc) {
 		var elapsedTime = me.mMeditateModel.elapsedTime;
-		var timeText = TimeFormatter.format(elapsedTime);
-		
-		timeText = timeText.substring(0, timeText.length()-3);
-		
-		var currentHr = me.mMeditateModel.currentHr;
-		var hrvValue = me.mMeditateModel.hrvValue;
+		// Only update every second
+		if (elapsedTime != lastElapsedTime) {
+			var currentHr = null;
+			var currentHrv = null;
+			var currentRr = null;
+			var currentStress = null;
+			var currentElapsedTime = null;
+			if (me.mMeditateModel.isTimerRunning) {
+				if (me.mMeditateIcon != null) {
+					mMeditateIcon.draw(dc);
+				}
 
-		// Check if activity is paused, render the [Paused] text
-		// and hide HR/HRV metrics
-		if (!me.mMeditateModel.isTimerRunning)  {
-			timeText = Ui.loadResource(Rez.Strings.meditateActivityPaused);
-			currentHr = null;
-			hrvValue = null;
-		}
+				var timeText = TimeFormatter.format(elapsedTime);
+				currentElapsedTime = timeText.substring(0, timeText.length() - 3);
 
-		me.mElapsedTime.setText(timeText);		
-		me.mElapsedTime.draw(dc);
-                    
-        var alarmTime = me.mMeditateModel.getSessionTime();
+				currentHr = me.mMeditateModel.currentHr;
 
-		// Fix issues with OLED screens for prepare time 45 seconds
-		if (elapsedTime <= 1)
-		{
-			Attention.backlight(false);
-		}
+				if (me.mMeditateModel.isHrvOn() == true) {
+					currentHrv = me.mMeditateModel.hrvValue;
+				}
 
-		// Enable backlight in the first 8 seconds then turn off to save battery
-		if (elapsedTime > 0 && elapsedTime <= 8) {
-			Attention.backlight(true);
-		}
-
-		if (elapsedTime == 9) {
-			Attention.backlight(false);
-		}
-
-		me.mMainDurationRenderer.drawOverallElapsedTime(dc, elapsedTime, alarmTime);
-		if (me.mIntervalAlertsRenderer != null) {
-			me.mIntervalAlertsRenderer.drawRepeatIntervalAlerts(dc);
-			me.mIntervalAlertsRenderer.drawOneOffIntervalAlerts(dc);
-		}
-		
-		me.mHrStatusText.setText(me.formatValue(currentHr));
-		me.mHrStatusText.draw(dc);        
-     	me.mHrStatus.draw(dc);	       	
-     	
- 	    if (me.mMeditateModel.isHrvOn() == true) {
-	        me.mHrvIcon.draw(dc);
-	        me.mHrvText.setText(me.formatValue(hrvValue));
-	        me.mHrvText.draw(dc);
-        }
-
-		// Only get sensor data every second
-		if (elapsedTime!=lastElapsedTime && me.mMeditateModel.isTimerRunning) {
-			if (me.mMeditateModel.isRespirationRateOn()) {
-				var respirationRate = me.mMeditateModel.getRespirationRate();
-				me.mBreathIcon.draw(dc);
-				me.mBreathText.setText(me.formatValue(respirationRate));
-				me.mBreathText.draw(dc); 
+				if (me.mMeditateModel.isRespirationRateOn()) {
+					currentRr = me.mMeditateModel.getRespirationRate();
+				}
+				currentStress = me.mMeditateModel.getStress();
+			} else {
+				// if activity is paused, render the [Paused] text
+				currentElapsedTime = Ui.loadResource(Rez.Strings.meditateActivityPaused);
 			}
-			var stress = me.mMeditateModel.getStress();
-			me.mStressIcon.draw(dc);
-			me.mStressText.setText(me.formatValue(stress));
-			me.mStressText.draw(dc); 
+			var iconColor = null;
+			me.mMeditateModel.title = currentElapsedTime;
+			me.mHrStatusLine.value.text = me.formatValue(currentHr);
+			if (currentHr != null) {
+				iconColor = Graphics.COLOR_RED;
+			} else {
+				iconColor = Graphics.COLOR_LT_GRAY;
+			}
+			me.mHrStatusLine.icon = new ScreenPicker.Icon({
+				:font => StatusIconFonts.fontAwesomeFreeSolid,
+				:symbol => StatusIconFonts.Rez.Strings.faHeart,
+				:color => iconColor,
+			});
+
+			me.mHrvStatusLine.value.text = me.formatValue(currentHrv);
+			if (me.mMeditateModel.isHrvOn() == true && currentHr != null) {
+				iconColor = Graphics.COLOR_RED;
+			} else {
+				iconColor = Graphics.COLOR_LT_GRAY;
+			}
+			me.mHrvStatusLine.icon = new ScreenPicker.HrvIcon({
+				:color => iconColor,
+			});
+
+			me.mRrStatusLine.value.text = me.formatValue(currentRr);
+			me.mRrStatusLine.icon = new ScreenPicker.BreathIcon({});
+
+			me.mStressStatusLine.value.text = me.formatValue(currentStress);
+			me.mStressStatusLine.icon = new ScreenPicker.StressIcon({});
+			me.mStressStatusLine.icon.setStress(currentStress);
+
+			ScreenPicker.ScreenPickerDetailsView.onUpdate(dc);
+			var alarmTime = me.mMeditateModel.getSessionTime();
+
+			// Fix issues with OLED screens for prepare time 45 seconds
+			if (elapsedTime <= 1) {
+				Attention.backlight(false);
+			}
+
+			// Enable backlight in the first 8 seconds then turn off to save battery
+			if (elapsedTime > 0 && elapsedTime <= 8) {
+				Attention.backlight(true);
+			}
+
+			if (elapsedTime == 9) {
+				Attention.backlight(false);
+			}
+
+			me.mMainDurationRenderer.drawOverallElapsedTime(dc, elapsedTime, alarmTime);
+			if (me.mIntervalAlertsRenderer != null) {
+				me.mIntervalAlertsRenderer.drawRepeatIntervalAlerts(dc);
+				me.mIntervalAlertsRenderer.drawOneOffIntervalAlerts(dc);
+			}
 		}
-
 		lastElapsedTime = elapsedTime;
-    }
-	
-    // Called when this View is removed from the screen. Save the
-    // state of this View here. This includes freeing resources from
-    // memory.
-    function onHide() {
-    }
-
+	}
 }

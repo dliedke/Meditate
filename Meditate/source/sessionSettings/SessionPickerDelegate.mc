@@ -266,7 +266,7 @@ class SessionPickerDelegate extends ScreenPicker.ScreenPickerDelegate {
 	
 	function createScreenPickerView() {
 		me.setSelectedSessionDetails();
-		return new ScreenPicker.ScreenPickerViewDetails(me.mSelectedSessionDetails, true);
+		return new ScreenPicker.ScreenPickerDetailsView(me.mSelectedSessionDetails, true);
 	}
 	
 	class AlertsToHighlightsLine {
