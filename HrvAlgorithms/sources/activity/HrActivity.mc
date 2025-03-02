@@ -106,17 +106,15 @@ module HrvAlgorithms {
 			}
 
 			if (me.mFitSession.isRecording()) {
-				// Update local minimum heart rate tracking
+
 				if (activityInfo.currentHeartRate != null && (me.mMinHr == null || me.mMinHr > activityInfo.currentHeartRate)) {
 					me.mMinHr = activityInfo.currentHeartRate;
 				}
-				
-				// Add to heart rate history
+
 				mHRHistory.add(activityInfo.currentHeartRate);
 			}
 
-			// Call the refresh callback with the current info and minimum HR
-			me.onRefreshHrActivityStats(activityInfo, me.mMinHr);
+	    	me.onRefreshHrActivityStats(activityInfo, me.mMinHr);
 		}
 		
 		protected function onRefreshHrActivityStats(activityInfo, minHr) {
