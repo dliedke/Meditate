@@ -7,10 +7,10 @@ using Toybox.Time.Gregorian;
 class SummaryModel {
 	function initialize(activitySummary, rrActivity, stressActivity, hrvTracking) {
 		me.elapsedTime = activitySummary.hrSummary.elapsedTimeSeconds;
-		me.maxHr = activitySummary.hrSummary.maxHr;
-		me.avgHr = activitySummary.hrSummary.averageHr;
-		me.minHr = activitySummary.hrSummary.minHr;
-		me.hrHistory = activitySummary.hrSummary.hrHistory;
+		me.maxHr = activitySummary.hrSummary.max;
+		me.avgHr = activitySummary.hrSummary.avg;
+		me.minHr = activitySummary.hrSummary.min;
+		me.hrHistory = activitySummary.hrSummary.data;
 
 		var rrSummary = rrActivity.getSummary();
 		if (rrSummary != null) {

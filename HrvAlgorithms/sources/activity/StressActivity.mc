@@ -4,10 +4,10 @@ using Toybox.SensorHistory;
 using Toybox.ActivityMonitor;
 
 module HrvAlgorithms {
-	class StressActivity extends SensorActivity {
+	class StressActivity extends SensorActivityTumbling {
 		static var apiV5Plus;
 		function initialize() {
-			SensorActivity.initialize(new SensorSummary(), false);
+			SensorActivityTumbling.initialize(new SensorSummary(), false, null);
 		}
 
 		static function isSensorSupported() {
@@ -44,7 +44,6 @@ module HrvAlgorithms {
 						}
 					}
 				}
-				// Debug System.println("api5v:" + me.apiV5Plus);
 			}
 			return val;
 		}

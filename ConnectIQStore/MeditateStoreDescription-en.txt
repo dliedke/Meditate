@@ -1,33 +1,28 @@
-!!!! Touch and hold the screen (Touch devices) or hold the left middle button to edit the meditation sessions, properties and global settings.!!!!!
+Meditation and breathwork are powerful practices that aim to enhance mental and physical well-being. Their common goals include reducing stress, increasing emotional balance, improving focus, and promoting self-awareness. While meditation emphasizes mindfulness and mental clarity, breathwork actively engages the nervous system through controlled breathing techniques to achieve relaxation, energy boosts, or emotional release.
+
+Why Tracking Physiological Metrics Matters
+Measuring stress levels, heart rate variability (HRV), and heart rate during meditation and breathwork provides valuable insights into their effectiveness.
+
+* Stress Levels: Real-time stress tracking can help assess how meditation and breathwork reduce physiological tension over time.
+* Heart Rate Variability (HRV): A higher HRV is linked to better autonomic nervous system balance, meaning improved resilience to stress. Slow, deep breathing and mindfulness practices can enhance HRV, reflecting better relaxation and recovery.
+* Heart Rate: Meditation typically lowers heart rate over time, while breathwork may cause temporary fluctuations depending on the technique used. Tracking heart rate can reveal patterns in how the body responds to different practices.!
+
+This meditation/yoga app is tracks all these metrics for you. This allows you to correlate biometric data with specific practices, helping to fine-tune your approach and track long-term progress.
+
+!!! Touch and hold the screen (Touch devices) or hold the left middle button to edit the meditation sessions, properties and global settings.!!!!!
 *** Please read all guide below to avoid issues with the application in your device ***
 *** If you face any issue, please check the troubleshooting guide below before reporting ***
 Please enter a valid email when clicking "Contact Developer" in this page so I can reply to questions and requests.
 Appreciate if you write in English language.
 
-Totally free application developed by vtrifonov and compiled/enhanced for newer Garmin watch models by dliedke.
-
-A meditation/yoga app that tracks as an activity the heart rate, stress, respiration rate, heart rate variability (HRV), provides vibration or sound alerts, heart rate chart and respiration rate chart.
+Totally free application developed by vtrifonov and compiled/enhanced for newer Garmin watch models by dliedke and floriangeigl.
 
 Full user guide (explains HRV metrics and how to use application in detail):
-https://github.com/dliedke/Meditate/blob/main/UserGuide.md
-
-Touch screen or click Start button to start meditation session. Use lap/back button to pause/resume. Use start button to end the meditation session.
-
-Make sure to enable vibration in System - Sound and Vibe - Vibration (On).
-
-If your device supports it and using sound notifications, make sure to enable sound in System - Sound and Vibe - Alert Tones (On).
- 
-Set Activity Name as "Location & Device Activity Name" in Garmin Connect Settings (https://connect.garmin.com/modern/settings) for activity name generated to be saved correctly.
-
-Set custom activity name using watch connected to PC via USB with Garmin Express, refer to guide at https://support.garmin.com/en-US/?faq=6Vl7EbW3qA42l63ZIhJet5 for help. Do not use Garmin Connect IQ mobile because it will break application due to bugs in Garmin infrastructure.
-
-Use "Meditation" or "Yoga" type activity to correctly capture Respiration rate metrics due to bug in Breathing activity in some devices.
+https://github.com/floriangeigl/Meditate/blob/main/UserGuide.md
 
 Avoid moving your wrist during the session in order to capture HRV and Respiration rate metrics. If HRV is not being detected, please reboot your watch pressing light button for 15s, turn it on and retry the application.
 
 Note: Connect IQ API used for application development only returns the 5min average for the stress metric. That's why the numbers don't match exactly with Garmin Connect, because in GC it shows the real time stress metric when activity started and stopped.
-
-Shortlisted as best app by Wareable: https://www.wareable.com/garmin/garmin-connect-iq-guide-best-apps-122
 
 Troubleshooting guide:
 
@@ -44,8 +39,6 @@ No vibration or sound during sessions:
 Make sure to enable vibration in System - Sound and Vibe - Vibration (On). Also make sure to enable sound in System - Sound and Vibe - Alert Tones (On). 
 
 
-Please report other issues in "Contact Developer" link at this page or https://github.com/dliedke/Meditate/issues and not in the app review.
-
-I would recommend a nice meditation playlist https://open.spotify.com/playlist/37i9dQZF1DWZYo1v54bwkI?si=85adff2dd75e4e85
+Please report other issues in "Contact Developer" link at this page or https://github.com/floriangeigl/Meditate/issues and not in the app review.
 
 Reduce your stress, relax and Meditate!

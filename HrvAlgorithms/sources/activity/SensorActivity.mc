@@ -2,13 +2,15 @@ using Toybox.ActivityMonitor;
 
 module HrvAlgorithms {
 	class SensorActivity {
-		
 		function initialize(summary, skipeFirstMeasure) {
 			// Check if device supports the sensor
 			if (isSensorSupported()) {
 				me.sensorSupported = true;
 			} else {
 				me.sensorSupported = false;
+			}
+			if(summary == null) {
+				summary = new SensorSummary();
 			}
 			me.summary = summary;
 			me.count = 0;
@@ -25,11 +27,11 @@ module HrvAlgorithms {
 		var summary;
 		var min, max;
 		var first, last;
-	    var data = [];
+		var data = [];
 		var skipeFirstMeasure = skipeFirstMeasure;
 
 		// Method to be used without class instance
-		static function isSensorSupported(){
+		static function isSensorSupported() {
 			return false;
 		}
 
@@ -45,7 +47,7 @@ module HrvAlgorithms {
 
 		protected function getCurrentValueClean() {
 			var val = me.getCurrentValueRaw();
-			if(val > 0) {
+			if (val > 0) {
 				return val;
 			} else {
 				return null;
@@ -56,8 +58,7 @@ module HrvAlgorithms {
 			// If device supports the sensor
 			if (me.sensorSupported) {
 				var val = me.getCurrentValueClean();
-				if (me.skipeFirstMeasure)
-				{
+				if (me.skipeFirstMeasure) {
 					me.skipeFirstMeasure = false;
 					return null;
 				}
@@ -70,16 +71,20 @@ module HrvAlgorithms {
 			}
 		}
 
-		function updateData(val) {
+		function addData(val) {
 			me.data.add(val);
+		}
+
+		function updateData(val) {
+			me.addData(val);
 			// update min, max, count, sum
-			if(val != null) {
+			if (val != null) {
 				if (me.first == null) {
 					me.first = val;
 				}
 				me.last = val;
 				me.count++;
-				me.sum+=val;				
+				me.sum += val;
 				if (me.min == null || val < me.min) {
 					me.min = val;
 				}
@@ -90,7 +95,7 @@ module HrvAlgorithms {
 		}
 
 		function getAvg() {
-			if(me.count > 0) {
+			if (me.count > 0) {
 				return me.sum / me.count.toFloat();
 			} else {
 				return null;
@@ -106,5 +111,5 @@ module HrvAlgorithms {
 			me.summary.data = me.data;
 			return me.summary;
 		}
-	}	
+	}
 }

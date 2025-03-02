@@ -40,12 +40,9 @@ module ScreenPicker {
 				foregroundColor = Gfx.COLOR_WHITE;
 			} else {
 				// Light results theme
-			backgroundColor = Gfx.COLOR_WHITE;
-			foregroundColor = Gfx.COLOR_BLACK;
+				backgroundColor = Gfx.COLOR_WHITE;
+				foregroundColor = Gfx.COLOR_BLACK;
 			}
-			
-
-
 		}
 
 		protected function setArrowsColor(color) {

@@ -1,9 +1,9 @@
 using Toybox.ActivityMonitor;
 
 module HrvAlgorithms {
-	class RrActivity extends SensorActivity {
+	class RrActivity extends SensorActivityTumbling {
 		function initialize() {
-			SensorActivity.initialize(new SensorSummary(), true);
+			SensorActivityTumbling.initialize(new SensorSummary(), true, null);
 		}
 
 		// Method to be used without class instance

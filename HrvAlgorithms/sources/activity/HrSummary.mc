@@ -1,9 +1,5 @@
 module HrvAlgorithms {
-	class HrSummary {
-		var maxHr;
-		var averageHr;
-		var minHr;
+	class HrSummary extends SensorSummary {
 		var elapsedTimeSeconds;
-		var hrHistory;
 	}
 }
