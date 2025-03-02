@@ -1,6 +1,11 @@
 {
 	"folders": [
 		{
+			"name": "Main",
+			"path": "./"
+		},
+
+		{
 			"path": "HrvAlgorithms"
 		},
 		{
@@ -12,5 +17,16 @@
 		{
 			"path": "StatusIconFonts"
 		}
-	]
+	],
+	"settings": {
+		"editor.formatOnSave": true,
+		"files.exclude": {
+			"**/bin/**": true,
+			"HrvAlgorithms/**": true,
+			"Meditate/**": true,
+			"ScreenPicker/**": true,
+			"StatusIconFonts/**": true
+		},
+		"explorer.excludeGitIgnore": true
+	}
 }

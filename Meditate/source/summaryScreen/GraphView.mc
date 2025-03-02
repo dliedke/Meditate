@@ -7,12 +7,12 @@ using Toybox.Activity as Activity;
 using Toybox.SensorHistory as SensorHistory;
 using Toybox.ActivityMonitor as ActivityMonitor;
 
-class GraphView extends ScreenPicker.ScreenPickerView  {
-
+class GraphView extends ScreenPicker.ScreenPickerBaseView {
 	var positionX, positionY;
 	var chartToLabelOffset;
 	var graphWidth, graphHeight;
 	var centerX, centerY;
+	var shiftRight, smallXSpace, smallYSpace;
 	var data;
 	var min, max, avg;
 	var elapsedTime;
@@ -30,8 +30,10 @@ class GraphView extends ScreenPicker.ScreenPickerView  {
 		var val = null;
 		var total = 0;
 		var count = 0;
+
 		if(me.data != null) {
 			for (var i = 0; i < me.data.size(); i++){
+
 				val = me.data[i];
 				if (val != null) {
 					if (me.min == null || val < me.min) {
@@ -51,7 +53,7 @@ class GraphView extends ScreenPicker.ScreenPickerView  {
 
 		me.elapsedTime = elapsedTime;
 		me.title = title;
-		ScreenPickerView.initialize(Gfx.COLOR_BLACK);
+		ScreenPickerBaseView.initialize(true);
 		resultsTheme = GlobalSettings.loadResultsTheme();
 	}
 
@@ -62,73 +64,68 @@ class GraphView extends ScreenPicker.ScreenPickerView  {
 			return Math.round(number).format("%3.0f");
 		}
 	}
-	
-	// Update the view
-	function onUpdate(dc) {    
 
-		// Light results theme
-		var backgroundColor = Gfx.COLOR_WHITE;
-		var foregroundColor = Gfx.COLOR_BLACK;
-
-		// Dark results theme
-		if (resultsTheme == ResultsTheme.Dark) {
-			backgroundColor = Gfx.COLOR_BLACK;
-			foregroundColor = Gfx.COLOR_WHITE;
-		}
-
-		// Clear the screen
-		dc.setColor(Gfx.COLOR_TRANSPARENT, backgroundColor);  
-		dc.clear();
-		ScreenPickerView.onUpdate(dc);
+	function onLayout(dc) {
+		ScreenPickerBaseView.onLayout(dc);
 
 		// Calculate center of the screen
-		centerX = dc.getWidth()/2;
-		centerY = dc.getHeight()/2;
+		me.centerX = dc.getWidth() / 2;
+		me.centerY = dc.getHeight() / 2;
+		me.smallXSpace = dc.getWidth() * 0.05;
+		me.smallYSpace = dc.getWidth() * 0.05;
 
 		// Calculate position of the chart
-		me.positionX = centerX - (centerX / 1.5) - App.getApp().getProperty("ChartXPos");
-		me.positionY = centerY + (centerY / 2) - App.getApp().getProperty("ChartYPos");
-	
-		me.graphHeight = dc.getHeight() / 3;
-		me.graphWidth = App.getApp().getProperty("ChartWidth");
+		me.graphHeight = Math.round(dc.getHeight() * 0.33);
+		me.graphWidth = Math.round(dc.getWidth() * 0.75);
+		me.shiftRight = me.graphWidth * 0.05;
+		me.positionX = me.centerX - me.graphWidth / 2 + me.shiftRight;
+		me.positionY = me.centerY + me.graphHeight / 2;
+		// calculate offset of y-ticks to chart
 		me.chartToLabelOffset = Math.ceil(me.graphWidth * 0.01);
-	
-		dc.setColor(foregroundColor, Graphics.COLOR_TRANSPARENT);
+	}
+
+	// Update the view
+	function onUpdate(dc) {
+		ScreenPickerBaseView.onUpdate(dc);
 
 		// Draw title text
-		dc.drawText(centerX, 
-					App.getApp().getProperty("ChartTitleY"), 
-					App.getApp().getProperty("largeFont"), 
-					Ui.loadResource(me.title), 
-					Graphics.TEXT_JUSTIFY_CENTER);
-		
+		me.drawTitle(dc, Ui.loadResource(me.title));
+
 		// Draw MIN text
-		dc.drawText(centerX - centerX / 2 + 10, 
-					centerY - centerY / 2 + 10, 
-					Gfx.FONT_SYSTEM_TINY, 
-					Ui.loadResource(Rez.Strings.SummaryMin) + me.formatNumber(me.min), 
-					Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+		dc.drawText(
+			me.positionX + me.smallXSpace,
+			centerY - graphHeight / 2 - me.smallYSpace,
+			Gfx.FONT_SYSTEM_TINY,
+			Ui.loadResource(Rez.Strings.SummaryMin) + me.formatNumber(me.min),
+			Graphics.TEXT_JUSTIFY_LEFT | Graphics.TEXT_JUSTIFY_VCENTER
+		);
 
 		// Draw AVG text
-		dc.drawText(centerX, 
-					centerY + centerY / 2 + 3, 
-					Gfx.FONT_SYSTEM_TINY, 
-					Ui.loadResource(Rez.Strings.SummaryAvg) + me.formatNumber(me.avg), 
-					Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+		dc.drawText(
+			centerX,
+			me.positionY + me.smallYSpace,
+			Gfx.FONT_SYSTEM_TINY,
+			Ui.loadResource(Rez.Strings.SummaryAvg) + me.formatNumber(me.avg),
+			Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
+		);
 
 		// Draw MAX text
-		dc.drawText(centerX + centerX / 2 - 10, 
-					centerY - centerY / 2 + 10, 
-					Gfx.FONT_SYSTEM_TINY, 
-					Ui.loadResource(Rez.Strings.SummaryMax) + me.formatNumber(me.max), 
-					Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+		dc.drawText(
+			me.positionX + graphWidth / 2 + me.smallXSpace,
+			centerY - graphHeight / 2 - me.smallYSpace,
+			Gfx.FONT_SYSTEM_TINY,
+			Ui.loadResource(Rez.Strings.SummaryMax) + me.formatNumber(me.max),
+			Graphics.TEXT_JUSTIFY_LEFT | Graphics.TEXT_JUSTIFY_VCENTER
+		);
 
 		// Draw Time text
-		dc.drawText(centerX, 
-					centerY + centerY / 1.5 + 13, 
-					Gfx.FONT_SYSTEM_TINY, 
-					TimeFormatter.format(me.elapsedTime), 
-					Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+		dc.drawText(
+			centerX,
+			centerY + centerY / 1.5 + 13,
+			Gfx.FONT_SYSTEM_TINY,
+			TimeFormatter.format(me.elapsedTime),
+			Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
+		);
 
 		// Draw data if available
 		var minMaxDiff = null;
@@ -141,7 +138,7 @@ class GraphView extends ScreenPicker.ScreenPickerView  {
 			// allow for some space between data and chart min/max
 			var minCutSet = me.minCut != null;
 			var maxCutSet = me.maxCut != null;
-			var yOffset = Math.ceil(minMaxDiff * 0.1);			
+			var yOffset = Math.ceil(minMaxDiff * 0.1);
 			yMin = Math.floor(me.min - yOffset);
 			yMax = Math.ceil(me.max + yOffset);
 
@@ -149,7 +146,7 @@ class GraphView extends ScreenPicker.ScreenPickerView  {
 			if (minCutSet && yMin < me.minCut) {
 				yMin = me.minCut;
 			}
-			if (maxCutSet && yMin > me.maxCut){
+			if (maxCutSet && yMin > me.maxCut) {
 				yMin = me.maxCut;
 			}
 
@@ -164,15 +161,15 @@ class GraphView extends ScreenPicker.ScreenPickerView  {
 			minMaxDiff = yMax - yMin;
 			if (minMaxDiff < 1) {
 				var tmpOffset = Math.ceil(yMax * 0.1);
-				if(maxCutSet && yMax + tmpOffset < me.maxCut){
-					yMax+=tmpOffset;
-				} 
-				if(minCutSet && yMin - tmpOffset > me.minCut){
-					yMin-=tmpOffset;
-				} 
-				if (yMax - yMin < 1){
-					yMin-=tmpOffset;
-					yMax+=tmpOffset;
+				if (maxCutSet && yMax + tmpOffset < me.maxCut) {
+					yMax += tmpOffset;
+				}
+				if (minCutSet && yMin - tmpOffset > me.minCut) {
+					yMin -= tmpOffset;
+				}
+				if (yMax - yMin < 1) {
+					yMin -= tmpOffset;
+					yMax += tmpOffset;
 				}
 				minMaxDiff = yMax - yMin;
 			}
@@ -180,14 +177,14 @@ class GraphView extends ScreenPicker.ScreenPickerView  {
 			// Chart as light blue
 			dc.setPenWidth(1);
 			dc.setColor(0x27a0c4, Graphics.COLOR_TRANSPARENT);
-			
+
 			// Try adapting the chart for the graph width
 			var dataWidthRatio = 0.0;
 			var expandFact = 1;
 			var bucketSize = 1;
 
 			dataWidthRatio = me.data.size() / me.graphWidth.toFloat();
-			
+
 			if (dataWidthRatio > 1) {
 				// Calculate bucket size
 				bucketSize = Math.ceil(dataWidthRatio).toNumber();
@@ -200,7 +197,7 @@ class GraphView extends ScreenPicker.ScreenPickerView  {
 				}
 				expandFact--;
 			}
-			
+
 			// Draw chart
 			var lineHeight = null;
 			var val = null;
@@ -208,19 +205,19 @@ class GraphView extends ScreenPicker.ScreenPickerView  {
 			var xPos = me.positionX + 1 + chartToLabelOffset; // leave some space to labels
 			var bucketVal = 0;
 			var bucketCount = 0;
-			for (var i = 0; i < me.data.size(); i++){
+			for (var i = 0; i < me.data.size(); i++) {
 				val = me.data[i];
-				if (val!=null) {
-					bucketVal+=val;
+				if (val != null) {
+					bucketVal += val;
 					bucketCount++;
 				}
 				// draw buckets: skip first, draw last, else every full bucket
-				if(i > 0 && (i == me.data.size() -1 || i % bucketSize == 0)) {
+				if (i > 0 && (i == me.data.size() - 1 || i % bucketSize == 0)) {
 					// draw bucket
 					if (bucketCount > 0) {
 						// calc average of bucket
 						val = bucketVal / bucketCount;
-						
+
 						// cut data if exceeds limits
 						if (minCutSet && me.minCut > val) {
 							val = me.minCut;
@@ -230,12 +227,9 @@ class GraphView extends ScreenPicker.ScreenPickerView  {
 						}
 
 						// draw line
-						lineHeight = Math.round((val-yMin) * heightFact).toNumber();
-						for (var j = 0; j < expandFact; j++){
-							dc.drawLine(xPos, 
-										me.positionY - lineHeight, 
-										xPos, 
-										me.positionY);
+						lineHeight = Math.round((val - yMin) * heightFact).toNumber();
+						for (var j = 0; j < expandFact; j++) {
+							dc.drawLine(xPos, me.positionY - lineHeight, xPos, me.positionY);
 							xPos++;
 						}
 						// reset bucket
@@ -243,12 +237,12 @@ class GraphView extends ScreenPicker.ScreenPickerView  {
 						bucketCount = 0;
 					} else {
 						// jump over null values
-						xPos+=expandFact;
+						xPos += expandFact;
 					}
 				}
 			}
 		}
-		// Draw lines and labels 
+		// Draw lines and labels
 		dc.setPenWidth(1);
 		dc.setColor(foregroundColor, Graphics.COLOR_TRANSPARENT);
 		if (minMaxDiff == null) {
@@ -262,19 +256,24 @@ class GraphView extends ScreenPicker.ScreenPickerView  {
 		}
 		var lineSpacing = Math.floor(me.graphHeight / numLines.toFloat());
 
-		for(var i = 0; i <= numLines; i++){
+		for (var i = 0; i <= numLines; i++) {
 			// Draw lines over chart
-			dc.drawLine(me.positionX + me.chartToLabelOffset, 
-						me.positionY - (lineSpacing * i), 
-						me.positionX + me.graphWidth, 
-						me.positionY - (lineSpacing * i));
+			dc.drawLine(
+				me.positionX + me.chartToLabelOffset,
+				me.positionY - lineSpacing * i,
+				me.positionX + me.graphWidth,
+				me.positionY - lineSpacing * i
+			);
 
 			// Draw labels for the lines except last one
-			dc.drawText(me.positionX, 
-						me.positionY - (lineSpacing * i), 
-						Gfx.FONT_SYSTEM_XTINY, 
-						Math.round(yMin + (minMaxDiff / numLines) * i).toNumber().toString(), 
-						Graphics.TEXT_JUSTIFY_RIGHT|Graphics.TEXT_JUSTIFY_VCENTER);
+			dc.drawText(
+				me.positionX,
+				me.positionY - lineSpacing * i,
+				Gfx.FONT_SYSTEM_XTINY,
+				Math.round(yMin + (minMaxDiff / numLines) * i)
+					.toNumber()
+					.toString(),
+				Graphics.TEXT_JUSTIFY_RIGHT | Graphics.TEXT_JUSTIFY_VCENTER
+			);
 		}
     }
-}

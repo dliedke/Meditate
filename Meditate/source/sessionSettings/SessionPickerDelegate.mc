@@ -14,15 +14,7 @@ class SessionPickerDelegate extends ScreenPicker.ScreenPickerDelegate {
 		me.mSummaryRollupModel = new SummaryRollupModel();
 		me.mSelectedSessionDetails = new ScreenPicker.DetailsModel();	
 		me.mLastHrvTracking = null;		
-		me.initializeHeartbeatIntervalsSensor(heartbeatIntervalsSensor);
-        
-		me.globalSettingsIconsYOffset = App.getApp().getProperty("globalSettingsIconsYOffset");
-		me.sessionDetailsIconsXPos = App.getApp().getProperty("sessionDetailsIconsXPos");
-		me.sessionDetailsValueXPos = App.getApp().getProperty("sessionDetailsValueXPos");
-		me.globalSettingsIconsXPos = App.getApp().getProperty("globalSettingsIconsXPos");
-		me.sessionDetailsAlertsLineYOffset = App.getApp().getProperty("sessionDetailsAlertsLineYOffset");
-		me.sessionDetailsYOffset = App.getApp().getProperty("sessionDetailsYOffset");
-		
+		me.initializeHeartbeatIntervalsSensor(heartbeatIntervalsSensor);		
 		me.setSelectedSessionDetails();
 	}
 	
@@ -55,12 +47,6 @@ class SessionPickerDelegate extends ScreenPicker.ScreenPickerDelegate {
 	
 	private var mHeartbeatIntervalsSensor;
 	private var mLastHrvTracking;
-	private var globalSettingsIconsYOffset;
-	private var sessionDetailsIconsXPos;
-	private var sessionDetailsValueXPos;
-	private var globalSettingsIconsXPos;
-	private var sessionDetailsAlertsLineYOffset;
-	private var sessionDetailsYOffset;
 		
     function onMenu() {
 		return me.showSessionSettingsMenu();
@@ -201,7 +187,7 @@ class SessionPickerDelegate extends ScreenPicker.ScreenPickerDelegate {
 	}
 	
 	private function setHrvReadyStatus() {
-		var hrvStatusLine = me.mSelectedSessionDetails.detailLines[4];
+		var hrvStatusLine = me.mSelectedSessionDetails.getLine(3);
 		if (me.mNoHrvSeconds >= MinSecondsNoHrvDetected) {
 			hrvStatusLine.icon.setStatusWarning();
 			hrvStatusLine.value.text = Ui.loadResource(Rez.Strings.waitingHRV);
@@ -238,9 +224,7 @@ class SessionPickerDelegate extends ScreenPicker.ScreenPickerDelegate {
 		me.setTestModeHeartbeatIntervalsSensor(session.hrvTracking);
 			
 		var details = me.mSelectedSessionDetails;
-				
-        details.color = Gfx.COLOR_WHITE;
-        details.backgroundColor = Gfx.COLOR_BLACK;
+
         var activityTypeText;
         if (session.activityType == ActivityType.Yoga) {
         	activityTypeText = Ui.loadResource(Rez.Strings.meditateYogaActivityName);		// Due to bug in Connect IQ API for breath activity to get respiration rate, we will use Yoga as default meditate activity
@@ -250,40 +234,39 @@ class SessionPickerDelegate extends ScreenPicker.ScreenPickerDelegate {
         }
         details.title = activityTypeText + " " + (me.mSelectedPageIndex + 1);
         details.titleColor = session.color;
-        
+        var line = details.getLine(0);
+		
         var timeIcon = new ScreenPicker.Icon({        
         	:font => StatusIconFonts.fontAwesomeFreeSolid,
         	:symbol => StatusIconFonts.Rez.Strings.faHourglassHalf
         });
-        details.detailLines[1].icon = timeIcon;
-        details.detailLines[1].value.text = TimeFormatter.format(session.time);
+        line.icon = timeIcon;
+        line.value.text = TimeFormatter.format(session.time);
         
+		line = details.getLine(1);
         var vibePatternIcon = new ScreenPicker.Icon({        
         	:font => StatusIconFonts.fontMeditateIcons,
         	:symbol => StatusIconFonts.Rez.Strings.meditateFontVibratePattern
         });
-        details.detailLines[2].icon = vibePatternIcon;
-        details.detailLines[2].value.text = getVibePatternText(session.vibePattern);
+        line.icon = vibePatternIcon;
+        line.value.text = getVibePatternText(session.vibePattern);
         
+		line = details.getLine(2);
         var alertsLineIcon = new ScreenPicker.Icon({        
         	:font => StatusIconFonts.fontAwesomeFreeRegular,
         	:symbol => StatusIconFonts.Rez.Strings.faClock
         });
-        details.detailLines[3].icon = alertsLineIcon;
+        line.icon = alertsLineIcon;
         var alertsToHighlightsLine = new AlertsToHighlightsLine(session);
-        details.detailLines[3].value = alertsToHighlightsLine.getAlertsLine(me.sessionDetailsValueXPos, me.sessionDetailsAlertsLineYOffset);
+        line.value = alertsToHighlightsLine.getAlertsLine();
         
-        var hrvStatusLine = details.detailLines[4];
+        var hrvStatusLine = details.getLine(3);
         me.setInitialHrvStatus(hrvStatusLine, session);
-        
-        details.setAllIconsXPos(me.sessionDetailsIconsXPos);
-        details.setAllValuesXPos(me.sessionDetailsValueXPos);
-		details.setAllLinesYOffset(me.sessionDetailsYOffset);
-	}		
+	}
 	
 	function createScreenPickerView() {
 		me.setSelectedSessionDetails();
-		return new ScreenPicker.ScreenPickerDetailsView(me.mSelectedSessionDetails);
+		return new ScreenPicker.ScreenPickerDetailsView(me.mSelectedSessionDetails, true);
 	}
 	
 	class AlertsToHighlightsLine {
@@ -293,12 +276,10 @@ class SessionPickerDelegate extends ScreenPicker.ScreenPickerDelegate {
 		
 		private var mSession;
 		
-		function getAlertsLine(alertsLineXPos, alertsLineYOffset) {
+		function getAlertsLine() {
 	        var alertsLine = new ScreenPicker.PercentageHighlightLine(me.mSession.intervalAlerts.count());
 
-	        alertsLine.backgroundColor = me.mSession.color;	        
-	        alertsLine.startPosX = alertsLineXPos;
-	        alertsLine.yOffset = alertsLineYOffset;
+	        alertsLine.backgroundColor = me.mSession.color;
 	        	        
 	        me.AddHighlights(alertsLine, IntervalAlertType.Repeat);      
 	        me.AddHighlights(alertsLine, IntervalAlertType.OneOff);

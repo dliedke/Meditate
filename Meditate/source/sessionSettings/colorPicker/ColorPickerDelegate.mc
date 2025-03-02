@@ -26,13 +26,11 @@ class ColorPickerDelegate extends ScreenPicker.ScreenPickerDelegate {
 	}
 
 	function onSwipe(swipeEvent) {
-		
-		// FIx back with left-to-right touch
+		// Fix back with left-to-right touch
 		if (swipeEvent.getDirection() == WatchUi.SWIPE_RIGHT) {
 			Ui.popView(Ui.SLIDE_RIGHT);
 			return true;
 		}
-
 		return false;
 	}	
 }

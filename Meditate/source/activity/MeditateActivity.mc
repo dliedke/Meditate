@@ -6,7 +6,7 @@ using Toybox.Math;
 using Toybox.Sensor;
 using HrvAlgorithms.HrvTracking;
 
-class MediteActivity extends HrvAlgorithms.HrvAndStressActivity {
+class MediteActivity extends HrvAlgorithms.HrvActivity {
 	private var mMeditateModel;
 	private var mVibeAlertsExecutor;	
 	private var mMeditateDelegate;
@@ -28,7 +28,7 @@ class MediteActivity extends HrvAlgorithms.HrvAndStressActivity {
 
 		me.mMeditateModel = meditateModel;	
 		me.mMeditateDelegate = meditateDelegate;
-		HrvAlgorithms.HrvAndStressActivity.initialize(fitSessionSpec, meditateModel.getHrvTracking(), heartbeatIntervalsSensor);			
+		HrvAlgorithms.HrvActivity.initialize(fitSessionSpec, meditateModel.getHrvTracking(), heartbeatIntervalsSensor);			
 	}
 
 	function readKeyString(myApp, key) {
@@ -96,7 +96,7 @@ class MediteActivity extends HrvAlgorithms.HrvAndStressActivity {
 								
 	protected function onBeforeStart(fitSession) {
 		mMeditateModel.isTimerRunning = true;
-		HrvAlgorithms.HrvAndStressActivity.onBeforeStart(fitSession);
+		HrvAlgorithms.HrvActivity.onBeforeStart(fitSession);
 		me.mVibeAlertsExecutor = new VibeAlertsExecutor(me.mMeditateModel);	
 	}	
 				
@@ -120,13 +120,13 @@ class MediteActivity extends HrvAlgorithms.HrvAndStressActivity {
 	}	   	
 	
 	protected function onBeforeStop() {	
-		HrvAlgorithms.HrvAndStressActivity.onBeforeStop();
+		HrvAlgorithms.HrvActivity.onBeforeStop();
 		me.mVibeAlertsExecutor = null;
 	}
 		
 	function calculateSummaryFields() {	
-		var activitySummary = HrvAlgorithms.HrvAndStressActivity.calculateSummaryFields();	
-		var summaryModel = new SummaryModel(activitySummary, me.mMeditateModel.getRespirationActivity(), me.mMeditateModel.getHrvTracking());
+		var activitySummary = HrvAlgorithms.HrvActivity.calculateSummaryFields();	
+		var summaryModel = new SummaryModel(activitySummary, me.mMeditateModel.getRespirationActivity(), me.mMeditateModel.getStressActivity(), me.mMeditateModel.getHrvTracking());
 		return summaryModel;
 	}
 }
