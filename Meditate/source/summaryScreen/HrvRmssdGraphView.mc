@@ -7,8 +7,14 @@ using Toybox.Activity as Activity;
 using Toybox.SensorHistory as SensorHistory;
 using Toybox.ActivityMonitor as ActivityMonitor;
 
-class HrvRmssdGraphView extends GraphView  {
-		function initialize(summaryModel) {
-			GraphView.initialize(summaryModel.hrvRmssdHistory, summaryModel.elapsedTime, Rez.Strings.SummaryHRVRMSSD, 0, 250);
-		}
+class HrvRmssdGraphView extends GraphView {
+	function initialize(summaryModel) {
+		GraphView.initialize(
+			summaryModel.hrvRmssdHistory,
+			summaryModel.elapsedTime,
+			Rez.Strings.SummaryHRVRMSSD,
+			0,
+			250
+		);
+	}
 }

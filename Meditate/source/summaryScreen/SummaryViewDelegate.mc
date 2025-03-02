@@ -89,17 +89,20 @@ class SummaryViewDelegate extends ScreenPicker.ScreenPickerDelegate {
 
 		line = detailsModel.getLine(0);
 		line.icon = lowStressIcon;
-		line.value.text = Lang.format("$1$ %", [ScreenPicker.ScreenPickerBaseView.formatValue(me.mSummaryModel.avgSt)]);
+		line.value.text = Lang.format("$1$  $2$", [
+			Ui.loadResource(Rez.Strings.SummaryAvg),
+			ScreenPicker.ScreenPickerBaseView.formatValue(me.mSummaryModel.avgSt),
+		]);
 		var offset = 0;
 		if (me.mSummaryModel.firstSt != null && me.mSummaryModel.lastSt != null) {
 			line = detailsModel.getLine(1);
 			line.value.text = Lang.format("$1$ $2$", [
-				Ui.loadResource(Rez.Strings.SummaryStressStart),
+				Ui.loadResource(Rez.Strings.SummaryStart),
 				ScreenPicker.ScreenPickerBaseView.formatValue(me.mSummaryModel.firstSt),
 			]);
 			line = detailsModel.getLine(2);
 			line.value.text = Lang.format("$1$ $2$", [
-				Ui.loadResource(Rez.Strings.SummaryStressEnd),
+				Ui.loadResource(Rez.Strings.SummaryEnd),
 				ScreenPicker.ScreenPickerBaseView.formatValue(me.mSummaryModel.lastSt),
 			]);
 			offset = 2;

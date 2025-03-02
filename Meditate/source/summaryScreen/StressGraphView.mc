@@ -7,8 +7,8 @@ using Toybox.Activity as Activity;
 using Toybox.SensorHistory as SensorHistory;
 using Toybox.ActivityMonitor as ActivityMonitor;
 
-class StressGraphView extends GraphView  {
-		function initialize(summaryModel) {
-			GraphView.initialize(summaryModel.stHistory, summaryModel.elapsedTime, Rez.Strings.SummaryStress, 0, 100);
-		}
+class StressGraphView extends GraphView {
+	function initialize(summaryModel) {
+		GraphView.initialize(summaryModel.stHistory, summaryModel.elapsedTime, Rez.Strings.SummaryStress, 0, 100);
+	}
 }

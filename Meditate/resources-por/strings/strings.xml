@@ -7,8 +7,8 @@
     <string id="SummaryTitle">Sumário</string>
     <string id="SummaryHR">Freq. Card.</string>
     <string id="SummaryStress">Stress</string>
-    <string id="SummaryStressStart">Stress no Início: </string>
-    <string id="SummaryStressEnd">Stress no Fim: </string>
+    <string id="SummaryStart">Início: </string>
+    <string id="SummaryEnd">Fim: </string>
     <string id="SummaryRespiration">Respiração</string>
     <string id="SummaryMin">Min: </string>
     <string id="SummaryAvg">Med: </string>
