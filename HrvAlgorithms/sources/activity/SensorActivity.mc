@@ -38,12 +38,12 @@ module HrvAlgorithms {
 			return sensorSupported;
 		}
 
-		function getCurrentValueRaw() {
+		protected function getCurrentValueRaw() {
 			// return ActivityMonitor.getInfo().respirationRate;
 			return null;
 		}
 
-		function getCurrentValueClean() {
+		protected function getCurrentValueClean() {
 			var val = me.getCurrentValueRaw();
 			if(val > 0) {
 				return val;

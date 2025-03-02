@@ -97,7 +97,7 @@ class MeditateModel extends ScreenPicker.DetailsModel{
 
 	function getRespirationRate() {
 		if (isTimerRunning) {
-			return rrActivity.getCurrentValueClean();
+			return rrActivity.getCurrentValue();
 		} else {
 			return null;
 		}
@@ -105,7 +105,7 @@ class MeditateModel extends ScreenPicker.DetailsModel{
 
 	function getStress() {
 		if (isTimerRunning) {
-			return stressActivity.getCurrentValueClean();
+			return stressActivity.getCurrentValue();
 		} else {
 			return null;
 		}
