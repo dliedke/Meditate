@@ -8,8 +8,10 @@ module ScreenPicker {
 		var multiPage;
 		var mUpArrow, mDownArrow;
 		var centerXPos;
+		var centerYPos;
 		var colorTheme;
 		var backgroundColor, foregroundColor;
+		var spaceXSmall, spaceYSmall, spaceXMed, spaceYMed;
 		private static const InvalidValueString = "--";
 		private static const colorThemeKey = "globalSettings_resultsTheme";
 		function initialize(multiPage) {
@@ -69,7 +71,6 @@ module ScreenPicker {
 		}
 
 		function layoutArrows(dc) {
-			centerXPos = dc.getWidth() / 2;
 			me.mUpArrow.setXPos(centerXPos);
 			me.mUpArrow.setYPos(0);
 			me.mDownArrow.setXPos(centerXPos);
@@ -84,6 +85,12 @@ module ScreenPicker {
 		}
 		function onLayout(dc) {
 			View.onLayout(dc);
+			centerXPos = dc.getWidth() / 2;
+			centerYPos = dc.getHeight() / 2;
+			spaceXSmall = Math.ceil(dc.getWidth() * 0.01);
+			spaceYSmall = Math.ceil(dc.getHeight() * 0.01);
+			spaceXMed = spaceXSmall * 5;
+			spaceYMed = spaceYSmall * 5;
 			if (me.multiPage) {
 				me.layoutArrows(dc);
 			}

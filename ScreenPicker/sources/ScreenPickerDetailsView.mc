@@ -8,6 +8,10 @@ module ScreenPicker {
 		var titleColor;
 		private var mUpArrow;
 		private var mDownArrow;
+		var lineHeight;
+		var yOffset;
+		var xIconOffset;
+		var xTextOffset;
 
 		function initialize(detailsModel, multiPage) {
 			ScreenPickerBaseView.initialize(multiPage);
@@ -20,31 +24,34 @@ module ScreenPicker {
 				me.titleColor = me.mDetailsModel.titleColor;
 			}
 		}
+		function onLayout(dc) {
+			ScreenPickerBaseView.onLayout(dc);
+			lineHeight = dc.getHeight() * 0.11;
+			yOffset = dc.getHeight() * 0.25;
+			xIconOffset = Math.ceil(dc.getWidth() * 0.2);
+			xTextOffset = Math.ceil(xIconOffset + dc.getWidth() * 0.07);
+		}
 
 		function onUpdate(dc) {
 			ScreenPickerBaseView.onUpdate(dc);
 			ScreenPickerBaseView.drawTitle(dc, mDetailsModel.title);
-			var lineHeight = dc.getHeight() * 0.11;
-			var yOffset = dc.getHeight() * 0.25;
-			var xIconOffset = Math.ceil(dc.getWidth() * 0.2);
-			var xTextOffset = Math.ceil(xIconOffset + dc.getWidth() * 0.07);
 			var line = null;
 			var yPos = null;
 			for (var lineNumber = 0; lineNumber < me.mDetailsModel.detailLines.size(); lineNumber++) {
 				dc.setColor(foregroundColor, Graphics.COLOR_TRANSPARENT);
 				line = me.mDetailsModel.detailLines[lineNumber];
-				yPos = yOffset + lineHeight * lineNumber;
+				yPos = me.yOffset + me.lineHeight * lineNumber;
 				if (line.icon != null) {
-					me.displayFontIcon(dc, line.icon, xIconOffset, yPos);
+					me.displayFontIcon(dc, line.icon, me.xIconOffset, yPos);
 				}
 				if (line.value instanceof TextValue) {
-					me.displayText(dc, line.value, xTextOffset, yPos);
+					me.displayText(dc, line.value, me.xTextOffset, yPos);
 				} else if (line.value instanceof PercentageHighlightLine) {
 					me.drawPercentageHighlightLine(
 						dc,
 						line.value.getHighlights(),
 						line.value.backgroundColor,
-						xTextOffset,
+						me.xTextOffset,
 						yPos
 					);
 				}

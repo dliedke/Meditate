@@ -277,3 +277,4 @@ class GraphView extends ScreenPicker.ScreenPickerBaseView {
 			);
 		}
     }
+}

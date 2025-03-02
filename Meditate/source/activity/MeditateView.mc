@@ -4,7 +4,7 @@ using Toybox.Graphics as Gfx;
 using Toybox.Application as App;
 using Toybox.Timer;
 
-class MeditateView extends ScreenPicker.ScreenPickerDetailsView {
+class MeditateView extends ScreenPicker.ScreenPickerDetailsCenterView {
 	private var mMeditateModel;
 	private var mMainDurationRenderer;
 	private var mIntervalAlertsRenderer;
@@ -23,7 +23,7 @@ class MeditateView extends ScreenPicker.ScreenPickerDetailsView {
 	private var mRespirationRateYPosOffset;
 
 	function initialize(meditateModel) {
-		ScreenPicker.ScreenPickerDetailsView.initialize(meditateModel, false);
+		ScreenPicker.ScreenPickerDetailsCenterView.initialize(meditateModel, false);
 		me.mMeditateModel = meditateModel;
 		me.mMainDurationRenderer = null;
 		me.mIntervalAlertsRenderer = null;
@@ -39,7 +39,7 @@ class MeditateView extends ScreenPicker.ScreenPickerDetailsView {
 
 	// Load your resources here
 	function onLayout(dc) {
-		ScreenPicker.ScreenPickerDetailsView.onLayout(dc);
+		ScreenPicker.ScreenPickerDetailsCenterView.onLayout(dc);
 
 		var lineNum = 0;
 		me.mHrStatusLine = me.mMeditateModel.getLine(lineNum);
@@ -151,7 +151,7 @@ class MeditateView extends ScreenPicker.ScreenPickerDetailsView {
 			me.mStressStatusLine.icon = new ScreenPicker.StressIcon({});
 			me.mStressStatusLine.icon.setStress(currentStress);
 
-			ScreenPicker.ScreenPickerDetailsView.onUpdate(dc);
+			ScreenPicker.ScreenPickerDetailsCenterView.onUpdate(dc);
 			var alarmTime = me.mMeditateModel.getSessionTime();
 
 			// Fix issues with OLED screens for prepare time 45 seconds
