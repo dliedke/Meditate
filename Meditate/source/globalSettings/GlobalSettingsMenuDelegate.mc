@@ -6,28 +6,23 @@ class GlobalSettingsMenuDelegate extends Ui.MenuInputDelegate {
 		MenuInputDelegate.initialize();
 		mOnGlobalSettingsChanged = onGlobalSettingsChanged;
 	}
-	
+
 	private var mOnGlobalSettingsChanged;
-	
+
 	function onMenuItem(item) {
-		if (item ==:hrvTracking) {
+		if (item == :hrvTracking) {
 			var hrvTrackingDelegate = new MenuOptionsDelegate(method(:onHrvTrackingPicked));
-        	Ui.pushView(new Rez.Menus.newHrvTrackingOptionsMenu(), hrvTrackingDelegate, Ui.SLIDE_LEFT);
-		}
-		else if (item ==:newActivityType) {
+			Ui.pushView(new Rez.Menus.newHrvTrackingOptionsMenu(), hrvTrackingDelegate, Ui.SLIDE_LEFT);
+		} else if (item == :newActivityType) {
 			var newActivityTypeDelegate = new MenuOptionsDelegate(method(:onNewActivityTypePicked));
 			Ui.pushView(new Rez.Menus.newActivityTypeOptionsMenu(), newActivityTypeDelegate, Ui.SLIDE_LEFT);
-		}
-		else if (item ==:confirmSaveActivity) {
+		} else if (item == :confirmSaveActivity) {
 			var confirmSaveActivityDelegate = new MenuOptionsDelegate(method(:onConfirmSaveActivityPicked));
 			Ui.pushView(new Rez.Menus.confirmSaveActivityOptionsMenu(), confirmSaveActivityDelegate, Ui.SLIDE_LEFT);
-		}
-		else if (item ==:multiSession) {
+		} else if (item == :multiSession) {
 			var multiSessionDelegate = new MenuOptionsDelegate(method(:onMultiSessionPicked));
 			Ui.pushView(new Rez.Menus.multiSessionOptionsMenu(), multiSessionDelegate, Ui.SLIDE_LEFT);
-		}
-		else if (item ==:respirationRate) {
-
+		} else if (item == :respirationRate) {
 			// Respiration rate settings if supported
 			if (HrvAlgorithms.RrActivity.isSensorSupported()) {
 				var respirationRateDelegate = new MenuOptionsDelegate(method(:onRespirationRatePicked));
@@ -36,50 +31,41 @@ class GlobalSettingsMenuDelegate extends Ui.MenuInputDelegate {
 				var respirationRateDelegate = new MenuOptionsDelegate(method(:onRespirationRateDisabledPicked));
 				Ui.pushView(new Rez.Menus.respirationRateOptionsDisabledMenu(), respirationRateDelegate, Ui.SLIDE_LEFT);
 			}
-		}
-		else if (item ==:prepareTime) {
+		} else if (item == :prepareTime) {
 			var prepareTimeDelegate = new MenuOptionsDelegate(method(:onPrepareTimePicked));
 			Ui.pushView(new Rez.Menus.prepareTimeOptionsMenu(), prepareTimeDelegate, Ui.SLIDE_LEFT);
-		}
-		else if (item ==:finalizeTime) {
+		} else if (item == :finalizeTime) {
 			var finalizeTimeDelegate = new MenuOptionsDelegate(method(:onFinalizeTimePicked));
 			Ui.pushView(new Rez.Menus.finalizeTimeOptionsMenu(), finalizeTimeDelegate, Ui.SLIDE_LEFT);
-		}
-		else if (item ==:autoStop) {
+		} else if (item == :autoStop) {
 			var autoStopDelegate = new MenuOptionsDelegate(method(:onAutoStopPicked));
 			Ui.pushView(new Rez.Menus.autoStopOptionMenu(), autoStopDelegate, Ui.SLIDE_LEFT);
-		}
-		else if (item == :notification) {
-		    var notificationDelegate = new MenuOptionsDelegate(method(:onNotificationPicked));
-    		Ui.pushView(new Rez.Menus.notificationOptionMenu(), notificationDelegate, Ui.SLIDE_LEFT);
-		}
-		else if (item ==:resultsTheme) {
-			var resultsDelegate = new MenuOptionsDelegate(method(:onResultsPicked));
-			Ui.pushView(new Rez.Menus.resultsThemeOptionsMenu(), resultsDelegate, Ui.SLIDE_LEFT);
+		} else if (item == :notification) {
+			var notificationDelegate = new MenuOptionsDelegate(method(:onNotificationPicked));
+			Ui.pushView(new Rez.Menus.notificationOptionMenu(), notificationDelegate, Ui.SLIDE_LEFT);
+		} else if (item == :colorTheme) {
+			var colorThemeDelegate = new MenuOptionsDelegate(method(:onColorThemePicked));
+			Ui.pushView(new Rez.Menus.colorThemeOptionsMenu(), colorThemeDelegate, Ui.SLIDE_LEFT);
 		}
 	}
-	
+
 	function onConfirmSaveActivityPicked(item) {
 		if (item == :ask) {
 			GlobalSettings.saveConfirmSaveActivity(ConfirmSaveActivity.Ask);
-		}
-		else if (item == :autoYes) {
+		} else if (item == :autoYes) {
 			GlobalSettings.saveConfirmSaveActivity(ConfirmSaveActivity.AutoYes);
-		}
-		else if (item == :autoYesExit) {
+		} else if (item == :autoYesExit) {
 			GlobalSettings.saveConfirmSaveActivity(ConfirmSaveActivity.AutoYesExit);
-		}
-		else if (item == :autoNo) {
+		} else if (item == :autoNo) {
 			GlobalSettings.saveConfirmSaveActivity(ConfirmSaveActivity.AutoNo);
 		}
 		mOnGlobalSettingsChanged.invoke();
 	}
-	
+
 	function onMultiSessionPicked(item) {
 		if (item == :yes) {
 			GlobalSettings.saveMultiSession(MultiSession.Yes);
-		}
-		else if (item == :no) {
+		} else if (item == :no) {
 			GlobalSettings.saveMultiSession(MultiSession.No);
 		}
 		mOnGlobalSettingsChanged.invoke();
@@ -88,8 +74,7 @@ class GlobalSettingsMenuDelegate extends Ui.MenuInputDelegate {
 	function onRespirationRatePicked(item) {
 		if (item == :on) {
 			GlobalSettings.saveRespirationRate(RespirationRate.On);
-		}
-		else if (item == :off) {
+		} else if (item == :off) {
 			GlobalSettings.saveRespirationRate(RespirationRate.Off);
 		}
 		mOnGlobalSettingsChanged.invoke();
@@ -98,8 +83,7 @@ class GlobalSettingsMenuDelegate extends Ui.MenuInputDelegate {
 	function onAutoStopPicked(item) {
 		if (item == :on) {
 			GlobalSettings.saveAutoStop(AutoStop.On);
-		}
-		else if (item == :off) {
+		} else if (item == :off) {
 			GlobalSettings.saveAutoStop(AutoStop.Off);
 		}
 		mOnGlobalSettingsChanged.invoke();
@@ -108,19 +92,17 @@ class GlobalSettingsMenuDelegate extends Ui.MenuInputDelegate {
 	function onNotificationPicked(item) {
 		if (item == :on) {
 			GlobalSettings.saveNotification(Notification.On);
-		}
-		else if (item == :off) {
+		} else if (item == :off) {
 			GlobalSettings.saveNotification(Notification.Off);
 		}
 		mOnGlobalSettingsChanged.invoke();
 	}
 
-	function onResultsPicked(item) {
+	function onColorThemePicked(item) {
 		if (item == :Light) {
-			GlobalSettings.saveResultsTheme(ColorTheme.Light);
-		}
-		else if (item == :Dark) {
-			GlobalSettings.saveResultsTheme(ColorTheme.Dark);
+			GlobalSettings.saveColorTheme(ColorTheme.Light);
+		} else if (item == :Dark) {
+			GlobalSettings.saveColorTheme(ColorTheme.Dark);
 		}
 		mOnGlobalSettingsChanged.invoke();
 	}
@@ -128,29 +110,21 @@ class GlobalSettingsMenuDelegate extends Ui.MenuInputDelegate {
 	function onPrepareTimePicked(item) {
 		if (item == :time_0s) {
 			GlobalSettings.savePrepareTime(0);
-		}
-		else if (item == :time_15s) {
+		} else if (item == :time_15s) {
 			GlobalSettings.savePrepareTime(15);
-		}
-		else if (item == :time_30s) {
+		} else if (item == :time_30s) {
 			GlobalSettings.savePrepareTime(30);
-		}
-		else if (item == :time_45s) {
+		} else if (item == :time_45s) {
 			GlobalSettings.savePrepareTime(45);
-		}
-		else if (item == :time_1m) {
+		} else if (item == :time_1m) {
 			GlobalSettings.savePrepareTime(60);
-		}
-		else if (item == :time_2m) {
+		} else if (item == :time_2m) {
 			GlobalSettings.savePrepareTime(120);
-		}
-		else if (item == :time_3m) {
+		} else if (item == :time_3m) {
 			GlobalSettings.savePrepareTime(180);
-		}
-		else if (item == :time_4m) {
+		} else if (item == :time_4m) {
 			GlobalSettings.savePrepareTime(240);
-		}
-		else if (item == :time_5m) {
+		} else if (item == :time_5m) {
 			GlobalSettings.savePrepareTime(300);
 		}
 		mOnGlobalSettingsChanged.invoke();
@@ -159,29 +133,21 @@ class GlobalSettingsMenuDelegate extends Ui.MenuInputDelegate {
 	function onFinalizeTimePicked(item) {
 		if (item == :time_0s) {
 			GlobalSettings.saveFinalizeTime(0);
-		}
-		else if (item == :time_15s) {
+		} else if (item == :time_15s) {
 			GlobalSettings.saveFinalizeTime(15);
-		}
-		else if (item == :time_30s) {
+		} else if (item == :time_30s) {
 			GlobalSettings.saveFinalizeTime(30);
-		}
-		else if (item == :time_45s) {
+		} else if (item == :time_45s) {
 			GlobalSettings.saveFinalizeTime(45);
-		}
-		else if (item == :time_1m) {
+		} else if (item == :time_1m) {
 			GlobalSettings.saveFinalizeTime(60);
-		}
-		else if (item == :time_2m) {
+		} else if (item == :time_2m) {
 			GlobalSettings.saveFinalizeTime(120);
-		}
-		else if (item == :time_3m) {
+		} else if (item == :time_3m) {
 			GlobalSettings.saveFinalizeTime(180);
-		}
-		else if (item == :time_4m) {
+		} else if (item == :time_4m) {
 			GlobalSettings.saveFinalizeTime(240);
-		}
-		else if (item == :time_5m) {
+		} else if (item == :time_5m) {
 			GlobalSettings.saveFinalizeTime(300);
 		}
 		mOnGlobalSettingsChanged.invoke();
@@ -190,28 +156,24 @@ class GlobalSettingsMenuDelegate extends Ui.MenuInputDelegate {
 	function onRespirationRateDisabledPicked(item) {
 		mOnGlobalSettingsChanged.invoke();
 	}
-	
+
 	function onNewActivityTypePicked(item) {
 		if (item == :meditating) {
 			GlobalSettings.saveActivityType(ActivityType.Meditating);
-		}
-		else if (item == :yoga) {
+		} else if (item == :yoga) {
 			GlobalSettings.saveActivityType(ActivityType.Yoga);
-		}
-		else if (item == :breathing) {
+		} else if (item == :breathing) {
 			GlobalSettings.saveActivityType(ActivityType.Breathing);
 		}
 		mOnGlobalSettingsChanged.invoke();
 	}
-			
+
 	function onHrvTrackingPicked(item) {
 		if (item == :on) {
 			GlobalSettings.saveHrvTracking(HrvTracking.On);
-		}
-		else if (item == :onDetailed) {
+		} else if (item == :onDetailed) {
 			GlobalSettings.saveHrvTracking(HrvTracking.OnDetailed);
-		}
-		else if (item == :off) {
+		} else if (item == :off) {
 			GlobalSettings.saveHrvTracking(HrvTracking.Off);
 		}
 		mOnGlobalSettingsChanged.invoke();

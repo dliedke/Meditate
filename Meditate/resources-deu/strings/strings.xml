@@ -80,9 +80,9 @@
     <string id="menuAutoStopOptions_on">Ein (Standard)</string>
     <string id="menuAutoStopOptions_off">Aus</string>
 
-    <string id="menuResultsThemeOptions_title">Ergebnisse</string>    
-    <string id="menuResultsThemeOptions_light">Hell (Standard)</string>
-    <string id="menuResultsThemeOptions_dark">Dunkel</string>
+    <string id="menuColorThemeOptions_title">Farbschema</string>    
+    <string id="menuColorThemeOptions_light">Hell</string>
+    <string id="menuColorThemeOptions_dark">Dunkel (Standard)</string>
 
     <string id="menuPrepareTimeOptions_title">Vorbereitung</string>    
     <string id="menuFinalizeTimeOptions_title">Abschluss</string>    

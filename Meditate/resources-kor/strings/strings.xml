@@ -80,9 +80,9 @@
 	<string id="menuAutoStopOptions_on">켜기 (기본값)</string>
 	<string id="menuAutoStopOptions_off">끄기</string>
 
-	<string id="menuResultsThemeOptions_title">결과 테마</string>	 
-	<string id="menuResultsThemeOptions_light">밝은 화면 (기본값)</string>
-	<string id="menuResultsThemeOptions_dark">어두운 화면</string>
+	<string id="menuColorThemeOptions_title">테마</string>	 
+	<string id="menuColorThemeOptions_light">밝은 화면</string>
+	<string id="menuColorThemeOptions_dark">어두운 화면 (기본값)</string>
 
 	<string id="menuPrepareTimeOptions_title">준비</string>    
 	<string id="menuFinalizeTimeOptions_title">마무리</string>	  

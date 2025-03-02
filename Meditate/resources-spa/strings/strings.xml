@@ -80,9 +80,9 @@
     <string id="menuAutoStopOptions_on">Activ. (Predet.)</string>
     <string id="menuAutoStopOptions_off">Des.</string>
 
-    <string id="menuResultsThemeOptions_title">Resultados</string>    
-    <string id="menuResultsThemeOptions_light">Claro (Predet.)</string>
-    <string id="menuResultsThemeOptions_dark">Oscuro</string>
+    <string id="menuColorThemeOptions_title">Tema</string>    
+    <string id="menuColorThemeOptions_light">Claro</string>
+    <string id="menuColorThemeOptions_dark">Oscuro (Predet.)</string>
 
     <string id="menuPrepareTimeOptions_title">Preparación</string>
     <string id="menuFinalizeTimeOptions_title">Finalización</string>

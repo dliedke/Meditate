@@ -2,8 +2,8 @@ using Toybox.Application as App;
 using HrvAlgorithms.HrvTracking;
 
 class GlobalSettings {
-	private static const HrvTrackingKey = "globalSettings_hrvTracking2";//version 2 due to change of behaviour
-	
+	private static const HrvTrackingKey = "globalSettings_hrvTracking2"; //version 2 due to change of behaviour
+
 	static function loadHrvTracking() {
 		var hrvTracking = App.Storage.getValue(HrvTrackingKey);
 		if (hrvTracking == null) {
@@ -11,71 +11,67 @@ class GlobalSettings {
 		}
 		return hrvTracking;
 	}
-	
+
 	static function saveHrvTracking(hrvTracking) {
 		App.Storage.setValue(HrvTrackingKey, hrvTracking);
 	}
-	
+
 	private static const ActivityTypeKey = "globalSettings_activityType";
-	
+
 	static function loadActivityType() {
 		var activityType = App.Storage.getValue(ActivityTypeKey);
 		if (activityType == null) {
 			return ActivityType.Meditating;
-		}
-		else {
+		} else {
 			return activityType;
 		}
 	}
-	
+
 	static function saveActivityType(activityType) {
 		App.Storage.setValue(ActivityTypeKey, activityType);
 	}
-	
+
 	private static const ConfirmSaveActivityKey = "globalSettings_confirmSaveActivity";
-	
+
 	static function loadConfirmSaveActivity() {
 		var confirmSaveActivity = App.Storage.getValue(ConfirmSaveActivityKey);
 		if (confirmSaveActivity == null) {
 			return ConfirmSaveActivity.Ask;
-		}
-		else {
+		} else {
 			return confirmSaveActivity;
-		}		
+		}
 	}
-	
+
 	static function saveConfirmSaveActivity(confirmSaveActivity) {
 		App.Storage.setValue(ConfirmSaveActivityKey, confirmSaveActivity);
 	}
-	
+
 	private static const MultiSessionKey = "globalSettings_multiSession";
-	
+
 	static function loadMultiSession() {
 		var multiSession = App.Storage.getValue(MultiSessionKey);
 		if (multiSession == null) {
 			return MultiSession.No;
-		}
-		else {
+		} else {
 			return multiSession;
 		}
 	}
-	
+
 	static function saveMultiSession(multiSession) {
 		App.Storage.setValue(MultiSessionKey, multiSession);
 	}
 
 	private static const RespirationRateKey = "globalSettings_respirationRate";
-	
+
 	static function loadRespirationRate() {
 		var respirationRate = App.Storage.getValue(RespirationRateKey);
 		if (respirationRate == null) {
 			return RespirationRate.On;
-		}
-		else {
+		} else {
 			return respirationRate;
 		}
 	}
-	
+
 	static function saveRespirationRate(respirationRate) {
 		App.Storage.setValue(RespirationRateKey, respirationRate);
 	}
@@ -86,8 +82,7 @@ class GlobalSettings {
 		var autoStop = App.Storage.getValue(AutoStopKey);
 		if (autoStop == null) {
 			return AutoStop.On; // 'On' the default value for AutoStop
-		}
-		else {
+		} else {
 			return autoStop;
 		}
 	}
@@ -111,52 +106,49 @@ class GlobalSettings {
 		App.Storage.setValue(NotificationKey, notification);
 	}
 
-
 	private static const ColorThemeKey = "globalSettings_colorTheme";
 
 	static function loadColorTheme() {
-		var resultsTheme = App.Storage.getValue(ColorThemeKey);
-		if (resultsTheme == null) {
+		var colorTheme = App.Storage.getValue(ColorThemeKey);
+		if (colorTheme == null) {
 			return ColorTheme.Dark; // 'Dark' is the default color theme
 		} else {
-			return resultsTheme;
+			return colorTheme;
 		}
 	}
 
-	static function saveResultsTheme(resultsTheme) {
-		App.Storage.setValue(ColorThemeKey, resultsTheme);
+	static function saveColorTheme(colorTheme) {
+		App.Storage.setValue(ColorThemeKey, colorTheme);
 	}
 
 	private static const PrepareTimeKey = "globalSettings_prapareTime";
-	
+
 	static function loadPrepareTime() {
 		var prepareTime = App.Storage.getValue(PrepareTimeKey);
 		if (prepareTime == null) {
 			//DEBUG - no prepare time for debugging faster
 			//return 0;
 			return 15;
-		}
-		else {
+		} else {
 			return prepareTime;
 		}
 	}
-	
+
 	static function savePrepareTime(prepareTime) {
 		App.Storage.setValue(PrepareTimeKey, prepareTime);
 	}
 
 	private static const FinalizeTimeKey = "globalSettings_finalizeTime";
-	
+
 	static function loadFinalizeTime() {
 		var finalizeTime = App.Storage.getValue(FinalizeTimeKey);
 		if (finalizeTime == null) {
 			return 0;
-		}
-		else {
+		} else {
 			return finalizeTime;
 		}
 	}
-	
+
 	static function saveFinalizeTime(finalizeTime) {
 		App.Storage.setValue(FinalizeTimeKey, finalizeTime);
 	}
@@ -167,41 +159,41 @@ module ConfirmSaveActivity {
 		Ask = 0,
 		AutoNo = 1,
 		AutoYes = 2,
-		AutoYesExit = 3
+		AutoYesExit = 3,
 	}
 }
 
 module MultiSession {
 	enum {
 		No = 0,
-		Yes = 1
+		Yes = 1,
 	}
 }
 
 module RespirationRate {
 	enum {
 		Off = 0,
-		On = 1
+		On = 1,
 	}
 }
 
 module AutoStop {
 	enum {
 		Off = 0,
-		On = 1
+		On = 1,
 	}
 }
 
 module Notification {
 	enum {
 		Off = 0,
-		On = 1
+		On = 1,
 	}
 }
 
 module ColorTheme {
 	enum {
 		Dark = 0,
-		Light = 1
+		Light = 1,
 	}
 }
