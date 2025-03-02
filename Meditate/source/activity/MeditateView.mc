@@ -140,14 +140,12 @@ class MeditateView extends ScreenPicker.ScreenPickerDetailsView {
 			});
 
 			me.mRrStatusLine.value.text = me.formatValue(currentRr);
+			me.mRrStatusLine.icon = new ScreenPicker.BreathIcon({});
 			if (currentRr != null) {
-				iconColor = Graphics.COLOR_BLUE;
+				me.mRrStatusLine.icon.setActive();
 			} else {
-				iconColor = Graphics.COLOR_LT_GRAY;
+				me.mRrStatusLine.icon.setInactive();
 			}
-			me.mRrStatusLine.icon = new ScreenPicker.BreathIcon({
-				:color => iconColor,
-			});
 
 			me.mStressStatusLine.value.text = me.formatValue(currentStress);
 			me.mStressStatusLine.icon = new ScreenPicker.StressIcon({});
