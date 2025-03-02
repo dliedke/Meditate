@@ -5,6 +5,7 @@ class MeditateModel extends ScreenPicker.DetailsModel{
 	function initialize(sessionModel) {
 		ScreenPicker.DetailsModel.initialize();
 		me.mSession = sessionModel;
+		me.titleColor = me.mSession.color;
 		me.elapsedTime = 0;
 		me.minHr = null;
 		me.currentHr = null;

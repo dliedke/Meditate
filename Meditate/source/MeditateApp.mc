@@ -31,9 +31,7 @@ class MeditateApp extends App.AppBase {
             heartbeatIntervalsSensor.stop();
             heartbeatIntervalsSensor.disableHrSensor();
         }
-    }
-
-    
+    }    
 
     // Return the initial view of your application here
     function getInitialView() {      

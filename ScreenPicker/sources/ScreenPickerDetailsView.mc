@@ -59,14 +59,11 @@ module ScreenPicker {
 		}
 
 		function drawTitle(dc, title) {
-			dc.setColor(titleColor, Graphics.COLOR_TRANSPARENT);
-			dc.drawText(
-				dc.getWidth() / 2,
-				dc.getHeight() * 0.1,
-				App.getApp().getProperty("largeFont"),
-				title,
-				Graphics.TEXT_JUSTIFY_CENTER
-			);
+			// parent
+			if (me.mDetailsModel.titleColor != null) {
+				dc.setColor(titleColor, Graphics.COLOR_TRANSPARENT);
+			}
+			ScreenPickerBaseView.drawTitle(dc, title);
 		}
 
 		private function displayFontIcon(dc, icon, xPos, yPos) {

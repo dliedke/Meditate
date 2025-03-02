@@ -112,20 +112,19 @@ class GlobalSettings {
 	}
 
 
-	private static const ResultsThemeKey = "globalSettings_resultsTheme";
+	private static const ColorThemeKey = "globalSettings_colorTheme";
 
-	static function loadResultsTheme() {
-		var resultsTheme = App.Storage.getValue(ResultsThemeKey);
+	static function loadColorTheme() {
+		var resultsTheme = App.Storage.getValue(ColorThemeKey);
 		if (resultsTheme == null) {
-			return ResultsTheme.Light; // 'Light' is the default value for Results Theme
-		}
-		else {
+			return ColorTheme.Dark; // 'Dark' is the default color theme
+		} else {
 			return resultsTheme;
 		}
 	}
 
 	static function saveResultsTheme(resultsTheme) {
-		App.Storage.setValue(ResultsThemeKey, resultsTheme);
+		App.Storage.setValue(ColorThemeKey, resultsTheme);
 	}
 
 	private static const PrepareTimeKey = "globalSettings_prapareTime";
@@ -200,9 +199,9 @@ module Notification {
 	}
 }
 
-module ResultsTheme {
+module ColorTheme {
 	enum {
-		Light = 0,
-		Dark = 1
+		Dark = 0,
+		Light = 1
 	}
 }

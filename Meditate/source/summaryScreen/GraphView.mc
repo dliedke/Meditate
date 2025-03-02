@@ -17,7 +17,6 @@ class GraphView extends ScreenPicker.ScreenPickerBaseView {
 	var min, max, avg;
 	var elapsedTime;
 	var title;
-	var resultsTheme;
 	var minCut, maxCut;
 
 	function initialize(data, elapsedTime, title, minCut, maxCut) {
@@ -54,7 +53,6 @@ class GraphView extends ScreenPicker.ScreenPickerBaseView {
 		me.elapsedTime = elapsedTime;
 		me.title = title;
 		ScreenPickerBaseView.initialize(true);
-		resultsTheme = GlobalSettings.loadResultsTheme();
 	}
 
 	static function formatNumber(number) {

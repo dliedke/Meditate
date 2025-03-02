@@ -34,7 +34,7 @@
 	<string id="menuGlobalSettings_singleSession">단일 세션</string>
 	<string id="menuGlobalSettings_respirationRate">호흡 수</string>
 	<string id="menuGlobalSettings_autoStop">자동 중단</string>
-	<string id="menuGlobalSettings_resultsTheme">결과 테마</string>
+	<string id="menuGlobalSettings_colorTheme">테마</string>
 	<string id="menuGlobalSettings_prepareTime">준비 시간</string>
 	<string id="menuGlobalSettings_finalizeTime">마무리 시간</string>
 	<string id="menuGlobalSettings_respiration">호흡: </string>

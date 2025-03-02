@@ -34,7 +34,7 @@
     <string id="menuGlobalSettings_singleSession">Sesión Única</string>
     <string id="menuGlobalSettings_respirationRate">Tasa Respiración</string>
     <string id="menuGlobalSettings_autoStop">Parada Auto</string>
-    <string id="menuGlobalSettings_resultsTheme">Tema de Resultados</string>
+    <string id="menuGlobalSettings_colorTheme">Tema</string>
     <string id="menuGlobalSettings_prepareTime">Tiempo Preparación</string>
     <string id="menuGlobalSettings_finalizeTime">Tiempo Finalización</string>
     <string id="menuGlobalSettings_respiration">Respiración: </string>

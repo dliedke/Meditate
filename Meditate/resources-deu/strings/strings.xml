@@ -34,7 +34,7 @@
     <string id="menuGlobalSettings_singleSession">Einz. Sitz.</string>
     <string id="menuGlobalSettings_respirationRate">Atmung</string>
     <string id="menuGlobalSettings_autoStop">Auto Stopp</string>
-    <string id="menuGlobalSettings_resultsTheme">Ergebnisthema</string>
+    <string id="menuGlobalSettings_colorTheme">Farbschema</string>
     <string id="menuGlobalSettings_prepareTime">Vorb.-Zeit</string>
     <string id="menuGlobalSettings_finalizeTime">Abschl.-Zeit</string>
     <string id="menuGlobalSettings_respiration">Atmung: </string>

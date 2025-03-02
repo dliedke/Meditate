@@ -13,7 +13,7 @@ module ScreenPicker {
 		var backgroundColor, foregroundColor;
 		var spaceXSmall, spaceYSmall, spaceXMed, spaceYMed;
 		private static const InvalidValueString = "--";
-		private static const colorThemeKey = "globalSettings_resultsTheme";
+		private static const colorThemeKey = "globalSettings_colorTheme";
 		function initialize(multiPage) {
 			View.initialize();
 			if (multiPage != null && multiPage) {
@@ -33,16 +33,19 @@ module ScreenPicker {
 			} else {
 				me.multiPage = false;
 			}
-			colorTheme = App.Storage.getValue(colorThemeKey);
-			// Light results theme
-			backgroundColor = Gfx.COLOR_WHITE;
-			foregroundColor = Gfx.COLOR_BLACK;
-
+			colorTheme = GlobalSettings.loadColorTheme();
 			// Dark results theme
-			if (colorTheme == ResultsTheme.Dark) {
+			if (colorTheme == ColorTheme.Dark) {
 				backgroundColor = Gfx.COLOR_BLACK;
 				foregroundColor = Gfx.COLOR_WHITE;
+			} else {
+				// Light results theme
+			backgroundColor = Gfx.COLOR_WHITE;
+			foregroundColor = Gfx.COLOR_BLACK;
 			}
+			
+
+
 		}
 
 		protected function setArrowsColor(color) {
@@ -73,6 +76,17 @@ module ScreenPicker {
 				me.mDownArrow.draw(dc);
 			}
 		}
+
+		function drawTitle(dc, title) {
+			dc.drawText(
+				dc.getWidth() / 2,
+				dc.getHeight() * 0.1,
+				App.getApp().getProperty("largeFont"),
+				title,
+				Graphics.TEXT_JUSTIFY_CENTER
+			);
+		}
+
 		function onLayout(dc) {
 			View.onLayout(dc);
 			centerXPos = dc.getWidth() / 2;

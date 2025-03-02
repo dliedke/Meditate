@@ -117,10 +117,10 @@ class GlobalSettingsMenuDelegate extends Ui.MenuInputDelegate {
 
 	function onResultsPicked(item) {
 		if (item == :Light) {
-			GlobalSettings.saveResultsTheme(ResultsTheme.Light);
+			GlobalSettings.saveResultsTheme(ColorTheme.Light);
 		}
 		else if (item == :Dark) {
-			GlobalSettings.saveResultsTheme(ResultsTheme.Dark);
+			GlobalSettings.saveResultsTheme(ColorTheme.Dark);
 		}
 		mOnGlobalSettingsChanged.invoke();
 	}
