@@ -10,25 +10,32 @@ module HrvAlgorithms {
 			SensorActivity.initialize(new SensorSummary(), false);
 		}
 
-		static function isSensorSupported(){
-			if ((Toybox has :ActivityMonitor) && (Toybox.ActivityMonitor has :Info) && (Toybox.ActivityMonitor.Info has :stressScore)) {
+		static function isSensorSupported() {
+			if (
+				Toybox has :ActivityMonitor &&
+				Toybox.ActivityMonitor has :Info &&
+				Toybox.ActivityMonitor.Info has :stressScore
+			) {
 				me.apiV5Plus = true;
 				return true;
-			} else if ((Toybox has :SensorHistory) && (Toybox.SensorHistory has :getStressHistory)) {
+			} else if (Toybox has :SensorHistory && Toybox.SensorHistory has :getStressHistory) {
 				me.apiV5Plus = false;
 				return true;
 			} else {
 				return false;
 			}
 		}
-		
+
 		function getCurrentValueRaw() {
 			var val = null;
 			if (me.sensorSupported) {
 				if (me.apiV5Plus) {
 					val = Toybox.ActivityMonitor.Info.stressScore;
 				} else {
-					var iter = Toybox.SensorHistory.getStressHistory({:period=>null, :order=>Toybox.SensorHistory.ORDER_NEWEST_FIRST});
+					var iter = Toybox.SensorHistory.getStressHistory({
+						:period => null,
+						:order => Toybox.SensorHistory.ORDER_NEWEST_FIRST,
+					});
 					var sample = iter.next();
 					while (sample != null) {
 						val = sample.data;
@@ -44,7 +51,7 @@ module HrvAlgorithms {
 
 		function getCurrentValueClean() {
 			var val = me.getCurrentValueRaw();
-			if(val != null && val >= 0 && val <= 100) {
+			if (val != null && val >= 0 && val <= 100) {
 				return val;
 			} else {
 				return null;

@@ -87,7 +87,7 @@ class MeditateView extends ScreenPicker.ScreenPickerDetailsView {
 	function onUpdate(dc) {
 		var elapsedTime = me.mMeditateModel.elapsedTime;
 		// Only update every second
-		if (elapsedTime != lastElapsedTime) {
+		if (elapsedTime != lastElapsedTime || !me.mMeditateModel.isTimerRunning) {
 			var currentHr = null;
 			var currentHrv = null;
 			var currentRr = null;
@@ -140,7 +140,14 @@ class MeditateView extends ScreenPicker.ScreenPickerDetailsView {
 			});
 
 			me.mRrStatusLine.value.text = me.formatValue(currentRr);
-			me.mRrStatusLine.icon = new ScreenPicker.BreathIcon({});
+			if (currentRr != null) {
+				iconColor = Graphics.COLOR_BLUE;
+			} else {
+				iconColor = Graphics.COLOR_LT_GRAY;
+			}
+			me.mRrStatusLine.icon = new ScreenPicker.BreathIcon({
+				:color => iconColor,
+			});
 
 			me.mStressStatusLine.value.text = me.formatValue(currentStress);
 			me.mStressStatusLine.icon = new ScreenPicker.StressIcon({});
