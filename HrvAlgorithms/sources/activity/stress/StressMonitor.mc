@@ -34,11 +34,6 @@ module HrvAlgorithms {
         private static const HrPeaksAverageDataFieldId = 17;
         private static const CurrentStressDataFieldId = 16;
         
-        private var mInitialStressCalculated = false;
-        private var mDataCollectionStartTime = null;
-        private var mInitialAverageStress = 10.0;  // Default to minimum stress
-        private static const INITIAL_DATA_COLLECTION_SECONDS = 120;  // 2 minutes
-
         private static function createHrPeaksAverageDataField(activitySession) {
             return activitySession.createField(
                 "stress_hrpa",
@@ -75,36 +70,8 @@ module HrvAlgorithms {
         
         function addOneSecBeatToBeatIntervals(beatToBeatIntervals) {
             if (me.mHrvTracking != HrvTracking.Off) {
-                // Track when we start collecting data if not already started
-                if (me.mDataCollectionStartTime == null) {
-                    me.mDataCollectionStartTime = System.getTimer();
-                }
-                
                 me.mHrPeaksWindow10.addOneSecBeatToBeatIntervals(beatToBeatIntervals);
                 me.calculateHrPeaksWindow10();
-                
-                // Check if we've reached the 2-minute mark for initial average calculation
-                if (!me.mInitialStressCalculated) {
-                    var currentTime = System.getTimer();
-                    var elapsedSeconds = (currentTime - me.mDataCollectionStartTime) / 1000;
-                    
-                    if (elapsedSeconds >= INITIAL_DATA_COLLECTION_SECONDS && me.mMinHr != null && me.mMinHr > 0) {
-                        // Calculate initial average stress after 2 minutes
-                        me.mInitialAverageStress = me.mHrPeaksWindow10.calculateAverageStress(me.mMinHr);
-                        if (me.mInitialAverageStress < 10.0) {
-                            me.mInitialAverageStress = 10.0;  // Ensure minimum value
-                        }
-                        me.mInitialStressCalculated = true;
-                        
-                        // Initialize stress history with initial average
-                        if (me.mStressHistory.size() == 0) {
-                            // Fill history with initial values for past seconds
-                            for (var i = 0; i < elapsedSeconds; i++) {
-                                me.mStressHistory.add(me.mInitialAverageStress);
-                            }
-                        }
-                    }
-                }
                 
                 // Calculate and store per-second stress if in detailed mode
                 if (me.mHrvTracking == HrvTracking.OnDetailed && me.mMinHr != null && me.mMinHr > 0) {
@@ -113,13 +80,8 @@ module HrvAlgorithms {
             }
         }
         
-       private function calculateAndStoreCurrentStress() {
+        private function calculateAndStoreCurrentStress() {
             var currentStress = me.mHrPeaksWindow10.calculateCurrentStress(me.mMinHr);
-            
-            // Use initial average for the first 2 minutes if not calculated yet
-            if (!me.mInitialStressCalculated) {
-                currentStress = 10.0;  // Use minimum value until we calculate initial average
-            }
             
             // Store the stress value in history
             me.mStressHistory.add(currentStress);
@@ -148,7 +110,7 @@ module HrvAlgorithms {
         }
         
         // Method to calculate stress summary
-       function calculateStressSummary() {
+        function calculateStressSummary() {
             var stressSummary = new HrvAlgorithms.StressSummary();
             
             // Initialize the stress history array
@@ -156,7 +118,7 @@ module HrvAlgorithms {
             
             // Copy the stored stress history values
             if (me.mStressHistory != null && me.mStressHistory.size() > 0) {
-                stressSummary.stressHistory = me.mStressHistory.slice(0, null); // Create a copy
+                stressSummary.stressHistory = me.mStressHistory.slice(0, null); // Create a copy of the array
                 
                 // Set the start and end stress values
                 if (stressSummary.stressHistory.size() > 0) {
@@ -164,10 +126,12 @@ module HrvAlgorithms {
                     stressSummary.endStress = stressSummary.stressHistory[stressSummary.stressHistory.size() - 1];
                 }
             } else {
-                // If we don't have stress history data, use initial average or minimum
-                var defaultStress = me.mInitialStressCalculated ? me.mInitialAverageStress : 10.0;
-                stressSummary.startStress = defaultStress;
-                stressSummary.endStress = defaultStress;
+                // If we don't have stress history data, calculate the average stress if possible
+                if (me.mHrvTracking != HrvTracking.Off && me.mMinHr != null && me.mMinHr > 0) {
+                    var averageStress = me.mHrPeaksWindow10.calculateAverageStress(me.mMinHr);
+                    stressSummary.startStress = averageStress;
+                    stressSummary.endStress = averageStress;
+                }
             }
             
             return stressSummary;
