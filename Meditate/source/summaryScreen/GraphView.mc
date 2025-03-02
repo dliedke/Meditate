@@ -30,9 +30,8 @@ class GraphView extends ScreenPicker.ScreenPickerBaseView {
 		var total = 0;
 		var count = 0;
 
-		if(me.data != null) {
-			for (var i = 0; i < me.data.size(); i++){
-
+		if (me.data != null) {
+			for (var i = 0; i < me.data.size(); i++) {
 				val = me.data[i];
 				if (val != null) {
 					if (me.min == null || val < me.min) {
@@ -41,7 +40,7 @@ class GraphView extends ScreenPicker.ScreenPickerBaseView {
 					if (me.max == null || val > me.max) {
 						me.max = val;
 					}
-					total+=val;
+					total += val;
 					count++;
 				}
 			}
@@ -176,25 +175,10 @@ class GraphView extends ScreenPicker.ScreenPickerBaseView {
 			dc.setPenWidth(1);
 			dc.setColor(0x27a0c4, Graphics.COLOR_TRANSPARENT);
 
-			// Try adapting the chart for the graph width
-			var dataWidthRatio = 0.0;
-			var expandFact = 1;
-			var bucketSize = 1;
-
-			dataWidthRatio = me.data.size() / me.graphWidth.toFloat();
-
-			if (dataWidthRatio > 1) {
-				// Calculate bucket size
-				bucketSize = Math.ceil(dataWidthRatio).toNumber();
-			} else {
-				bucketSize = 1;
-				// Calculate the expanding
-				expandFact = 2;
-				while (expandFact * me.data.size() < me.graphWidth) {
-					expandFact++;
-				}
-				expandFact--;
-			}
+			// Try adapting the data for the graph width
+			var bucketSize = Math.ceil(me.data.size() / me.graphWidth.toFloat()).toNumber();
+			var nBuckets = Math.ceil(me.data.size() / bucketSize.toFloat());
+			var step = nBuckets / me.graphWidth.toFloat();
 
 			// Draw chart
 			var lineHeight = null;
@@ -203,6 +187,8 @@ class GraphView extends ScreenPicker.ScreenPickerBaseView {
 			var xPos = me.positionX + 1 + chartToLabelOffset; // leave some space to labels
 			var bucketVal = 0;
 			var bucketCount = 0;
+			var nextStep = 1;
+			var currentStep = 0.0;
 			for (var i = 0; i < me.data.size(); i++) {
 				val = me.data[i];
 				if (val != null) {
@@ -210,8 +196,8 @@ class GraphView extends ScreenPicker.ScreenPickerBaseView {
 					bucketCount++;
 				}
 				// draw buckets: skip first, draw last, else every full bucket
-				if (i > 0 && (i == me.data.size() - 1 || i % bucketSize == 0)) {
-					// draw bucket
+				if ((i > 0 || bucketSize == 1) && (i + 1 == me.data.size() || i % bucketSize == 0)) {
+					// draw bucket, skip first (bucketCount > 0)
 					if (bucketCount > 0) {
 						// calc average of bucket
 						val = bucketVal / bucketCount;
@@ -225,17 +211,21 @@ class GraphView extends ScreenPicker.ScreenPickerBaseView {
 						}
 
 						// draw line
-						lineHeight = Math.round((val - yMin) * heightFact).toNumber();
-						for (var j = 0; j < expandFact; j++) {
-							dc.drawLine(xPos, me.positionY - lineHeight, xPos, me.positionY);
-							xPos++;
+						if (val != null) {
+							lineHeight = Math.round((val - yMin) * heightFact).toNumber();
 						}
+
+						while (currentStep < nextStep) {
+							if (val != null) {
+								dc.drawLine(xPos, me.positionY - lineHeight, xPos, me.positionY);
+							}
+							xPos++;
+							currentStep += step;
+						}
+						nextStep++;
 						// reset bucket
 						bucketVal = 0;
 						bucketCount = 0;
-					} else {
-						// jump over null values
-						xPos += expandFact;
 					}
 				}
 			}
@@ -259,7 +249,7 @@ class GraphView extends ScreenPicker.ScreenPickerBaseView {
 			dc.drawLine(
 				me.positionX + me.chartToLabelOffset,
 				me.positionY - lineSpacing * i,
-				me.positionX + me.graphWidth,
+				me.positionX + me.chartToLabelOffset + me.graphWidth,
 				me.positionY - lineSpacing * i
 			);
 
@@ -274,5 +264,5 @@ class GraphView extends ScreenPicker.ScreenPickerBaseView {
 				Graphics.TEXT_JUSTIFY_RIGHT | Graphics.TEXT_JUSTIFY_VCENTER
 			);
 		}
-    }
+	}
 }

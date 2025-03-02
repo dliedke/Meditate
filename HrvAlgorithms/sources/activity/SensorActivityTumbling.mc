@@ -10,7 +10,7 @@ module HrvAlgorithms {
 		function initialize(summary, skipeFirstMeasure, windowSize) {
 			SensorActivity.initialize(summary, skipeFirstMeasure);
 			if (windowSize == null) {
-				windowSize = 15;
+				windowSize = 10;
 			}
 			me.windowSize = windowSize;
 			me.windowCounter = 0;
