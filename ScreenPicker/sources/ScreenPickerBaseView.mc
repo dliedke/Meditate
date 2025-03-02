@@ -60,16 +60,6 @@ module ScreenPicker {
 			}
 		}
 
-		function drawTitle(dc, title) {
-			dc.drawText(
-				dc.getWidth() / 2,
-				dc.getHeight() * 0.1,
-				App.getApp().getProperty("largeFont"),
-				title,
-				Graphics.TEXT_JUSTIFY_CENTER
-			);
-		}
-
 		function layoutArrows(dc) {
 			me.mUpArrow.setXPos(centerXPos);
 			me.mUpArrow.setYPos(0);

@@ -34,7 +34,7 @@ module ScreenPicker {
 
 		function onUpdate(dc) {
 			ScreenPickerBaseView.onUpdate(dc);
-			ScreenPickerBaseView.drawTitle(dc, mDetailsModel.title);
+			me.drawTitle(dc, mDetailsModel.title);
 			var line = null;
 			var yPos = null;
 			for (var lineNumber = 0; lineNumber < me.mDetailsModel.detailLines.size(); lineNumber++) {
@@ -60,7 +60,13 @@ module ScreenPicker {
 
 		function drawTitle(dc, title) {
 			dc.setColor(titleColor, Graphics.COLOR_TRANSPARENT);
-			ScreenPickerBaseView.drawTitle(dc, title);
+			dc.drawText(
+				dc.getWidth() / 2,
+				dc.getHeight() * 0.1,
+				App.getApp().getProperty("largeFont"),
+				title,
+				Graphics.TEXT_JUSTIFY_CENTER
+			);
 		}
 
 		private function displayFontIcon(dc, icon, xPos, yPos) {
