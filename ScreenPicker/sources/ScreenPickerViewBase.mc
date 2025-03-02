@@ -56,19 +56,23 @@ module ScreenPicker {
 						Graphics.TEXT_JUSTIFY_CENTER);
 		}
 
+		function drawArrows(dc) {
+			centerXPos = dc.getWidth() / 2;
+			me.mUpArrow.setXPos(centerXPos);
+			me.mUpArrow.setYPos(0);
+			me.mUpArrow.draw(dc);
+			me.mDownArrow.setXPos(centerXPos);
+			me.mDownArrow.setYPos(dc.getHeight() - dc.getFontHeight(StatusIconFonts.fontAwesomeFreeSolid));
+			me.mDownArrow.draw(dc);	
+		}
+
 		function onUpdate(dc) {
 			View.onUpdate(dc);
 			dc.setColor(Gfx.COLOR_TRANSPARENT, backgroundColor);  
 			dc.clear();
 			dc.setColor(foregroundColor, Graphics.COLOR_TRANSPARENT);
-			centerXPos = dc.getWidth() / 2;
 			if(me.multiPage) {
-				me.mUpArrow.setXPos(centerXPos);
-				me.mUpArrow.setYPos(0);
-				me.mUpArrow.draw(dc);
-				me.mDownArrow.setXPos(centerXPos);
-				me.mDownArrow.setYPos(dc.getHeight() - dc.getFontHeight(StatusIconFonts.fontAwesomeFreeSolid));
-				me.mDownArrow.draw(dc);			
+				me.drawArrows(dc);
 			}
 	    } 
 	}
