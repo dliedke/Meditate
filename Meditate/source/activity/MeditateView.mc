@@ -73,6 +73,7 @@ class MeditateView extends ScreenPicker.ScreenPickerDetailsCenterView {
 
 	// Update the view
 	function onUpdate(dc) {
+		ScreenPicker.ScreenPickerDetailsCenterView.onUpdate(dc);
 		var elapsedTime = me.mMeditateModel.elapsedTime;
 		// Only update every second
 		if (elapsedTime != lastElapsedTime || !me.mMeditateModel.isTimerRunning) {

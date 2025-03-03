@@ -2,8 +2,9 @@
 	<!--
       Find icon here: https://fontawesome.com/icons
 	  Copy name and "Glyph" (top right corner of winow) down below
-	  sample text: 
-	  make sure to compile the StatusIconFonts again
+	  all icons to generate png: 
+	  make sure also generate the *.png with hiero (is generated when save bmf file)
+	  use https://libgdx.com/wiki/tools/hiero
 	-->
 	<string id="IconSave"></string>
 	<string id="IconRepeat"></string>
@@ -15,8 +16,8 @@
 	<string id="IconHeart"></string>
 	<string id="IconCheckCircle"></string>
 	<string id="IconCheck"></string>
-	<string id="IconUp"></string>
-	<string id="IconDown"></string>
+	<string id="IconUp"></string>
+	<string id="IconDown"></string>
 	<string id="IconLeft"></string>
 	<string id="IconRight"></string>
 	<string id="IconSettings"></string>
