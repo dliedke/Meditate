@@ -1,8 +1,4 @@
 <properties>
-	<property id="meditateActivityIconsXPos" type="number">130</property>
-	<property id="meditateActivityIconsYOffset" type="number">12</property>
-	<property id="meditateActivityXHrvTextOffset" type="number">22</property>
-	<property id="meditateActivityXBreathTextOffset" type="number">32</property>
 	<property id="hmmTimePickerOutputXOffset" type="number">140</property>
 	<property id="mmssTimePickerOutputXOffset" type="number">130</property>	
 </properties>

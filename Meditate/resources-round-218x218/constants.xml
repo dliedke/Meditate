@@ -1,8 +1,3 @@
 <properties>
-	<property id="meditateActivityIconsXPos" type="number">60</property>
-	<property id="meditateActivityIconsYOffset" type="number">0</property>
-	<property id="meditateActivityXHrTextOffset" type="number">-10</property>
-	<property id="meditateActivityXHrvTextOffset" type="number">22</property>
-	<property id="meditateActivityXBreathTextOffset" type="number">32</property>
 	<property id="largeFont" type="number">2</property> <!--Gfx.FONT_SMALL-->
 </properties>
