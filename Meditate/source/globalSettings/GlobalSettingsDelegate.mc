@@ -183,22 +183,14 @@ class GlobalSettingsDelegate extends ScreenPicker.ScreenPickerDelegate {
 			// ActivityType.Breathing
         	line.value.text = Ui.loadResource(Rez.Strings.menuNewActivityTypeOptions_breathing);
         }
+		
+		line = details.getLine(5);
+		var settingsIcon = new ScreenPicker.Icon({
+			:font => StatusIconFonts.fontAwesomeFreeSolid,
+			:symbol => StatusIconFonts.Rez.Strings.IconSettings,
+		});
+		line.icon = settingsIcon;
+		line.value.text = Ui.loadResource(Rez.Strings.optionsMenuHelp);
 
-		// Show Respiration rate settings if supported (not enough screen space for everything)
-		/*
-		if (HrvAlgorithms.RrActivity.isRespirationRateSupported()) {
-			
-			var respirationRateSetting = "";
-			var respirationRate = GlobalSettings.loadRespirationRate();
-			details.detailLines[5].icon = new ScreenPicker.BreathIcon({});
-			if (respirationRate == RespirationRate.On) {
-				respirationRateSetting = Ui.loadResource(Rez.Strings.menuNewHrvTrackingOptions_on);
-			}
-			if (respirationRate == RespirationRate.Off) {
-				respirationRateSetting = Ui.loadResource(Rez.Strings.menuNewHrvTrackingOptions_off);
-			}
-			details.detailLines[5].value.text = Ui.loadResource(Rez.Strings.menuGlobalSettings_respiration) + respirationRateSetting;
-		}
-		*/
 	}
 }
