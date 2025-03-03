@@ -20,13 +20,13 @@ module ScreenPicker {
 				me.multiPage = true;
 				me.mUpArrow = new Icon({
 					:font => StatusIconFonts.fontAwesomeFreeSolid,
-					:symbol => StatusIconFonts.Rez.Strings.faSortUp,
+					:symbol => StatusIconFonts.Rez.Strings.IconUp,
 					:color => foregroundColor,
 					:justify => Gfx.TEXT_JUSTIFY_CENTER,
 				});
 				me.mDownArrow = new Icon({
 					:font => StatusIconFonts.fontAwesomeFreeSolid,
-					:symbol => StatusIconFonts.Rez.Strings.faSortDown,
+					:symbol => StatusIconFonts.Rez.Strings.IconDown,
 					:color => foregroundColor,
 					:justify => Gfx.TEXT_JUSTIFY_CENTER,
 				});

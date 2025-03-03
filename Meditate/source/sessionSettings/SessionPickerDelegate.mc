@@ -236,34 +236,47 @@ class SessionPickerDelegate extends ScreenPicker.ScreenPickerDelegate {
 		}
 		details.title = activityTypeText + " " + (me.mSelectedPageIndex + 1);
 		details.titleColor = session.color;
-		var line = details.getLine(0);
+		var lineNum = 0;
+		var line = details.getLine(lineNum);
 
 		var timeIcon = new ScreenPicker.Icon({
 			:font => StatusIconFonts.fontAwesomeFreeSolid,
-			:symbol => StatusIconFonts.Rez.Strings.faHourglassHalf,
+			:symbol => StatusIconFonts.Rez.Strings.IconTimeHalf,
 		});
 		line.icon = timeIcon;
 		line.value.text = TimeFormatter.format(session.time);
+		lineNum++;
 
-		line = details.getLine(1);
+		line = details.getLine(lineNum);
 		var vibePatternIcon = new ScreenPicker.Icon({
 			:font => StatusIconFonts.fontMeditateIcons,
 			:symbol => StatusIconFonts.Rez.Strings.meditateFontVibratePattern,
 		});
 		line.icon = vibePatternIcon;
 		line.value.text = getVibePatternText(session.vibePattern);
+		lineNum++;
 
-		line = details.getLine(2);
+		line = details.getLine(lineNum);
 		var alertsLineIcon = new ScreenPicker.Icon({
-			:font => StatusIconFonts.fontAwesomeFreeRegular,
-			:symbol => StatusIconFonts.Rez.Strings.faClock,
+			:font => StatusIconFonts.fontAwesomeFreeSolid,
+			:symbol => StatusIconFonts.Rez.Strings.IconClock,
 		});
 		line.icon = alertsLineIcon;
 		var alertsToHighlightsLine = new AlertsToHighlightsLine(session);
 		line.value = alertsToHighlightsLine.getAlertsLine();
+		lineNum++;
 
-		var hrvStatusLine = details.getLine(3);
+		var hrvStatusLine = details.getLine(lineNum);
 		me.setInitialHrvStatus(hrvStatusLine, session);
+		lineNum++;
+
+		line = details.getLine(lineNum);
+		var settingsIcon = new ScreenPicker.Icon({
+			:font => StatusIconFonts.fontAwesomeFreeSolid,
+			:symbol => StatusIconFonts.Rez.Strings.IconSettings,
+		});
+		line.icon = settingsIcon;
+		line.value.text = Ui.loadResource(Rez.Strings.optionsMenuHelp);
 	}
 
 	function createScreenPickerView() {

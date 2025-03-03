@@ -4,7 +4,7 @@ module ScreenPicker {
 	class HrvIcon extends Icon {
 		function initialize(icon) {
 			icon[:font] = StatusIconFonts.fontAwesomeFreeSolid;			
-			icon[:symbol] = StatusIconFonts.Rez.Strings.faHeartbeat;
+			icon[:symbol] = StatusIconFonts.Rez.Strings.IconHeartBeat;
 			if (icon[:color] == null) {
 				icon[:color] = HeartBeatRedColor;
 			}

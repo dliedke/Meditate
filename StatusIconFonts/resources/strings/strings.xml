@@ -1,16 +1,24 @@
-<strings>    
-	<string id="faSaveSession"></string>
-	<string id="faRepeatSession"></string>
-	<string id="faHourglassHalf"></string>
-	<string id="faHourglassEnd"></string>
-	<string id="faClock"></string>
-	<string id="faHeartbeat"></string>
-	<string id="faPieChart"></string>
-	<string id="faHeart"></string>
-	<string id="faCheckCircle"></string>
-	<string id="faCheck"></string>
-	<string id="faSortUp"></string>
-	<string id="faSortDown"></string>
+<strings>
+	<!--
+      Find icon here: https://fontawesome.com/icons
+	  Copy name and "Glyph" (top right corner of winow) down below
+	  sample text: 
+	-->
+	<string id="IconSave"></string>
+	<string id="IconRepeat"></string>
+	<string id="IconTimeHalf"></string>
+	<string id="IconTimeEnd"></string>
+	<string id="IconClock"></string>
+	<string id="IconHeartBeat"></string>
+	<string id="IconPieChart"></string>
+	<string id="IconHeart"></string>
+	<string id="IconCheckCircle"></string>
+	<string id="IconCheck"></string>
+	<string id="IconUp"></string>
+	<string id="IconDown"></string>
+	<string id="IconLeft"></string>
+	<string id="IconRight"></string>
+	<string id="IconSettings"></string>
 	
 	<string id="meditateFontStress">1</string>
 	<string id="meditateFontIntervalAlertsTime">3</string>

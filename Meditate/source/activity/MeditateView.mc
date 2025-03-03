@@ -113,7 +113,7 @@ class MeditateView extends ScreenPicker.ScreenPickerDetailsCenterView {
 			}
 			me.mHrStatusLine.icon = new ScreenPicker.Icon({
 				:font => StatusIconFonts.fontAwesomeFreeSolid,
-				:symbol => StatusIconFonts.Rez.Strings.faHeart,
+				:symbol => StatusIconFonts.Rez.Strings.IconHeart,
 				:color => iconColor,
 			});
 

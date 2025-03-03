@@ -67,7 +67,7 @@ class GlobalSettingsDelegate extends ScreenPicker.ScreenPickerDelegate {
         }
 		line.icon = new ScreenPicker.Icon({        
 			:font => StatusIconFonts.fontAwesomeFreeSolid,
-			:symbol => StatusIconFonts.Rez.Strings.faRepeatSession,
+			:symbol => StatusIconFonts.Rez.Strings.IconRepeat,
 			:color => iconColor
 		});	
 
@@ -112,7 +112,7 @@ class GlobalSettingsDelegate extends ScreenPicker.ScreenPickerDelegate {
 		}
 		line.icon = new ScreenPicker.Icon({        
 	        	:font => StatusIconFonts.fontAwesomeFreeSolid,
-	        	:symbol => StatusIconFonts.Rez.Strings.faSaveSession,
+	        	:symbol => StatusIconFonts.Rez.Strings.IconSave,
 	        	:color => iconColor
 	        });	
 
@@ -124,7 +124,7 @@ class GlobalSettingsDelegate extends ScreenPicker.ScreenPickerDelegate {
         var multiSession = GlobalSettings.loadMultiSession();
     	details.detailLines[3].icon = new ScreenPicker.Icon({        
 	        	:font => StatusIconFonts.fontAwesomeFreeSolid,
-	        	:symbol => StatusIconFonts.Rez.Strings.faRepeatSession
+	        	:symbol => StatusIconFonts.Rez.Strings.IconRepeat
 	        });	
         if (multiSession == MultiSession.Yes) {
 	        multiSessionSetting = Ui.loadResource(Rez.Strings.menuGlobalSettings_multiSession);
@@ -138,8 +138,8 @@ class GlobalSettingsDelegate extends ScreenPicker.ScreenPickerDelegate {
 		// Preparation time settings
 		line = details.getLine(2);
         line.icon = new ScreenPicker.Icon({        
-	        	:font => StatusIconFonts.fontAwesomeFreeRegular,
-        	    :symbol => StatusIconFonts.Rez.Strings.faClock
+	        	:font => StatusIconFonts.fontAwesomeFreeSolid,
+        	    :symbol => StatusIconFonts.Rez.Strings.IconClock
 	        });	
 
 		// Calculate minutes and seconds from the loaded prepare time
@@ -154,8 +154,8 @@ class GlobalSettingsDelegate extends ScreenPicker.ScreenPickerDelegate {
 		// Finalize time settings
 		line = details.getLine(3);
         line.icon = new ScreenPicker.Icon({        
-	        	:font => StatusIconFonts.fontAwesomeFreeRegular,
-        	    :symbol => StatusIconFonts.Rez.Strings.faClock
+	        	:font => StatusIconFonts.fontAwesomeFreeSolid,
+        	    :symbol => StatusIconFonts.Rez.Strings.IconClock
 	        });	
 
 		// Calculate minutes and seconds from the loaded prepare time

@@ -51,7 +51,7 @@ class DurationPickerView extends Ui.View {
 			var yPos = dc.getHeight() / 2 + dc.getFontHeight(Gfx.FONT_XTINY);
 			var tickIcon = new ScreenPicker.Icon({
 				:font => StatusIconFonts.fontAwesomeFreeSolid,
-				:symbol => StatusIconFonts.Rez.Strings.faCheck,
+				:symbol => StatusIconFonts.Rez.Strings.IconCheck,
 				:xPos => xPos,
 				:yPos => yPos,
 				:color => Gfx.COLOR_GREEN,

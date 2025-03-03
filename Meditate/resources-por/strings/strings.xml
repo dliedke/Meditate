@@ -168,10 +168,12 @@
     <string id="HRVready">VFC Pronto</string>
     <string id="HRVoff">VFC Deslig.</string>
 
-    <string id="about_AppVersion">Meditate 8.8.0</string>
-    <string id="about_vtrifonov">   vtrifonov</string>
-    <string id="about_dliedke">   dliedke</string>
-    <string id="about_falsetru">   falsetru</string>
-    <string id="about_floriangeigl">   floriangeigl</string>
+    <string id="optionsMenuHelp">Segurar menu</string>
+
+    <string id="about_AppVersion">V 9.1.3</string>
+    <string id="about_vtrifonov">vtrifonov</string>
+    <string id="about_dliedke">dliedke</string>
+    <string id="about_falsetru">falsetru</string>
+    <string id="about_floriangeigl">floriangeigl</string>
 
 </strings>
