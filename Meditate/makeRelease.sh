@@ -1,5 +1,5 @@
 #!/bin/bash
-# first argument is the app version
+# first argument is the app version in format "X.X.X" (e.g. 9.3.2)
 VERSION=$1
 cd $(dirname "$0")
 SEDSTRING='s/about_AppVersion">.*</about_AppVersion">v'${VERSION}'</'

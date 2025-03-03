@@ -2,8 +2,9 @@
 	<!--
       Find icon here: https://fontawesome.com/icons
 	  Copy name and "Glyph" (top right corner of winow) down below
-	  all icons to generate png: 
+	  all icons to generate png: 
 	  make sure also generate the *.png with hiero (is generated when save bmf file)
+	  	use rendering java and size 20
 	  use https://libgdx.com/wiki/tools/hiero
 	-->
 	<string id="IconSave"></string>
@@ -21,6 +22,7 @@
 	<string id="IconLeft"></string>
 	<string id="IconRight"></string>
 	<string id="IconSettings"></string>
+	<string id="IconBell"></string>
 	
 	<string id="meditateFontStress">1</string>
 	<string id="meditateFontIntervalAlertsTime">3</string>

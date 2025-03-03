@@ -249,8 +249,8 @@ class SessionPickerDelegate extends ScreenPicker.ScreenPickerDelegate {
 
 		line = details.getLine(lineNum);
 		var vibePatternIcon = new ScreenPicker.Icon({
-			:font => StatusIconFonts.fontMeditateIcons,
-			:symbol => StatusIconFonts.Rez.Strings.meditateFontVibratePattern,
+			:font => StatusIconFonts.fontAwesomeFreeSolid,
+			:symbol => StatusIconFonts.Rez.Strings.IconBell,
 		});
 		line.icon = vibePatternIcon;
 		line.value.text = getVibePatternText(session.vibePattern);
