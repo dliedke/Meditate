@@ -34,18 +34,22 @@ class SummaryViewDelegate extends ScreenPicker.ScreenPickerDelegate {
 	private function setPageIndexes(hrvTracking, isRespirationRateOn) {
 		me.pages = new [0];
 		me.pages.add(me.pageHeartRateGraph);
-		if (isRespirationRateOn) {
-			me.pages.add(me.pageRespirationRateGraph);
+		if (hrvTracking == HrvTracking.OnDetailed) {
+			me.pages.add(me.pageHrvRmssdGraph);
 		}
-		if (hrvTracking == HrvTracking.On or hrvTracking == HrvTracking.OnDetailed) {
+		if (hrvTracking != HrvTracking.Off) {
 			me.pages.add(me.pageStressGraph);
 			me.pages.add(me.pageStress);
+		}
+		if (hrvTracking != HrvTracking.Off) {
 			me.pages.add(me.pageHrvRmssd);
 			if (hrvTracking == HrvTracking.OnDetailed) {
 				me.pages.add(me.pageHrvPnnx);
 				me.pages.add(me.pageHrvSdrr);
-				me.pages.add(me.pageHrvRmssdGraph);
 			}
+		}
+		if (isRespirationRateOn) {
+			me.pages.add(me.pageRespirationRateGraph);
 		}
 	}
 

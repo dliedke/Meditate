@@ -49,10 +49,10 @@ class MeditateView extends ScreenPicker.ScreenPickerDetailsCenterView {
 			me.mHrvStatusLine = me.mMeditateModel.getLine(lineNum);
 			lineNum++;
 		}
-		me.mRrStatusLine = me.mMeditateModel.getLine(lineNum);
+		me.mStressStatusLine = me.mMeditateModel.getLine(lineNum);
 		lineNum++;
 
-		me.mStressStatusLine = me.mMeditateModel.getLine(lineNum);
+		me.mRrStatusLine = me.mMeditateModel.getLine(lineNum);
 
 		me.mMainDurationRenderer = new ElapsedDurationRenderer(me.mMeditateModel.getColor(), null, null);
 
