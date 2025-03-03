@@ -86,7 +86,7 @@ class GraphView extends ScreenPicker.ScreenPickerBaseView {
 		ScreenPickerBaseView.onUpdate(dc);
 
 		// Draw title text
-		me.drawTitle(dc, Ui.loadResource(me.title));
+		me.drawTitle(dc, Ui.loadResource(me.title), null);
 
 		// Draw MIN text
 		dc.drawText(

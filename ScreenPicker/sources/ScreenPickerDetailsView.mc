@@ -59,15 +59,10 @@ module ScreenPicker {
 		}
 
 		function drawTitle(dc, title) {
-			// parent
-			if (me.mDetailsModel.titleColor != null) {
-				dc.setColor(titleColor, Graphics.COLOR_TRANSPARENT);
-			}
-			ScreenPickerBaseView.drawTitle(dc, title);
+			ScreenPickerBaseView.drawTitle(dc, title, me.mDetailsModel.titleColor);
 		}
 
 		private function displayFontIcon(dc, icon, xPos, yPos) {
-			dc.setColor(foregroundColor, Graphics.COLOR_TRANSPARENT);
 			if (icon.color == null) {
 				icon.setColor(foregroundColor);
 			}

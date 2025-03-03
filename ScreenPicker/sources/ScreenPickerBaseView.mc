@@ -47,6 +47,9 @@ module ScreenPicker {
 
 		protected function setArrowsColor(color) {
 			if (me.multiPage) {
+				if(color == null) {
+					color = foregroundColor;
+				}
 				me.mUpArrow.setColor(color);
 				me.mDownArrow.setColor(color);
 			}
@@ -74,7 +77,11 @@ module ScreenPicker {
 			}
 		}
 
-		function drawTitle(dc, title) {
+		function drawTitle(dc, title, color) {
+			if (color == null) {
+				color = foregroundColor;
+			}
+			dc.setColor(color, Graphics.COLOR_TRANSPARENT);
 			dc.drawText(
 				dc.getWidth() / 2,
 				dc.getHeight() * 0.1,

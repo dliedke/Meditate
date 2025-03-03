@@ -3,6 +3,7 @@
       Find icon here: https://fontawesome.com/icons
 	  Copy name and "Glyph" (top right corner of winow) down below
 	  sample text: 
+	  make sure to compile the StatusIconFonts again
 	-->
 	<string id="IconSave"></string>
 	<string id="IconRepeat"></string>
