@@ -52,7 +52,7 @@ module ScreenPicker {
 						line.value.getHighlights(),
 						line.value.backgroundColor,
 						me.xTextOffset,
-						yPos
+						yPos + me.spaceYSmall
 					);
 				}
 			}
@@ -82,11 +82,11 @@ module ScreenPicker {
 
 		private function drawPercentageHighlightLine(dc, highlights, backgroundColor, startPosX, posY) {
 			var progressBarWidth = Math.ceil(dc.getWidth() * 0.6);
-			var progressBarHeight = Math.ceil(dc.getHeight() * 0.11 * 0.8); // line height * 0.8
+			var progressBarHeight = Math.ceil(me.lineHeight * 0.6); // line height
 			dc.setColor(backgroundColor, Gfx.COLOR_TRANSPARENT);
 			dc.fillRectangle(startPosX, posY, progressBarWidth, progressBarHeight);
 
-			var highlightWidth = Math.ceil(0.03 * progressBarWidth);
+			var highlightWidth = Math.ceil(0.02 * progressBarWidth);
 			for (var i = 0; i < highlights.size(); i++) {
 				var highlight = highlights[i];
 				var valuePosX = startPosX + highlight.progressPercentage * progressBarWidth;

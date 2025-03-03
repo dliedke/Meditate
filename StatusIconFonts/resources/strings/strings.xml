@@ -2,10 +2,10 @@
 	<!--
       Find icon here: https://fontawesome.com/icons
 	  Copy name and "Glyph" (top right corner of winow) down below
-	  all icons to generate png: 
-	  make sure also generate the *.png with hiero (is generated when save bmf file)
-	  	use rendering java and size 20
-	  use https://libgdx.com/wiki/tools/hiero
+	  all icons to generate png: 
+	  make sure also generate the *.png with snowb or Hiero (is generated when save bmf file)
+	  	use rendering java and size 22, no padding, sharp 100%, color white, bg black
+	  use online: https://snowb.org/ || offline: https://libgdx.com/wiki/tools/hiero
 	-->
 	<string id="IconSave"></string>
 	<string id="IconRepeat"></string>
