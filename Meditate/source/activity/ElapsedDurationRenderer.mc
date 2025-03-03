@@ -4,13 +4,19 @@ using Toybox.Lang;
 class ElapsedDurationRenderer {
 	function initialize(color, radius, width) {
 		me.mColor = color;
-		me.mRadius = radius;
-		me.mWidth = width;
+		me.mArcRadius = radius;
+		me.mArcWidth = width;
+		me.mX = null;
+		me.mY = null;
+		me.mDcWidth = null;
+		me.mDcHeight = null;
 	}
 
 	private var mColor;
-	private var mRadius;
-	private var mWidth;
+	private var mArcRadius;
+	private var mArcWidth;
+	private var mX, mY;
+	private var mDcWidth, mDcHeight;
 	private const StartDegree = 90;
 
 	function drawOverallElapsedTime(dc, overallElapsedTime, alarmTime) {
@@ -25,11 +31,28 @@ class ElapsedDurationRenderer {
 		}
 		me.drawDuration(dc, progressPercentage);
 	}
+
+	private function layoutDuration(dc) {
+		var mDcWidth = dc.getWidth();
+		var mDcHeight = dc.getHeight();
+		me.mX = mDcWidth / 2;
+		me.mY = mDcHeight / 2;
+		if (me.mArcWidth == null) {
+			me.mArcWidth = Math.ceil(mDcWidth / 16.0).toNumber();
+		}
+		if (me.mArcRadius == null) {
+			me.mArcRadius = mDcWidth / 2;
+		}
+	}
+
 	private function drawDuration(dc, progressPercentage) {
+		if (me.mX == null || me.mY == null || me.mArcWidth == null) {
+			me.layoutDuration(dc);
+		}
 		dc.setColor(me.mColor, Gfx.COLOR_TRANSPARENT);
-		dc.setPenWidth(me.mWidth);
-		var endDegree = StartDegree + percentageToArcDegree(progressPercentage);
-		dc.drawArc(dc.getWidth() / 2, dc.getHeight() / 2, me.mRadius, Gfx.ARC_CLOCKWISE, me.StartDegree, endDegree);
+		dc.setPenWidth(me.mArcWidth);
+		var endDegree = me.StartDegree + percentageToArcDegree(progressPercentage);
+		dc.drawArc(me.mX, me.mY, me.mArcRadius, Gfx.ARC_CLOCKWISE, me.StartDegree, endDegree);
 	}
 
 	private static function percentageToArcDegree(percentage) {

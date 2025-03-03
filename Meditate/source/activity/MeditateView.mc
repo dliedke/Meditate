@@ -53,20 +53,8 @@ class MeditateView extends ScreenPicker.ScreenPickerDetailsCenterView {
 		lineNum++;
 
 		me.mStressStatusLine = me.mMeditateModel.getLine(lineNum);
-		var durationArcRadius = dc.getWidth() / 2;
-		var mainDurationArcWidth = dc.getWidth() / 8;
 
-		// For rectangle screens we need to set this manually
-		var mainDurationArcWidthConfig = App.getApp().getProperty("meditateActivityDurationArcWidth");
-		if (mainDurationArcWidthConfig != null) {
-			mainDurationArcWidth = mainDurationArcWidthConfig;
-		}
-
-		me.mMainDurationRenderer = new ElapsedDurationRenderer(
-			me.mMeditateModel.getColor(),
-			durationArcRadius,
-			mainDurationArcWidth
-		);
+		me.mMainDurationRenderer = new ElapsedDurationRenderer(me.mMeditateModel.getColor(), null, null);
 
 		if (me.mMeditateModel.hasIntervalAlerts()) {
 			var intervalAlertsArcRadius = dc.getWidth() / 2;
