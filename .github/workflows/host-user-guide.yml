@@ -26,7 +26,7 @@ jobs:
       - name: create advertisment page
         run: | 
             echo -e '---\nlayout: page\ntitle: Meditation & Breathwork\nsubtitle: Breathe in. Let go.\n---' > ./geigl.online/meditate_app.md
-            cat Advertisement.md.md >> ./geigl.online/meditate_app.md
+            cat Advertisement.md >> ./geigl.online/meditate_app.md
       - name: git add
         run: ls -lah && cd ./geigl.online/ && git add .
       - name: debug
