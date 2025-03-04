@@ -8,19 +8,16 @@ jobs:
   build:
     name: Host user guide
     runs-on: ubuntu-latest
-    env:
-      hpdir: ./geigl.online
-      guidefn: $hpdirmeditate_app_user_guide.md
     steps:
       - uses: actions/checkout@v4
       - uses: actions/checkout@v4
         with:
           repository: 'floriangeigl/floriangeigl.github.io'
-          path: $hpdir
+          path: ./geigl.online/
           ref: master
       - name: create page
         run: | 
-          echo '---\nlayout: page\ntitle: Meditation & Breathwork\nsubtitle: User Guide---' > $guidefn
+          echo '---\nlayout: page\ntitle: Meditation & Breathwork\nsubtitle: User Guide---' > ./geigl.online/meditate_app_user_guide.md
       - name: git add
         run: ls -lah && cd $hpdir && git add .
       #- name: Commit & Push changes
