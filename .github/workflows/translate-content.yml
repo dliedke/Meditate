@@ -22,7 +22,7 @@ jobs:
         id: store-content
         # needs encoding in base64 to be able to pass multiline 
         run: |
-          echo "content=$(cat ./ConnectIQStore/MeditateStoreDescription-en.txt | base64 --wrap=0)EEOOFF" >> $GITHUB_OUTPUT
+          echo "content=$(cat ./ConnectIQStore/MeditateStoreDescription-en.txt | base64 --wrap=0)" >> $GITHUB_OUTPUT
 
       # german
       - name: OpenAI ChatGPT Action
@@ -34,7 +34,10 @@ jobs:
           input: '${{ steps.store-content.outputs.content }}'
           model: 'gpt-4o'
       - name: write response to file
-        run: cat > ./ConnectIQStore/MeditateStoreDescription-de.txt << EEOOFF ${{ steps.de.outputs.completion }}
+        run: |
+          cat > ./ConnectIQStore/MeditateStoreDescription-de.txt << EEOOFF
+          ${{ steps.de.outputs.completion }}
+          EEOOFF
       - name: cat
         run: cat ./ConnectIQStore/MeditateStoreDescription-de.txt
       
