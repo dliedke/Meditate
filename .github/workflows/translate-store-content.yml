@@ -13,7 +13,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: read content
         id: content
-        run: echo 'content="$(cat ConnectIQStore/MeditateStoreDescription-en.txt)"' >> "$GITHUB_OUTPUT"
+        run: |
+          echo "content=$(cat README.md | base64 --wrap=0)" >> $GITHUB_OUTPUT
       - name: debug 1
         run: echo '${{ steps.content.outputs.content }}'
       - name: OpenAI ChatGPT Action
@@ -21,8 +22,8 @@ jobs:
         uses: cahaseler/openai-api@v1.0.0
         with:
           apiKey: ${{ secrets.CHATGPT_TOKEN }}
-          prompt: ''
-          input: 'you are a translator for a description of an app on the garmin ConnectIQStore. Translate the following description of a garmin app into german. do not change the format and consider the output must be suitable for a .txt file. no boilerplate.: ${{ steps.content.outputs.content }}'
+          prompt: 'you are a translator for a description of an app on the garmin ConnectIQStore. Translate the following description of a garmin app into german. do not change the format and consider the output must be suitable for a .txt file. no boilerplate. the input is base64 encoded - before translation, convert it back to readable'
+          input: '${{ steps.content.outputs.content }}'
           model: 'gpt-4o'
           # temperature: 1
           # max_tokens: 200
