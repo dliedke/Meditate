@@ -7,7 +7,7 @@ on:
       - v*
   workflow_dispatch:
 jobs:
-  build:
+  translate_texts:
     name: Translate ConnectIQStore texts
     runs-on: ubuntu-latest
     steps:
@@ -16,13 +16,14 @@ jobs:
         run: |
           git push -d origin release-translation || echo "no remote branch to cleanup"
           git branch -d release-translation || echo "no local branch to cleanup"
+      
+      ################### UserGuide
       - name: read content
-        id: content
+        id: store-content
         # needs encoding in base64 to be able to pass multiline 
         run: |
           echo "content=$(cat ./ConnectIQStore/MeditateStoreDescription-en.txt | base64 --wrap=0)" >> $GITHUB_OUTPUT
-      #- name: debug 1
-      #  run: echo '${{ steps.content.outputs.content }}'
+
       # german
       - name: OpenAI ChatGPT Action
         id: de
@@ -30,7 +31,7 @@ jobs:
         with:
           apiKey: ${{ secrets.CHATGPT_TOKEN }}
           prompt: 'you are a translator for a description of an app on the garmin ConnectIQStore. Translate the following description of a garmin app into german. do not change the format and consider the output must be suitable for a .txt file. no markdown formating or other allowed. just text. use the same formating methods as in the input. no boilerplate. the input is base64 encoded - before translation, convert it back to readable'
-          input: '${{ steps.content.outputs.content }}'
+          input: '${{ steps.store-content.outputs.content }}'
           model: 'gpt-4o'
       - name: write response to file
         run: echo '${{ steps.de.outputs.completion }}' && echo '${{ steps.de.outputs.completion }}' > ./ConnectIQStore/MeditateStoreDescription-de.txt
@@ -42,7 +43,7 @@ jobs:
         with:
           apiKey: ${{ secrets.CHATGPT_TOKEN }}
           prompt: 'you are a translator for a description of an app on the garmin ConnectIQStore. Translate the following description of a garmin app into korean. do not change the format and consider the output must be suitable for a .txt file. no markdown formating or other allowed. just text. use the same formating methods as in the input. no boilerplate. the input is base64 encoded - before translation, convert it back to readable'
-          input: '${{ steps.content.outputs.content }}'
+          input: '${{ steps.store-content.outputs.content }}'
           model: 'gpt-4o'
       - name: write response to file
         run: echo '${{ steps.ko.outputs.completion }}' && echo '${{ steps.ko.outputs.completion }}' > ./ConnectIQStore/MeditateStoreDescription-ko.txt
@@ -54,7 +55,7 @@ jobs:
         with:
           apiKey: ${{ secrets.CHATGPT_TOKEN }}
           prompt: 'you are a translator for a description of an app on the garmin ConnectIQStore. Translate the following description of a garmin app into portuguese. do not change the format and consider the output must be suitable for a .txt file. no markdown formating or other allowed. just text. use the same formating methods as in the input. no boilerplate. the input is base64 encoded - before translation, convert it back to readable'
-          input: '${{ steps.content.outputs.content }}'
+          input: '${{ steps.store-content.outputs.content }}'
           model: 'gpt-4o'
       - name: write response to file
         run: echo '${{ steps.pt.outputs.completion }}' && echo '${{ steps.pt.outputs.completion }}' > ./ConnectIQStore/MeditateStoreDescription-pt.txt
@@ -66,15 +67,76 @@ jobs:
         with:
           apiKey: ${{ secrets.CHATGPT_TOKEN }}
           prompt: 'you are a translator for a description of an app on the garmin ConnectIQStore. Translate the following description of a garmin app into spanish. do not change the format and consider the output must be suitable for a .txt file. no markdown formating or other allowed. just text. use the same formating methods as in the input. no boilerplate. the input is base64 encoded - before translation, convert it back to readable'
-          input: '${{ steps.content.outputs.content }}'
+          input: '${{ steps.store-content.outputs.content }}'
           model: 'gpt-4o'
       - name: write response to file
         run: echo '${{ steps.es.outputs.completion }}' && echo '${{ steps.es.outputs.completion }}' > ./ConnectIQStore/MeditateStoreDescription-es.txt
       
+      
+      
+      ################### UserGuide
+      - name: read content
+        id: userguide-content
+        # needs encoding in base64 to be able to pass multiline 
+        run: |
+          echo "content=$(cat ./UserGuide.md | base64 --wrap=0)" >> $GITHUB_OUTPUT
+
+      # german
+      - name: OpenAI ChatGPT Action
+        id: userguide-de
+        uses: cahaseler/openai-api@v1.0.0
+        with:
+          apiKey: ${{ secrets.CHATGPT_TOKEN }}
+          prompt: 'you are a translator for a description of an user guide for a garmin watch app. Translate the following description to german. do not change the format and consider the output must be suitable for a markdown file. use the same formating methods as in the input. no boilerplate. the input is base64 encoded - before translation, convert it back to readable'
+          input: '${{ steps.userguide-content.outputs.content }}'
+          model: 'gpt-4o'
+      - name: write response to file
+        run: echo '${{ steps.userguide-de.outputs.completion }}' && echo '${{ steps.userguide-de.outputs.completion }}' > ./UserGuide-de.md
+      
+      # korean
+      - name: OpenAI ChatGPT Action
+        id: userguide-ko
+        uses: cahaseler/openai-api@v1.0.0
+        with:
+          apiKey: ${{ secrets.CHATGPT_TOKEN }}
+          prompt: 'you are a translator for a description of an user guide for a garmin watch app. Translate the following description to korean. do not change the format and consider the output must be suitable for a markdown file. use the same formating methods as in the input. no boilerplate. the input is base64 encoded - before translation, convert it back to readable'
+          input: '${{ steps.userguide-content.outputs.content }}'
+          model: 'gpt-4o'
+      - name: write response to file
+        run: echo '${{ steps.userguide-ko.outputs.completion }}' && echo '${{ steps.userguide-ko.outputs.completion }}' > ./UserGuide-ko.md
+      
+      # portuguese
+      - name: OpenAI ChatGPT Action
+        id: userguide-pt
+        uses: cahaseler/openai-api@v1.0.0
+        with:
+          apiKey: ${{ secrets.CHATGPT_TOKEN }}
+          prompt: 'you are a translator for a description of an user guide for a garmin watch app. Translate the following description to portuguese. do not change the format and consider the output must be suitable for a markdown file. use the same formating methods as in the input. no boilerplate. the input is base64 encoded - before translation, convert it back to readable'
+          input: '${{ steps.userguide-content.outputs.content }}'
+          model: 'gpt-4o'
+      - name: write response to file
+        run: echo '${{ steps.userguide-pt.outputs.completion }}' && echo '${{ steps.userguide-pt.outputs.completion }}' > ./UserGuide-pt.md
+
+      # spanish
+      - name: OpenAI ChatGPT Action
+        id: userguide-es
+        uses: cahaseler/openai-api@v1.0.0
+        with:
+          apiKey: ${{ secrets.CHATGPT_TOKEN }}
+          prompt: 'you are a translator for a description of an user guide for a garmin watch app. Translate the following description to spanish. do not change the format and consider the output must be suitable for a markdown file. use the same formating methods as in the input. no boilerplate. the input is base64 encoded - before translation, convert it back to readable'
+          input: '${{ steps.userguide-content.outputs.content }}'
+          model: 'gpt-4o'
+      - name: write response to file
+        run: echo '${{ steps.userguide-es.outputs.completion }}' && echo '${{ steps.userguide-es.outputs.completion }}' > ./UserGuide-es.md
+
+      # create PR
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
         with:
           branch: release-translation
+          commit-message: merge auto-generated translations
+
+    
       # push
       - name: git add
         run: git add .
