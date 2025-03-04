@@ -1,5 +1,5 @@
-name: Translate ConnectIQStore texts
-run-name: Translate ConnectIQStore texts by @${{ github.actor }}
+name: Translate texts, guides, etc
+run-name: Translate texts, guides, etc by @${{ github.actor }}
 on:
   push:
     tags:
@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 jobs:
   translate_texts:
-    name: Translate ConnectIQStore texts
+    name: Translate
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
