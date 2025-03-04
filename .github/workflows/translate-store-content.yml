@@ -11,29 +11,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      #- name: read content
-      #  id: content
-      #  run: echo "content=$(cat ConnectIQStore/MeditateStoreDescription-en.txt)" >> "$GITHUB_OUTPUT"
+      - name: read content
+        id: content
+        run: echo "content=$(cat ConnectIQStore/MeditateStoreDescription-en.txt)" >> "$GITHUB_OUTPUT"
       - name: OpenAI ChatGPT Action
+        id: de
         uses: cahaseler/openai-api@v1.0.0
         with:
           apiKey: ${{ secrets.CHATGPT_TOKEN }}
-          prompt: 'Please generate github best practices formatted pull request content in markdown based on the following commit messages and diffs'
+          prompt: "Translate the following description of a garmin app into german. don't change the format and consider the output must be suitable for a .txt file. no boilerplate.: ${{ steps.content.outputs.content }}"
           input: 'put whatever you want in here'
-          model: 'gpt-4'
+          model: 'gpt-4o'
           temperature: 1
           max_tokens: 200
-      - name: translate
-        uses: chenxizhang/gpt-translator@v1
-        with:
-          openai_api_key: ${{ secrets.CHATGPT_TOKEN }}
-          files: ./ConnectIQStore/MeditateStoreDescription-en.txt
-          style: casual
-          from_language: english
-          to_language: german
-          rules: |-
-            - Don't change the structure
-            - Don't change the meaning
-          # prompt: "Translate the given text into {targetLanguage}. The output must be suitable for a txt file."
+      - name: write response to file
+        run: echo "${{ steps.de.outputs.completion }}" > ConnectIQStore/MeditateStoreDescription-de.txt
       - name: debug
         run: ls -lah ConnectIQStore/ && cat ConnectIQStore/MeditateStoreDescription-de.txt
