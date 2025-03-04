@@ -99,7 +99,7 @@ jobs:
         uses: cahaseler/openai-api@v1.0.0
         with:
           apiKey: ${{ secrets.CHATGPT_TOKEN }}
-          prompt: '${{ var.CHATGPT_TRANSLATE_PROMPT_MD }} german'
+          prompt: '${{ vars.CHATGPT_TRANSLATE_PROMPT_MD }} german'
           input: '${{ steps.userguide-content.outputs.content }}'
           model: 'gpt-4o'
       - name: write response to file
@@ -114,7 +114,7 @@ jobs:
         uses: cahaseler/openai-api@v1.0.0
         with:
           apiKey: ${{ secrets.CHATGPT_TOKEN }}
-          prompt: '${{ var.CHATGPT_TRANSLATE_PROMPT_MD }} korean'
+          prompt: '${{ vars.CHATGPT_TRANSLATE_PROMPT_MD }} korean'
           input: '${{ steps.userguide-content.outputs.content }}'
           model: 'gpt-4o'
       - name: write response to file
@@ -129,7 +129,7 @@ jobs:
         uses: cahaseler/openai-api@v1.0.0
         with:
           apiKey: ${{ secrets.CHATGPT_TOKEN }}
-          prompt: '${{ var.CHATGPT_TRANSLATE_PROMPT_MD }} portuguese'
+          prompt: '${{ vars.CHATGPT_TRANSLATE_PROMPT_MD }} portuguese'
           input: '${{ steps.userguide-content.outputs.content }}'
           model: 'gpt-4o'
       - name: write response to file
@@ -144,7 +144,7 @@ jobs:
         uses: cahaseler/openai-api@v1.0.0
         with:
           apiKey: ${{ secrets.CHATGPT_TOKEN }}
-          prompt: '${{ var.CHATGPT_TRANSLATE_PROMPT_MD }} spanish'
+          prompt: '${{ vars.CHATGPT_TRANSLATE_PROMPT_MD }} spanish'
           input: '${{ steps.userguide-content.outputs.content }}'
           model: 'gpt-4o'
       - name: write response to file
