@@ -15,11 +15,12 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/checkout@v4
         with:
-          repository: git@github.com:floriangeigl/floriangeigl.github.io.git
+          repository: 'git@github.com:floriangeigl/floriangeigl.github.io.git'
           path: $hpdir
+          ref: main
       - name: create page
         run: | 
-          echo "---\nlayout: page\ntitle: Meditation & Breathwork\nsubtitle: User Guide---" > $guidefn
+          echo '---\nlayout: page\ntitle: Meditation & Breathwork\nsubtitle: User Guide---'' > $guidefn
       - name: Commit & Push changes
         uses: actions-js/push@master
         with:
