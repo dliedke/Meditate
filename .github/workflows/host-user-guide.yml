@@ -26,6 +26,6 @@ jobs:
         uses: actions-js/push@master
         with:
           directory: ./geigl.online/
-          github_token: ${{ github.token }}
+          github_token: ${{ secrets.FLORIANGEIGL_GITHUB_IO_TOKEN }}
           repository: floriangeigl/floriangeigl.github.io
           message: auto-update user guide of meditation & breathwork garmin app 
