@@ -1,5 +1,5 @@
-name: Host user guide
-run-name: Host user guide on geigl.online by @${{ github.actor }}
+name: Translate ConnectIQStore texts
+run-name: Translate ConnectIQStore texts by @${{ github.actor }}
 on:
   push:
   #  branches:
