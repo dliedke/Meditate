@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 jobs:
   build:
-    name: Host user guide
+    name: Translate ConnectIQStore texts
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
