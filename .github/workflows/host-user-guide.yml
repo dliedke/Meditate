@@ -19,10 +19,10 @@ jobs:
           token: ${{ secrets.FLORIANGEIGL_GITHUB_IO_TOKEN }}
       - name: create page
         run: | 
-          echo '---\nlayout: page\ntitle: Meditation & Breathwork\nsubtitle: User Guide---' > ./geigl.online/meditate_app_user_guide.md
+          echo -e '---\nlayout: page\ntitle: Meditation & Breathwork\nsubtitle: User Guide---' > ./geigl.online/meditate_app_user_guide.md
           cat UserGuide.md >> ./geigl.online/meditate_app_user_guide.md
           mkdir -p ./geigl.online/userGuideScreenshots
-          cp -r userGuideScreenshots ./geigl.online/userGuideScreenshots
+          cp -r userGuideScreenshots ./geigl.online/
       - name: git add
         run: ls -lah && cd ./geigl.online/ && git add .
       - name: debug
