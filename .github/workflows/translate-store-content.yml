@@ -1,7 +1,7 @@
 name: Translate ConnectIQStore texts
 run-name: Translate ConnectIQStore texts by @${{ github.actor }}
 on:
-  push:
+  # push:
   #  branches:
   #    - 'main'
   workflow_dispatch:
