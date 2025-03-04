@@ -30,4 +30,5 @@ jobs:
           directory: ./geigl.online/
           github_token: ${{ secrets.FLORIANGEIGL_GITHUB_IO_TOKEN }}
           repository: floriangeigl/floriangeigl.github.io
-          message: auto-update user guide of meditation & breathwork garmin app 
+          message: auto-update user guide of meditation & breathwork garmin app
+          branch: master
