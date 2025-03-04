@@ -22,7 +22,7 @@ jobs:
           echo -e '---\nlayout: page\ntitle: Meditation & Breathwork\nsubtitle: User Guide\n---' > ./geigl.online/meditate_app_user_guide.md
           cat UserGuide.md >> ./geigl.online/meditate_app_user_guide.md
           mkdir -p ./geigl.online/userGuideScreenshots
-          cp -r userGuideScreenshots ./geigl.online/
+          cp -r userGuideScreenshots ./geigl.online/meditate_app_user_guide/
       - name: git add
         run: ls -lah && cd ./geigl.online/ && git add .
       - name: debug
