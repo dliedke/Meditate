@@ -1,6 +1,7 @@
 # Elevate Your Meditation and Breathwork Practice - Right from Your Garmin Watch!
-
 Transform your mindfulness routine with "Meditation and Breathwork", the ultimate Garmin app designed to track, refine, and deepen your meditation and breathwork sessions. No more guessing if your practice is working - get real-time insights into your heart rate variability (HRV), stress levels, and physiological response, all while immersing yourself in the present moment.
+
+[Download now](https://apps.garmin.com/apps/e6f3f3d2-3ea6-4ec1-81a5-977c708eb75b)
 ## Seamlessly integrate meditation into your lifestyle:
 * Customize your sessions - set duration, vibration alerts, and intervals tailored to your needs
 * Track your progress - see real-time HR, HRV, stress, and respiration rate (on supported devices)
