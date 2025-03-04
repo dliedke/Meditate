@@ -16,6 +16,7 @@ jobs:
           repository: 'floriangeigl/floriangeigl.github.io'
           path: ./geigl.online/
           ref: master
+          token: ${{ secrets.FLORIANGEIGL_GITHUB_IO_TOKEN }}
       - name: create page
         run: | 
           echo '---\nlayout: page\ntitle: Meditation & Breathwork\nsubtitle: User Guide---' > ./geigl.online/meditate_app_user_guide.md
