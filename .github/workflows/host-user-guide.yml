@@ -21,6 +21,8 @@ jobs:
       - name: create page
         run: | 
           echo '---\nlayout: page\ntitle: Meditation & Breathwork\nsubtitle: User Guide---' > $guidefn
+      - name: git add
+        run: cd $hpdir && git add .
       - name: Commit & Push changes
         uses: actions-js/push@master
         with:
