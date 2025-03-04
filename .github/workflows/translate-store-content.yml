@@ -1,0 +1,28 @@
+name: Host user guide
+run-name: Host user guide on geigl.online by @${{ github.actor }}
+on:
+  push:
+  #  branches:
+  #    - 'main'
+  workflow_dispatch:
+jobs:
+  build:
+    name: Host user guide
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: read content
+        id: content
+        run: echo "content=$(cat ConnectIQStore/MeditateStoreDescription-en.txt)" >> "$GITHUB_OUTPUT"
+      - name: translate to german
+        id: de
+        uses: cahaseler/openai-chatgpt-action@v1
+        with:
+          apiKey: ${{ secrets.CHATGPT_TOKEN }}
+          prompt: 'Translate the following description of a garmin app into german. keep the formating and keep the links in raw'
+          input: '${{ steps.content.outputs.content }}'
+          model: 'gpt-4o'
+      - name: update german file
+        run: echo "${{ steps.de.outputs.completion }}" > ConnectIQStore/MeditateStoreDescription-de.txt
+      - name: debug
+        run: cat ConnectIQStore/MeditateStoreDescription-de.txt
