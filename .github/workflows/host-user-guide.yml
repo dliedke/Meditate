@@ -27,3 +27,4 @@ jobs:
           directory: $hpdir
           github_token: ${{ secrets.GITHUB_TOKEN }}
           repository: git@github.com:floriangeigl/floriangeigl.github.io.git
+          message: auto-update meditation & breathwork garmin app user guide
