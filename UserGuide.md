@@ -92,7 +92,6 @@ Enable/disable screen light during the session using light button or touch the s
 2.1 From the session picker screen hold the menu button (middle left) until you see the Session settings menu.
   - for touch screen supported devices, it is also possible to touch and hold on the screen 
   
-<img src="userGuideScreenshots/summaryRosessionPickerllup.gif"  width="25%" height="25%" alt="Session Picker"/>
 <img src="userGuideScreenshots/sessionSettingsMenu.gif"  width="25%" height="25%" alt="Session settings menu"/>
 
 2.2 In Add New/Edit you can configure:
