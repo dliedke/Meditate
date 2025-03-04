@@ -19,9 +19,10 @@ jobs:
         with:
           # https://github.com/3ru/gpt-translate/blob/master/action.yml
           apikey: ${{ secrets.CHATGPT_TOKEN }}
-          inputFiles: ConnectIQStore/MeditateStoreDescription-en.txt
-          outputFiles: ConnectIQStore/MeditateStoreDescription-de.txt
-          languages: german
-          prompt: Translate the given text into {targetLanguage}. The output must be suitable for a txt file.
+          # space delimited strings
+          inputFiles: "ConnectIQStore/MeditateStoreDescription-en.txt"
+          outputFiles: "ConnectIQStore/MeditateStoreDescription-de.txt"
+          languages: "german"
+          prompt: "Translate the given text into {targetLanguage}. The output must be suitable for a txt file.
       - name: debug
         run: cat ConnectIQStore/MeditateStoreDescription-de.txt
