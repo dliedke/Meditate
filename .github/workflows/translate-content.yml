@@ -1,0 +1,172 @@
+name: Translate texts, guides, etc
+run-name: Translate texts, guides, etc by @${{ github.actor }}
+on:
+  push:
+    tags:
+      - V*
+      - v*
+  workflow_dispatch:
+jobs:
+  translate_texts:
+    name: Translate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: cleanup release-translation branch
+        run: |
+          git push -d origin release-translation || echo "no remote branch to cleanup"
+          git branch -d release-translation || echo "no local branch to cleanup"
+      
+      ################### UserGuide
+      - name: read content
+        id: store-content
+        # needs encoding in base64 to be able to pass multiline 
+        run: |
+          echo "content=$(cat ./ConnectIQStore/MeditateStoreDescription-en.txt | base64 --wrap=0)" >> $GITHUB_OUTPUT
+
+      # german
+      - name: OpenAI ChatGPT Action
+        id: de
+        uses: cahaseler/openai-api@v1.0.0
+        with:
+          apiKey: ${{ secrets.CHATGPT_TOKEN }}
+          prompt: '${{ vars.CHATGPT_TRANSLATE_PROMPT_TXT }} german'
+          input: '${{ steps.store-content.outputs.content }}'
+          model: 'gpt-4o'
+      - name: write response to file
+        run: |
+          cat > ./ConnectIQStore/MeditateStoreDescription-de.txt << EEOOFF
+          ${{ steps.de.outputs.completion }}
+          EEOOFF
+      - name: cat
+        run: cat ./ConnectIQStore/MeditateStoreDescription-de.txt
+      
+      # korean
+      - name: OpenAI ChatGPT Action
+        id: ko
+        uses: cahaseler/openai-api@v1.0.0
+        with:
+          apiKey: ${{ secrets.CHATGPT_TOKEN }}
+          prompt: '${{ vars.CHATGPT_TRANSLATE_PROMPT_TXT }} korean'
+          input: '${{ steps.store-content.outputs.content }}'
+          model: 'gpt-4o'
+      - name: write response to file
+        run: |
+            cat > ./ConnectIQStore/MeditateStoreDescription-ko.txt << EEOOFF
+            ${{ steps.ko.outputs.completion }}
+            EEOOFF
+      
+      # portuguese
+      - name: OpenAI ChatGPT Action
+        id: pt
+        uses: cahaseler/openai-api@v1.0.0
+        with:
+          apiKey: ${{ secrets.CHATGPT_TOKEN }}
+          prompt: '${{ vars.CHATGPT_TRANSLATE_PROMPT_TXT }} portuguese'
+          input: '${{ steps.store-content.outputs.content }}'
+          model: 'gpt-4o'
+      - name: write response to file
+        run: |
+            cat > ./ConnectIQStore/MeditateStoreDescription-pt.txt << EEOOFF
+            ${{ steps.pt.outputs.completion }}
+            EEOOFF
+
+      # spanish
+      - name: OpenAI ChatGPT Action
+        id: es
+        uses: cahaseler/openai-api@v1.0.0
+        with:
+          apiKey: ${{ secrets.CHATGPT_TOKEN }}
+          prompt: '${{ vars.CHATGPT_TRANSLATE_PROMPT_TXT }} spanish'
+          input: '${{ steps.store-content.outputs.content }}'
+          model: 'gpt-4o'
+      - name: write response to file
+        run: |
+            cat > ./ConnectIQStore/MeditateStoreDescription-es.txt << EEOOFF
+            ${{ steps.es.outputs.completion }}
+            EEOOFF
+      
+      ################### UserGuide
+      - name: read content
+        id: userguide-content
+        # needs encoding in base64 to be able to pass multiline 
+        run: |
+          echo "content=$(cat ./UserGuide.md | base64 --wrap=0)" >> $GITHUB_OUTPUT
+
+      # german
+      - name: OpenAI ChatGPT Action
+        id: userguide-de
+        uses: cahaseler/openai-api@v1.0.0
+        with:
+          apiKey: ${{ secrets.CHATGPT_TOKEN }}
+          prompt: '${{ vars.CHATGPT_TRANSLATE_PROMPT_MD }} german'
+          input: '${{ steps.userguide-content.outputs.content }}'
+          model: 'gpt-4o'
+      - name: write response to file
+        run: |
+            cat > ./UserGuide-de.md << EEOOFF
+            ${{ steps.userguide-de.outputs.completion }}
+            EEOOFF
+      
+      # korean
+      - name: OpenAI ChatGPT Action
+        id: userguide-ko
+        uses: cahaseler/openai-api@v1.0.0
+        with:
+          apiKey: ${{ secrets.CHATGPT_TOKEN }}
+          prompt: '${{ vars.CHATGPT_TRANSLATE_PROMPT_MD }} korean'
+          input: '${{ steps.userguide-content.outputs.content }}'
+          model: 'gpt-4o'
+      - name: write response to file
+        run: |
+            cat > ./UserGuide-ko.md << EEOOFF
+            ${{ steps.userguide-ko.outputs.completion }}
+            EEOOFF
+      
+      # portuguese
+      - name: OpenAI ChatGPT Action
+        id: userguide-pt
+        uses: cahaseler/openai-api@v1.0.0
+        with:
+          apiKey: ${{ secrets.CHATGPT_TOKEN }}
+          prompt: '${{ vars.CHATGPT_TRANSLATE_PROMPT_MD }} portuguese'
+          input: '${{ steps.userguide-content.outputs.content }}'
+          model: 'gpt-4o'
+      - name: write response to file
+        run: |
+            cat > ./UserGuide-pt.md << EEOOFF
+            ${{ steps.userguide-pt.outputs.completion }}
+            EEOOFF
+
+      # spanish
+      - name: OpenAI ChatGPT Action
+        id: userguide-es
+        uses: cahaseler/openai-api@v1.0.0
+        with:
+          apiKey: ${{ secrets.CHATGPT_TOKEN }}
+          prompt: '${{ vars.CHATGPT_TRANSLATE_PROMPT_MD }} spanish'
+          input: '${{ steps.userguide-content.outputs.content }}'
+          model: 'gpt-4o'
+      - name: write response to file
+        run: |
+            cat > ./UserGuide-es.md << EEOOFF
+            ${{ steps.userguide-es.outputs.completion }}
+            EEOOFF
+
+      # create PR
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: release-translation
+          commit-message: merge auto-generated translations
+
+    
+      # push
+      - name: git add
+        run: git add .
+      - name: Commit & Push changes
+        uses: actions-js/push@master
+        with:
+          message: auto-generated translations
+          branch: release-translation
+          github_token: ${{ secrets.GITHUB_TOKEN }}

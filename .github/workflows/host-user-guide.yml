@@ -1,0 +1,43 @@
+name: Host user guide
+run-name: Host user guide on geigl.online by @${{ github.actor }}
+on:
+  push:
+    branches:
+      - 'main'
+    paths:
+    - '**.md'
+  workflow_dispatch:
+jobs:
+  build:
+    name: Host user guide
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: 'floriangeigl/floriangeigl.github.io'
+          path: ./geigl.online/
+          ref: master
+          token: ${{ secrets.FLORIANGEIGL_GITHUB_IO_TOKEN }}
+      - name: create user guide page
+        run: | 
+          echo -e '---\nlayout: page\ntitle: Meditation & Breathwork\nsubtitle: User Guide\n---' > ./geigl.online/meditate_app_user_guide.md
+          cat UserGuide.md >> ./geigl.online/meditate_app_user_guide.md
+          mkdir -p ./geigl.online/userGuideScreenshots
+          cp -r ./userGuideScreenshots ./geigl.online/meditate_app_user_guide/
+      - name: create advertisment page
+        run: | 
+            echo -e '---\nlayout: page\ntitle: Meditation & Breathwork\nsubtitle: Breathe in. Let go.\n---' > ./geigl.online/meditate_app.md
+            cat Advertisement.md >> ./geigl.online/meditate_app.md
+      - name: git add
+        run: ls -lah && cd ./geigl.online/ && git add .
+      - name: debug
+        run: cd ./geigl.online/ && git status && git diff && ls -lah
+      - name: Commit & Push changes
+        uses: actions-js/push@master
+        with:
+          directory: ./geigl.online/
+          github_token: ${{ secrets.FLORIANGEIGL_GITHUB_IO_TOKEN }}
+          repository: floriangeigl/floriangeigl.github.io
+          message: auto-update user guide of meditation & breathwork garmin app
+          branch: master
