@@ -30,7 +30,7 @@ jobs:
         uses: cahaseler/openai-api@v1.0.0
         with:
           apiKey: ${{ secrets.CHATGPT_TOKEN }}
-          prompt: 'you are a translator for a description of an app on the garmin ConnectIQStore. Translate the following description of a garmin app into german. do not change the format and consider the output must be suitable for a .txt file. no markdown formating or other allowed. just text. use the same formating methods as in the input. no boilerplate. the input is base64 encoded - before translation, convert it back to readable'
+          prompt: '${{ vars.CHATGPT_TRANSLATE_PROMPT_TXT }} german'
           input: '${{ steps.store-content.outputs.content }}'
           model: 'gpt-4o'
       - name: write response to file
@@ -47,11 +47,14 @@ jobs:
         uses: cahaseler/openai-api@v1.0.0
         with:
           apiKey: ${{ secrets.CHATGPT_TOKEN }}
-          prompt: 'you are a translator for a description of an app on the garmin ConnectIQStore. Translate the following description of a garmin app into korean. do not change the format and consider the output must be suitable for a .txt file. no markdown formating or other allowed. just text. use the same formating methods as in the input. no boilerplate. the input is base64 encoded - before translation, convert it back to readable'
+          prompt: '${{ vars.CHATGPT_TRANSLATE_PROMPT_TXT }} korean'
           input: '${{ steps.store-content.outputs.content }}'
           model: 'gpt-4o'
       - name: write response to file
-        run: echo '${{ steps.ko.outputs.completion }}' && echo '${{ steps.ko.outputs.completion }}' > ./ConnectIQStore/MeditateStoreDescription-ko.txt
+        run: |
+            cat > ./ConnectIQStore/MeditateStoreDescription-ko.txt << EEOOFF
+            ${{ steps.ko.outputs.completion }}
+            EEOOFF
       
       # portuguese
       - name: OpenAI ChatGPT Action
@@ -59,11 +62,14 @@ jobs:
         uses: cahaseler/openai-api@v1.0.0
         with:
           apiKey: ${{ secrets.CHATGPT_TOKEN }}
-          prompt: 'you are a translator for a description of an app on the garmin ConnectIQStore. Translate the following description of a garmin app into portuguese. do not change the format and consider the output must be suitable for a .txt file. no markdown formating or other allowed. just text. use the same formating methods as in the input. no boilerplate. the input is base64 encoded - before translation, convert it back to readable'
+          prompt: '${{ vars.CHATGPT_TRANSLATE_PROMPT_TXT }} portuguese'
           input: '${{ steps.store-content.outputs.content }}'
           model: 'gpt-4o'
       - name: write response to file
-        run: echo '${{ steps.pt.outputs.completion }}' && echo '${{ steps.pt.outputs.completion }}' > ./ConnectIQStore/MeditateStoreDescription-pt.txt
+        run: |
+            cat > ./ConnectIQStore/MeditateStoreDescription-pt.txt << EEOOFF
+            ${{ steps.pt.outputs.completion }}
+            EEOOFF
 
       # spanish
       - name: OpenAI ChatGPT Action
@@ -71,13 +77,14 @@ jobs:
         uses: cahaseler/openai-api@v1.0.0
         with:
           apiKey: ${{ secrets.CHATGPT_TOKEN }}
-          prompt: 'you are a translator for a description of an app on the garmin ConnectIQStore. Translate the following description of a garmin app into spanish. do not change the format and consider the output must be suitable for a .txt file. no markdown formating or other allowed. just text. use the same formating methods as in the input. no boilerplate. the input is base64 encoded - before translation, convert it back to readable'
+          prompt: '${{ vars.CHATGPT_TRANSLATE_PROMPT_TXT }} spanish'
           input: '${{ steps.store-content.outputs.content }}'
           model: 'gpt-4o'
       - name: write response to file
-        run: echo '${{ steps.es.outputs.completion }}' && echo '${{ steps.es.outputs.completion }}' > ./ConnectIQStore/MeditateStoreDescription-es.txt
-      
-      
+        run: |
+            cat > ./ConnectIQStore/MeditateStoreDescription-es.txt << EEOOFF
+            ${{ steps.es.outputs.completion }}
+            EEOOFF
       
       ################### UserGuide
       - name: read content
@@ -92,11 +99,14 @@ jobs:
         uses: cahaseler/openai-api@v1.0.0
         with:
           apiKey: ${{ secrets.CHATGPT_TOKEN }}
-          prompt: 'you are a translator for a description of an user guide for a garmin watch app. Translate the following description to german. do not change the format and consider the output must be suitable for a markdown file. use the same formating methods as in the input. no boilerplate. the input is base64 encoded - before translation, convert it back to readable'
+          prompt: '${{ var.CHATGPT_TRANSLATE_PROMPT_MD }} german'
           input: '${{ steps.userguide-content.outputs.content }}'
           model: 'gpt-4o'
       - name: write response to file
-        run: echo '${{ steps.userguide-de.outputs.completion }}' && echo '${{ steps.userguide-de.outputs.completion }}' > ./UserGuide-de.md
+        run: |
+            cat > ./UserGuide-de.md << EEOOFF
+            ${{ steps.userguide-de.outputs.completion }}
+            EEOOFF
       
       # korean
       - name: OpenAI ChatGPT Action
@@ -104,11 +114,14 @@ jobs:
         uses: cahaseler/openai-api@v1.0.0
         with:
           apiKey: ${{ secrets.CHATGPT_TOKEN }}
-          prompt: 'you are a translator for a description of an user guide for a garmin watch app. Translate the following description to korean. do not change the format and consider the output must be suitable for a markdown file. use the same formating methods as in the input. no boilerplate. the input is base64 encoded - before translation, convert it back to readable'
+          prompt: '${{ var.CHATGPT_TRANSLATE_PROMPT_MD }} korean'
           input: '${{ steps.userguide-content.outputs.content }}'
           model: 'gpt-4o'
       - name: write response to file
-        run: echo '${{ steps.userguide-ko.outputs.completion }}' && echo '${{ steps.userguide-ko.outputs.completion }}' > ./UserGuide-ko.md
+        run: |
+            cat > ./UserGuide-ko.md << EEOOFF
+            ${{ steps.userguide-ko.outputs.completion }}
+            EEOOFF
       
       # portuguese
       - name: OpenAI ChatGPT Action
@@ -116,11 +129,14 @@ jobs:
         uses: cahaseler/openai-api@v1.0.0
         with:
           apiKey: ${{ secrets.CHATGPT_TOKEN }}
-          prompt: 'you are a translator for a description of an user guide for a garmin watch app. Translate the following description to portuguese. do not change the format and consider the output must be suitable for a markdown file. use the same formating methods as in the input. no boilerplate. the input is base64 encoded - before translation, convert it back to readable'
+          prompt: '${{ var.CHATGPT_TRANSLATE_PROMPT_MD }} portuguese'
           input: '${{ steps.userguide-content.outputs.content }}'
           model: 'gpt-4o'
       - name: write response to file
-        run: echo '${{ steps.userguide-pt.outputs.completion }}' && echo '${{ steps.userguide-pt.outputs.completion }}' > ./UserGuide-pt.md
+        run: |
+            cat > ./UserGuide-pt.md << EEOOFF
+            ${{ steps.userguide-pt.outputs.completion }}
+            EEOOFF
 
       # spanish
       - name: OpenAI ChatGPT Action
@@ -128,11 +144,14 @@ jobs:
         uses: cahaseler/openai-api@v1.0.0
         with:
           apiKey: ${{ secrets.CHATGPT_TOKEN }}
-          prompt: 'you are a translator for a description of an user guide for a garmin watch app. Translate the following description to spanish. do not change the format and consider the output must be suitable for a markdown file. use the same formating methods as in the input. no boilerplate. the input is base64 encoded - before translation, convert it back to readable'
+          prompt: '${{ var.CHATGPT_TRANSLATE_PROMPT_MD }} spanish'
           input: '${{ steps.userguide-content.outputs.content }}'
           model: 'gpt-4o'
       - name: write response to file
-        run: echo '${{ steps.userguide-es.outputs.completion }}' && echo '${{ steps.userguide-es.outputs.completion }}' > ./UserGuide-es.md
+        run: |
+            cat > ./UserGuide-es.md << EEOOFF
+            ${{ steps.userguide-es.outputs.completion }}
+            EEOOFF
 
       # create PR
       - name: Create Pull Request
