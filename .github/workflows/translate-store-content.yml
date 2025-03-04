@@ -11,13 +11,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: cleanup release-translation branch
+        run: |
+          git push -d origin release-translation || echo "no remote branch to cleanup"
+          git branch -d release-translation || echo "no local branch to cleanup"
+          git checkout -b release-translation
       - name: read content
         id: content
         # needs encoding in base64 to be able to pass multiline 
         run: |
-          echo "content=$(cat README.md | base64 --wrap=0)" >> $GITHUB_OUTPUT
-      - name: debug 1
-        run: echo '${{ steps.content.outputs.content }}'
+          echo "content=$(cat ./ConnectIQStore/MeditateStoreDescription-en.txt | base64 --wrap=0)" >> $GITHUB_OUTPUT
+      #- name: debug 1
+      #  run: echo '${{ steps.content.outputs.content }}'
+      # german
       - name: OpenAI ChatGPT Action
         id: de
         uses: cahaseler/openai-api@v1.0.0
@@ -26,9 +32,51 @@ jobs:
           prompt: 'you are a translator for a description of an app on the garmin ConnectIQStore. Translate the following description of a garmin app into german. do not change the format and consider the output must be suitable for a .txt file. no markdown formating or other allowed. just text. use the same formating methods as in the input. no boilerplate. the input is base64 encoded - before translation, convert it back to readable'
           input: '${{ steps.content.outputs.content }}'
           model: 'gpt-4o'
-          # temperature: 1
-          # max_tokens: 200
       - name: write response to file
         run: echo '${{ steps.de.outputs.completion }}' && echo '${{ steps.de.outputs.completion }}' > ./ConnectIQStore/MeditateStoreDescription-de.txt
-      - name: debug
-        run: ls -lah ConnectIQStore/ && cat ConnectIQStore/MeditateStoreDescription-de.txt
+      
+      # korean
+      - name: OpenAI ChatGPT Action
+        id: ko
+        uses: cahaseler/openai-api@v1.0.0
+        with:
+          apiKey: ${{ secrets.CHATGPT_TOKEN }}
+          prompt: 'you are a translator for a description of an app on the garmin ConnectIQStore. Translate the following description of a garmin app into korean. do not change the format and consider the output must be suitable for a .txt file. no markdown formating or other allowed. just text. use the same formating methods as in the input. no boilerplate. the input is base64 encoded - before translation, convert it back to readable'
+          input: '${{ steps.content.outputs.content }}'
+          model: 'gpt-4o'
+      - name: write response to file
+        run: echo '${{ steps.ko.outputs.completion }}' && echo '${{ steps.ko.outputs.completion }}' > ./ConnectIQStore/MeditateStoreDescription-ko.txt
+      
+      # portuguese
+      - name: OpenAI ChatGPT Action
+        id: pt
+        uses: cahaseler/openai-api@v1.0.0
+        with:
+          apiKey: ${{ secrets.CHATGPT_TOKEN }}
+          prompt: 'you are a translator for a description of an app on the garmin ConnectIQStore. Translate the following description of a garmin app into portuguese. do not change the format and consider the output must be suitable for a .txt file. no markdown formating or other allowed. just text. use the same formating methods as in the input. no boilerplate. the input is base64 encoded - before translation, convert it back to readable'
+          input: '${{ steps.content.outputs.content }}'
+          model: 'gpt-4o'
+      - name: write response to file
+        run: echo '${{ steps.pt.outputs.completion }}' && echo '${{ steps.pt.outputs.completion }}' > ./ConnectIQStore/MeditateStoreDescription-pt.txt
+
+      # spanish
+      - name: OpenAI ChatGPT Action
+        id: es
+        uses: cahaseler/openai-api@v1.0.0
+        with:
+          apiKey: ${{ secrets.CHATGPT_TOKEN }}
+          prompt: 'you are a translator for a description of an app on the garmin ConnectIQStore. Translate the following description of a garmin app into spanish. do not change the format and consider the output must be suitable for a .txt file. no markdown formating or other allowed. just text. use the same formating methods as in the input. no boilerplate. the input is base64 encoded - before translation, convert it back to readable'
+          input: '${{ steps.content.outputs.content }}'
+          model: 'gpt-4o'
+      - name: write response to file
+        run: echo '${{ steps.es.outputs.completion }}' && echo '${{ steps.es.outputs.completion }}' > ./ConnectIQStore/MeditateStoreDescription-es.txt
+      
+      # push
+      - name: git add
+        run: git add .
+      - name: Commit & Push changes
+        uses: actions-js/push@master
+        with:
+          message: auto-generated translations
+          branch: release-translation
+          github_token: ${{ secrets.GITHUB_TOKEN }}
