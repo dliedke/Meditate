@@ -14,15 +14,17 @@ jobs:
       #- name: read content
       #  id: content
       #  run: echo "content=$(cat ConnectIQStore/MeditateStoreDescription-en.txt)" >> "$GITHUB_OUTPUT"
-      - name: Run GPT Translate
-        uses: 3ru/gpt-translate@master
+      - name: translate
+        uses: chenxizhang/gpt-translator@v1
         with:
-          # https://github.com/3ru/gpt-translate/blob/master/action.yml
-          apikey: ${{ secrets.CHATGPT_TOKEN }}
-          # space delimited strings
-          inputFiles: "./ConnectIQStore/MeditateStoreDescription-en.txt"
-          outputFiles: "./ConnectIQStore/MeditateStoreDescription-de.txt"
-          languages: "german"
-          prompt: "Translate the given text into {targetLanguage}. The output must be suitable for a txt file."
+          openai_api_key: ${{ secrets.CHATGPT_TOKEN }}
+          files: ./ConnectIQStore/MeditateStoreDescription-en.txt
+          style: casual
+          from_language: english
+          to_language: german
+          rules: |-
+            - Don't change the structure
+            - Don't change the meaning
+          # prompt: "Translate the given text into {targetLanguage}. The output must be suitable for a txt file."
       - name: debug
-        run: cat ConnectIQStore/MeditateStoreDescription-de.txt
+        run: ls -lah ConnectIQStore/ && cat ConnectIQStore/MeditateStoreDescription-de.txt
