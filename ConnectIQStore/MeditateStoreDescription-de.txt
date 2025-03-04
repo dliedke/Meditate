@@ -1,0 +1,46 @@
+Meditation und Atemarbeit sind kraftvolle Praktiken, die darauf abzielen, das mentale und körperliche Wohlbefinden zu verbessern. Ihre Hauptziele beinhalten die Reduktion von Stress, die Steigerung des emotionalen Gleichgewichts, die Verbesserung der Konzentration und die Förderung eines besseren Selbstbewusstseins. Während Meditation die Achtsamkeit und mentale Klarheit betont, engagiert sich die Atemarbeit aktiv mit dem Nervensystem durch kontrollierte Atemtechniken, um Entspannung, Energieboosts oder emotionale Entlastung zu erzielen.
+
+Warum Psychologische Metriken?
+
+Das Messen von Stresspegeln, Herzfrequenzvariabilität (HRV) und Herzfrequenz während Meditation und Atemarbeit liefert wertvolle Einblicke in deren Effektivität.
+
+* Stresslevel: Echtzeit-Stress-Tracking kann helfen, zu bewerten, wie Meditation und Atemarbeit physische Anspannung über Zeit reduzieren können.
+* Herzfrequenzvariabilität (HRV): Eine höhere HRV ist verknüpft mit einem besseren autonomen Nervensystemausgleich, was bedeutet, dass Stress langsamer abbaut. Tiefe Atmung und effektive Achtsamkeitspraktiken können die HRV erhöhen, wodurch Entspannung und Erholung verstärkt werden.
+* Herzfrequenz: Meditation reduziert typischerweise die Herzfrequenz über Zeit, während Atemarbeit vorübergehende Schwankungen verursachen kann, abhängig von der angewandten Technik. Die Verfolgung der Herzfrequenz kann Muster offenbaren, wie der Körper auf verschiedene Praktiken reagiert.
+
+Diese Meditations/Yoga-App verfolgt all diese Metriken für Sie. Dies ermöglicht es Ihnen, biologische Daten mit speziellen Praktiken zu korrelieren und Ihre Herangehensweise langfristig zu verfeinern und zu verbessern.
+
+Berühre und halte den Bildschirm (Touch-Geräte) oder halte die linke mittlere Taste gedrückt, um die Meditationssessions zu bearbeiten, Eigenschaften und globale Einstellungen anzupassen.
+
+*** Bitte lesen Sie alle unten stehenden Anleitungen, um Probleme mit der Anwendung auf Ihrem Gerät zu vermeiden ***
+
+** Wenn Sie auf ein Problem stoßen, überprüfen Sie den Leitfaden zur Fehlerbehebung unten, bevor Sie berichten **
+
+Bitte kontaktieren Sie mich per gültiger E-Mail über "Contact Developer" auf dieser Seite, damit ich auf Fragen und Anfragen antworten kann. Ich freue mich, wenn Sie in der englischen Sprache schreiben.
+
+Vollständig entwickelte Anwendung von vtrifonov und kompiliert/erweitert für neuere Garmin-Uhrenmodelle durch dliedke und florianeigle.
+
+Kompletter Benutzerleitfaden (erklärt HRV-Metriken und wie man die Anwendung im Detail nutzt): 
+https://github.com/florianeigle/Meditate/blob/main/UserGuide.md
+
+Vermeiden Sie es, das Handgelenk während der Sitzung zu bewegen, um HRV- und Inspirationsraten-Metriken genauer zu erfassen. Wenn HRV nicht erkannt wird, starten Sie bitte Ihre Uhrenaufladung neu, indem Sie die Taste zum Zurücksetzen für 15 Sekunden gedrückt halten, schalten Sie sie ein und versuchen Sie die Anwendung erneut.
+
+Hinweis: Die Connect IQ API, die für die Anwendungsentwicklung genutzt wird, liefert nur den 5-Minuten-Durchschnitt des Stressmetriks. Deshalb passen die Zahlen nicht immer exakt mit Garmin Connect zusammen, da es in GC die Echtzeit-Stressmetrik zeigt, wenn Aktivität gestartet und gestoppt wurde.
+
+Fehlerbehebungsleitfaden:
+
+Garmin IQ-Nachricht auf der Uhr:
+---------------------------------
+Bitte verwenden Sie Garmin Express im PC mit der Uhr über USB verbunden, um den Aktivitätsnamen zu ändern. Falls die App nicht mehr geöffnet wird, installieren Sie sie bitte neu. Aufgrund eines Fehlers mit Connect IQ mobile ist es nicht möglich, den Aktivitätsnamen mittels Konfigurations-Button zu ändern.
+
+HRV wird nicht erkannt:
+-----------------------
+Manchmal dauert es länger, bis HRV erkannt wird, wenn Sie sich vor dem Start der Anwendung bewegt haben. Bitte bleiben Sie eine Weile ruhig, ohne die Uhr zu berühren. Öffnen Sie dann die App und warten Sie, bis HRV bereit ist, bevor Sie Ihre Meditationssession starten. Wenn es nicht funktioniert, versuchen Sie, die Lichttaste für 15 Sekunden zu halten, dann die Uhr erneut einschalten und die App erneut versuchen, um zu prüfen, ob HRV erkannt wird.
+
+Keine Vibration oder Ton während Sitzungen:
+-------------------------------------------
+Stellen Sie sicher, dass Vibration im System - Sound und Vibe - Vibration (Ein) aktiviert ist. Stellen Sie auch sicher, dass Sound in System - Sound and Vibe - Alert Tones (Ein) aktiviert ist.
+
+Bitte melden Sie andere Probleme im "Contact Developer" Link auf dieser Seite oder https://github.com/florianeigle/Meditate/issues und nicht in der App-Bewertung.
+
+Reduzieren Sie Ihren Stress, entspannen und meditieren!
