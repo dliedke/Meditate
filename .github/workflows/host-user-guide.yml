@@ -20,12 +20,12 @@ jobs:
           echo '---\nlayout: page\ntitle: Meditation & Breathwork\nsubtitle: User Guide---' > ./geigl.online/meditate_app_user_guide.md
       - name: git add
         run: ls -lah && cd ./geigl.online/ && git add .
-      #- name: Commit & Push changes
-      #  uses: actions-js/push@master
-      #  with:
-      #    directory: ./geigl.online/
-      #    github_token: ${{ secrets.GITHUB_TOKEN }}
-      #    repository: git@github.com:floriangeigl/floriangeigl.github.io.git
-      #    message: auto-update meditation & breathwork garmin app user guide
-      - name: status
+      - name: debug
         run: cd ./geigl.online/ && git status && git diff && ls -lah
+      - name: Commit & Push changes
+        uses: actions-js/push@master
+        with:
+          directory: ./geigl.online/
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          repository: git@github.com:floriangeigl/floriangeigl.github.io.git
+          message: auto-update user guide of meditation & breathwork garmin app 
