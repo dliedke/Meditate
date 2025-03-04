@@ -34,7 +34,7 @@ jobs:
           input: '${{ steps.store-content.outputs.content }}'
           model: 'gpt-4o'
       - name: write response to file
-        run: cat > ./ConnectIQStore/MeditateStoreDescription-de.txt <<'EEOOFF' ${{ steps.de.outputs.completion }}EEOOFF
+        run: cat > ./ConnectIQStore/MeditateStoreDescription-de.txt <<EEOOFF ${{ steps.de.outputs.completion }}EEOOFF
       - name: cat
         run: cat ./ConnectIQStore/MeditateStoreDescription-de.txt
       
