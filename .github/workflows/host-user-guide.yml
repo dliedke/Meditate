@@ -20,6 +20,7 @@ jobs:
       - name: create page
         run: | 
           echo '---\nlayout: page\ntitle: Meditation & Breathwork\nsubtitle: User Guide---' > ./geigl.online/meditate_app_user_guide.md
+          echo '# test'
       - name: git add
         run: ls -lah && cd ./geigl.online/ && git add .
       - name: debug
