@@ -1,9 +1,10 @@
 name: Translate ConnectIQStore texts
 run-name: Translate ConnectIQStore texts by @${{ github.actor }}
 on:
-  # push:
-  #  branches:
-  #    - 'main'
+  push:
+    tags:
+      - V*
+      - v*
   workflow_dispatch:
 jobs:
   build:
@@ -15,7 +16,6 @@ jobs:
         run: |
           git push -d origin release-translation || echo "no remote branch to cleanup"
           git branch -d release-translation || echo "no local branch to cleanup"
-          git checkout -b release-translation
       - name: read content
         id: content
         # needs encoding in base64 to be able to pass multiline 
@@ -71,6 +71,10 @@ jobs:
       - name: write response to file
         run: echo '${{ steps.es.outputs.completion }}' && echo '${{ steps.es.outputs.completion }}' > ./ConnectIQStore/MeditateStoreDescription-es.txt
       
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: release-translation
       # push
       - name: git add
         run: git add .
