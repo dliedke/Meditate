@@ -17,7 +17,7 @@ jobs:
         with:
           repository: 'floriangeigl/floriangeigl.github.io'
           path: $hpdir
-          ref: main
+          ref: master
       - name: create page
         run: | 
           echo '---\nlayout: page\ntitle: Meditation & Breathwork\nsubtitle: User Guide---'' > $guidefn
