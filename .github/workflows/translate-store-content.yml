@@ -19,12 +19,12 @@ jobs:
         uses: cahaseler/openai-api@v1.0.0
         with:
           apiKey: ${{ secrets.CHATGPT_TOKEN }}
-          prompt: "Translate the following description of a garmin app into german. don't change the format and consider the output must be suitable for a .txt file. no boilerplate.: ${{ steps.content.outputs.content }}"
+          prompt: 'Translate the following description of a garmin app into german. do not change the format and consider the output must be suitable for a .txt file. no boilerplate.: ${{ steps.content.outputs.content }}'
           input: 'put whatever you want in here'
           model: 'gpt-4o'
           temperature: 1
           max_tokens: 200
       - name: write response to file
-        run: echo "${{ steps.de.outputs.completion }}" > ConnectIQStore/MeditateStoreDescription-de.txt
+        run: echo '${{ steps.de.outputs.completion }}' && echo '${{ steps.de.outputs.completion }}' > ./ConnectIQStore/MeditateStoreDescription-de.txt
       - name: debug
         run: ls -lah ConnectIQStore/ && cat ConnectIQStore/MeditateStoreDescription-de.txt
