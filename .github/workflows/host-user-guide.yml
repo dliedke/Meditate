@@ -23,9 +23,9 @@ jobs:
       #- name: Commit & Push changes
       #  uses: actions-js/push@master
       #  with:
-      #    directory: $hpdir
+      #    directory: ./geigl.online/
       #    github_token: ${{ secrets.GITHUB_TOKEN }}
       #    repository: git@github.com:floriangeigl/floriangeigl.github.io.git
       #    message: auto-update meditation & breathwork garmin app user guide
       - name: status
-        run: git status && git diff && ls -lah
+        run: cd ./geigl.online/ && git status && git diff && ls -lah
