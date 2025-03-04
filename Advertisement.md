@@ -13,7 +13,7 @@ With Meditate, you’ll gain clarity, focus, and deeper relaxation, all while us
 
 ### Breathe in. Let go. Track your journey.
 
-# [Download Meditate now and elevate your mindfulness practice!](https://apps.garmin.com/apps/e6f3f3d2-3ea6-4ec1-81a5-977c708eb75b)
+[Download Meditate now and elevate your mindfulness practice!](https://apps.garmin.com/apps/e6f3f3d2-3ea6-4ec1-81a5-977c708eb75b)
 
 Read the user guide [here](https://geigl.online/meditate_app_user_guide/)
 
