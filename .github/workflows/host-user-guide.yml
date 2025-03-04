@@ -22,7 +22,7 @@ jobs:
         run: | 
           echo '---\nlayout: page\ntitle: Meditation & Breathwork\nsubtitle: User Guide---' > $guidefn
       - name: git add
-        run: cd $hpdir && git add .
+        run: ls -lah && cd $hpdir && git add .
       - name: Commit & Push changes
         uses: actions-js/push@master
         with:
