@@ -31,7 +31,7 @@ jobs:
           jpegProgressive: true
           pngQuality: '100'
           webpQuality: '100'
-          ignorePaths: '**/fonts/**'
+          # ignorePaths: '**/fonts/**'
       - name: debug
         run: git status && git diff && git branch
       - name: Create New Pull Request If Needed
