@@ -10,6 +10,9 @@ jobs:
   translate_texts:
     name: Translate
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        language: [de, pt, ko, es]
     steps:
       - uses: actions/checkout@v4
       - name: cleanup release-translation branch
@@ -17,7 +20,7 @@ jobs:
           git push -d origin release-translation || echo "no remote branch to cleanup"
           git branch -d release-translation || echo "no local branch to cleanup"
       
-      ################### UserGuide
+      ################### Store Description
       - name: read content
         id: store-content
         # needs encoding in base64 to be able to pass multiline 
@@ -26,63 +29,20 @@ jobs:
           echo "prompt=$(grep -v '[/|#]' ./.github/workflows/translate-content-store-prompt.txt | awk '{print}' ORS=' ')" >> $GITHUB_OUTPUT
           echo "model=$(grep -v '[/|#]' -m 1 ./.github/workflows/translate-content-model.txt)" >> $GITHUB_OUTPUT
 
-      # german
       - name: OpenAI ChatGPT Action
         id: de
         uses: cahaseler/openai-api@v1.0.0
         with:
           apiKey: ${{ secrets.CHATGPT_TOKEN }}
-          prompt: '${{ steps.store-content.outputs.prompt }} german'
+          prompt: '${{ steps.store-content.outputs.prompt }} ${{ matrix.language }}'
           input: '${{ steps.store-content.outputs.content }}'
           model: '${{ steps.store-content.outputs.model }}'
       - name: write response to file
         run: |
-          cat > ./ConnectIQStore/MeditateStoreDescription-de.txt << EOF
+          cat > ./ConnectIQStore/MeditateStoreDescription-${{ matrix.language }}.txt << EOF
           ${{ steps.de.outputs.completion }}
       - name: cat
-        run: cat ./ConnectIQStore/MeditateStoreDescription-de.txt
-      
-      # korean
-      - name: OpenAI ChatGPT Action
-        id: ko
-        uses: cahaseler/openai-api@v1.0.0
-        with:
-          apiKey: ${{ secrets.CHATGPT_TOKEN }}
-          prompt: '${{ steps.store-content.outputs.prompt }} korean'
-          input: '${{ steps.store-content.outputs.content }}'
-          model: '${{ steps.store-content.outputs.model }}'
-      - name: write response to file
-        run: |
-            cat > ./ConnectIQStore/MeditateStoreDescription-ko.txt << EOF
-            ${{ steps.ko.outputs.completion }}
-      
-      # portuguese
-      - name: OpenAI ChatGPT Action
-        id: pt
-        uses: cahaseler/openai-api@v1.0.0
-        with:
-          apiKey: ${{ secrets.CHATGPT_TOKEN }}
-          prompt: '${{ steps.store-content.outputs.prompt }} portuguese'
-          input: '${{ steps.store-content.outputs.content }}'
-          model: '${{ steps.store-content.outputs.model }}'
-      - name: write response to file
-        run: |
-            cat > ./ConnectIQStore/MeditateStoreDescription-pt.txt << EOF
-            ${{ steps.pt.outputs.completion }}
-
-      # spanish
-      - name: OpenAI ChatGPT Action
-        id: es
-        uses: cahaseler/openai-api@v1.0.0
-        with:
-          apiKey: ${{ secrets.CHATGPT_TOKEN }}
-          prompt: '${{ steps.store-content.outputs.prompt }} spanish'
-          input: '${{ steps.store-content.outputs.content }}'
-          model: '${{ steps.store-content.outputs.model }}'
-      - name: write response to file
-        run: |
-            cat > ./ConnectIQStore/MeditateStoreDescription-es.txt << EOF
-            ${{ steps.es.outputs.completion }}
+        run: cat ./ConnectIQStore/MeditateStoreDescription-${{ matrix.language }}.txt
       
       ################### UserGuide
       - name: read content
@@ -92,62 +52,19 @@ jobs:
           echo "content=$(cat ./UserGuide.md | base64 --wrap=0)" >> $GITHUB_OUTPUT
           echo "prompt=$(grep -v '[/|#]' ./.github/workflows/translate-content-userguide-prompt.txt | awk '{print}' ORS=' ')" >> $GITHUB_OUTPUT
           echo "model=$(grep -v '[/|#]' -m 1 ./.github/workflows/translate-content-model.txt)" >> $GITHUB_OUTPUT
-
-      # german
+      
       - name: OpenAI ChatGPT Action
         id: userguide-de
         uses: cahaseler/openai-api@v1.0.0
         with:
           apiKey: ${{ secrets.CHATGPT_TOKEN }}
-          prompt: '${{ steps.userguide-content.outputs.prompt }} german'
+          prompt: '${{ steps.userguide-content.outputs.prompt }} ${{ matrix.language }}'
           input: '${{ steps.userguide-content.outputs.content }}'
           model: '${{ steps.userguide-content.outputs.model }}'
       - name: write response to file
         run: |
-            cat > ./UserGuide-de.md << EOF
+            cat > ./UserGuide-${{ matrix.language }}.md << EOF
             ${{ steps.userguide-de.outputs.completion }}
-      
-      # korean
-      - name: OpenAI ChatGPT Action
-        id: userguide-ko
-        uses: cahaseler/openai-api@v1.0.0
-        with:
-          apiKey: ${{ secrets.CHATGPT_TOKEN }}
-          prompt: '${{ steps.userguide-content.outputs.prompt }} korean'
-          input: '${{ steps.userguide-content.outputs.content }}'
-          model: '${{ steps.userguide-content.outputs.model }}'
-      - name: write response to file
-        run: |
-            cat > ./UserGuide-ko.md << EOF
-            ${{ steps.userguide-ko.outputs.completion }}
-      
-      # portuguese
-      - name: OpenAI ChatGPT Action
-        id: userguide-pt
-        uses: cahaseler/openai-api@v1.0.0
-        with:
-          apiKey: ${{ secrets.CHATGPT_TOKEN }}
-          prompt: '${{ steps.userguide-content.outputs.prompt }} portuguese'
-          input: '${{ steps.userguide-content.outputs.content }}'
-          model: '${{ steps.userguide-content.outputs.model }}'
-      - name: write response to file
-        run: |
-            cat > ./UserGuide-pt.md << EOF
-            ${{ steps.userguide-pt.outputs.completion }}
-
-      # spanish
-      - name: OpenAI ChatGPT Action
-        id: userguide-es
-        uses: cahaseler/openai-api@v1.0.0
-        with:
-          apiKey: ${{ secrets.CHATGPT_TOKEN }}
-          prompt: '${{ steps.userguide-content.outputs.prompt }} spanish'
-          input: '${{ steps.userguide-content.outputs.content }}'
-          model: '${{ steps.userguide-content.outputs.model }}'
-      - name: write response to file
-        run: |
-            cat > ./UserGuide-es.md << EOF
-            ${{ steps.userguide-es.outputs.completion }}
 
       # create PR
       - name: Create Pull Request
@@ -156,8 +73,11 @@ jobs:
           branch: release-translation
           commit-message: merge auto-generated translations
 
-    
-      # push
+  create_pr:
+    name: create pull request
+    runs-on: ubuntu-latest
+    needs: translate_texts
+    steps:
       - name: git add
         run: git add .
       - name: Commit & Push changes
