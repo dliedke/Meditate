@@ -144,19 +144,27 @@ class MeditateView extends ScreenPicker.ScreenPickerDetailsCenterView {
 			var alarmTime = me.mMeditateModel.getSessionTime();
 
 			// Fix issues with OLED screens for prepare time 45 seconds
-			if (elapsedTime <= 1) {
-				Attention.backlight(false);
-			}
+			try {
+				if (Attention has :backlight) {
+					if (elapsedTime <= 1) {
+						Attention.backlight(false);
+					}
 
-			// Enable backlight in the first 8 seconds then turn off to save battery
-			if (elapsedTime > 0 && elapsedTime <= 8) {
-				Attention.backlight(true);
-			}
+					// Enable backlight in the first 8 seconds then turn off to save battery
+					if (elapsedTime > 0 && elapsedTime <= 8) {
+						Attention.backlight(true);
+					}
 
-			if (elapsedTime == 9) {
-				Attention.backlight(false);
+					if (elapsedTime == 9) {
+						Attention.backlight(false);
+					}
+				}
+			} catch (ex) {
+				// Just in case we get a BacklightOnTooLongException for OLED display devices (ex: Venu2)
+				if (Attention has :backlight) {
+					Attention.backlight(false);
+				}
 			}
-
 			me.mMainDurationRenderer.drawOverallElapsedTime(dc, elapsedTime, alarmTime);
 			if (me.mIntervalAlertsRenderer != null) {
 				me.mIntervalAlertsRenderer.drawRepeatIntervalAlerts(dc);

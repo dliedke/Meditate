@@ -18,6 +18,7 @@ class GraphView extends ScreenPicker.ScreenPickerBaseView {
 	var elapsedTime;
 	var title;
 	var minCut, maxCut;
+	private var _drawingDone;
 
 	function initialize(data, elapsedTime, title, minCut, maxCut) {
 		me.minCut = minCut;
@@ -29,6 +30,7 @@ class GraphView extends ScreenPicker.ScreenPickerBaseView {
 		var val = null;
 		var total = 0;
 		var count = 0;
+		_drawingDone = false;
 
 		if (me.data != null) {
 			for (var i = 0; i < me.data.size(); i++) {
@@ -83,6 +85,18 @@ class GraphView extends ScreenPicker.ScreenPickerBaseView {
 
 	// Update the view
 	function onUpdate(dc) {
+		// dirty hack - onUpdate is called multiple times - see garmin forums
+		// https://forums.garmin.com/developer/connect-iq/f/discussion/298992/onupdate-is-called-twice
+		// https://forums.garmin.com/developer/connect-iq/f/discussion/8025/oddities-observed-in-log-on-device-regarding-calls-to-onupdate-and-draw
+		// https://forums.garmin.com/developer/connect-iq/f/discussion/258945/watchui-requestupdate-twice
+		// drawing graphs is expensive - we only want to draw it once
+		// cleaner solution would be to do all the calc in onLayout and rm this hack.
+		// maybe fix this at some point - for now the hack is good
+		if (me._drawingDone){
+			return null;
+		}
+		me._drawingDone = true;
+
 		ScreenPickerBaseView.onUpdate(dc);
 
 		// Draw title text
