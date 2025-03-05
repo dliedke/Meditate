@@ -193,7 +193,7 @@ class SessionPickerDelegate extends ScreenPicker.ScreenPickerDelegate {
 		var hrvStatusLine = me.mSelectedSessionDetails.getLine(3);
 		if (me.mNoHrvSeconds >= MinSecondsNoHrvDetected) {
 			hrvStatusLine.icon.setStatusWarning();
-			hrvStatusLine.value.text = Ui.loadResource(Rez.Strings.waitingHRV);
+			hrvStatusLine.value.text = Ui.loadResource(Rez.Strings.HRVwaiting);
 		} else {
 			if (me.mLastHrvTracking == HrvTracking.On) {
 				hrvStatusLine.icon.setStatusOn();
@@ -212,7 +212,7 @@ class SessionPickerDelegate extends ScreenPicker.ScreenPickerDelegate {
 			hrvStatusLine.value.text = Ui.loadResource(Rez.Strings.HRVoff);
 		} else {
 			hrvStatusLine.icon.setStatusWarning();
-			hrvStatusLine.value.text = Ui.loadResource(Rez.Strings.waitingHRV);
+			hrvStatusLine.value.text = Ui.loadResource(Rez.Strings.HRVwaiting);
 		}
 	}
 
@@ -259,7 +259,7 @@ class SessionPickerDelegate extends ScreenPicker.ScreenPickerDelegate {
 		line = details.getLine(lineNum);
 		var alertsLineIcon = new ScreenPicker.Icon({
 			:font => StatusIconFonts.fontAwesomeFreeSolid,
-			:symbol => StatusIconFonts.Rez.Strings.IconClock,
+			:symbol => StatusIconFonts.Rez.Strings.IconTimeline,
 		});
 		line.icon = alertsLineIcon;
 		var alertsToHighlightsLine = new AlertsToHighlightsLine(session);

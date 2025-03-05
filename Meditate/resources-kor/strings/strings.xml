@@ -14,7 +14,7 @@
 	<string id="SummaryAvg">평균:</string>
 	<string id="SummaryMax">최대:</string>
 	<string id="SummaryHRVRMSSD">HRV RMSSD</string>
-	<string id="SummaryHRVpNNx">HRV pNNx</string>
+	<string id="SummaryHRVpNNx">HRV &gt; x</string>
 	<string id="SummaryHRVSDRR">HRV SDRR</string>
 	<string id="SummaryHRVRMSSDFirst5min">첫 5분</string>
 	<string id="SummaryHRVRMSSDLast5min">마지막 5분</string>
@@ -163,7 +163,7 @@
 	<string id="mediateActivityName">명상 [time] 🙏</string>
 	<string id="pickMMSS">MM:SS (분:초) 지정</string>
 	<string id="pickHMM">H:MM (시간:분) 지정</string>
-	<string id="waitingHRV">HRV 대기중</string>
+	<string id="HRVwaiting">HRV 대기중</string>
 	<string id="HRVready">HRV 준비됨</string>
 	<string id="HRVoff">HRV 꺼짐</string>
 

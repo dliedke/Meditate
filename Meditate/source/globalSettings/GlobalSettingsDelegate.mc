@@ -67,31 +67,13 @@ class GlobalSettingsDelegate extends ScreenPicker.ScreenPickerDelegate {
         }
 		line.icon = new ScreenPicker.Icon({        
 			:font => StatusIconFonts.fontAwesomeFreeSolid,
-			:symbol => StatusIconFonts.Rez.Strings.IconRepeat,
+			:symbol => StatusIconFonts.Rez.Strings.IconStop,
 			:color => iconColor
 		});	
 
 		var autoStopTitle = Ui.loadResource(Rez.Strings.menuAutoStopOptions_title);
         line.value.text = autoStopTitle + ": " + autoStopSetting;
-		
-
-		// HRV settings (not enough screen space for everything)
-		/*
-	    details.detailLines[1].icon = new ScreenPicker.HrvIcon({});
-	    var hrvTrackingSetting;
-	    var hrvTracking = GlobalSettings.loadHrvTracking();
-		if (hrvTracking == HrvTracking.On) {			
-			hrvTrackingSetting = Ui.loadResource(Rez.Strings.menuNewHrvTrackingOptions_on);
-		}          
-		else if (hrvTracking == HrvTracking.OnDetailed) {
-			hrvTrackingSetting = Ui.loadResource(Rez.Strings.menuNewHrvTrackingOptions_onDetailedSimple);
-		}
-		else {
-			hrvTrackingSetting = Ui.loadResource(Rez.Strings.menuNewHrvTrackingOptions_off);
-		}
-		details.detailLines[1].value.text = "HRV: " +  hrvTrackingSetting; 	
-		*/
-		
+				
 		// Confirm save activity settings
 		var confirmSaveSetting = "";		
         var saveActivityConfirmation = GlobalSettings.loadConfirmSaveActivity();
@@ -118,23 +100,6 @@ class GlobalSettingsDelegate extends ScreenPicker.ScreenPickerDelegate {
 
         line.value.text = Ui.loadResource(Rez.Strings.menuGlobalSettings_save) + confirmSaveSetting;
         
-		// Multi-session settings (not enough screen space for everything)
-		/*
-        var multiSessionSetting = "";
-        var multiSession = GlobalSettings.loadMultiSession();
-    	details.detailLines[3].icon = new ScreenPicker.Icon({        
-	        	:font => StatusIconFonts.fontAwesomeFreeSolid,
-	        	:symbol => StatusIconFonts.Rez.Strings.IconRepeat
-	        });	
-        if (multiSession == MultiSession.Yes) {
-	        multiSessionSetting = Ui.loadResource(Rez.Strings.menuGlobalSettings_multiSession);
-        }
-        if (multiSession == MultiSession.No) {
-	        multiSessionSetting = Ui.loadResource(Rez.Strings.menuGlobalSettings_singleSession);
-        }
-        details.detailLines[3].value.text = multiSessionSetting;
-		*/
-
 		// Preparation time settings
 		line = details.getLine(2);
         line.icon = new ScreenPicker.Icon({        

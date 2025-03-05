@@ -73,7 +73,7 @@ class MeditateDelegate extends Ui.BehaviorDelegate {
 		var summaryViewDelegate = new SummaryViewDelegate(summaryModel, mMeditateModel.isRespirationRateOn(), me.mMeditateActivity.method(:discardDanglingActivity));
 		var view = summaryViewDelegate.createScreenPickerView();
 		if (view!=null) {
-			Ui.switchToView(view, summaryViewDelegate, Ui.SLIDE_LEFT);  
+			Ui.switchToView(view, summaryViewDelegate, Ui.SLIDE_IMMEDIATE);  
 		}
     }
     
@@ -100,7 +100,7 @@ class MeditateDelegate extends Ui.BehaviorDelegate {
     
     private function showSessionPickerView(summaryModel) {		
 		me.mSessionPickerDelegate.addSummary(summaryModel);
-		Ui.switchToView(me.mSessionPickerDelegate.createScreenPickerView(), me.mSessionPickerDelegate, Ui.SLIDE_RIGHT);
+		Ui.switchToView(me.mSessionPickerDelegate.createScreenPickerView(), me.mSessionPickerDelegate, Ui.SLIDE_IMMEDIATE);
     }
     
     function onBack() {

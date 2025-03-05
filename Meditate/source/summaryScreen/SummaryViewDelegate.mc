@@ -145,19 +145,19 @@ class SummaryViewDelegate extends ScreenPicker.ScreenPickerDelegate {
 		var line = detailsModel.getLine(0);
 		var hrvIcon = new ScreenPicker.HrvIcon({});
 		line.icon = hrvIcon;
-		line.value.text = "pNN20";
+		line.value.text = "HRV > 20";
 
 		line = detailsModel.getLine(1);
-		line.value.text = Lang.format("$1$ %", [
+		line.value.text = Lang.format("$1$% of time", [
 			ScreenPicker.ScreenPickerBaseView.formatValue(me.mSummaryModel.hrvPnn20),
 		]);
 
 		line = detailsModel.getLine(2);
 		line.icon = hrvIcon;
-		line.value.text = "pNN50";
+		line.value.text = "HRV > 50";
 
 		line = detailsModel.getLine(3);
-		line.value.text = Lang.format("$1$ %", [
+		line.value.text = Lang.format("$1$% of time", [
 			ScreenPicker.ScreenPickerBaseView.formatValue(me.mSummaryModel.hrvPnn50),
 		]);
 

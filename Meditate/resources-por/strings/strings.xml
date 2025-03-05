@@ -14,7 +14,7 @@
     <string id="SummaryAvg">Med: </string>
     <string id="SummaryMax">Max: </string>
     <string id="SummaryHRVRMSSD">VFC RMSSD</string>
-    <string id="SummaryHRVpNNx">VFC pNNx</string>
+    <string id="SummaryHRVpNNx">VFC &gt; x</string>
     <string id="SummaryHRVSDRR">VFC SDRR</string>
     <string id="SummaryHRVRMSSDFirst5min">Primeiros 5 min</string>
     <string id="SummaryHRVRMSSDLast5min">Últimos 5 min</string>
@@ -164,7 +164,7 @@
     <string id="mediateActivityName">Meditação [time] 🙏</string>
     <string id="pickMMSS">Escolha MM:SS</string>
     <string id="pickHMM">Escolha H:MM</string>
-    <string id="waitingHRV">Aguardando VFC</string>
+    <string id="HRVwaiting">VFC aguardando</string>
     <string id="HRVready">VFC pronto</string>
     <string id="HRVoff">VFC Deslig.</string>
 

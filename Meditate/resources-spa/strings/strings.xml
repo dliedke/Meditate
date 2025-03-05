@@ -14,7 +14,7 @@
     <string id="SummaryAvg">Prom:</string>
     <string id="SummaryMax">Máx:</string>
     <string id="SummaryHRVRMSSD">HRV RMSSD</string>
-    <string id="SummaryHRVpNNx">HRV pNNx</string>
+    <string id="SummaryHRVpNNx">HRV &gt; x</string>
     <string id="SummaryHRVSDRR">HRV SDRR</string>
     <string id="SummaryHRVRMSSDFirst5min">Primeros 5 min</string>
     <string id="SummaryHRVRMSSDLast5min">Últimos 5 min</string>
@@ -163,7 +163,7 @@
     <string id="mediateActivityName">Meditando [time] 🙏</string>
     <string id="pickMMSS">Elige MM:SS</string>
     <string id="pickHMM">Elige H:MM</string>
-    <string id="waitingHRV">Esperando HRV</string>
+    <string id="HRVwaiting">HRV esperando</string>
     <string id="HRVready">HRV listo</string>
     <string id="HRVoff">HRV apagado</string>
 
