@@ -1,4 +1,5 @@
 name: Compress Images on Push to main branch
+run-name: Compress images on push to main @${{ github.actor }}
 on:
   workflow_dispatch:
   push:
