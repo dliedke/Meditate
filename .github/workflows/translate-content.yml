@@ -72,13 +72,3 @@ jobs:
         with:
           branch: release-translation
           commit-message: merge auto-generated translations
-
-      # push
-      - name: git add
-        run: git add .
-      - name: Commit & Push changes
-        uses: actions-js/push@master
-        with:
-          message: auto-generated translations
-          branch: release-translation
-          github_token: ${{ secrets.GITHUB_TOKEN }}
