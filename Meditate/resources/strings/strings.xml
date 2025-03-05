@@ -164,7 +164,7 @@
     <string id="pickMMSS">Pick MM:SS</string>
     <string id="pickHMM">Pick H:MM</string>
     <string id="waitingHRV">Waiting HRV</string>
-    <string id="HRVready">HRV Ready</string>
+    <string id="HRVready">HRV ready</string>
     <string id="HRVoff">HRV off</string>
 
     <string id="optionsMenuHelp">Hold menu</string>

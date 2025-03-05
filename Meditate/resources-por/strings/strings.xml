@@ -165,7 +165,7 @@
     <string id="pickMMSS">Escolha MM:SS</string>
     <string id="pickHMM">Escolha H:MM</string>
     <string id="waitingHRV">Aguardando VFC</string>
-    <string id="HRVready">VFC Pronto</string>
+    <string id="HRVready">VFC pronto</string>
     <string id="HRVoff">VFC Deslig.</string>
 
     <string id="optionsMenuHelp">Segurar menu</string>
