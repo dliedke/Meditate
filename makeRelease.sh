@@ -16,3 +16,4 @@ cd ..
 git add .
 git commit -am"bump version to v$VERSION"
 git tag "v$VERSION"
+git push origin tag "v$VERSION"
