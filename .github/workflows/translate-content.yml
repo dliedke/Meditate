@@ -66,13 +66,6 @@ jobs:
             cat > ./UserGuide-${{ matrix.language }}.md << EOF
             ${{ steps.userguide-de.outputs.completion }}
 
-      # create PR
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v7
-        with:
-          branch: release-translation
-          commit-message: merge auto-generated translations
-
   create_pr:
     name: create pull request
     runs-on: ubuntu-latest
