@@ -1,10 +1,13 @@
 name: Translate texts, guides, etc
 run-name: Translate texts, guides, etc by @${{ github.actor }}
 on:
-  push:
-    tags:
-      - V*
-      - v*
+  pull_request:
+    branches:
+      - 'main'
+    paths:
+      - './ConnectIQStore/MeditateStoreDescription-en.txt'
+      - './UserGuide.md'
+
   workflow_dispatch:
 jobs:
   translate_texts:
@@ -70,5 +73,6 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
         with:
+          title: update auto-generated translations
           branch: release-translation
           commit-message: merge auto-generated translations
