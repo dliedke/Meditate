@@ -8,4 +8,4 @@ you can re-write for clarity and reading flow.
 it must be easy to read in the target language without complicated sentences.
 it should sound native in the target language.
 the output MUST NOT BE base64, but human readable.
-Translate in casual and native speaker style to the following language, defined in ISO 639 2-letter code: 
+Translate in casual and native speaker style to the following language, defined in ISO 639 2-letter code:
