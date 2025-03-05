@@ -6,6 +6,9 @@ on:
       - 'main'
     paths:
     - '**.md'
+    - '**.jpg'
+    - '**.jpeg'
+    - '**.png'
   workflow_dispatch:
 jobs:
   build:
