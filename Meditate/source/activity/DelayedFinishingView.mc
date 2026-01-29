@@ -27,9 +27,9 @@ class DelayedFinishingView extends Ui.View {
         setLayout(Rez.Layouts.delayedFinishing(dc));
     }     
 	
-	function onShow() {	
+	function onShow() {
 		var viewDrawnTimer = new Timer.Timer();
-		viewDrawnTimer.start(method(:onViewDrawn), 1000, false);		
+		viewDrawnTimer.start(method(:onViewDrawn), 3000, false);
 	}
 		
 	function onUpdate(dc) {     
