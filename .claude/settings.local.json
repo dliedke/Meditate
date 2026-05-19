@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls ~/AppData/Roaming/Garmin/ConnectIQ/Devices 2>/dev/null | head -100; echo \"===\"; ls \"$HOME/AppData/Roaming/Garmin/ConnectIQ/Devices\" 2>/dev/null | grep -i \"fr1\\\\|fr5\\\\|fr9\" )",
+      "Read(//c/Users/Daniel/AppData/Roaming/Garmin/ConnectIQ/Devices/**)",
+      "Bash(grep -o '\"resolution\"[^}]*}' __TRACKED_VAR__/AppData/Roaming/Garmin/ConnectIQ/Devices/__TRACKED_VAR__/compiler.json)"
+    ]
+  }
+}
